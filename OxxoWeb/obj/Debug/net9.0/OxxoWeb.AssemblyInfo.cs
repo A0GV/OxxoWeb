@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OxxoWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96a90cdd9d15bf8580d2f59d4c545999cb1a63ca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9d520bef053f13537e15857c5bcc1d267c71c3b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("OxxoWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OxxoWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
