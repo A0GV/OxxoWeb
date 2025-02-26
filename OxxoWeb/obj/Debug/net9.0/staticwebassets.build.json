@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uQkEiwczeH1ZZoaKXm3a3c+EaR4LjtoOyqNHzMmR0cU=",
+  "Hash": "/Wrp7/jo98u7fnPi8ippa6V8nkEtoqnpe5dVniw42uA=",
   "Source": "OxxoWeb",
   "BasePath": "_content/OxxoWeb",
   "Mode": "Default",
@@ -815,12 +815,12 @@
       "OriginalItemSpec": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
     },
     {
-      "Identity": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-lugek5hnai.gz",
+      "Identity": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-tobk361k7c.gz",
       "SourceId": "OxxoWeb",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/OxxoWeb",
-      "RelativePath": "css/site#[.{fingerprint=lugek5hnai}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=tobk361k7c}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -829,8 +829,8 @@
       "RelatedAsset": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/wwwroot/css/site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "fap03slvfg",
-      "Integrity": "B2NcGeycNm1fppl5ueYw/SoIaM1eiU6mnFitSmrq4lY=",
+      "Fingerprint": "21o3mm8mx8",
+      "Integrity": "mnWsJBrlwr39WG9RDUV8EpDzA0YHRN63zLax5hdQac8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/wwwroot/css/site.css"
@@ -1130,12 +1130,12 @@
       "OriginalItemSpec": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map"
     },
     {
-      "Identity": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-s35ty4nyc5.gz",
+      "Identity": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-zu25f41mwz.gz",
       "SourceId": "OxxoWeb",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/OxxoWeb",
-      "RelativePath": "lib/bootstrap/dist/css/bootstrap#[.{fingerprint=s35ty4nyc5}]?.css.gz",
+      "RelativePath": "lib/bootstrap/dist/css/bootstrap#[.{fingerprint=zu25f41mwz}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -1144,8 +1144,8 @@
       "RelatedAsset": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "lzu6cjurhc",
-      "Integrity": "n8W3VdC4I3veW4VnsbrnEGvARFEgXX9cBa7M89gRvWI=",
+      "Fingerprint": "tp7jskur0i",
+      "Integrity": "L0bzS3/B27KGlHn6irdLx0X7TX4q3oMiCgMKoynTRSw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/wwwroot/lib/bootstrap/dist/css/bootstrap.css"
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "lugek5hnai",
-      "Integrity": "zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD+cbo=",
+      "Fingerprint": "tobk361k7c",
+      "Integrity": "07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
@@ -1984,8 +1984,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "s35ty4nyc5",
-      "Integrity": "GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw=",
+      "Fingerprint": "zu25f41mwz",
+      "Integrity": "RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/bootstrap/dist/css/bootstrap.css"
@@ -2729,12 +2729,12 @@
   "Endpoints": [
     {
       "Route": "css/site.css",
-      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-lugek5hnai.gz",
+      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-tobk361k7c.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.003194888179"
+          "Quality": "0.002793296089"
         }
       ],
       "ResponseHeaders": [
@@ -2744,15 +2744,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "312"
+          "Value": "357"
         },
         {
           "Name": "ETag",
-          "Value": "\"B2NcGeycNm1fppl5ueYw/SoIaM1eiU6mnFitSmrq4lY=\""
+          "Value": "\"mnWsJBrlwr39WG9RDUV8EpDzA0YHRN63zLax5hdQac8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2772,13 +2772,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD+cbo=\""
+          "Value": "W/\"07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD+cbo="
+          "Value": "sha256-07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY="
         }
       ]
     },
@@ -2793,7 +2793,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "637"
+          "Value": "707"
         },
         {
           "Name": "Content-Type",
@@ -2801,11 +2801,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD+cbo=\""
+          "Value": "\"07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2815,13 +2815,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD+cbo="
+          "Value": "sha256-07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-lugek5hnai.gz",
+      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-tobk361k7c.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2830,7 +2830,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "312"
+          "Value": "357"
         },
         {
           "Name": "Content-Type",
@@ -2838,11 +2838,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"B2NcGeycNm1fppl5ueYw/SoIaM1eiU6mnFitSmrq4lY=\""
+          "Value": "\"mnWsJBrlwr39WG9RDUV8EpDzA0YHRN63zLax5hdQac8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2860,18 +2860,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-B2NcGeycNm1fppl5ueYw/SoIaM1eiU6mnFitSmrq4lY="
+          "Value": "sha256-mnWsJBrlwr39WG9RDUV8EpDzA0YHRN63zLax5hdQac8="
         }
       ]
     },
     {
-      "Route": "css/site.lugek5hnai.css",
-      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-lugek5hnai.gz",
+      "Route": "css/site.tobk361k7c.css",
+      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-tobk361k7c.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.003194888179"
+          "Quality": "0.002793296089"
         }
       ],
       "ResponseHeaders": [
@@ -2881,15 +2881,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "312"
+          "Value": "357"
         },
         {
           "Name": "ETag",
-          "Value": "\"B2NcGeycNm1fppl5ueYw/SoIaM1eiU6mnFitSmrq4lY=\""
+          "Value": "\"mnWsJBrlwr39WG9RDUV8EpDzA0YHRN63zLax5hdQac8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2909,13 +2909,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD+cbo=\""
+          "Value": "W/\"07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lugek5hnai"
+          "Value": "tobk361k7c"
         },
         {
           "Name": "label",
@@ -2923,12 +2923,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD+cbo="
+          "Value": "sha256-07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY="
         }
       ]
     },
     {
-      "Route": "css/site.lugek5hnai.css",
+      "Route": "css/site.tobk361k7c.css",
       "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/wwwroot/css/site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -2938,7 +2938,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "637"
+          "Value": "707"
         },
         {
           "Name": "Content-Type",
@@ -2946,11 +2946,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD+cbo=\""
+          "Value": "\"07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -2960,7 +2960,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lugek5hnai"
+          "Value": "tobk361k7c"
         },
         {
           "Name": "label",
@@ -2968,13 +2968,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD+cbo="
+          "Value": "sha256-07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY="
         }
       ]
     },
     {
-      "Route": "css/site.lugek5hnai.css.gz",
-      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-lugek5hnai.gz",
+      "Route": "css/site.tobk361k7c.css.gz",
+      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-tobk361k7c.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -2983,7 +2983,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "312"
+          "Value": "357"
         },
         {
           "Name": "Content-Type",
@@ -2991,11 +2991,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"B2NcGeycNm1fppl5ueYw/SoIaM1eiU6mnFitSmrq4lY=\""
+          "Value": "\"mnWsJBrlwr39WG9RDUV8EpDzA0YHRN63zLax5hdQac8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:52:35 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3013,7 +3013,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "lugek5hnai"
+          "Value": "tobk361k7c"
         },
         {
           "Name": "label",
@@ -3021,7 +3021,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-B2NcGeycNm1fppl5ueYw/SoIaM1eiU6mnFitSmrq4lY="
+          "Value": "sha256-mnWsJBrlwr39WG9RDUV8EpDzA0YHRN63zLax5hdQac8="
         }
       ]
     },
@@ -10775,12 +10775,12 @@
     },
     {
       "Route": "lib/bootstrap/dist/css/bootstrap.css",
-      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-s35ty4nyc5.gz",
+      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-zu25f41mwz.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000030073379"
+          "Quality": "0.000030032736"
         }
       ],
       "ResponseHeaders": [
@@ -10790,15 +10790,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "33251"
+          "Value": "33296"
         },
         {
           "Name": "ETag",
-          "Value": "\"n8W3VdC4I3veW4VnsbrnEGvARFEgXX9cBa7M89gRvWI=\""
+          "Value": "\"L0bzS3/B27KGlHn6irdLx0X7TX4q3oMiCgMKoynTRSw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:45:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10818,13 +10818,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw=\""
+          "Value": "W/\"RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw="
+          "Value": "sha256-RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI="
         }
       ]
     },
@@ -10839,7 +10839,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "281046"
+          "Value": "281119"
         },
         {
           "Name": "Content-Type",
@@ -10847,11 +10847,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw=\""
+          "Value": "\"RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:45:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10861,13 +10861,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw="
+          "Value": "sha256-RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI="
         }
       ]
     },
     {
       "Route": "lib/bootstrap/dist/css/bootstrap.css.gz",
-      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-s35ty4nyc5.gz",
+      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-zu25f41mwz.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10876,7 +10876,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "33251"
+          "Value": "33296"
         },
         {
           "Name": "Content-Type",
@@ -10884,11 +10884,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"n8W3VdC4I3veW4VnsbrnEGvARFEgXX9cBa7M89gRvWI=\""
+          "Value": "\"L0bzS3/B27KGlHn6irdLx0X7TX4q3oMiCgMKoynTRSw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:45:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10906,7 +10906,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-n8W3VdC4I3veW4VnsbrnEGvARFEgXX9cBa7M89gRvWI="
+          "Value": "sha256-L0bzS3/B27KGlHn6irdLx0X7TX4q3oMiCgMKoynTRSw="
         }
       ]
     },
@@ -12997,13 +12997,13 @@
       ]
     },
     {
-      "Route": "lib/bootstrap/dist/css/bootstrap.s35ty4nyc5.css",
-      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-s35ty4nyc5.gz",
+      "Route": "lib/bootstrap/dist/css/bootstrap.zu25f41mwz.css",
+      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-zu25f41mwz.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000030073379"
+          "Quality": "0.000030032736"
         }
       ],
       "ResponseHeaders": [
@@ -13013,15 +13013,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "33251"
+          "Value": "33296"
         },
         {
           "Name": "ETag",
-          "Value": "\"n8W3VdC4I3veW4VnsbrnEGvARFEgXX9cBa7M89gRvWI=\""
+          "Value": "\"L0bzS3/B27KGlHn6irdLx0X7TX4q3oMiCgMKoynTRSw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:45:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13041,13 +13041,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw=\""
+          "Value": "W/\"RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "s35ty4nyc5"
+          "Value": "zu25f41mwz"
         },
         {
           "Name": "label",
@@ -13055,12 +13055,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw="
+          "Value": "sha256-RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI="
         }
       ]
     },
     {
-      "Route": "lib/bootstrap/dist/css/bootstrap.s35ty4nyc5.css",
+      "Route": "lib/bootstrap/dist/css/bootstrap.zu25f41mwz.css",
       "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -13070,7 +13070,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "281046"
+          "Value": "281119"
         },
         {
           "Name": "Content-Type",
@@ -13078,11 +13078,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw=\""
+          "Value": "\"RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:45:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13092,7 +13092,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "s35ty4nyc5"
+          "Value": "zu25f41mwz"
         },
         {
           "Name": "label",
@@ -13100,13 +13100,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw="
+          "Value": "sha256-RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI="
         }
       ]
     },
     {
-      "Route": "lib/bootstrap/dist/css/bootstrap.s35ty4nyc5.css.gz",
-      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-s35ty4nyc5.gz",
+      "Route": "lib/bootstrap/dist/css/bootstrap.zu25f41mwz.css.gz",
+      "AssetFile": "/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-zu25f41mwz.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -13115,7 +13115,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "33251"
+          "Value": "33296"
         },
         {
           "Name": "Content-Type",
@@ -13123,11 +13123,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"n8W3VdC4I3veW4VnsbrnEGvARFEgXX9cBa7M89gRvWI=\""
+          "Value": "\"L0bzS3/B27KGlHn6irdLx0X7TX4q3oMiCgMKoynTRSw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 26 Feb 2025 21:56:06 GMT"
+          "Value": "Wed, 26 Feb 2025 22:45:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13145,7 +13145,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "s35ty4nyc5"
+          "Value": "zu25f41mwz"
         },
         {
           "Name": "label",
@@ -13153,7 +13153,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-n8W3VdC4I3veW4VnsbrnEGvARFEgXX9cBa7M89gRvWI="
+          "Value": "sha256-L0bzS3/B27KGlHn6irdLx0X7TX4q3oMiCgMKoynTRSw="
         }
       ]
     },

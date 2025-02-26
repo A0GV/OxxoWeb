@@ -18,7 +18,6 @@
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/scopedcss/Pages/Shared/_Layout.cshtml.rz.scp.css
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/scopedcss/bundle/OxxoWeb.styles.css
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/scopedcss/projectbundle/OxxoWeb.bundle.scp.css
-/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-lugek5hnai.gz
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/627jnew4tq-61n19gt1b8.gz
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/29y8nyge7x-fr7q2aak1r.gz
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/6ih7afv6sa-bqjiyaj88i.gz
@@ -45,7 +44,6 @@
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/6lb5vmb69t-j5mq2jizvt.gz
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/4wepwnao0t-06098lyss8.gz
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/j3aowazt9v-nvvlpmu67g.gz
-/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-s35ty4nyc5.gz
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/44kcf7sk5j-pj5nd1wqec.gz
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/m18ndo25yx-46ein0sx1k.gz
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/39ln1l261u-v0zj4ognzu.gz
@@ -96,3 +94,5 @@
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/OxxoWeb.pdb
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/OxxoWeb.genruntimeconfig.cache
 /Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/ref/OxxoWeb.dll
+/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/phx6w9l17p-zu25f41mwz.gz
+/Users/monicaguzman/Documents/GitHub/OxxoWeb/OxxoWeb/obj/Debug/net9.0/compressed/hncffutqvs-tobk361k7c.gz

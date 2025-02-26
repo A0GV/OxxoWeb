@@ -3,14 +3,14 @@
     <StaticWebAssetEndpoint Include="_content/OxxoWeb/css/site.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD\u002Bcbo="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"637"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD\u002Bcbo=\u0022"},{"Name":"Last-Modified","Value":"Wed, 26 Feb 2025 21:56:06 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"707"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002207whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY=\u0022"},{"Name":"Last-Modified","Value":"Wed, 26 Feb 2025 22:52:35 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/OxxoWeb/css/site.lugek5hnai.css">
+    <StaticWebAssetEndpoint Include="_content/OxxoWeb/css/site.tobk361k7c.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"lugek5hnai"},{"Name":"integrity","Value":"sha256-zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD\u002Bcbo="},{"Name":"label","Value":"_content/OxxoWeb/css/site.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"637"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022zeR5PHeeHbxfGkL8WV86OzdoF6UnjuCmnagaocD\u002Bcbo=\u0022"},{"Name":"Last-Modified","Value":"Wed, 26 Feb 2025 21:56:06 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"tobk361k7c"},{"Name":"integrity","Value":"sha256-07whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY="},{"Name":"label","Value":"_content/OxxoWeb/css/site.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"707"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u002207whRIEGg7DmvPbBfQqlgUyVvhekizAMdPEOv51iiYY=\u0022"},{"Name":"Last-Modified","Value":"Wed, 26 Feb 2025 22:52:35 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/OxxoWeb/favicon.61n19gt1b8.ico">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</AssetFile>
@@ -327,8 +327,8 @@
     <StaticWebAssetEndpoint Include="_content/OxxoWeb/lib/bootstrap/dist/css/bootstrap.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"281046"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw=\u0022"},{"Name":"Last-Modified","Value":"Wed, 26 Feb 2025 21:56:06 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"281119"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 26 Feb 2025 22:45:06 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/OxxoWeb/lib/bootstrap/dist/css/bootstrap.css.map">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.css.map'))</AssetFile>
@@ -414,11 +414,11 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"pk9g2wxc8p"},{"Name":"integrity","Value":"sha256-h5lE7Nm8SkeIpBHHYxN99spP3VuGFKl5NZgsocil7zk="},{"Name":"label","Value":"_content/OxxoWeb/lib/bootstrap/dist/css/bootstrap.rtl.min.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"232911"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022h5lE7Nm8SkeIpBHHYxN99spP3VuGFKl5NZgsocil7zk=\u0022"},{"Name":"Last-Modified","Value":"Wed, 26 Feb 2025 21:56:06 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/OxxoWeb/lib/bootstrap/dist/css/bootstrap.s35ty4nyc5.css">
+    <StaticWebAssetEndpoint Include="_content/OxxoWeb/lib/bootstrap/dist/css/bootstrap.zu25f41mwz.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\css\bootstrap.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"s35ty4nyc5"},{"Name":"integrity","Value":"sha256-GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw="},{"Name":"label","Value":"_content/OxxoWeb/lib/bootstrap/dist/css/bootstrap.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"281046"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022GKEF18s44B5e0MolXAkpkqLiEbOVlKf6VyYr/G/E6pw=\u0022"},{"Name":"Last-Modified","Value":"Wed, 26 Feb 2025 21:56:06 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"zu25f41mwz"},{"Name":"integrity","Value":"sha256-RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI="},{"Name":"label","Value":"_content/OxxoWeb/lib/bootstrap/dist/css/bootstrap.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"281119"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022RdN81xT8zAi3vDEwNQtB9D9vKylLsFU3JXaNpw0OxcI=\u0022"},{"Name":"Last-Modified","Value":"Wed, 26 Feb 2025 22:45:06 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/OxxoWeb/lib/bootstrap/dist/js/bootstrap.bundle.6cfz1n2cew.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\bootstrap\dist\js\bootstrap.bundle.js'))</AssetFile>
