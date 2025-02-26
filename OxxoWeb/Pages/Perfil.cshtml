@@ -1,0 +1,20 @@
+@page
+@model OxxoWeb.Pages.PerfilModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Deltarune TOMORROW !!!!!</h1>
+    <h2>@ViewData["Mensaje"]</h2>
+    <h3>Hello, @Model.Nombre</h3>
+    <h3>@ViewData["Fecha"]</h3>
+    <img src="~/imagenes/Deltarune.png" class="img size100"/>
+
+    <form method="post">
+        <input type="text" asp-for="Nombre" />
+        <input type="text" asp-for="Edad" />
+        <input type="submit" value="Iniciar" />
+    </form>
+    <a asp-page="Pagina2">Pagina 2</a>
+</div>
