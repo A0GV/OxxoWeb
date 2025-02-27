@@ -1,4 +1,24 @@
-bin
-net9.0
-OxxoWeb/obj
-OxxoWeb/obj
+# Build directories
+bin/
+obj/
+
+# User-specific files
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Configuration files
+appsettings.Development.json
+appsettings.Local.json
+
+# Rider project files
+.idea/
+*.sln.iml
