@@ -45,7 +45,7 @@ body {
 .ContainersForLogin {
   width: 40%;
   padding: 12px 40px;
-  border: 2px solid #f4a017;
+  border: transparent;
   border-radius: 25px;  
   font-size: 16px;
   margin: 0 auto;
