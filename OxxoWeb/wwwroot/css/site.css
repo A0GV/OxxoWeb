@@ -39,11 +39,24 @@ body {
 }
 
 .SecondText {
-  /* pass */
+  font-size: 26.3;
 }
 
 .ContainersForLogin {
-  /* pass */
+  width: 40%;
+  padding: 12px 40px;
+  border: 2px solid #f4a017;
+  border-radius: 25px;  
+  font-size: 16px;
+  margin: 0 auto;
+  background-color: #F4BB4C;
+}
+
+.ContainersForLogin input{
+  width: 100%;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none;
 }
 
 .RememberMe {
@@ -63,4 +76,12 @@ body {
 }
 .container{
   background-color: F5F5F5;
+}
+
+.Titillium{
+  font-family: "Titillium Web", sans-serif;
+}
+
+.FirstText{
+  font-size: 56.7px;
 }
