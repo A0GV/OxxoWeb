@@ -1,3 +1,10 @@
+:root{
+  --rojo_oscuro: #842720;
+  --gris: #D9D9D9;
+  --eggshell: #FEFCF6;
+  --negro_claro: #2F2F2F;
+}
+
 html {
   font-size: 14px;
 }
