@@ -1,6 +1,6 @@
 html {
   font-size: 14px;
-  
+
 }
 
 @media (min-width: 768px) {
@@ -85,4 +85,10 @@ body {
 
 .FirstText{
   font-size: 56.7px;
+}
+
+/* Background color beige */
+.background-beige-cell {
+  background-color: #FDF3DD;
+  border: 1px solid gray;
 }

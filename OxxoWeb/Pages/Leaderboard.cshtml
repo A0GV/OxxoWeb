@@ -5,129 +5,39 @@
     ViewData["Title"] = "Leaderboard";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Grid Layout</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .left-column { background-color: lightgreen; padding: 20px; border: 1px solid gray; }
-        .game-section { padding: 20px; border: 1px solid gray; }
-        .game-1 { background-color: purple; color: white; }
-        .game-2 { background-color: blue; color: white; }
-        .game-3 { background-color: pink; color: black; }
-    </style>
-</head>
-<body>
-
-<div class="container mt-4">
-    <div class="row">
-        <!-- Left Side: Individual Columns (Green Sections) -->
-        <div class="col-md-6">
+<div class="container mt-4 Titillium">
+    <div class="row" >
+        <!-- Izquierdo: Leaderboard General -->
+        <div class="col-md-6 background-beige-cell">
+            <!-- Podiums tres principales -->
             <div class="row">
+                <!--2: Columna 1-2 -->
                 <div class="col-md-4 left-column text-center">
                     <p>Hdjaflda</p>
                     <h2>adfsdkafs</h2>
                 </div>
+                 <!--1:Columna 3-4 -->
                 <div class="col-md-4 left-column">Column 3-4</div>
+                 <!--3:Columna 4-5 -->
                 <div class="col-md-4 left-column">Column 5-6</div>
+            </div>
+            <!-- Lugares restantes de general  -->
+            <div class="row">
+                <h2>Resto de los lugares</h2>
             </div>
         </div>
 
         <!-- Right Side: Game Sections (Stacked Rows) -->
         <div class="col-md-6">
-            <div class="row game-section game-1">
-                <div class="col-12">Game 1</div>
+            <div class="row background-beige-cell">
+                <div class="col-12">Supervisor Express</div>
             </div>
-            <div class="row game-section game-2">
+            <div class="row background-beige-cell">
                 <div class="col-12">Game 2</div>
             </div>
-            <div class="row game-section game-3">
+            <div class="row background-beige-cell">
                 <div class="col-12">Game 3</div>
             </div>
         </div>
-    </div>
-</div>
-
-</body>
-
-@* <div class="col-6" style="background-color:powderblue;">
-    <!-- Lugar 2 -->
-    <p>A</p>
-    <!-- Lugar 1 -->
-    <p>B</p>
-    <!-- Lugar 3 -->
-    <p>C</p>
-</div> *@
-
-@* <div class="col-2" style="background-color:powderblue;">
-    <p>A</p>
-</div>
-
-<div class="col-2" style="background-color:blue;">
-    <p>B</p>
-</div>
-
-<div class="col-2" style="background-color:darkblue;">
-    <p>C</p>
-</div>
-
-<div class="col-6" style="background-color:gray;">
-    <div class="row">
-        <h1>Texto 2</h1>
-    </div>
-    <div class="row" style="background-color:pink;">
-        <h1>Texto 3</h1>
-    </div>
-    <div class="row" style="background-color:purple;">
-        <h1>Texto 4</h1>
-    </div>
-</div> *@
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-6" class="background-color:powderblue;">
-            <div class="row text-center">
-                <div class="col-4">
-                    <div class="p-3">🥈 Persona 2</div>
-                </div>
-                <div class="col-4">
-                    <div class="p-3">🥇 Persona 1</div>
-                </div>
-                <div class="col-4">                        
-                    <div class="p-3">🥉 Persona 3</div>
-                </div>
-            </div>
-    
-
-        @* 
-        <div class="col-md-6">
-            <div class="row" class="background-color:gray;">
-                <h1>Texto 2</h1>
-            </div>
-            <div class="row" style="background-color:pink;">
-                <h1>Texto 3</h1>
-            </div>
-            <div class="row" style="background-color:purple;">
-                <h1>Texto 4</h1>
-            </div>
-        </div> *@
-    
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-12">
-                    <p>Juego 1</p>
-                </div>
-                <div class="col-12">
-                    <p>Juego 1</p>
-                </div>
-                <div class="col-12">
-                    <p>Juego 1</p>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
