@@ -29,45 +29,52 @@
     <div class="col-md-6"></div>
 </div>
 
+<!-- Leaderboards -->
 <div class="container mt-4 Titillium">
-    <div class="row" >
+    <!-- Row with gap 3 rounded edges -->
+    <div class="row g-3 align-items-start" >
         <!-- Izquierdo: Leaderboard General -->
-        <div class="col-md-6 background-beige-cell">
-            <!-- Podiums tres principales -->
-            <div class="row">
+        <div class="col-md-5 background-beige-cell rounded p-3">
+            <!-- Podiums tres principales centrados -->
+            <div class="row text-center">
                 <!--2: Columna 1-2 -->
-                <div class="col-md-4 leaderboard-left-column text-center">
+                <div class="col-md-4 leaderboard-left-column p-3">
                 </div>
                  <!--1:Columna 3-4 -->
-                <div class="col-md-4 leaderboard-left-column">
+                <div class="col-md-4 leaderboard-center-column p-3">
                     <h2>General</h2>
                 </div>
                  <!--3:Columna 4-5 -->
-                <div class="col-md-4 leaderboard-left-column"></div>
+                <div class="col-md-4 leaderboard-right-column p-3">
+
+                </div>
             </div>
 
-            <!-- Lugares restantes de general, maybe hacer su propio  -->
-            <div class="row">
-                <h2>Resto</h2>
+            <!-- Lugares restantes de general, maybe hacer su propio,# mt-3 agrega margin top  -->
+            <div class="row mt-3">
+                <div class="col-12">
+                    <h2>Resto</h2>
+                </div>    
             </div>
         </div>
 
-        <!-- Right Side: Game Sections (Stacked Rows) -->
-        <div class="col-md-6">
+        <!-- Derecha juegos individuales -->
+        <!-- Agregando flex para usar gap  -->
+        <div class="col-md-5 d-flex flex-column gap-3">
             <!-- Supervisor -->
-            <div class="row background-beige-cell">
+            <div class="background-beige-cell rounded p-3">
                 <div class="col-12">
                     <h2>Supervisor Express</h2>
                 </div>
             </div>
             <!-- Día a día -->
-            <div class="row background-beige-cell">
+            <div class="background-beige-cell rounded p-3">
                 <div class="col-12">
                     <h2>Día a día</h2>
                 </div>
             </div>
             <!-- Enemigos -->
-            <div class="row background-beige-cell">
+            <div class="background-beige-cell rounded p-3">
                 <div class="col-12">
                     <h2>Enemigos</h2>
                 </div>
