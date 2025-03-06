@@ -84,22 +84,27 @@ body {
 
 .Enter input{
   width: 100%;
-  font-size: 31px;
+  font-size: 20px;
   background: transparent;
   border: none;
   color: #ffff;
   padding: 0%;
 }
 
-.OlvidadoYAyuda {
-  /* pass */
+.OlvidadoYAyuda{
+  margin-top:30px ;
+}
+
+.OlvidadoYAyuda a {
+  color: #F27080;
+  font-weight: 900;
 }
 
 .Privacidad {
   /* pass */
 }
 .container{
-  background-color: F5F5F5;
+  /* pass */
 }
 
 .Titillium{
