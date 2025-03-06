@@ -45,11 +45,11 @@ body {
   opacity:   80%;
 }
 
-.SecondText {
+.SegundoTexto {
   font-size: 26.3;
 }
 
-.ContainersForLogin {
+.ContenedoresLogin {
   width: 40%;
   padding: 12px 40px;
   border: transparent;
@@ -59,26 +59,43 @@ body {
   background-color: #F4BB4C;
 }
 
-.ContainersForLogin input{
+.ContenedoresLogin input{
   width: 100%;
   background-color: transparent;
   border-color: transparent;
   outline: none;
 }
 
-.RememberMe {
-  /* pass */
+.RecordarUsuario {
+  justify-content: center;
+  padding-top: 1%;
+  padding-left: 45%;
 }
 
 .Enter {
+  width: 40%;
+  padding: 12px 40px;
+  border: transparent;
+  border-radius: 25px;  
+  font-size: 16px;
+  margin: 0 auto;
+  background: linear-gradient(to right, #FF3933, #FF8649); /* Corregido "rigth" a "right" */
+}
+
+.Enter input{
+  width: 100%;
+  font-size: 31px;
+  background: transparent;
+  border: none;
+  color: #ffff;
+  padding: 0%;
+}
+
+.OlvidadoYAyuda {
   /* pass */
 }
 
-.ForgotAndHelp {
-  /* pass */
-}
-
-.Privacy {
+.Privacidad {
   /* pass */
 }
 .container{
@@ -89,6 +106,7 @@ body {
   font-family: "Titillium Web", sans-serif;
 }
 
-.FirstText{
+.PrimerText{
   font-size: 56.7px;
 }
+
