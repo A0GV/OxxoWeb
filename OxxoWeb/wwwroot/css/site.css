@@ -101,20 +101,50 @@ body {
 }
 
 /* Styling for leaderboard image*/ 
-.leaderboard-left-column img {
-  margin-top: 100px;
-  max-width: 70%;
-  margin-bottom: 10px;
-}
-
-/* Draws rectangle */
+/* Draw rectangles 
 .left-podium {
   background-color: #B0162C;
   width: 70%;
   height: 150px;
   display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+.center-podium {
+  background-color: #E70020;
+  width: 70%;
+  height: 228px;
+  display: flex;
+  align-items: center;
+} */
+.left-podium {
+  background-color: #B0162C;
+  width: 70%;
+  height: 175px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.center-podium {
+  background-color: #E70020;
+  width: 70%;
+  height: 228px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.leaderboard-left-column img {
+  margin-top: 120px;
+  max-width: 70%;
+  margin-bottom: 10px;
+}
+
+.leaderboard-center-column img {
+  margin-top: 20px;
+  max-width: 70%;
+  margin-bottom: 10px;  
 }
 
 /* Podium number styling */

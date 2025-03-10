@@ -7,13 +7,13 @@
 
 <div class="row align-items-center Titillium">
     <!-- Título leaderboard -->
-    <div class="col-md-3">
+    <div class="col-3">
         <h1>Leaderboard</h1>
     </div>
 
     <!-- Dropdown select zona -->
     <!-- Columna container breakpoint mediana 3-->
-    <div class="col-md-3">
+    <div class="col-3">
         <div class="dropdown">
             <button class="btn btn-redbg-whitetxt dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Seleccionar zona
@@ -27,7 +27,7 @@
     </div>
 
     <!-- Empty space layout -->
-    <div class="col-md-6"></div>
+    <div class="col-6"></div>
 </div>
 
 <!-- Leaderboards -->
@@ -36,43 +36,52 @@
     <!-- Row with gap 3 rounded edges -->
     <div class="row g-3 align-items-start" >
         <!-- Izquierdo: Leaderboard General -->
-        <div class="col-md-6 background-beige-cell rounded p-3">
+        <div class="col-6 background-beige-cell rounded p-3 align-items-end">
             <!-- Podiums tres principales -->
-            <div class="row text-center ">
+            <div class="row text-center">
                 <!--2: Columna 1-2 -->
-                <!-- Columna medium width 4, styling de leaderboard-left-column en site.css,aplica padding y hacer en flex para poder align elements y position-relative para poder poner num  -->
-                <div class="col-md-4 leaderboard-left-column text-center p-3 d-flex flex-column align-items-center position-relative">
+                <!-- Columna width 4, styling de leaderboard-left-column en site.css,aplica padding y hacer en flex para poder align elements y position-relative para poder poner num  -->
+                <div class="col-4 leaderboard-left-column text-center d-flex flex-column align-items-center">
                     <!-- Imagen redonda de empleado-->
                     <img src="~/Img/AsesorTiendaEjemplo.png" class="rounded-circle" alt="Foto empleado">
-                    <!-- Dibujo de podium y aplica flex para centrarlo -->
+                    <!-- Dibujo de podium y aplica flex para centrarlo, needs position-relative para quedarse relativo al podium -->
                     <div class="left-podium rounded d-flex flex-column align-items-center position-relative">
-                        <!-- Número de lugar -->
+                        <!-- Número de lugar, usa circulo como position-absolute  -->
                         <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle ">2</div>
                     </div>
                     <!-- Nombre de persona, conectar a backend despúes -->
                     <p class="podium-employee-name">Hugo Martínez</p>
                 </div>
-                 <!--1:Columna 3-4 -->
-                <div class="col-md-4 leaderboard-center-column p-3">
+                
+                <!--1:Columna 3-4 -->
+                <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center">
                     <h2>General</h2>
-                </div>
+                    <img src="~/Img/AsesorTiendaEjemplo.png" class="rounded-circle" alt="Foto empleado">
+                    <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
+                    <div class="center-podium rounded d-flex flex-column align-items-center position-relative">
+                        <!-- Número de lugar -->
+                        <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">1</div>
+                    </div>
+                    <!-- Nombre de persona, conectar a backend despúes -->
+                    <p class="podium-employee-name">Luis Vega</p>
+                </div>      
                  <!--3: Columna 4-5 -->
-                <div class="col-md-4 leaderboard-right-column p-3">
+                <div class="col-4 leaderboard-right-column">
 
                 </div>
             </div>
 
-            <!-- Lugares restantes de general, maybe hacer su propio,# mt-3 agrega margin top  -->
-            <div class="row mt-3">
+            <!-- Lugares restantes de general -->
+            <div class="row rounded p-3">
                 <div class="col-12">
                     <h2>Resto</h2>
                 </div>    
             </div>
-        </div>
+        </div> <!-- Cierra este columna -->
 
         <!-- Derecha juegos individuales -->
         <!-- Agregando flex para usar gap  -->
-        <div class="col-md-6 d-flex flex-column gap-3">
+        <div class="col-6 d-flex flex-column gap-4">
             <!-- Supervisor -->
             <div class="background-beige-cell rounded p-3">
                 <div class="col-12">
@@ -92,5 +101,5 @@
                 </div>
             </div>
         </div>
-    </div>
+
 </div>
