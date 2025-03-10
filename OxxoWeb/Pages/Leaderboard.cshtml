@@ -40,12 +40,17 @@
             <!-- Podiums tres principales -->
             <div class="row text-center ">
                 <!--2: Columna 1-2 -->
-                <!-- Columna medium width 4, styling de leaderboard-left-column en site.css,aplica padding y hacer en flex para poder align elements  -->
-                <div class="col-md-4 leaderboard-left-column text-center p-3 d-flex flex-column align-items-center">
+                <!-- Columna medium width 4, styling de leaderboard-left-column en site.css,aplica padding y hacer en flex para poder align elements y position-relative para poder poner num  -->
+                <div class="col-md-4 leaderboard-left-column text-center p-3 d-flex flex-column align-items-center position-relative">
                     <!-- Imagen redonda de empleado-->
                     <img src="~/Img/AsesorTiendaEjemplo.png" class="rounded-circle" alt="Foto empleado">
                     <!-- Dibujo de podium y aplica flex para centrarlo -->
-                    <div class="left-podium rounded d-flex align-content-lg-center"></div>
+                    <div class="left-podium rounded d-flex flex-column align-items-center position-relative">
+                        <!-- Número de lugar -->
+                        <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle ">2</div>
+                    </div>
+                    <!-- Nombre de persona, conectar a backend despúes -->
+                    <p class="podium-employee-name">Hugo Martínez</p>
                 </div>
                  <!--1:Columna 3-4 -->
                 <div class="col-md-4 leaderboard-center-column p-3">
