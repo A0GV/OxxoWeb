@@ -100,20 +100,40 @@ body {
   color: #FFFFFF; /* White text */ 
 }
 
-/* Styling for leaderboard */ 
+/* Styling for leaderboard image*/ 
 .leaderboard-left-column img {
   margin-top: 100px;
   max-width: 70%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
-
 
 /* Draws rectangle */
 .left-podium {
   background-color: #B0162C;
-  width: 75%;
+  width: 70%;
   height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Podium number styling */
+.podium-number {
+  background-color: #FBB212; 
+  font-weight: 700;
+  font-size: 50px;
+  /* Set para que se mantenga el circulo */
+  margin-top: 40px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.podium-employee-name {
+  font-weight: 600;
+  font-size: 25px;
+  max-width: 70%;
+  text-align: center;
 }
