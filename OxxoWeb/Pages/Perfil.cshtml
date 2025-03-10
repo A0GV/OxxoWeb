@@ -6,14 +6,81 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6 p-4">
-      <div class="mb-3 p-4 border rounded shadow">Perfil de usuario</div>
-      <div class="p-4 border rounded shadow">Publicaciones</div>
+    <!-- Columna Izquierda -->
+    <div class="col-md-6 p-3">
+      <div class="perfil-card border rounded shadow">
+        <!-- Sección Roja Extendida -->
+        <div class="perfil-seccion-titulo"></div>
+
+        <!-- Sección Blanca con Imagen y Texto -->
+        <div class="perfil-body border rounded">
+          <img src="~/img/Euclides.jpg" class="perfil-img">
+            <div class="perfil-info Titillium">
+            <h2 class="nombre">Luis Torres</h2>
+            <p class="subtitulo">Asesor de tienda | Zona Norte</p>
+            <p class="subinfo">Saltillo, Coahuila de Zaragoza</p>
+            <p class="subinfo">luistt@oxxo.com</p>
+            </div>
+        </div>
+      </div>
+
+      <div class="publicaciones p-4 border rounded shadow mt-3">
+        <h3>Publicaciones</h3>
+      </div>
     </div>
 
-    <div class="col-md-6 p-4">
-      <div class="mb-3 p-4 border rounded shadow">Estadísticas</div>
-      <div class="p-4 border rounded shadow">Certificaciones y habilidades</div>
+    <!-- Columna Derecha -->
+    <div class="col-md-6 p-3">
+      <div class="col-md-6 p-3">
+          <div class="estadisticas-card border rounded shadow">
+              <!-- Sección Roja - Encabezado -->
+              <div class="estadisticas-header p-3">
+                  <h3 class="mb-0">Estadísticas</h3>
+              </div>
+
+              <!-- Contenedor con borde gris -->
+              <div class="estadisticas-body-wrapper p-3">
+                  <div class="estadisticas-body">
+                      <!-- Contenedor de tarjetas de estadísticas -->
+                      <div class="estadisticas-items">
+                          <!-- Tarjeta 1: Primer Lugar Nacional -->
+                          <div class="estadisticas-item d-flex align-items-center p-3 rounded">
+                              <img src="~/img/trofeo.png" alt="Trofeo" class="estadisticas-icon me-3">
+                              <p class="mb-0"><strong>1er lugar</strong><br> Nacional</p>
+                          </div>
+
+                          <!-- Fila con dos tarjetas -->
+                          <div class="row mt-3">
+                              <!-- Tarjeta 2: Racha de días -->
+                              <div class="col-6">
+                                  <div class="estadisticas-item d-flex align-items-center p-3 rounded">
+                                      <img src="~/img/fuego.png" alt="Racha" class="estadisticas-icon me-2">
+                                      <p class="mb-0"><strong>3 días</strong></p>
+                                  </div>
+                              </div>
+
+                              <!-- Tarjeta 3: Tiendas Asesoradas -->
+                              <div class="col-6">
+                                  <div class="estadisticas-item d-flex align-items-center p-3 rounded">
+                                      <img src="~/img/oxxo.png" alt="Tiendas" class="estadisticas-icon me-2">
+                                      <p class="mb-0"><strong>40</strong></p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Flecha de expansión -->
+                      <div class="estadisticas-expandir text-center mt-3">
+                          <img src="~/img/flecha.png" alt="Expandir" class="estadisticas-flecha">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="certificaciones p-4 border rounded shadow">
+        <h3>Certificaciones y habilidades</h3>
+      </div>
     </div>
   </div>
 </div>
