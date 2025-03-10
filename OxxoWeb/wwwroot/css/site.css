@@ -101,6 +101,19 @@ body {
 }
 
 /* Styling for leaderboard */ 
-.leaderboard-left-column {
-  
+.leaderboard-left-column img {
+  margin-top: 100px;
+  max-width: 70%;
+  margin-bottom: 20px;
+}
+
+
+/* Draws rectangle */
+.left-podium {
+  background-color: #B0162C;
+  width: 75%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
