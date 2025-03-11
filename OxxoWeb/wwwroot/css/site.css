@@ -182,3 +182,20 @@ body {
   max-width: 70%;
   text-align: center;
 }
+
+/* Para lugares restantes */
+.table-beige {
+  background-color: #FDF3DD !important; /* Using important to override defaults */
+  width: 100%; 
+}
+
+/* Need to override the th and data */
+.table-beige th, .table-beige td {
+  background-color: #FDF3DD !important;
+  text-align: left !important; /* Para q el text esté hacia la izquierda */
+}
+
+/* If using hover effect, prevent it from changing the background */
+.table-hover tbody tr:hover {
+  background-color: #E6DAC6 !important; /* Slightly darker beige on hover */
+}
