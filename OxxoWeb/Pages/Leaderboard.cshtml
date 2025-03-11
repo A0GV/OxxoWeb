@@ -33,10 +33,10 @@
 <!-- Leaderboards -->
 <!-- Mt es margin top con font titillium -->
 <div class="container mt-4 Titillium">
-    <!-- Row with gap 3 rounded edges -->
-    <div class="row g-3 align-items-start" >
-        <!-- Izquierdo: Leaderboard General -->
-        <div class="col-6 background-beige-cell rounded p-3 align-items-end">
+    <!-- Row with gap 6 para dejar espacio entre leaderboard-->
+    <div class="row g-6 align-items-start" >
+        <!-- Izquierdo: Leaderboard General, mitad pantalla background beige rounded con padding 3 y small shadow -->
+        <div class="col-6 background-beige-cell rounded p-3 align-items-end shadow-sm">
             <!-- Podiums tres principales -->
             <div class="row text-center">
                 <!--2: Columna 1-2 -->
@@ -119,11 +119,14 @@
             </div>
         </div> <!-- Cierra este columna -->
 
+        <!-- Columna vacía para espacio 
+        <div class="col-sm"></div> -->
+
         <!-- Derecha juegos individuales -->
         <!-- Agregando flex para usar gap  -->
         <div class="col-6 d-flex flex-column gap-4">
             <!-- Supervisor -->
-            <div class="background-beige-cell rounded p-3">
+            <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
                     <h2>Supervisor Express</h2>
                     <!-- Para leaderboard usando table, darker color con hover y borderless, small -->
@@ -151,7 +154,7 @@
                 </div>
             </div>
             <!-- Día a día -->
-            <div class="background-beige-cell rounded p-3">
+            <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
                     <h2>Día a día</h2>
                     <table class="table table-hover table-borderless table-beige table-sm">
@@ -178,7 +181,7 @@
                 </div>
             </div>
             <!-- Enemigos -->
-            <div class="background-beige-cell rounded p-3">
+            <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
                     <h2>Enemigos</h2>
                     <table class="table table-hover table-borderless table-beige table-sm">

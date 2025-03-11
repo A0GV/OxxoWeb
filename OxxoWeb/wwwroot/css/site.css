@@ -90,7 +90,7 @@ body {
 /* Background color beige */
 .background-beige-cell {
   background-color: #FDF3DD;
-  border: 1px solid gray;
+  /*border: 1px solid gray; /* Just to check borders */
 }
 
 /* Para hacer botón de select zone */
@@ -100,23 +100,6 @@ body {
   color: #FFFFFF; /* White text */ 
 }
 
-/* Styling for leaderboard image*/ 
-/* Draw rectangles 
-.left-podium {
-  background-color: #B0162C;
-  width: 70%;
-  height: 150px;
-  display: flex;
-  align-items: center;
-}
-
-.center-podium {
-  background-color: #E70020;
-  width: 70%;
-  height: 228px;
-  display: flex;
-  align-items: center;
-} */
 .left-podium {
   background-color: #B0162C;
   width: 70%;
