@@ -13,7 +13,8 @@
 
     <!-- Dropdown select zona -->
     <!-- Columna container breakpoint mediana 3-->
-    <div class="col-3">
+    <div class="col-2">
+        <!--
         <div class="dropdown">
             <button class="btn btn-redbg-whitetxt dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Seleccionar zona
@@ -24,10 +25,18 @@
                 <li><a class="dropdown-item" href="#">Sur</a></li>
             </ul>
         </div>
+        -->
+        <select class="form-select select-redbg-whitetxt form-select-indicator-color-white" aria-label="Seleccionar zona">
+            <!-- Cambiar a q base es zone de usuario,# will needs form to have asp-for  -->
+            <option selected>Zona usuario</option>
+            <option value="1">General</option>
+            <option value="2">Norte</option>
+            <option value="3">Sur</option>
+        </select>
     </div>
 
     <!-- Empty space layout -->
-    <div class="col-6"></div>
+    <div class="col-7"></div>
 </div>
 
 <!-- Leaderboards -->
@@ -83,32 +92,34 @@
                 <div class="col-12">
                     <h2>Resto</h2>
                     <!-- Tabla con otros gente restante -->
+                    <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
                     <table class="table table-hover table-borderless table-beige table-sm">
-                        <tbody>
+                        <!-- Class que hacer scroll-table -->
+                        <tbody class="scroll-table">
                             <!-- Row-->
                             <tr class="text-start">
                                 <!-- th hacer color mas dark -->
-                                <th scope="row">1</th>
-                                <td class="text-start">Rodrigo Ahumada</td>
-                                <td class="text-start">12345</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-start">2</th>
-                                <td class="text-start">Rodrigo Ahumada</td>
-                                <td class="text-start">12345</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-start">3</th>
-                                <td class="text-start">Rodrigo Ahumada</td>
-                                <td class="text-start">12345</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-start">4</th>
+                                <th scope="row">4</th>
                                 <td class="text-start">Rodrigo Ahumada</td>
                                 <td class="text-start">12345</td>
                             </tr>
                             <tr>
                                 <th scope="row" class="text-start">5</th>
+                                <td class="text-start">Rodrigo Ahumada</td>
+                                <td class="text-start">12345</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-start">6</th>
+                                <td class="text-start">Rodrigo Ahumada</td>
+                                <td class="text-start">12345</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-start">7</th>
+                                <td class="text-start">Rodrigo Ahumada</td>
+                                <td class="text-start">12345</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-start">8</th>
                                 <td class="text-start">Rodrigo Ahumada</td>
                                 <td class="text-start">12345</td>
                             </tr>
@@ -129,9 +140,10 @@
             <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
                     <h2>Supervisor Express</h2>
-                    <!-- Para leaderboard usando table, darker color con hover y borderless, small -->
+                    <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
                     <table class="table table-hover table-borderless table-beige table-sm">
-                        <tbody>
+                        <!-- Class que hacer scroll-table -->
+                        <tbody class="scroll-table">
                             <!-- Row-->
                             <tr class="text-start">
                                 <!-- th hacer color mas dark -->
@@ -157,8 +169,10 @@
             <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
                     <h2>Día a día</h2>
+                    <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
                     <table class="table table-hover table-borderless table-beige table-sm">
-                        <tbody>
+                        <!-- Class que hacer scroll-table -->
+                        <tbody class="scroll-table">
                             <!-- Row-->
                             <tr class="text-start">
                                 <!-- th hacer color mas dark -->
@@ -184,8 +198,10 @@
             <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
                     <h2>Enemigos</h2>
+                    <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
                     <table class="table table-hover table-borderless table-beige table-sm">
-                        <tbody>
+                        <!-- Class que hacer scroll-table -->
+                        <tbody class="scroll-table">
                             <!-- Row-->
                             <tr class="text-start">
                                 <!-- th hacer color mas dark -->
