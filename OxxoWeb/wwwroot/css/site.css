@@ -93,13 +93,16 @@ body {
   /*border: 1px solid gray; /* Just to check borders */
 }
 
-/* Para hacer botón de select zone */
-.btn-redbg-whitetxt {
+/* Para hacer select form customizing */
+.select-redbg-whitetxt {
   background-color: #791120;
+  font-size: 25px; 
   border-radius: 10px;
   color: #FFFFFF; /* White text */ 
 }
 
+
+/* Podiums de leaderboard */
 .left-podium {
   background-color: #B0162C;
   width: 70%;
@@ -181,4 +184,41 @@ body {
 /* If using hover effect, prevent it from changing the background */
 .table-hover tbody tr:hover {
   background-color: #E6DAC6 !important; /* Slightly darker beige on hover */
+}
+
+/* Limit table to only show first three */ 
+.scroll-table {
+  max-height: 125px; /* First three names only */
+  overflow-y: auto; /* Permits vertical overflow */
+  display: block; /* Makes table remain within its container */
+}
+
+/* Keeps table head at top */
+.scroll-table thead {
+  position: sticky;
+  top: 0;
+  background: #f9f1dc; /* Mantener el fondo beige */
+  z-index: 2;
+}
+
+/* Estilos para la scroll bar */
+.scroll-table::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Background whiteish */
+.scroll-table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* The gray thing that moves as user scrolls */
+.scroll-table::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 5px;
+}
+
+/* Make slightly darker when hover over it */
+.scroll-table::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
