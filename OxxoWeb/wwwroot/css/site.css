@@ -85,3 +85,311 @@ body {
 .FirstText{
   font-size: 56.7px;
 }
+
+/* CONTAINER - Márgenes laterales optimizados */
+.container-fluid {
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+}
+
+/* FILAS - Reducción del espacio entre columnas */
+.row {
+  gap: 10px; /* Reduce el espacio entre columnas */
+}
+
+/* ===== PERFIL ===== */
+.perfil-card {
+  background: #FEFCF6;
+  border-radius: 15px;
+}
+
+/* Sección Roja del Perfil */
+.perfil-seccion-titulo {
+  background: #842720;
+  padding: 45px 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  position: relative;
+  box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.3);
+}
+
+/* Cuerpo del Perfil */
+.perfil-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #FEFCF6;
+  padding: 60px 20px 20px 20px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  position: relative;
+}
+
+/* Imagen del Perfil */
+.perfil-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 4px solid #FEFCF6;
+  position: absolute;
+  top: -40px;
+  left: 20px;
+}
+
+/* Información del Perfil */
+.perfil-info {
+  margin-left: 20px;
+}
+
+.perfil-info .nombre {
+  font-size: 32px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.perfil-info .subtitulo {
+  font-size: 18px;
+  font-weight: normal;
+  color: #333;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.perfil-info .subinfo {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+/* PUBLICACIONES - CONTENEDOR PRINCIPAL */
+.publicaciones-card {
+  background: transparent;
+  border-radius: 15px !important;
+  position: relative;
+  padding-top: 5px;
+}
+
+/* CABECERA ROJA DE PUBLICACIONES */
+.publicaciones-header {
+  background: #842720;
+  padding: 15px 20px;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* CONTENEDOR GRIS DE PUBLICACIONES */
+.publicaciones-body-wrapper {
+  background: #CBCAC5;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 6px;
+}
+
+/* CUERPO BLANCO DE PUBLICACIONES */
+.publicaciones-body {
+  background: #FEFCF6;
+  padding: 20px;
+  border-radius: 15px !important;
+  position: relative;
+  z-index: 2;
+  max-height: 450px; /* Limita el tamaño para que solo aparezcan 5 */
+  overflow-y: auto; /* Agrega un scrollbar si hay muchas publicaciones */
+}
+
+/* CADA PUBLICACIÓN INDIVIDUAL */
+.publicacion-item {
+  background: #E0E0E0;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer; /* Indica que es interactivo */
+}
+
+/* HOVER EN PUBLICACIONES */
+.publicacion-item:hover {
+  background: #D6D6D6;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* CONTENIDO DENTRO DE PUBLICACIONES */
+.publicacion-contenido {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* IMÁGENES DENTRO DE PUBLICACIONES */
+.publicacion-img {
+  width: 80px; /* Tamaño controlado para que no sea gigante */
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* TÍTULO DE LA PUBLICACIÓN */
+.publicacion-titulo {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+/* TEXTO DESCRIPTIVO DE LA PUBLICACIÓN */
+.publicacion-descripcion {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* SCROLLBAR PERSONALIZADO PARA PUBLICACIONES */
+.publicaciones-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.publicaciones-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+.publicaciones-body::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 5px;
+}
+
+.publicaciones-body::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+
+/* ===== ESTADÍSTICAS ===== */
+.estadisticas-card {
+  background: #FEFCF6;
+  border-radius: 15px;
+}
+
+/* Sección Roja de Estadísticas */
+.estadisticas-header {
+  background: #842720;
+  color: white;
+  font-weight: bold;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding: 20px;
+}
+
+/* Contenedor sin borde gris */
+.estadisticas-body {
+  background: #FEFCF6;
+  padding: 15px; /* Reducido de 20px para evitar que empuje demasiado */
+  border-radius: 15px;
+}
+
+/* Tarjetas de Estadísticas */
+.estadisticas-item {
+  background: #D9D9D9;
+  border-radius: 10px;
+  padding: 14px; /* Ajustado para mantener buena visibilidad sin comprometer espacio */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px; /* Reduce el espacio entre cada tarjeta */
+  flex: 1; /* Asegura que las tarjetas ocupen el mismo espacio */
+  margin-right: 10px; /* Espacio entre las tarjetas */
+}
+
+/* Íconos de Estadísticas */
+.estadisticas-icon {
+  width: 40px;
+  height: 40px;
+}
+
+/* Primera tarjeta más grande */
+.estadisticas-body .row .col-12 .estadisticas-item {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+/* Tarjetas pequeñas - Tamaño uniforme */
+.estadisticas-body .row .col-6 .estadisticas-item {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px;
+}
+
+/* Ajuste para los iconos en estadísticas */
+.estadisticas-item img {
+  width: 35px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Texto dentro de las estadísticas */
+.estadisticas-item p {
+  font-size: 16px; /* Ajustado para que no se vea demasiado grande */
+  margin-bottom: 0; /* Elimina espacios extra */
+}
+
+/* ===== CERTIFICACIONES ===== */
+.certificaciones-card {
+  background: transparent;
+  border-radius: 15px;
+  padding-top: 5px;
+}
+
+/* Encabezado Rojo */
+.certificaciones-header {
+  background: #842720;
+  padding: 15px 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Cuerpo Interno sin Borde Gris */
+.certificaciones-body {
+  background: #FEFCF6;
+  padding: 15px; /* Reducido de 20px para evitar que empuje demasiado */
+  border-radius: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Cada Certificado */
+.certificacion-item {
+  background: #E0E0E0;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* Icono del Certificado */
+.certificacion-icon {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  margin-right: 15px;
+}
+
+/* Texto del Certificado */
+.cert-titulo {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
+.cert-subtitulo {
+  font-size: 14px;
+  color: #666;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
