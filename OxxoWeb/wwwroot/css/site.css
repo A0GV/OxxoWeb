@@ -100,12 +100,6 @@ body {
   font-weight: 900;
 }
 
-.Privacidad {
-  /* pass */
-}
-.container{
-  /* pass */
-}
 
 .Titillium{
   font-family: "Titillium Web", sans-serif;
@@ -115,3 +109,54 @@ body {
   font-size: 56.7px;
 }
 
+/* Parte para el Home */
+.Stats{
+  width: 544px;
+  height: 330px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+  background: #FDF3DD;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.Recordatorios{
+  width: 544px;
+  height: 330px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+  background: #FDF3DD;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+  padding: 16px;
+}
+.Recordatorios .form-check {
+  display: flex;
+  align-items: center; /* Centra el contenido verticalmente */
+  gap: 10px; /* Espaciado entre checkbox y texto */
+}
+
+.Recordatorios .form-check-input {
+  width: 30px;  /* Ajusta el tamaño del checkbox */
+  height: 30px;
+  margin-top: 5px; /* Ajusta la posición del checkbox si es necesario */
+}
+
+.Recordatorios .form-check-label {
+  font-size: 18px;
+  display: flex;
+  align-items: center; /* Centra el texto verticalmente */
+  height: 30px; /* Ajusta la altura para alinearse con el checkbox */
+}
+
+.Agenda{
+  margin-left: 30px;
+  width: 544px;
+  height: 330px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+  background: #FDF3DD;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+  padding: 16px;
+}
