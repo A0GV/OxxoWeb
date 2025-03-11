@@ -129,7 +129,16 @@ body {
 .center-podium {
   background-color: #E70020;
   width: 70%;
-  height: 228px;
+  height: 228.5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.right-podium {
+  background-color: #791120;
+  width: 70%;
+  height: 130px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -143,6 +152,12 @@ body {
 
 .leaderboard-center-column img {
   margin-top: 20px;
+  max-width: 70%;
+  margin-bottom: 10px;  
+}
+
+.leaderboard-right-column img {
+  margin-top: 165px;
   max-width: 70%;
   margin-bottom: 10px;  
 }
