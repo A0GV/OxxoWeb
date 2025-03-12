@@ -1,7 +1,16 @@
+// ADDING SERVICE NAMESPACE
+using OxxoWeb.Models; // Add
+using MySql.Data.MySqlClient; // Add
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Register MoniDatabaseContext as a service
+builder.Services.AddScoped<MoniDataBaseContext>(); // Add recommended para agregar services 
+
 
 var app = builder.Build();
 
