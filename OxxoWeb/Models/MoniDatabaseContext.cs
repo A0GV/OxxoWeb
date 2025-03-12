@@ -51,6 +51,8 @@ namespace OxxoWeb.Models
         }
 
         // Obtener general
+        // Juego 1
+
 
         // Obtener por zona
     }

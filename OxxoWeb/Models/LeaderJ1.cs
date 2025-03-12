@@ -5,16 +5,23 @@ using System;
 // Conectar a modelo oxxo web
 namespace OxxoWeb.Models
 {
-    public class Juego1
+    public class LeaderJ1
     {
-        // Valores de entidad
+        // J1 valores
         public int id_juego1 {get;set;}
         public int monedas {get;set;}
         public int exp {get;set;}
         public DateTime fecha_juego {get;set;}
 
+        // Historial
+        
+
+        // Usuario_historial
+
+        // Usuario
+
         // Constructor con parametros
-        public Juego1(int id_juego1_,int monedas_,int exp_,DateTime fecha_juego_)
+        public LeaderJ1(int id_juego1_,int monedas_,int exp_,DateTime fecha_juego_)
         {
             this.id_juego1 = id_juego1_;
             this.monedas = monedas_;
@@ -23,6 +30,6 @@ namespace OxxoWeb.Models
         }
 
         // Constructor sin parametros
-        public Juego1() {}
+        public LeaderJ1() {}
     }
 }
