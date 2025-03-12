@@ -12,7 +12,7 @@ namespace OxxoWeb.Model
             public DataBaseContext()
             {
                 // Running on localhost port, using database default MySQL 3306, Uid root, and password mod
-                ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1;Uid=root;password=80mB*%7aEf;";
+                ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1_2;Uid=root;password=80mB*%7aEf;";
             } 
 
             // Returns connection with connection string, private
