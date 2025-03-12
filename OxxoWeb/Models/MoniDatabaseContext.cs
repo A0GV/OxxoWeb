@@ -49,6 +49,10 @@ namespace OxxoWeb.Models
             conexion.Close(); // Cierra conexión
             return ListaPlazas; // Regresa lista
         }
+
+        // Obtener general
+
+        // Obtener por zona
     }
 }
 
