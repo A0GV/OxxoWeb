@@ -110,17 +110,9 @@ body {
 }
 
 /* Parte para el Home */
-.Stats{
-  width: 544px;
-  height: 330px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.20);
-  background: #FDF3DD;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
 
-.Recordatorios{
+
+.Recordatorios, .Stats{
   width: 544px;
   height: 330px;
   flex-shrink: 0;
@@ -130,6 +122,31 @@ body {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
   padding: 16px;
 }
+
+.Stats img{
+  position: relative;
+  max-width: 100%;
+  border-radius: 11px;
+}
+
+#IconRecordatorios, #Icon{
+  margin-bottom: 3px;
+  width: 50px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+  vertical-align: middle; /* Alinea verticalmente la imagen con el texto */
+  margin-right: 10px;
+  padding: 0%; /* Espacio entre la imagen y el texto */
+}
+
+#IconCalendar{
+  margin-bottom: 3px;
+  width: 50px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+  vertical-align: middle; /* Alinea verticalmente la imagen con el texto */
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+  padding: 0%;
+}
+
 .Recordatorios .form-check {
   display: flex;
   align-items: center; /* Centra el contenido verticalmente */
@@ -152,11 +169,28 @@ body {
 .Agenda{
   margin-left: 30px;
   width: 544px;
-  height: 330px;
+  height: 580px;
   flex-shrink: 0;
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.20);
   background: #FDF3DD;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
   padding: 16px;
+}
+.Mes{
+  width: 475px;
+  height: 65px;
+  border-radius: 20px;
+  background: #E70020;
+  color: #FFF;
+}
+
+.Mes img{
+  padding-top: 23px;
+  position: relative;
+  width: 100%;
+}
+
+.Agenda img{
+  border-radius:33px ;
 }
