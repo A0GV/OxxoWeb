@@ -219,3 +219,8 @@
     <p>@Html.DisplayFor(modelItem => plaza.id_plaza)</p>
     <p>@Html.DisplayFor(modelItem => plaza.nombre)</p>
 }-->
+
+@foreach (var person in Model.listaJuego1)
+{
+    <p>@Html.DisplayFor(modelItem => person.nombre) (modelItem => person.exp)</p>
+}

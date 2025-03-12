@@ -52,12 +52,35 @@ namespace OxxoWeb.Models
 
         // Obtener general
         // Juego 1
+        /*
         public List<LeaderJ1> GetLeaderJ1() 
         {
             List<LeaderJ1> ListaJ1 = new List<LeaderJ1>(); // list to store players
             MySqlConnection conexion = GetConnection(); // Initialize connection w previous method
             conexion.Open(); // Opens connection
-            MySqlCommand cmd = new MySqlCommand("SELECT u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat, SUM(j1.exp) AS total_exp FROM usuario u JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario JOIN historial h ON uh.id_historial = h.id_historial JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1 GROUP BY u.id_usuario, u.nombre, u.apellido_pat, u.apellido_mat ORDER BY total_exp DESC;", conexion); // SQL query to conexion
+            //MySqlCommand cmd = new MySqlCommand("SELECT u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat, SUM(j1.exp) AS total_exp FROM usuario u JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario JOIN historial h ON uh.id_historial = h.id_historial JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1 GROUP BY u.id_usuario, u.nombre, u.apellido_pat, u.apellido_mat ORDER BY total_exp DESC;", conexion); // SQL query to conexion
+            */
+
+            /*
+            string queryJ1 = @"
+        SELECT 
+            j1.id_juego1, 
+            u.id_usuario, 
+            u.id_plaza, 
+            u.nombre, 
+            u.apellido_pat, 
+            u.apellido_mat, 
+            SUM(j1.exp) AS total_exp
+        FROM usuario u
+        JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
+        JOIN historial h ON uh.id_historial = h.id_historial
+        JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1
+        GROUP BY u.id_usuario, u.nombre, u.apellido_pat, u.apellido_mat
+        ORDER BY total_exp DESC;
+    "
+            ; */
+/*
+            MySqlCommand cmd = new MySqlCommand(queryJ1, conexion);
 
             LeaderJ1 ranked1 = new LeaderJ1(); // Instancia de plaza vacía
 
@@ -86,7 +109,7 @@ namespace OxxoWeb.Models
                     ranked1.nombre = reader["nombre"].ToString(); 
                     ranked1.apellido_pat = reader["apellido_pat"].ToString(); 
                     ranked1.apellido_mat = reader["apellido_mat"].ToString(); 
-                    
+
                     // Agrega dato completo a lista de plazas
                     ListaJ1.Add(ranked1); 
                 }
@@ -94,9 +117,59 @@ namespace OxxoWeb.Models
             conexion.Close(); // Cierra conexión
             return ListaJ1; // Regresa lista
         }
+        */
 
 
         // Obtener por zona
+
+        public List<LeaderJ1> GetLeaderJ1() 
+        {
+            List<LeaderJ1> ListaJ1 = new List<LeaderJ1>(); // List to store players
+            MySqlConnection conexion = GetConnection(); // Initialize connection
+            conexion.Open(); // Open connection
+
+            string queryJ1 = @"
+                SELECT 
+                    u.id_usuario, 
+                    u.id_plaza, 
+                    u.nombre, 
+                    u.apellido_pat, 
+                    u.apellido_mat, 
+                    SUM(j1.exp) AS total_exp
+                FROM usuario u
+                JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
+                JOIN historial h ON uh.id_historial = h.id_historial
+                JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1
+                GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat
+                ORDER BY total_exp DESC;
+            ";
+
+            MySqlCommand cmd = new MySqlCommand(queryJ1, conexion);
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    LeaderJ1 ranked1 = new LeaderJ1();
+
+                    // User Data
+                    ranked1.id_usuario = Convert.ToInt32(reader["id_usuario"]);
+                    ranked1.id_plaza = Convert.ToInt32(reader["id_plaza"]);
+                    ranked1.nombre = reader["nombre"].ToString(); 
+                    ranked1.apellido_pat = reader["apellido_pat"].ToString(); 
+                    ranked1.apellido_mat = reader["apellido_mat"].ToString(); 
+
+                    // Total Exp (SUM)
+                    ranked1.total_exp = Convert.ToInt32(reader["total_exp"]); 
+
+                    // Add to list
+                    ListaJ1.Add(ranked1); 
+                }
+            }
+
+            conexion.Close(); // Close connection
+            return ListaJ1; // Return list
+        }
     }
 }
 
