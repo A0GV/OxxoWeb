@@ -13,30 +13,21 @@
 
     <!-- Dropdown select zona -->
     <!-- Columna container breakpoint mediana 3-->
-    <div class="col-2">
-        <!--
-        <div class="dropdown">
-            <button class="btn btn-redbg-whitetxt dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Seleccionar zona
-            </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Nacional</a></li>
-                <li><a class="dropdown-item" href="#">Norte</a></li>
-                <li><a class="dropdown-item" href="#">Sur</a></li>
-            </ul>
-        </div>
-        -->
+    <div class="col-3">
         <select class="form-select select-redbg-whitetxt form-select-indicator-color-white" aria-label="Seleccionar zona">
             <!-- Cambiar a q base es zone de usuario,# will needs form to have asp-for  -->
-            <option selected>Zona usuario</option>
-            <option value="1">General</option>
-            <option value="2">Norte</option>
-            <option value="3">Sur</option>
+            <option selected>Seleccionar zona</option>
+            <option value="General">General</option> <!-- para comparar contra todos -->
+            <!-- Código para select región-->
+            @foreach (var plaza in Model.listaZonas1)
+            {
+                <option value="@plaza.id_plaza">@plaza.nombre</option>
+            }
         </select>
     </div>
 
     <!-- Empty space layout -->
-    <div class="col-7"></div>
+    <div class="col-6"></div>
 </div>
 
 <!-- Leaderboards -->
@@ -226,3 +217,10 @@
         </div>
 
 </div>
+
+<!-- Create C# for each loop, each iteration adds adds user y desplega datos 
+@foreach (var plaza in Model.listaZonas1)
+{
+    <p>@Html.DisplayFor(modelItem => plaza.id_plaza)</p>
+    <p>@Html.DisplayFor(modelItem => plaza.nombre)</p>
+}-->
