@@ -52,6 +52,48 @@ namespace OxxoWeb.Models
 
         // Obtener general
         // Juego 1
+        public List<LeaderJ1> GetLeaderJ1() 
+        {
+            List<LeaderJ1> ListaJ1 = new List<LeaderJ1>(); // list to store players
+            MySqlConnection conexion = GetConnection(); // Initialize connection w previous method
+            conexion.Open(); // Opens connection
+            MySqlCommand cmd = new MySqlCommand("SELECT u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat, SUM(j1.exp) AS total_exp FROM usuario u JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario JOIN historial h ON uh.id_historial = h.id_historial JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1 GROUP BY u.id_usuario, u.nombre, u.apellido_pat, u.apellido_mat ORDER BY total_exp DESC;", conexion); // SQL query to conexion
+
+            LeaderJ1 ranked1 = new LeaderJ1(); // Instancia de plaza vacía
+
+            // Command para ejecutar
+            using (var reader = cmd.ExecuteReader())
+            {
+                // Returns a row as long as can read smth and returns false when done
+                while (reader.Read())
+                {
+                    ranked1 = new LeaderJ1();
+
+                    // Juego
+                    ranked1.id_juego1 = Convert.ToInt32(reader["id_juego1"]);
+                    ranked1.exp = Convert.ToInt32(reader["exp"]);
+                    ranked1.fecha_juego = Convert.ToDateTime(reader["fecha_juego"]);
+
+                    // Historial
+                    ranked1.id_historial = Convert.ToInt32(reader["id_historial"]);
+
+                    // Usuario_Historial
+                    ranked1.id_usuario = Convert.ToInt32(reader["id_usuario"]);
+
+                    // Usuario
+                    ranked1.id_tipo = Convert.ToInt32(reader["id_tipo"]);
+                    ranked1.id_plaza = Convert.ToInt32(reader["id_plaza"]); // reader y el nombre de lo q tiene q obtener, como lo vemos 
+                    ranked1.nombre = reader["nombre"].ToString(); 
+                    ranked1.apellido_pat = reader["apellido_pat"].ToString(); 
+                    ranked1.apellido_mat = reader["apellido_mat"].ToString(); 
+                    
+                    // Agrega dato completo a lista de plazas
+                    ListaJ1.Add(ranked1); 
+                }
+            }
+            conexion.Close(); // Cierra conexión
+            return ListaJ1; // Regresa lista
+        }
 
 
         // Obtener por zona
