@@ -16,7 +16,6 @@ public class LeaderboardModel : PageModel
         _context = context;
     }
     
-
     public void OnGet() 
     {
         listaZonas1 = _context.GetAllPlazas(); // Va a capa model y trae todos las plazas
