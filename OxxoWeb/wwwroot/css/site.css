@@ -1,3 +1,10 @@
+:root{
+  --rojo_oscuro: #842720;
+  --gris: #D9D9D9;
+  --eggshell: #FEFCF6;
+  --negro_claro: #2F2F2F;
+}
+
 html {
   font-size: 14px;
 
@@ -39,11 +46,11 @@ body {
   opacity:   80%;
 }
 
-.SecondText {
+.SegundoTexto {
   font-size: 26.3;
 }
 
-.ContainersForLogin {
+.ContenedoresLogin {
   width: 40%;
   padding: 12px 40px;
   border: transparent;
@@ -53,36 +60,138 @@ body {
   background-color: #F4BB4C;
 }
 
-.ContainersForLogin input{
+.ContenedoresLogin input{
   width: 100%;
   background-color: transparent;
   border-color: transparent;
   outline: none;
 }
 
-.RememberMe {
-  /* pass */
+.RecordarUsuario {
+  justify-content: center;
+  padding-top: 1%;
+  padding-left: 45%;
 }
 
 .Enter {
-  /* pass */
+  width: 40%;
+  padding: 12px 40px;
+  border: transparent;
+  border-radius: 25px;  
+  font-size: 16px;
+  margin: 0 auto;
+  background: linear-gradient(to right, #FF3933, #FF8649); /* Corregido "rigth" a "right" */
 }
 
-.ForgotAndHelp {
-  /* pass */
+.Enter input{
+  width: 100%;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  color: #ffff;
+  padding: 0%;
 }
 
-.Privacy {
-  /* pass */
+.OlvidadoYAyuda{
+  margin-top:30px ;
 }
-.container{
-  background-color: F5F5F5;
+
+.OlvidadoYAyuda a {
+  color: #F27080;
+  font-weight: 900;
 }
+
 
 .Titillium{
   font-family: "Titillium Web", sans-serif;
 }
 
-.FirstText{
+.PrimerText{
   font-size: 56.7px;
+}
+
+/* Parte para el Home */
+
+
+.Recordatorios, .Stats{
+  width: 544px;
+  height: 330px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+  background: #FDF3DD;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+  padding: 16px;
+}
+
+.Stats img{
+  position: relative;
+  max-width: 100%;
+  border-radius: 11px;
+}
+
+#IconRecordatorios, #Icon{
+  margin-bottom: 3px;
+  width: 50px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+  vertical-align: middle; /* Alinea verticalmente la imagen con el texto */
+  margin-right: 10px;
+  padding: 0%; /* Espacio entre la imagen y el texto */
+}
+
+#IconCalendar{
+  margin-bottom: 3px;
+  width: 50px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto; /* Mantiene la proporción de la imagen */
+  vertical-align: middle; /* Alinea verticalmente la imagen con el texto */
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+  padding: 0%;
+}
+
+.Recordatorios .form-check {
+  display: flex;
+  align-items: center; /* Centra el contenido verticalmente */
+  gap: 10px; /* Espaciado entre checkbox y texto */
+}
+
+.Recordatorios .form-check-input {
+  width: 30px;  /* Ajusta el tamaño del checkbox */
+  height: 30px;
+  margin-top: 5px; /* Ajusta la posición del checkbox si es necesario */
+}
+
+.Recordatorios .form-check-label {
+  font-size: 18px;
+  display: flex;
+  align-items: center; /* Centra el texto verticalmente */
+  height: 30px; /* Ajusta la altura para alinearse con el checkbox */
+}
+
+.Agenda{
+  margin-left: 30px;
+  width: 544px;
+  height: 580px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+  background: #FDF3DD;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+  padding: 16px;
+}
+.Mes{
+  width: 475px;
+  height: 65px;
+  border-radius: 20px;
+  background: #E70020;
+  color: #FFF;
+}
+
+.Mes img{
+  padding-top: 23px;
+  position: relative;
+  width: 100%;
+}
+
+.Agenda img{
+  border-radius:33px ;
 }
