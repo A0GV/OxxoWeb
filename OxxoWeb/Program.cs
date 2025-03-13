@@ -1,10 +1,17 @@
 // ADDING SERVICE NAMESPACE
 using OxxoWeb.Models; // Add
-using MySql.Data.MySqlClient; // Add
+using MySql.Data.MySqlClient;
+using Microsoft.Extensions.Options; // Add
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(Options=>
+{
+    Options.IdleTimeout=TimeSpan.FromMinutes(10);
+    Options.Cookie.HttpOnly=true;
+    Options.Cookie.IsEssential=true;
+});
 // Add services to the container.
 builder.Services.AddRazorPages();
 
@@ -27,6 +34,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseSession();
 
 app.MapStaticAssets();
 app.MapRazorPages()
