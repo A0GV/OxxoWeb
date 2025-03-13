@@ -305,6 +305,114 @@ namespace OxxoWeb.Models
             conexion.Close(); // Close connection
             return ListaGen1; // Return list
         }
+
+        // General 2do lugar
+        public List<LeaderGen2> GetLeaderGen2() 
+        {
+            List<LeaderGen2> ListaGen2 = new List<LeaderGen2>(); // List to store players
+            MySqlConnection conexion = GetConnection(); // Initialize connection
+            conexion.Open(); // Open connection
+
+            string queryG2 = @"
+            SELECT 
+                u.id_usuario, 
+                u.id_plaza,
+                u.nombre, 
+                u.apellido_pat, 
+                u.apellido_mat, 
+                u.foto, 
+            COALESCE(SUM(j1.exp), 0) + COALESCE(SUM(j2.exp), 0) + COALESCE(SUM(j3.exp), 0) AS total_exp
+            FROM usuario u
+            JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
+            JOIN historial h ON uh.id_historial = h.id_historial
+            LEFT JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1
+            LEFT JOIN juego2 j2 ON h.id_juego2 = j2.id_juego2
+            LEFT JOIN juego3 j3 ON h.id_juego3 = j3.id_juego3
+            GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat, u.foto
+            ORDER BY total_exp DESC 
+            LIMIT 1 OFFSET 1;";
+
+            MySqlCommand cmd = new MySqlCommand(queryG2, conexion);
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    LeaderGen2 lead2 = new LeaderGen2();
+
+                    // User Data
+                    lead2.id_usuario = Convert.ToInt32(reader["id_usuario"]);
+                    lead2.id_plaza = Convert.ToInt32(reader["id_plaza"]);
+                    lead2.nombre = reader["nombre"].ToString(); 
+                    lead2.apellido_pat = reader["apellido_pat"].ToString(); 
+                    lead2.apellido_mat = reader["apellido_mat"].ToString(); 
+                    lead2.foto = reader["foto"].ToString();
+
+                    // Total Exp (sum of three games)
+                    lead2.total_exp = Convert.ToInt32(reader["total_exp"]);
+
+                    // Add to list
+                    ListaGen2.Add(lead2); 
+                }
+            }
+
+            conexion.Close(); // Close connection
+            return ListaGen2; // Return list
+        }
+
+        // General 3er lugar
+        public List<LeaderGen3> GetLeaderGen3() 
+        {
+            List<LeaderGen3> ListaGen3 = new List<LeaderGen3>(); // List to store players
+            MySqlConnection conexion = GetConnection(); // Initialize connection
+            conexion.Open(); // Open connection
+
+            string queryG3 = @"
+            SELECT 
+                u.id_usuario, 
+                u.id_plaza,
+                u.nombre, 
+                u.apellido_pat, 
+                u.apellido_mat, 
+                u.foto, 
+            COALESCE(SUM(j1.exp), 0) + COALESCE(SUM(j2.exp), 0) + COALESCE(SUM(j3.exp), 0) AS total_exp
+            FROM usuario u
+            JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
+            JOIN historial h ON uh.id_historial = h.id_historial
+            LEFT JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1
+            LEFT JOIN juego2 j2 ON h.id_juego2 = j2.id_juego2
+            LEFT JOIN juego3 j3 ON h.id_juego3 = j3.id_juego3
+            GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat, u.foto
+            ORDER BY total_exp DESC 
+            LIMIT 1 OFFSET 2;";
+
+            MySqlCommand cmd = new MySqlCommand(queryG3, conexion);
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    LeaderGen3 lead3 = new LeaderGen3();
+
+                    // User Data
+                    lead3.id_usuario = Convert.ToInt32(reader["id_usuario"]);
+                    lead3.id_plaza = Convert.ToInt32(reader["id_plaza"]);
+                    lead3.nombre = reader["nombre"].ToString(); 
+                    lead3.apellido_pat = reader["apellido_pat"].ToString(); 
+                    lead3.apellido_mat = reader["apellido_mat"].ToString(); 
+                    lead3.foto = reader["foto"].ToString();
+
+                    // Total Exp (sum of three games)
+                    lead3.total_exp = Convert.ToInt32(reader["total_exp"]);
+
+                    // Add to list
+                    ListaGen3.Add(lead3); 
+                }
+            }
+
+            conexion.Close(); // Close connection
+            return ListaGen3; // Return list
+        }
     }
 
     
