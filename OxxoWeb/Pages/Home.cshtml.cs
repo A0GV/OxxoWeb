@@ -14,6 +14,5 @@ public class HomeModel : PageModel
 
     public void OnGet()
     {
-        
     }
 }
