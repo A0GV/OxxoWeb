@@ -11,7 +11,7 @@
         <h1>Clasificación</h1>
     </div>
 
-    <!-- Dropdown select zona -->
+    @* <!-- Dropdown select zona -->
     <!-- Columna container breakpoint mediana 3-->
     <div class="col-3">
         <select class="form-select select-redbg-whitetxt form-select-indicator-color-white" aria-label="Seleccionar zona">
@@ -23,10 +23,10 @@
                 <option value="@plaza.id_plaza">@plaza.nombre</option>
             }
         </select>
-    </div>
+    </div> *@
 
     <!-- Empty space layout -->
-    <div class="col-6"></div>
+    <div class="col-9"></div>
 </div>
 
 <!-- Leaderboards -->
@@ -86,14 +86,12 @@
                     {
                             <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle" width="150">
                     }
-                    <!--<img src="~/Img/AsesorTiendaEjemplo.png" class="rounded-circle" alt="Foto empleado">-->
                     <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
                     <div class="center-podium rounded d-flex flex-column align-items-center position-relative">
                         <!-- Número de lugar -->
                         <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">1</div>
                     </div>
-                    <!-- Nombre de persona, conectar a backend despúes 
-                    <p class="podium-employee-name">Luis Vega</p>-->
+                    <!-- Nombre de persona -->
                     @if (Model.listaGen1.Count > 0)
                     {
                         @foreach (var asesorG1 in Model.listaGen1)
@@ -108,7 +106,6 @@
                 </div>      
                  <!--3: Columna 4-5 -->
                 <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-start">
-                    <!--<img src="~/Img/AsesorTiendaEjemplo.png" class="rounded-circle" alt="Foto empleado">-->
                     @if (Model.listaGen3.Count > 0)
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
@@ -125,8 +122,7 @@
                     <!-- Número de lugar -->
                     <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">3</div>
                     </div>
-                    <!-- Nombre de persona, conectar a backend despúes
-                    <p class="podium-employee-name">Roberto Villareal</p> -->
+                    <!-- Nombre de persona -->
                     @if (Model.listaGen3.Count > 0)
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
