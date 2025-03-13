@@ -1,0 +1,114 @@
+@page
+@model PerfilModel
+@{
+    ViewData["Title"] = "Perfil de Usuario";
+}
+
+
+<div class="row g-3">
+  <!-- COLUMNA IZQUIERDA (PERFIL Y PUBLICACIONES) -->
+  <!-- Sección de Perfil -->
+  <div class="col-md-7">
+    <div class="perfil-card border shadow">
+      <div class="perfil-seccion-titulo"></div>
+      <div class="perfil-body border rounded">
+        <img src="/img/@Model.UsuarioPerfil.Foto" class="perfil-img">
+        <div class="perfil-info Titillium">
+          <h2 class="nombre">@Model.UsuarioPerfil.Nombre @Model.UsuarioPerfil.ApellidoPat @Model.UsuarioPerfil.ApellidoMat</h2>
+          <p class="subtitulo">@Model.ObtenerDescripcion(Model.UsuarioPerfil.TipoUsuario) | @Model.UsuarioPerfil.PlazaNombre</p>
+          <p class="subinfo">@Model.UsuarioPerfil.Ciudad, @Model.UsuarioPerfil.Estado</p>
+          <p class="subinfo">@Model.UsuarioPerfil.Correo</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Publicaciones -->
+    <div class="publicaciones-card border rounded shadow mt-3">
+      <div class="publicaciones-header p-3">
+        <h3 class="mb-0">Publicaciones</h3>
+      </div>
+      <div class="publicaciones-body-wrapper p-3">
+        @if (Model.UsuarioPublicaciones.Count > 0)
+        {
+            @foreach (var publicacion in Model.UsuarioPublicaciones)
+            {
+                <div class="publicacion-item">
+                    <div class="publicacion-contenido">
+                        <div>
+                            <p class="publicacion-titulo"><strong>@publicacion.Titulo</strong></p>
+                            <p class="publicacion-descripcion">@publicacion.Contenido</p>
+                            <p class="publicacion-fecha">Publicado el: @publicacion.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No hay publicaciones disponibles.</p>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- COLUMNA DERECHA (ESTADÍSTICAS Y CERTIFICACIONES) -->
+  <!-- Sección de Estadisticas -->
+  <div class="col-md-5">
+    <div class="estadisticas-card border shadow">
+      <div class="estadisticas-header p-3">
+        <h3 class="mb-0">Estadísticas</h3>
+      </div>
+      <div class="estadisticas-body p-3">
+        <div class="row row-perfiles">
+          <div class="col-12">
+            <div class="estadisticas-item d-flex align-items-center p-3 rounded">
+              <img src="~/img/copa.png" alt="Trofeo" class="estadisticas-icon me-3">
+              <p class="mb-0 text-end">
+                <strong>@Model.UsuarioEstadisticas.RankingNacional° lugar</strong><br>
+                General
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-1">
+          <div class="estadisticas-item d-flex align-items-center justify-content-between p-3 rounded">
+            <img src="~/img/llama.png" alt="Racha" class="estadisticas-icon">
+            <p class="mb-0"><strong>Racha: @Model.UsuarioEstadisticas.RachaDias días</strong></p>
+          </div>
+          <div class="estadisticas-item d-flex align-items-center justify-content-between p-3 rounded">
+            <img src="~/img/TiendaOXXO.png" alt="Tiendas" class="estadisticas-icon-tienda">
+            <p class="mb-0"><strong>@Model.UsuarioEstadisticas.TiendasAsesoradas</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Certificaciones -->
+    <div class="certificaciones-card border rounded shadow mt-3">
+      <div class="certificaciones-header p-3">
+        <h3 class="mb-0">Certificaciones y habilidades</h3>
+      </div>
+      <div class="certificaciones-body p-3">
+        @if (Model.UsuarioCertificados.Count > 0)
+        {
+            @foreach (var certificado in Model.UsuarioCertificados)
+            {
+                <div class="certificacion-item d-flex align-items-center p-3 rounded">
+                    <img src="~/img/diploma.png" alt="Certificado" class="certificacion-icon me-3">
+                    <div>
+                        <p class="mb-0 cert-titulo"><strong>@certificado.Titulo</strong></p>
+                        <p class="mb-0 cert-subtitulo">@certificado.Descripcion</p>
+                        <p class="cert-fecha">Obtenido el: @certificado.FechaSubido.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No hay certificaciones disponibles.</p>
+        }
+      </div>
+    </div>
+  </div>
+</div>
