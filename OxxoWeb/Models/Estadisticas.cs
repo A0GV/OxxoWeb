@@ -1,5 +1,5 @@
 // Estadisticas.cs
-namespace OxxoWeb.Model;
+namespace OxxoWeb.Models;
 public class Estadisticas
 {
     public int IdUsuario { get; set; }

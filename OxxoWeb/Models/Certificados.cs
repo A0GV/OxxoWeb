@@ -1,5 +1,5 @@
 // Certificados.cs
-namespace OxxoWeb.Model;
+namespace OxxoWeb.Models;
 public class Cerificados
 {
     public int IdCertificado { get; set; }
