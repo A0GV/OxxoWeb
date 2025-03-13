@@ -204,3 +204,32 @@ body {
   display: flex;
   flex-wrap: nowrap;
 }
+
+
+body header nav.NavBarAdolf div.container.eidolf a#IconoxxoA img#IconOxxoImg,
+img[src*="OxxoForDash.jpg"],
+img#IconOxxoImg,
+.navbar-brand img,
+#IconoxxoA img {
+  width: 115px !important;
+  height: 61px !important;
+  max-width: 115px !important;
+  max-height: 61px !important;
+  min-width: 115px !important;
+  min-height: 61px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 15px;
+}
+
+/* Control del contenedor para evitar que crezca */
+a#IconoxxoA.navbar-brand {
+  width: 115px !important;
+  height: 61px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
