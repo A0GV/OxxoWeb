@@ -80,6 +80,13 @@
     max-width: 70%;
     text-align: center;
   }
+
+  .podium-txt {
+    font-weight: 400;
+    font-size: 20px;
+    max-width: 70%;
+    text-align: center;
+  }
   
   /* Para lugares restantes */
   .table-beige {
