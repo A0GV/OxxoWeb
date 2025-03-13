@@ -100,6 +100,56 @@ namespace OxxoWeb.Models
             conexion.Close(); // Close connection
             return ListaJ1; // Return list
         }
+
+        // Juego 2
+        public List<LeaderJ2> GetLeaderJ2() 
+        {
+            List<LeaderJ2> ListaJ2 = new List<LeaderJ2>(); // List to store players
+            MySqlConnection conexion = GetConnection(); // Initialize connection
+            conexion.Open(); // Open connection
+
+            string queryJ2 = @"
+                SELECT 
+                    u.id_usuario, 
+                    u.id_plaza, 
+                    u.nombre, 
+                    u.apellido_pat, 
+                    u.apellido_mat, 
+                    SUM(j2.exp) AS total_exp
+                FROM usuario u
+                JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
+                JOIN historial h ON uh.id_historial = h.id_historial
+                JOIN juego2 j2 ON h.id_juego2 = j2.id_juego2
+                GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat
+                ORDER BY total_exp DESC;
+            ";
+
+            MySqlCommand cmd = new MySqlCommand(queryJ2, conexion);
+
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    LeaderJ2 ranked2 = new LeaderJ2();
+
+                    // User Data
+                    ranked2.id_usuario = Convert.ToInt32(reader["id_usuario"]);
+                    ranked2.id_plaza = Convert.ToInt32(reader["id_plaza"]);
+                    ranked2.nombre = reader["nombre"].ToString(); 
+                    ranked2.apellido_pat = reader["apellido_pat"].ToString(); 
+                    ranked2.apellido_mat = reader["apellido_mat"].ToString(); 
+
+                    // Total Exp (SUM)
+                    ranked2.total_exp = Convert.ToInt32(reader["total_exp"]); 
+
+                    // Add to list
+                    ListaJ2.Add(ranked2); 
+                }
+            }
+
+            conexion.Close(); // Close connection
+            return ListaJ2; // Return list
+        }
     }
 }
 

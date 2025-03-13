@@ -136,24 +136,24 @@
                             @if (Model.listaJuego1.Count > 0)
                             {
                                 int numLugar = 1; <!-- para contar posición de usuario -->
-                                @foreach (var player in Model.listaJuego1)
+                                @foreach (var asesor1 in Model.listaJuego1)
                                 {
                                     <tr class="text-start">
                                         <!-- Table header número de lugar -->
                                         <th scope="row">@numLugar</th> 
                                         <!-- Data nombre usuario -->
-                                        <td class="text-start">@player.nombre @player.apellido_pat @player.apellido_mat</td> 
+                                        <td class="text-start">@asesor1.nombre @asesor1.apellido_pat @asesor1.apellido_mat</td> 
                                         <!-- Exp de usuario  -->
-                                        <td class="text-start">@player.total_exp</td> 
+                                        <td class="text-start">@asesor1.total_exp</td> 
                                     </tr>
                                     numLugar++; // Actualiza el número para  rank
                                 }
                             }
-                            // Si lista no tiene datos
+                            // Si lista no tiene datos, nadie ha jugado
                             else
                             {
                                 <tr>
-                                    <td colspan="3" class="text-center">No data available</td>
+                                    <td colspan="3" class="text-center">Sin jugadores</td>
                                 </tr>
                             }
                         </tbody>
@@ -169,23 +169,30 @@
                     <table class="table table-hover table-borderless table-beige">
                         <!-- Class que hacer scroll-table -->
                         <tbody class="scroll-table">
-                            <!-- Row-->
-                            <tr class="text-start">
-                                <!-- th hacer color mas dark -->
-                                <th scope="row">1</th>
-                                <td class="text-start">Rodrigo Ahumada</td>
-                                <td class="text-start">12345</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-start">2</th>
-                                <td class="text-start">Rodrigo Ahumada</td>
-                                <td class="text-start">12345</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-start">3</th>
-                                <td class="text-start">Rodrigo Ahumada</td>
-                                <td class="text-start">12345</td>
-                            </tr>
+                            <!-- Si lista contiene datos -->
+                            @if (Model.listaJuego2.Count > 0)
+                            {
+                                int numLugar = 1; <!-- para contar posición de usuario -->
+                                @foreach (var asesor2 in Model.listaJuego2)
+                                {
+                                    <tr class="text-start">
+                                        <!-- Table header número de lugar -->
+                                        <th scope="row">@numLugar</th> 
+                                        <!-- Data nombre usuario -->
+                                        <td class="text-start">@asesor2.nombre @asesor2.apellido_pat @asesor2.apellido_mat</td> 
+                                        <!-- Exp de usuario  -->
+                                        <td class="text-start">@asesor2.total_exp</td> 
+                                    </tr>
+                                    numLugar++; // Actualiza el número para  rank
+                                }
+                            }
+                            // Si lista no tiene datos, nadie ha jugado
+                            else
+                            {
+                                <tr>
+                                    <td colspan="3" class="text-center">Sin jugadores</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -222,15 +229,3 @@
             </div>
         </div>
 </div>
-
-<!-- Create C# for each loop, each iteration adds adds user y desplega datos 
-@foreach (var plaza in Model.listaZonas1)
-{
-    <p>@Html.DisplayFor(modelItem => plaza.id_plaza)</p>
-    <p>@Html.DisplayFor(modelItem => plaza.nombre)</p>
-}-->
-
-@foreach (var person in Model.listaJuego1)
-{
-    <p>@Html.DisplayFor(modelItem => person.nombre) (modelItem => person.exp)</p>
-}

@@ -8,8 +8,10 @@ public class LeaderboardModel : PageModel
 {
     private readonly MoniDataBaseContext _context; // Can only read my context
 
-    public List<Plazas> listaZonas1 {get; set;} // Lista de usuarios
-    public List<LeaderJ1> listaJuego1 {get; set;}
+    public List<Plazas> listaZonas1 {get; set;} // Lista de zonas
+    public List<LeaderJ1> listaJuego1 {get; set;} // Lista de leaderboard para juego 1 general
+    public List<LeaderJ2> listaJuego2 {get; set;} // Lista de leaderboard para juego 2 general
+    
 
     // Para incluir el servicio
     public LeaderboardModel(MoniDataBaseContext context)
@@ -21,5 +23,6 @@ public class LeaderboardModel : PageModel
     {
         listaZonas1 = _context.GetAllPlazas(); // Va a capa model y trae todos las plazas
         listaJuego1 = _context.GetLeaderJ1();
+        listaJuego2 = _context.GetLeaderJ2();
     }
 }
