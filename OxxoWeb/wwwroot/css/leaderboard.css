@@ -101,7 +101,7 @@
   .scroll-table {
     max-height: 125px; /* First three names only */
     overflow-y: auto; /* Permits vertical overflow */
-    display: block; /* Makes table remain within its container */
+    display: block; /* Shows table as a block */
   }
   
   /* Keeps table head at top */

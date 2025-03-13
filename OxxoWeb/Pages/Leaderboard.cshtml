@@ -83,7 +83,7 @@
                     <h2>Resto</h2>
                     <!-- Tabla con otros gente restante -->
                     <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
-                    <table class="table table-hover table-borderless table-beige table-sm">
+                    <table class="table table-hover table-borderless table-beige">
                         <!-- Class que hacer scroll-table -->
                         <tbody class="scroll-table">
                             <!-- Row-->
@@ -123,32 +123,39 @@
         <!-- Derecha juegos individuales -->
         <!-- Agregando flex para usar gap  -->
         <div class="col-6 d-flex flex-column gap-4">
-            <!-- Supervisor -->
+            <!-- Tablas para otros juegos, sets background beige, hacer round, adds padding y shadow -->
             <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
                     <!-- Juego 1 Supervisor -->
                     <h2>Supervisor Express</h2>
-                    <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
-                    <table class="table table-hover table-borderless table-beige table-sm">
+                    <!-- Hace table q cambie de color cuando hover, beige background -->
+                    <table class="table table-hover table-borderless table-beige">
                         <!-- Class que hacer scroll-table -->
                         <tbody class="scroll-table">
-                            <!-- Row-->
-                            <tr class="text-start">
-                                <!-- th hacer color mas dark -->
-                                <th scope="row">1</th>
-                                <td class="text-start">Rodrigo Ahumada</td>
-                                <td class="text-start">12345</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-start">2</th>
-                                <td class="text-start">Rodrigo Ahumada</td>
-                                <td class="text-start">12345</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="text-start">3</th>
-                                <td class="text-start">Rodrigo Ahumada</td>
-                                <td class="text-start">12345</td>
-                            </tr>
+                            <!-- Si lista contiene datos -->
+                            @if (Model.listaJuego1.Count > 0)
+                            {
+                                int numLugar = 1; <!-- para contar posición de usuario -->
+                                @foreach (var player in Model.listaJuego1)
+                                {
+                                    <tr class="text-start">
+                                        <!-- Table header número de lugar -->
+                                        <th scope="row">@numLugar</th> 
+                                        <!-- Data nombre usuario -->
+                                        <td class="text-start">@player.nombre @player.apellido_pat @player.apellido_mat</td> 
+                                        <!-- Exp de usuario  -->
+                                        <td class="text-start">@player.total_exp</td> 
+                                    </tr>
+                                    numLugar++; // Actualiza el número para  rank
+                                }
+                            }
+                            // Si lista no tiene datos
+                            else
+                            {
+                                <tr>
+                                    <td colspan="3" class="text-center">No data available</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -158,8 +165,8 @@
             <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
                     <h2>Enemigos</h2>
-                    <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
-                    <table class="table table-hover table-borderless table-beige table-sm">
+                    <!-- Hace table q cambie de color cuando hover, beige background -->
+                    <table class="table table-hover table-borderless table-beige">
                         <!-- Class que hacer scroll-table -->
                         <tbody class="scroll-table">
                             <!-- Row-->
@@ -188,8 +195,8 @@
             <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
                     <h2>Día a día</h2>
-                    <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
-                    <table class="table table-hover table-borderless table-beige table-sm">
+                    <!-- Hace table q cambie de color cuando hover, beige background -->
+                    <table class="table table-hover table-borderless table-beige">
                         <!-- Class que hacer scroll-table -->
                         <tbody class="scroll-table">
                             <!-- Row-->
