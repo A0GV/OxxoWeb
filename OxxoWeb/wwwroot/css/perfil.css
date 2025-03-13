@@ -1,37 +1,38 @@
-  /* ===== PERFIL ===== */
-  .perfil-card {
+/* ===== PERFIL ===== */
+/* Estilos para la tarjeta de perfil */
+.perfil-card {
     background: #FDF3DD;
-    border-radius: 15px; /* Redondeado en todas las esquinas */
-    overflow: hidden; /* Evita que elementos hijos sobresalgan */
-  }
-  
-  /* Sección Roja del Perfil */
-  .perfil-seccion-titulo {
+    border-radius: 15px; 
+    overflow: hidden; 
+}
+
+/* Sección Roja del Perfil */
+.perfil-seccion-titulo {
     background: #951919;
     padding: 45px 20px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    margin-bottom: -5px; /* Ayuda a eliminar líneas blancas entre secciones */
+    margin-bottom: -5px; 
     position: relative;
     box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.3);
-  }
+}
 
-  /* Cuerpo del Perfil */
-  .perfil-body {
+/* Cuerpo del Perfil */
+.perfil-body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     background: #FDF3DD;
     padding: 60px 20px 20px 20px;
-    border-bottom-left-radius: 15px; /* Se mantiene redondeado abajo */
+    border-bottom-left-radius: 15px; 
     border-bottom-right-radius: 15px;
-    border-top-left-radius: 0; /* Se eliminan los bordes superiores */
+    border-top-left-radius: 0; 
     border-top-right-radius: 0;
     position: relative;
 }
-  
-  /* Imagen del Perfil */
-  .perfil-img {
+
+/* Imagen del Perfil */
+.perfil-img {
     width: 90px;
     height: 90px;
     border-radius: 50%;
@@ -39,44 +40,45 @@
     position: absolute;
     top: -40px;
     left: 20px;
-  }
-  
-  /* Información del Perfil */
-  .perfil-info {
+}
+
+/* Información del Perfil */
+.perfil-info {
     margin-left: 20px;
-  }
-  
-  .perfil-info .nombre {
+}
+
+.perfil-info .nombre {
     font-size: 32px;
     font-weight: bold;
     color: #000;
     margin-bottom: 4px;
-  }
-  
-  .perfil-info .subtitulo {
+}
+
+.perfil-info .subtitulo {
     font-size: 18px;
     font-weight: normal;
     color: #333;
     margin-bottom: 2px;
     line-height: 1.2;
-  }
-  
-  .perfil-info .subinfo {
+}
+
+.perfil-info .subinfo {
     font-size: 14px;
     color: #666;
     margin-bottom: 2px;
     line-height: 1.2;
-  }
-  
-  /* PUBLICACIONES - CONTENEDOR PRINCIPAL */
-  .publicaciones-card {
+}
+
+/* ===== PUBLICACIONES ===== */
+/* Contenedor principal de publicaciones */
+.publicaciones-card {
     background: transparent;
     border-radius: 15px !important;
     position: relative;
-  }
-  
-  /* CABECERA ROJA DE PUBLICACIONES */
-  .publicaciones-header {
+}
+
+/* Cabecera Roja de Publicaciones */
+.publicaciones-header {
     background: #951919;
     padding: 15px 20px;
     border-top-left-radius: 15px !important;
@@ -85,106 +87,113 @@
     font-weight: bold;
     font-size: 20px;
     margin-bottom: 0px;
-  }
-  
-  /* CONTENEDOR GRIS DE PUBLICACIONES */
-  .publicaciones-body-wrapper {
+}
+
+/* Contenedor Gris de Publicaciones */
+.publicaciones-body-wrapper {
     background: #FDF3DD;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     padding: 6px;
     padding-top: 0px;
-  }
-  
-  /* CUERPO BLANCO DE PUBLICACIONES */
-  .publicaciones-body {
+}
+
+/* Cuerpo Blanco de Publicaciones */
+.publicaciones-body {
     background: #FDF3DD;
     padding: 20px;
     border-radius: 15px !important;
     position: relative;
     z-index: 2;
-    max-height: 450px; /* Limita el tamaño para que solo aparezcan 5 */
-    overflow-y: auto; /* Agrega un scrollbar si hay muchas publicaciones */
-  }
-  
-  /* CADA PUBLICACIÓN INDIVIDUAL */
-  .publicacion-item {
+    max-height: 300px; 
+    overflow-y: auto; 
+}
+
+/* Cada Publicación Individual */
+.publicacion-item {
     background: #E0E0E0;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 10px;
     transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    cursor: pointer; /* Indica que es interactivo */
-  }
-  
-  /* HOVER EN PUBLICACIONES */
-  .publicacion-item:hover {
+    cursor: pointer;
+}
+
+/* Hover en Publicaciones */
+.publicacion-item:hover {
     background: #D6D6D6;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* CONTENIDO DENTRO DE PUBLICACIONES */
-  .publicacion-contenido {
+}
+
+/* Contenido dentro de Publicaciones */
+.publicacion-contenido {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-  
-  /* TÍTULO DE LA PUBLICACIÓN */
-  .publicacion-titulo {
+}
+
+/* Título de la Publicación */
+.publicacion-titulo {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 3px;
-  }
-  
-  /* TEXTO DESCRIPTIVO DE LA PUBLICACIÓN */
-  .publicacion-descripcion {
+}
+
+/* Texto Descriptivo de la Publicación */
+.publicacion-descripcion {
     font-size: 14px;
     color: #666;
     margin: 0;
-  }
-  
-  /* SCROLLBAR PERSONALIZADO PARA PUBLICACIONES */
-  .publicaciones-body::-webkit-scrollbar {
+}
+
+.publicacion-fecha {
+    font-size: 10px;
+    color: #333;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+/* Scrollbar Personalizado para Publicaciones */
+.publicaciones-body::-webkit-scrollbar {
     width: 8px;
-  }
-  
-  .publicaciones-body::-webkit-scrollbar-track {
+}
+
+.publicaciones-body::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 5px;
-  }
-  
-  .publicaciones-body::-webkit-scrollbar-thumb {
+}
+
+.publicaciones-body::-webkit-scrollbar-thumb {
     background: #aaa;
     border-radius: 5px;
-  }
-  
-  .publicaciones-body::-webkit-scrollbar-thumb:hover {
+}
+
+.publicaciones-body::-webkit-scrollbar-thumb:hover {
     background: #888;
-  }
-  
-  
-  /* ===== ESTADÍSTICAS ===== */
-  .estadisticas-card {
+}
+
+/* ===== ESTADÍSTICAS ===== */
+/* Estilos para la tarjeta de estadísticas */
+.estadisticas-card {
     background: #FDF3DD;
     border-radius: 15px;
     overflow: hidden;
-  }
-  
-  /* Sección Roja de Estadísticas */
-  .estadisticas-header {
+}
+
+/* Sección Roja de Estadísticas */
+.estadisticas-header {
     background: #951919;
     color: white;
     font-weight: bold;
     padding: 20px;
     border-radius: 15px 15px 0 0;
-    margin-bottom: -5px; /* Hace que el header rojo se fusione con el cuerpo */
+    margin-bottom: -5px; 
     position: relative;
     box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Contenedor sin borde gris */
-  .estadisticas-body {
+}
+
+/* Contenedor sin borde gris */
+.estadisticas-body {
     background: #FDF3DD;
     padding: 15px;
     border-bottom-left-radius: 15px;
@@ -192,63 +201,75 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     position: relative;
-  }
-  
-  /* Tarjetas de Estadísticas */
-  .estadisticas-item {
+}
+
+/* Tarjetas de Estadísticas */
+.estadisticas-item {
     background: #E0E0E0;
     border-radius: 10px;
-    padding: 14px; /* Ajustado para mantener buena visibilidad sin comprometer espacio */
+    padding: 14px; 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 8px; /* Reduce el espacio entre cada tarjeta */
-    flex: 1; /* Asegura que las tarjetas ocupen el mismo espacio */
-    margin-right: 10px; /* Espacio entre las tarjetas */
-  }
-  
-  /* Íconos de Estadísticas */
-  .estadisticas-icon {
+    margin-bottom: 8px; 
+    flex: 1; 
+    margin-right: 10px; 
+}
+
+/* Íconos de Estadísticas */
+.estadisticas-icon {
     width: 40px;
     height: 40px;
-  }
-  
-  /* Primera tarjeta más grande */
-  .estadisticas-body .row .col-12 .estadisticas-item {
+}
+
+.estadisticas-icon-tienda {
+    width: 50px;
+    height: 50px;
+}
+
+/* Primera tarjeta más grande */
+.estadisticas-body .row .col-12 .estadisticas-item {
     font-size: 18px;
     font-weight: bold;
     padding: 20px;
-  }
-  
-  /* Tarjetas pequeñas - Tamaño uniforme */
-  .estadisticas-body .row .col-6 .estadisticas-item {
+}
+
+/* Tarjetas pequeñas - Tamaño uniforme */
+.estadisticas-body .row .col-6 .estadisticas-item {
     font-size: 16px;
     font-weight: bold;
     padding: 15px;
-  }
-  
-  /* Ajuste para los iconos en estadísticas */
-  .estadisticas-item img {
+}
+
+/* Ajuste para los iconos en estadísticas */
+.estadisticas-item img {
     width: 35px;
     height: auto;
     object-fit: contain;
-  }
-  
-  /* Texto dentro de las estadísticas */
-  .estadisticas-item p {
-    font-size: 16px; /* Ajustado para que no se vea demasiado grande */
-    margin-bottom: 0; /* Elimina espacios extra */
-  }
-  
-  /* ===== CERTIFICACIONES ===== */
-  .certificaciones-card {
+}
+
+/* Texto dentro de las estadísticas */
+.estadisticas-item p {
+    font-size: 16px; 
+    margin-bottom: 0; 
+}
+
+/* Asegúrate de que esta regla no sobrescriba el tamaño del icono de la tienda */
+.estadisticas-item img.estadisticas-icon-tienda {
+    width: 50px;
+    height: 50px;
+}
+
+/* ===== CERTIFICACIONES ===== */
+/* Contenedor principal de certificaciones */
+.certificaciones-card {
     background: transparent;
     border-radius: 15px !important;
     position: relative;
-  }
-  
-  /* Encabezado Rojo */
-  .certificaciones-header {
+}
+
+/* Encabezado Rojo */
+.certificaciones-header {
     background: #951919;
     padding: 15px 20px;
     border-top-left-radius: 15px;
@@ -256,18 +277,20 @@
     color: white;
     font-weight: bold;
     font-size: 20px;
-  }
-  
-  /* Cuerpo Interno sin Borde Gris */
-  .certificaciones-body {
+}
+
+/* Cuerpo Interno */
+.certificaciones-body {
     background: #FDF3DD;
-    padding: 15px; /* Reducido de 20px para evitar que empuje demasiado */
+    padding: 15px; 
     position: relative;
     z-index: 2;
-  }
-  
-  /* Cada Certificado */
-  .certificacion-item {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Cada Certificado */
+.certificacion-item {
     background: #E0E0E0;
     border-radius: 10px;
     padding: 15px;
@@ -275,34 +298,41 @@
     align-items: center;
     margin-bottom: 10px;
     transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    cursor: pointer; /* Indica que es interactivo */
-  }
+    cursor: pointer; 
+}
 
-  /* HOVER EN PUBLICACIONES */
-  .certificacion-item:hover {
+/* Hover en Certificaciones */
+.certificacion-item:hover {
     background: #D6D6D6;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Icono del Certificado */
-  .certificacion-icon {
+}
+
+/* Icono del Certificado */
+.certificacion-icon {
     width: 50px;
     height: auto;
     object-fit: contain;
     margin-right: 15px;
-  }
-  
-  /* Texto del Certificado */
-  .cert-titulo {
+}
+
+/* Texto del Certificado */
+.cert-titulo {
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 0;
     line-height: 1.2;
-  }
-  
-  .cert-subtitulo {
+}
+
+.cert-subtitulo {
     font-size: 14px;
     color: #666;
     margin-top: 2px;
     margin-bottom: 0;
-  }
+}
+
+.cert-fecha {
+    font-size: 10px;
+    color: #333;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}

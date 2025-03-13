@@ -12,7 +12,7 @@ namespace OxxoWeb.Models
 
         public DataBaseContextPerfil()
         {
-            ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1;Uid=root;Password=root;";
+            ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1;Uid=root;Password=Equs2004!!!!;";
         }
 
         private MySqlConnection GetConnection()
