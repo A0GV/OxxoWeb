@@ -92,6 +92,7 @@ img#IconOxxoImg,
   min-width: 115px !important;
   min-height: 61px !important;
   object-fit: contain !important;
+  border-radius: 15px;
 }
 
 /* Asegurar que el contenedor también esté limitado */
