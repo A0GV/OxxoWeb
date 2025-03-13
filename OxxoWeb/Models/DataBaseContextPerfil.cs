@@ -12,7 +12,7 @@ namespace OxxoWeb.Models
 
         public DataBaseContextPerfil()
         {
-            ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1;Uid=root;Password=root;";
+            ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1;Uid=root;Password=Equs2004!!!!;";
         }
 
         private MySqlConnection GetConnection()
@@ -69,6 +69,15 @@ namespace OxxoWeb.Models
             {
                 conexion.Open();
 
+                // Verificar si el usuario es gerente
+                string tipoUsuarioQuery = @"SELECT t.descripcion AS tipo_usuario 
+                                            FROM usuario u
+                                            JOIN tipo t ON u.id_tipo = t.id_tipo
+                                            WHERE u.id_usuario = @idUsuario";
+                MySqlCommand cmdTipoUsuario = new MySqlCommand(tipoUsuarioQuery, conexion);
+                cmdTipoUsuario.Parameters.AddWithValue("@idUsuario", idUsuario);
+                string tipoUsuario = cmdTipoUsuario.ExecuteScalar()?.ToString();                
+
                 // Calcular racha de días jugando
                 string rachaQuery = @"
                     SELECT COUNT(*) AS racha
@@ -116,12 +125,19 @@ namespace OxxoWeb.Models
                 stats.RankingNacional = Convert.ToInt32(cmdRanking.ExecuteScalar() ?? 0);
 
                 // Contar tiendas asesoradas
-                string tiendasQuery = @"SELECT COUNT(*) FROM tienda t
-                                        JOIN usuario u ON t.id_plaza = u.id_plaza
-                                        WHERE u.id_usuario = @idUsuario;";
-                MySqlCommand cmdTiendas = new MySqlCommand(tiendasQuery, conexion);
-                cmdTiendas.Parameters.AddWithValue("@idUsuario", idUsuario);
-                stats.TiendasAsesoradas = Convert.ToInt32(cmdTiendas.ExecuteScalar() ?? 0);
+                if (tipoUsuario != "g") // Verificar si el usuario no es gerente
+                {
+                    string tiendasQuery = @"SELECT COUNT(*) FROM tienda t
+                                            JOIN usuario u ON t.id_plaza = u.id_plaza
+                                            WHERE u.id_usuario = @idUsuario;";
+                    MySqlCommand cmdTiendas = new MySqlCommand(tiendasQuery, conexion);
+                    cmdTiendas.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    stats.TiendasAsesoradas = Convert.ToInt32(cmdTiendas.ExecuteScalar() ?? 0);
+                }
+                else
+                {
+                    stats.TiendasAsesoradas = 0; // Si es gerente, establecer a 0
+                }
             }
             return stats;
         }
