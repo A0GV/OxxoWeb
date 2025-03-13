@@ -126,6 +126,7 @@
             <!-- Supervisor -->
             <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
+                    <!-- Juego 1 Supervisor -->
                     <h2>Supervisor Express</h2>
                     <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
                     <table class="table table-hover table-borderless table-beige table-sm">
@@ -152,10 +153,11 @@
                     </table>
                 </div>
             </div>
-            <!-- Día a día -->
+
+            <!-- Juego 2 Enemigos -->
             <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
-                    <h2>Día a día</h2>
+                    <h2>Enemigos</h2>
                     <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
                     <table class="table table-hover table-borderless table-beige table-sm">
                         <!-- Class que hacer scroll-table -->
@@ -181,10 +183,11 @@
                     </table>
                 </div>
             </div>
-            <!-- Enemigos -->
+            
+            <!-- Juego 3 Día a día -->
             <div class="background-beige-cell rounded p-3 shadow-sm">
                 <div class="col-12">
-                    <h2>Enemigos</h2>
+                    <h2>Día a día</h2>
                     <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
                     <table class="table table-hover table-borderless table-beige table-sm">
                         <!-- Class que hacer scroll-table -->
@@ -219,3 +222,8 @@
     <p>@Html.DisplayFor(modelItem => plaza.id_plaza)</p>
     <p>@Html.DisplayFor(modelItem => plaza.nombre)</p>
 }-->
+
+@foreach (var person in Model.listaJuego1)
+{
+    <p>@Html.DisplayFor(modelItem => person.nombre) (modelItem => person.exp)</p>
+}
