@@ -66,7 +66,7 @@ namespace OxxoWeb.Models
         public string apellido_pat { get; set; }
         public string apellido_mat { get; set; }
 
-        // Total EXP (Aggregated from SUM(j1.exp))
+        // Total exp calculado de SUM (j1.exp)
         public int total_exp { get; set; }
 
         // Constructor with parameters
