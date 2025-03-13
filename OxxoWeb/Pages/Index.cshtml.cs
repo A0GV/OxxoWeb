@@ -1,44 +1,37 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel.DataAnnotations;
 
-namespace OxxoWeb.Pages;
-
-public class IndexModel : PageModel
+namespace OxxoWeb.Pages
 {
-    // private readonly ILogger<IndexModel> _logger;
-
-    // public IndexModel(ILogger<IndexModel> logger)
-    // {
-    //     _logger = logger;
-    // }
-    [BindProperty]
-    public string Username { get; set; }
-
-    [BindProperty]
-    public string Password { get; set; }
-
-    public void OnGet()
+    public class IndexModel : PageModel
     {
-        
-    }
+        [BindProperty]
+        public string Username { get; set; }
 
-    public IActionResult OnPost()
-    {
-        var context = new OxxoWeb.Models.AdolfoDatabaseContext();
-        bool isValid = context.CheckCredentials(Username, Password);
-        Console.WriteLine("El valor de valid es:", isValid);
-        Console.WriteLine("El valor de USer es:", Username);
-        Console.WriteLine("El valor de Pswrsd es:", Password);
+        [BindProperty]
+        public string Password { get; set; }
 
-        if (isValid)
+        public string ErrorMessage { get; set; } // Propiedad para el mensaje de error
+
+        public void OnGet()
         {
-            // ...handle successful login...
-            return RedirectToPage("/Home"); 
         }
-        else
+
+        public IActionResult OnPost()
         {
-            // ...handle failed login...
-            return Page();
+            var context = new OxxoWeb.Models.AdolfoDatabaseContext();
+            bool isValid = context.CheckCredentials(Username, Password);
+
+            if (isValid)
+            {
+                return RedirectToPage("/Home");
+            }
+            else
+            {
+                ErrorMessage = "El usuario o contraseña son incorrectos"; // Establece el mensaje de error
+                return Page();
+            }
         }
     }
 }

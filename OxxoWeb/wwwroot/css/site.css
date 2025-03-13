@@ -196,3 +196,11 @@ body {
   border-radius:33px ;
 }
 
+.ImagenIzquierda{
+  margin: 0%;
+  flex: 0 0 auto;
+}
+.contenedorLog{
+  display: flex;
+  flex-wrap: nowrap;
+}
