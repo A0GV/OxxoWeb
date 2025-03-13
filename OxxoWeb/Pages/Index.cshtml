@@ -2,46 +2,60 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    ViewData["HideHeader"] = true; // Indicar que esta página no debe mostrar el header
 }
 
-<div class="container">
-    <div class="ImgOxx">
-        <img class="ImgOxx mx-auto d-block" src="~/img/OxxoLogo.svg.png" alt="Imagen de OxxoLogo jaja alt xd">
+<div class="login-full-container bckColor">
+    <!-- Imagen izquierda -->
+    <div class="login-side-image-container left">
+        <img src="~/img/backGroundImgIzquierda.png" class="login-side-image">
     </div>
-    <div class="text-center Titillium">
-        <div class="PrimerText">
-            Iniciar sesión
+    
+    <!-- Contenido central (formulario de login) -->
+    <div class="login-central-container">
+        <div class="login-central-content">
+            <div class="ImgOxx">
+                <img class="ImgOxx mx-auto d-block" src="~/img/OxxoLogo.svg.png" alt="Imagen de OxxoLogo jaja alt xd">
+            </div>
+            <div class="text-center Titillium">
+                <div class="PrimerText">
+                    Iniciar sesión
+                </div>
+                <div class="SegundoTexto Titillium">
+                    Introduce tus datos para continuar
+                </div>
+            </div>
+            <form method="post">
+                <div class="ContenedoresLogin">
+                    <input type="text" asp-for="Username" placeholder="Usuario" />
+                </div>
+                <br>
+                <div class="ContenedoresLogin" id="Contraseña">
+                    <input type="password" asp-for="Password" placeholder="Contraseña" />
+                </div>
+                <div class="form-check RecordarUsuario" id="Recordar">
+                    <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
+                    <label class="form-check-label">Mantenerma ingresado</label>
+                </div>
+                <div class="Enter">
+                    <input type="submit" value="Ingresar">
+                </div>
+            </form>
+            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+            {
+                <div class="alert alert-danger text-center mt-3">
+                    @Model.ErrorMessage
+                </div>
+            }
+            <div class="OlvidadoYAyuda text-center">
+                <a href="#">¿Se te olvidó la Contraseña?</a> <br>
+                <a href="#">¿Necesitas ayuda? Contáctanos</a>
+            </div>
         </div>
-        <div class="SegundoTexto Titillium">
-            Introduce tus datos para continuar
-        </div>
     </div>
-    <div class="ContenedoresLogin">
-        <input type="text" id="Username" placeholder="Usuario">
-
-    </div>
-    <br>
-    <div class="ContenedoresLogin" id="Contraseña">
-        <input type="text" placeholder="Contraseña" >
-        
-    </div>
-    <div class="form-check RecordarUsuario" id="Recordar">
-        <input class="form-check-input" type="checkbox" id="check1" name="option1" value="something" checked>
-        <label class="form-check-label">Mantenerma ingresado</label>
-    </div>
-
-
-    <div class="Enter">
-        <input type="button" value="Ingresar">
-        <a href="~/Home">Link</a>
-    </div>
-
-    <div class="OlvidadoYAyuda text-center">
-        <a href="#">¿Se te olvidó la Contraseña?</a> <br>
-        <a href="#">¿Necesitas ayuda? Contáctanos</a>
-    </div>
-
-    <div class="Privacidad">
-        
+    
+    <!-- Imagen derecha -->
+    <div class="login-side-image-container right">
+        <img src="~/img/backGroundImgDerecha.png" class="login-side-image">
     </div>
 </div>

@@ -45,6 +45,7 @@
     margin-top: 120px;
     max-width: 70%;
     margin-bottom: 10px;
+    max-height: 140px;
   }
   
   .leaderboard-center-column img {
@@ -79,6 +80,13 @@
     max-width: 70%;
     text-align: center;
   }
+
+  .podium-txt {
+    font-weight: 400;
+    font-size: 20px;
+    max-width: 70%;
+    text-align: center;
+  }
   
   /* Para lugares restantes */
   .table-beige {
@@ -101,7 +109,7 @@
   .scroll-table {
     max-height: 125px; /* First three names only */
     overflow-y: auto; /* Permits vertical overflow */
-    display: block; /* Makes table remain within its container */
+    display: block; /* Shows table as a block */
   }
   
   /* Keeps table head at top */
