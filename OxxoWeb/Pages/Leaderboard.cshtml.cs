@@ -15,6 +15,8 @@ public class LeaderboardModel : PageModel
     public List<LeaderGen4On> listaJuego4 {get; set;} // Lista de leaderboard para general de lugares 4 en adelante
 
     public List<LeaderGen1> listaGen1 {get; set;} // Lista de general en lugar 1
+    public List<LeaderGen2> listaGen2 {get; set;} // Lista de general en lugar 2
+    public List<LeaderGen3> listaGen3 {get; set;} // Lista de general en lugar 3
     
 
     // Para incluir el servicio
@@ -33,6 +35,8 @@ public class LeaderboardModel : PageModel
         // Para ranking general
         listaJuego4 = _context.GetLeaderGen4On();
         listaGen1 = _context.GetLeaderGen1(); 
+        listaGen2 = _context.GetLeaderGen2(); 
+        listaGen3 = _context.GetLeaderGen3();
 
     }
 }
