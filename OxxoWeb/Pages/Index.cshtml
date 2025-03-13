@@ -30,14 +30,17 @@
         </div>
         <div class="Enter">
             <input type="submit" value="Ingresar">
-            <a href="~/Home">Link</a>
+        
         </div>
     </form>
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger text-center mt-3">
+            @Model.ErrorMessage
+        </div>
+    }
     <div class="OlvidadoYAyuda text-center">
         <a href="#">¿Se te olvidó la Contraseña?</a> <br>
         <a href="#">¿Necesitas ayuda? Contáctanos</a>
-    </div>
-    <div class="Privacidad">
-        
     </div>
 </div>
