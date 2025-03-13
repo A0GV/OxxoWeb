@@ -8,7 +8,7 @@ namespace OxxoWeb.Models
     public class Usuario_Historial
     {
         // Valores de entidad
-       public int id_historial {get;set;}
+        public int id_historial {get;set;}
         public int id_usuario {get;set;}
 
         // Con parámetros
