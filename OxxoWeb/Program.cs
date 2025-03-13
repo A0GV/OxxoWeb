@@ -17,6 +17,7 @@ builder.Services.AddRazorPages();
 
 // Register MoniDatabaseContext as a service
 builder.Services.AddScoped<MoniDataBaseContext>(); // Add recommended para agregar services 
+builder.Services.AddScoped<DataBaseContextPerfil>(); // Add DataBaseContext
 
 
 var app = builder.Build();

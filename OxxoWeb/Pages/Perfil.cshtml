@@ -1,159 +1,112 @@
 @page
 @model PerfilModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Perfil de Usuario";
 }
 
-<div class="container-fluid container-fluid-perfiles px-md-5">
-  <div class="row row-perfiles g-3">
-    <!-- COLUMNA IZQUIERDA (PERFIL Y PUBLICACIONES) -->
-    <div class="col-md-6">
-      <div class="perfil-card border rounded shadow">
-        <!-- Sección Roja Extendida -->
-        <div class="perfil-seccion-titulo"></div>
 
-        <!-- Sección Blanca con Imagen y Texto -->
-        <div class="perfil-body border rounded">
-          <img src="~/img/Euclides.jpg" class="perfil-img">
-          <div class="perfil-info Titillium">
-            <h2 class="nombre">Luis Torres</h2>
-            <p class="subtitulo">Asesor de tienda | Zona Norte</p>
-            <p class="subinfo">Saltillo, Coahuila de Zaragoza</p>
-            <p class="subinfo">luistt@oxxo.com</p>
-          </div>
+<div class="row g-3">
+  <!-- COLUMNA IZQUIERDA (PERFIL Y PUBLICACIONES) -->
+  <div class="col-md-7">
+    <div class="perfil-card border shadow">
+      <div class="perfil-seccion-titulo"></div>
+      <div class="perfil-body border rounded">
+        <img src="/img/@Model.UsuarioPerfil.Foto" class="perfil-img">
+        <div class="perfil-info Titillium">
+          <h2 class="nombre">@Model.UsuarioPerfil.Nombre @Model.UsuarioPerfil.ApellidoPat @Model.UsuarioPerfil.ApellidoMat</h2>
+          <p class="subtitulo">@Model.ObtenerDescripcion(Model.UsuarioPerfil.TipoUsuario) | @Model.UsuarioPerfil.PlazaNombre</p>
+          <p class="subinfo">@Model.UsuarioPerfil.Ciudad, @Model.UsuarioPerfil.Estado</p>
+          <p class="subinfo">@Model.UsuarioPerfil.Correo</p>
         </div>
       </div>
+    </div>
 
-      <!-- SECCIÓN DE PUBLICACIONES -->
-      <div class="publicaciones-card border rounded shadow mt-3">
-        <!-- Cabecera roja de publicaciones -->
-        <div class="publicaciones-header p-3">
-          <h3 class="mb-0">Publicaciones</h3>
+    <!-- SECCIÓN DE PUBLICACIONES -->
+    <div class="publicaciones-card border rounded shadow mt-3">
+      <div class="publicaciones-header p-3">
+        <h3 class="mb-0">Publicaciones</h3>
+      </div>
+      <div class="publicaciones-body-wrapper p-3">
+        @if (Model.UsuarioPublicaciones.Count > 0)
+        {
+            @foreach (var publicacion in Model.UsuarioPublicaciones)
+            {
+                <div class="publicacion-item">
+                    <div class="publicacion-contenido">
+                        <div>
+                            <p class="publicacion-titulo"><strong>@publicacion.Titulo</strong></p>
+                            <p class="publicacion-descripcion">@publicacion.Contenido</p>
+                            <p class="publicacion-fecha">Publicado el: @publicacion.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No hay publicaciones disponibles.</p>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- COLUMNA DERECHA (ESTADÍSTICAS Y CERTIFICACIONES) -->
+  <div class="col-md-5">
+    <div class="estadisticas-card border shadow">
+      <div class="estadisticas-header p-3">
+        <h3 class="mb-0">Estadísticas</h3>
+      </div>
+      <div class="estadisticas-body p-3">
+        <div class="row row-perfiles">
+          <div class="col-12">
+            <div class="estadisticas-item d-flex align-items-center p-3 rounded">
+              <img src="~/img/copa.png" alt="Trofeo" class="estadisticas-icon me-3">
+              <p class="mb-0 text-end">
+                <strong>@Model.UsuarioEstadisticas.RankingNacional° lugar</strong><br>
+                General
+              </p>
+            </div>
+          </div>
         </div>
 
-        <!-- Contenedor con borde gris -->
-        <div class="publicaciones-body-wrapper p-3">
-          <div class="publicaciones-body">
-            <!-- PUBLICACIONES DE PRUEBA -->
-            <div class="publicacion-item">
-              <div class="publicacion-contenido">
-                <div>
-                  <p class="publicacion-titulo"><strong>Evento Anual de Tiendas OXXO</strong></p>
-                  <p class="publicacion-descripcion">En este evento anual, nuestros asesores de tiendas se reunieron...</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="publicacion-item">
-              <div class="publicacion-contenido">
-                <div>
-                  <p class="publicacion-titulo"><strong>Nuevas Estrategias de Venta</strong></p>
-                  <p class="publicacion-descripcion">Hemos implementado nuevas estrategias de venta para mejorar...</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="publicacion-item">
-              <div class="publicacion-contenido">
-                <div>
-                  <p class="publicacion-titulo"><strong>Capacitación en Servicio al Cliente</strong></p>
-                  <p class="publicacion-descripcion">Hoy completamos nuestra capacitación en servicio al cliente...</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="publicacion-item">
-              <div class="publicacion-contenido">
-                <div>
-                  <p class="publicacion-titulo"><strong>Logros del Año</strong></p>
-                  <p class="publicacion-descripcion">Este año logramos mejorar las ventas en un 15%...</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="publicacion-item">
-              <div class="publicacion-contenido">
-                <div>
-                  <p class="publicacion-titulo"><strong>Nueva Expansión de Tiendas</strong></p>
-                  <p class="publicacion-descripcion">Hemos abierto 30 nuevas tiendas en el país...</p>
-                </div>
-              </div>
-            </div>
+        <div class="d-flex justify-content-between mt-3">
+          <div class="estadisticas-item d-flex align-items-center justify-content-between p-3 rounded">
+            <img src="~/img/llama.png" alt="Racha" class="estadisticas-icon">
+            <p class="mb-0"><strong>@Model.UsuarioEstadisticas.RachaDias días</strong></p>
+          </div>
+          <div class="estadisticas-item d-flex align-items-center justify-content-between p-3 rounded">
+            <img src="~/img/TiendaOXXO.png" alt="Tiendas" class="estadisticas-icon">
+            <p class="mb-0"><strong>@Model.UsuarioEstadisticas.TiendasAsesoradas</strong></p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- COLUMNA DERECHA (ESTADÍSTICAS Y CERTIFICACIONES) -->
-    <div class="col-md-5">
-      <!-- Sección de Estadísticas -->
-      <div class="estadisticas-card border rounded shadow">
-        <!-- Sección Roja - Encabezado -->
-        <div class="estadisticas-header p-3">
-          <h3 class="mb-0">Estadísticas</h3>
-        </div>
-
-        <!-- Contenedor sin borde gris -->
-        <div class="estadisticas-body p-3">
-          <!-- Primera Tarjeta (1er lugar nacional) -->
-          <div class="row row-perfiles">
-            <div class="col-12">
-              <div class="estadisticas-item d-flex align-items-center p-3 rounded">
-                <img src="~/img/copa.png" alt="Trofeo" class="estadisticas-icon me-3">
-                <p class="mb-0 text-end">
-                  <strong>1er lugar</strong><br>
-                  Nacional
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Segunda fila: Tarjetas pequeñas -->
-          <div class="d-flex justify-content-between mt-3">
-            <!-- Tarjeta 2: Racha de días -->
-            <div class="estadisticas-item d-flex align-items-center justify-content-between p-3 rounded">
-              <img src="~/img/llama.png" alt="Racha" class="estadisticas-icon">
-              <p class="mb-0"><strong>3 días</strong></p>
-            </div>
-
-            <!-- Tarjeta 3: Tiendas Asesoradas -->
-            <div class="estadisticas-item d-flex align-items-center justify-content-between p-3 rounded">
-              <img src="~/img/TiendaOXXO.png" alt="Tiendas" class="estadisticas-icon">
-              <p class="mb-0"><strong>40</strong></p>
-            </div>
-          </div>
-        </div>
+    <!-- Sección de Certificaciones -->
+    <div class="certificaciones-card border rounded shadow mt-3">
+      <div class="certificaciones-header p-3">
+        <h3 class="mb-0">Certificaciones y habilidades</h3>
       </div>
-
-      <!-- Sección de Certificaciones -->
-      <div class="certificaciones-card border rounded shadow mt-3">
-        <!-- Sección Roja - Encabezado -->
-        <div class="certificaciones-header p-3">
-          <h3 class="mb-0">Certificaciones y habilidades</h3>
-        </div>
-
-        <!-- Contenedor sin borde gris -->
-        <div class="certificaciones-body p-3">
-          <!-- Certificado 1 -->
-          <div class="certificacion-item d-flex align-items-center p-3 rounded">
-            <img src="~/img/diploma.png" alt="Certificado" class="certificacion-icon me-3">
-            <div>
-              <p class="mb-0 cert-titulo"><strong>Certificado de Finanzas Básicas para la Toma de Decisiones</strong></p>
-              <p class="mb-0 cert-subtitulo">Por fin logré terminar esta capacitación...</p>
-            </div>
-          </div>
-
-          <!-- Certificado 2 -->
-          <div class="certificacion-item d-flex align-items-center p-3 rounded mt-3">
-            <img src="~/img/diploma.png" alt="Certificado" class="certificacion-icon me-3">
-            <div>
-              <p class="mb-0 cert-titulo"><strong>Certificado de Estrategias de Ventas</strong></p>
-              <p class="mb-0 cert-subtitulo">Un paso más en mi desarrollo profesional...</p>
-            </div>
-          </div>
-        </div>
+      <div class="certificaciones-body p-3">
+        @if (Model.UsuarioCertificados.Count > 0)
+        {
+            @foreach (var certificado in Model.UsuarioCertificados)
+            {
+                <div class="certificacion-item d-flex align-items-center p-3 rounded">
+                    <img src="~/img/diploma.png" alt="Certificado" class="certificacion-icon me-3">
+                    <div>
+                        <p class="mb-0 cert-titulo"><strong>@certificado.Titulo</strong></p>
+                        <p class="mb-0 cert-subtitulo">@certificado.Descripcion</p>
+                        <p class="cert-fecha">Obtenido el: @certificado.FechaSubido.ToString("dd/MM/yyyy")</p>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No hay certificaciones disponibles.</p>
+        }
       </div>
-      
     </div>
   </div>
 </div>

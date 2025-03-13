@@ -1,5 +1,5 @@
 // Publicaciones.cs
-namespace OxxoWeb.Model;
+namespace OxxoWeb.Models;
 public class Publicacion
 {
     public int IdPublicacion { get; set; }

@@ -1,5 +1,5 @@
 // Perfil.cs
-namespace OxxoWeb.Model;
+namespace OxxoWeb.Models;
 public class Perfiles
 {
     public int IdUsuario { get; set; }
@@ -13,4 +13,5 @@ public class Perfiles
     public string Ciudad { get; set; }
     public string Estado { get; set; }
     public string TipoUsuario { get; set; }
+    public string Foto { get; set; } 
 }
