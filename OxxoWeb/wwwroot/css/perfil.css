@@ -1,338 +1,338 @@
 /* ===== PERFIL ===== */
 /* Estilos para la tarjeta de perfil */
 .perfil-card {
-    background: #FDF3DD;
-    border-radius: 15px; 
-    overflow: hidden; 
+  background: #FDF3DD;
+  border-radius: 15px; 
+  overflow: hidden; 
 }
 
 /* Sección Roja del Perfil */
 .perfil-seccion-titulo {
-    background: #951919;
-    padding: 45px 20px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    margin-bottom: -5px; 
-    position: relative;
-    box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.3);
+  background: #951919;
+  padding: 45px 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  margin-bottom: -5px; 
+  position: relative;
+  box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.3);
 }
 
 /* Cuerpo del Perfil */
 .perfil-body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    background: #FDF3DD;
-    padding: 60px 20px 20px 20px;
-    border-bottom-left-radius: 15px; 
-    border-bottom-right-radius: 15px;
-    border-top-left-radius: 0; 
-    border-top-right-radius: 0;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #FDF3DD;
+  padding: 60px 20px 20px 20px;
+  border-bottom-left-radius: 15px; 
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 0; 
+  border-top-right-radius: 0;
+  position: relative;
 }
 
 /* Imagen del Perfil */
 .perfil-img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 4px solid #FDF3DD;
-    position: absolute;
-    top: -40px;
-    left: 20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 4px solid #FDF3DD;
+  position: absolute;
+  top: -40px;
+  left: 20px;
 }
 
 /* Información del Perfil */
 .perfil-info {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .perfil-info .nombre {
-    font-size: 32px;
-    font-weight: bold;
-    color: #000;
-    margin-bottom: 4px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 4px;
 }
 
 .perfil-info .subtitulo {
-    font-size: 18px;
-    font-weight: normal;
-    color: #333;
-    margin-bottom: 2px;
-    line-height: 1.2;
+  font-size: 18px;
+  font-weight: normal;
+  color: #333;
+  margin-bottom: 2px;
+  line-height: 1.2;
 }
 
 .perfil-info .subinfo {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 2px;
-    line-height: 1.2;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 2px;
+  line-height: 1.2;
 }
 
 /* ===== PUBLICACIONES ===== */
 /* Contenedor principal de publicaciones */
 .publicaciones-card {
-    background: transparent;
-    border-radius: 15px !important;
-    position: relative;
+  background: transparent;
+  border-radius: 15px !important;
+  position: relative;
 }
 
 /* Cabecera Roja de Publicaciones */
 .publicaciones-header {
-    background: #951919;
-    padding: 15px 20px;
-    border-top-left-radius: 15px !important;
-    border-top-right-radius: 15px !important;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 0px;
+  background: #951919;
+  padding: 15px 20px;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 0px;
 }
 
 /* Contenedor Gris de Publicaciones */
 .publicaciones-body-wrapper {
-    background: #FDF3DD;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    padding: 6px;
-    padding-top: 0px;
+  background: #FDF3DD;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 6px;
+  padding-top: 0px;
 }
 
 /* Cuerpo Blanco de Publicaciones */
 .publicaciones-body {
-    background: #FDF3DD;
-    padding: 20px;
-    border-radius: 15px !important;
-    position: relative;
-    z-index: 2;
-    max-height: 300px; 
-    overflow-y: auto; 
+  background: #FDF3DD;
+  padding: 20px;
+  border-radius: 15px !important;
+  position: relative;
+  z-index: 2;
+  max-height: 300px; 
+  overflow-y: auto; 
 }
 
 /* Cada Publicación Individual */
 .publicacion-item {
-    background: #E0E0E0;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 10px;
-    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    cursor: pointer;
+  background: #E0E0E0;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 /* Hover en Publicaciones */
 .publicacion-item:hover {
-    background: #D6D6D6;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background: #D6D6D6;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Contenido dentro de Publicaciones */
 .publicacion-contenido {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /* Título de la Publicación */
 .publicacion-titulo {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 3px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 3px;
 }
 
 /* Texto Descriptivo de la Publicación */
 .publicacion-descripcion {
-    font-size: 14px;
-    color: #666;
-    margin: 0;
+  font-size: 14px;
+  color: #666;
+  margin: 0;
 }
 
 .publicacion-fecha {
-    font-size: 10px;
-    color: #333;
-    margin-bottom: 5px;
-    line-height: 1.2;
+  font-size: 10px;
+  color: #333;
+  margin-bottom: 5px;
+  line-height: 1.2;
 }
 
 /* Scrollbar Personalizado para Publicaciones */
 .publicaciones-body::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 .publicaciones-body::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 5px;
+  background: #f1f1f1;
+  border-radius: 5px;
 }
 
 .publicaciones-body::-webkit-scrollbar-thumb {
-    background: #aaa;
-    border-radius: 5px;
+  background: #aaa;
+  border-radius: 5px;
 }
 
 .publicaciones-body::-webkit-scrollbar-thumb:hover {
-    background: #888;
+  background: #888;
 }
 
 /* ===== ESTADÍSTICAS ===== */
 /* Estilos para la tarjeta de estadísticas */
 .estadisticas-card {
-    background: #FDF3DD;
-    border-radius: 15px;
-    overflow: hidden;
+  background: #FDF3DD;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 /* Sección Roja de Estadísticas */
 .estadisticas-header {
-    background: #951919;
-    color: white;
-    font-weight: bold;
-    padding: 20px;
-    border-radius: 15px 15px 0 0;
-    margin-bottom: -5px; 
-    position: relative;
-    box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.3);
+  background: #951919;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 15px 15px 0 0;
+  margin-bottom: -5px; 
+  position: relative;
+  box-shadow: inset 0px -10px 10px -10px rgba(0, 0, 0, 0.3);
 }
 
 /* Contenedor sin borde gris */
 .estadisticas-body {
-    background: #FDF3DD;
-    padding: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    position: relative;
+  background: #FDF3DD;
+  padding: 15px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  position: relative;
 }
 
 /* Tarjetas de Estadísticas */
 .estadisticas-item {
-    background: #E0E0E0;
-    border-radius: 10px;
-    padding: 14px; 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px; 
-    flex: 1; 
-    margin-right: 10px; 
+  background: #E0E0E0;
+  border-radius: 10px;
+  padding: 14px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px; 
+  flex: 1; 
+  margin-right: 10px; 
 }
 
 /* Íconos de Estadísticas */
 .estadisticas-icon {
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 }
 
 .estadisticas-icon-tienda {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 /* Primera tarjeta más grande */
 .estadisticas-body .row .col-12 .estadisticas-item {
-    font-size: 18px;
-    font-weight: bold;
-    padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
 }
 
 /* Tarjetas pequeñas - Tamaño uniforme */
 .estadisticas-body .row .col-6 .estadisticas-item {
-    font-size: 16px;
-    font-weight: bold;
-    padding: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px;
 }
 
 /* Ajuste para los iconos en estadísticas */
 .estadisticas-item img {
-    width: 35px;
-    height: auto;
-    object-fit: contain;
+  width: 35px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Texto dentro de las estadísticas */
 .estadisticas-item p {
-    font-size: 16px; 
-    margin-bottom: 0; 
+  font-size: 16px; 
+  margin-bottom: 0; 
 }
 
 /* Asegúrate de que esta regla no sobrescriba el tamaño del icono de la tienda */
 .estadisticas-item img.estadisticas-icon-tienda {
-    width: 50px;
-    height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 /* ===== CERTIFICACIONES ===== */
 /* Contenedor principal de certificaciones */
 .certificaciones-card {
-    background: transparent;
-    border-radius: 15px !important;
-    position: relative;
+  background: transparent;
+  border-radius: 15px !important;
+  position: relative;
 }
 
 /* Encabezado Rojo */
 .certificaciones-header {
-    background: #951919;
-    padding: 15px 20px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
+  background: #951919;
+  padding: 15px 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 /* Cuerpo Interno */
 .certificaciones-body {
-    background: #FDF3DD;
-    padding: 15px; 
-    position: relative;
-    z-index: 2;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+  background: #FDF3DD;
+  padding: 15px; 
+  position: relative;
+  z-index: 2;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 /* Cada Certificado */
 .certificacion-item {
-    background: #E0E0E0;
-    border-radius: 10px;
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    cursor: pointer; 
+  background: #E0E0E0;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer; 
 }
 
 /* Hover en Certificaciones */
 .certificacion-item:hover {
-    background: #D6D6D6;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background: #D6D6D6;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Icono del Certificado */
 .certificacion-icon {
-    width: 50px;
-    height: auto;
-    object-fit: contain;
-    margin-right: 15px;
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  margin-right: 15px;
 }
 
 /* Texto del Certificado */
 .cert-titulo {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 0;
-    line-height: 1.2;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0;
+  line-height: 1.2;
 }
 
 .cert-subtitulo {
-    font-size: 14px;
-    color: #666;
-    margin-top: 2px;
-    margin-bottom: 0;
+  font-size: 14px;
+  color: #666;
+  margin-top: 2px;
+  margin-bottom: 0;
 }
 
 .cert-fecha {
-    font-size: 10px;
-    color: #333;
-    margin-bottom: 5px;
-    line-height: 1.2;
+  font-size: 10px;
+  color: #333;
+  margin-bottom: 5px;
+  line-height: 1.2;
 }
