@@ -1,5 +1,5 @@
 // Perfil.cs
-namespace OxxoWeb.Model;
+namespace OxxoWeb.Models;
 public class Perfiles
 {
     public int IdUsuario { get; set; }
