@@ -26,7 +26,7 @@ public class PerfilModel : PageModel
         UsuarioCertificados = _context.GetCertificados(idUsuario);
     }
 
-        // 📌 Método para convertir la letra del tipo en descripción
+        // Método para convertir la letra del tipo en descripción
     public string ObtenerDescripcion(string tipo)
     {
         return tipo switch
