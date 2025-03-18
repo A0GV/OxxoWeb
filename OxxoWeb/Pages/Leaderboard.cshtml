@@ -40,9 +40,9 @@
             <div class="row text-center">
                 <!--2: Columna 1-2 -->
                 <!-- Columna width 4, styling de leaderboard-left-column en site.css,aplica padding y hacer en flex para poder align elements y position-relative para poder poner num  -->
-                <div class="col-4 leaderboard-left-column text-center d-flex flex-column align-items-center align-self-end" style="background-color:powderblue;">
+                <div class="col-4 leaderboard-left-column text-center d-flex flex-column align-items-center align-self-end">
                     <div class="left-podium-gap"></div>
-                    <div class="left-podium-image" style="background-color:blueviolet">
+                    <div class="left-podium-image">
                         <!-- Imagen redonda de empleado-->
                         @if (Model.listaGen2.Count > 0)
                         {
@@ -65,7 +65,7 @@
                 </div>
                 
                 <!--1: Columna 3-4 -->
-                <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center align-self-end" style="background-color:gray">
+                <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center align-self-end">
                     <h2>General</h2>
                     @if (Model.listaGen1.Count > 0)
                     {
@@ -85,7 +85,7 @@
                     </div>
                 </div>      
                  <!--3: Columna 4-5 -->
-                <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-end" style="background-color:green">
+                <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-end">
                     @if (Model.listaGen3.Count > 0)
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
@@ -108,7 +108,7 @@
             <!-- Nombres de personas-->
             <div class="row text-center">
                 <!-- 2do lugar -->
-                <div class="col-4 leaderboard-left-column d-flex flex-column align-items-center align-self-start" style="background-color:cyan;">
+                <div class="col-4 leaderboard-left-column d-flex flex-column align-items-center align-self-start">
                     
                     @if (Model.listaGen2.Count > 0)
                     {
@@ -124,7 +124,7 @@
                     }
                 </div>
                 <!-- 1er lugar -->
-                <div class="col-4 leaderboard-center-column d-flex flex-column align-items-center align-self-start" style="background-color:rgb(178, 124, 124);">
+                <div class="col-4 leaderboard-center-column d-flex flex-column align-items-center align-self-start">
                     @if (Model.listaGen1.Count > 0)
                     {
                         @foreach (var asesorG1 in Model.listaGen1)
@@ -140,7 +140,7 @@
                 </div>
                 
                 <!-- 3er lugar-->
-                <div class="col-4 leaderboard-right-column d-flex flex-column align-items-center align-self-start" style="background-color:rgb(60, 204, 108);">
+                <div class="col-4 leaderboard-right-column d-flex flex-column align-items-center align-self-start">
                     @if (Model.listaGen3.Count > 0)
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
