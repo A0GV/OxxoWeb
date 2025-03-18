@@ -40,7 +40,7 @@
             <div class="row text-center">
                 <!--2: Columna 1-2 -->
                 <!-- Columna width 4, styling de leaderboard-left-column en site.css,aplica padding y hacer en flex para poder align elements y position-relative para poder poner num  -->
-                <div class="col-4 leaderboard-left-column text-center d-flex flex-column align-items-center align-self-start" style="background-color:powderblue;">
+                <div class="col-4 leaderboard-left-column text-center d-flex flex-column align-items-center align-self-end" style="background-color:powderblue;">
                     <div class="left-podium-gap"></div>
                     <div class="left-podium-image" style="background-color:blueviolet">
                         <!-- Imagen redonda de empleado-->
@@ -48,12 +48,12 @@
                         {
                             @foreach (var asesorG2 in Model.listaGen2)
                             {
-                                <img src="~/Img/@asesorG2.foto" alt="Foto lugar 2" class="rounded-circle" width="150">
+                                <img src="~/Img/@asesorG2.foto" alt="Foto lugar 2" class="rounded-circle">
                             }
                         }
                         else 
                         {
-                                <img src="~/Img/gray.jpeg" alt="Sin foto lugar 2" class="rounded-circle" width="150">
+                                <img src="~/Img/gray.jpeg" alt="Sin foto lugar 2" class="rounded-circle">
                         }  
                     </div>
                     
@@ -65,18 +65,18 @@
                 </div>
                 
                 <!--1: Columna 3-4 -->
-                <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center align-self-start" style="background-color:gray">
+                <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center align-self-end" style="background-color:gray">
                     <h2>General</h2>
                     @if (Model.listaGen1.Count > 0)
                     {
                         @foreach (var asesorG1 in Model.listaGen1)
                         {
-                            <img src="~/Img/@asesorG1.foto" alt="Foto lugar 1" class="rounded-circle" width="150">
+                            <img src="~/Img/@asesorG1.foto" alt="Foto lugar 1" class="rounded-circle">
                         }
                     }
                     else 
                     {
-                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle" width="150">
+                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
                     }
                     <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
                     <div class="center-podium rounded d-flex flex-column align-items-center position-relative">
@@ -85,17 +85,17 @@
                     </div>
                 </div>      
                  <!--3: Columna 4-5 -->
-                <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-start" style="background-color:green">
+                <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-end" style="background-color:green">
                     @if (Model.listaGen3.Count > 0)
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
                         {
-                            <img src="~/Img/@asesorG3.foto" alt="Foto lugar 3" class="rounded-circle" width="150">
+                            <img src="~/Img/gray.jpeg" alt="Foto lugar 3" class="rounded-circle">
                         }
                     }
                     else 
                     {
-                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 3" class="rounded-circle" width="150">
+                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 3" class="rounded-circle">
                     }
                     <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
                     <div class="right-podium rounded d-flex flex-column align-items-center position-relative">

@@ -14,13 +14,13 @@
   
   
   /* Podiums de leaderboard */
-  /* Left */
+  /* Left 
 .left-podium-gap {
   background-color: blue;
   height: 10rem;
   display: flex; 
   width: 100%;
-}
+}*/
 
 .left-podium {
   background-color: #B0162C;
@@ -30,11 +30,11 @@
   justify-content: flex-end;
   align-items: center;
 }
-  
+
 .center-podium {
   background-color: #E70020;
   width: 70%;
-  height: 228.5px;
+  height: 14.281rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -43,7 +43,7 @@
 .right-podium {
   background-color: #791120;
   width: 70%;
-  height: 130px;
+  height: 8.125rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
