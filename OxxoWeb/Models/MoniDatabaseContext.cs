@@ -9,17 +9,34 @@ namespace OxxoWeb.Models
         public string ConnectionString { get; set; } // String de conexión
 
         // Constructor para hacer la conexión (despues de deal con NuGet)
-        public MoniDataBaseContext()
+        /*public MoniDataBaseContext()
         {
             // Running on localhost port, using database default MySQL 3306, Uid root, and password mod
             ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1_2;Uid=root;password=80mB*%7aEf;";
-        } 
+        }*/
+
 
         // Returns connection with connection string, private
         private MySqlConnection GetConnection()
         {
             return new MySqlConnection(ConnectionString);
         }
+
+        public MoniDataBaseContext()
+        {
+            var objBuilder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            IConfiguration conManager = objBuilder.Build();
+
+            var conn = conManager.GetConnectionString("myDb1");
+            if (conn == null)
+            {
+            conn = "";
+            }
+            this.ConnectionString = conn;
+        }
+
 
         public List<Plazas> GetAllPlazas() 
         {
