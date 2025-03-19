@@ -40,25 +40,84 @@
             <div class="row text-center">
                 <!--2: Columna 1-2 -->
                 <!-- Columna width 4, styling de leaderboard-left-column en site.css,aplica padding y hacer en flex para poder align elements y position-relative para poder poner num  -->
-                <div class="col-4 leaderboard-left-column text-center d-flex flex-column align-items-center align-self-start">
-                    <!-- Imagen redonda de empleado-->
-                    @if (Model.listaGen2.Count > 0)
-                    {
-                        @foreach (var asesorG2 in Model.listaGen2)
+                <div class="col-4 leaderboard-left-column text-center d-flex flex-column align-items-center align-self-end">
+                    <div class="left-podium-gap"></div>
+                    <div class="left-podium-image">
+                        <!-- Imagen redonda de empleado-->
+                        @if (Model.listaGen2.Count > 0)
                         {
-                            <img src="~/Img/@asesorG2.foto" alt="Foto lugar 2" class="rounded-circle" width="150">
+                            @foreach (var asesorG2 in Model.listaGen2)
+                            {
+                                <img src="~/Img/@asesorG2.foto" alt="Foto lugar 2" class="rounded-circle">
+                            }
                         }
-                    }
-                    else 
-                    {
-                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 2" class="rounded-circle" width="150">
-                    }
+                        else 
+                        {
+                                <img src="~/Img/gray.jpeg" alt="Sin foto lugar 2" class="rounded-circle">
+                        }  
+                    </div>
+                    
                     <!-- Dibujo de podium y aplica flex para centrarlo, needs position-relative para quedarse relativo al podium -->
                     <div class="left-podium rounded d-flex flex-column align-items-center position-relative">
                         <!-- Número de lugar, usa circulo como position-absolute  -->
                         <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle ">2</div>
                     </div>
-                    <!-- Nombre de persona, conectar a backend despúes -->
+                </div>
+                
+                <!--1: Columna 3-4 -->
+                <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center align-self-end">
+                    <h2>General</h2>
+                    @if (Model.listaGen1.Count > 0)
+                    {
+                        @foreach (var asesorG1 in Model.listaGen1)
+                        {
+                            @if (!string.IsNullOrEmpty(asesorG1.foto))
+                            {
+                                <img src="~/Img/@asesorG1.foto" alt="Foto lugar 1" class="rounded-circle">
+                            }
+                            else
+                            {
+                                <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
+                            }
+                        }
+                    }
+                else
+                {
+                    <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
+                }
+
+                    <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
+                    <div class="center-podium rounded d-flex flex-column align-items-center position-relative">
+                        <!-- Número de lugar -->
+                        <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">1</div>
+                    </div>
+                </div>      
+                 <!--3: Columna 4-5 -->
+                <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-end">
+                    @if (Model.listaGen3.Count > 0)
+                    {
+                        @foreach (var asesorG3 in Model.listaGen3)
+                        {
+                            <img src="~/Img/@asesorG3.foto" alt="Foto lugar 3" class="rounded-circle">
+                        }
+                    }
+                    else 
+                    {
+                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 3" class="rounded-circle">
+                    }
+                    <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
+                    <div class="right-podium rounded d-flex flex-column align-items-center position-relative">
+                        <!-- Número de lugar -->
+                        <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">3</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nombres de personas-->
+            <div class="row text-center">
+                <!-- 2do lugar -->
+                <div class="col-4 leaderboard-left-column d-flex flex-column align-items-center align-self-start">
+                    
                     @if (Model.listaGen2.Count > 0)
                     {
                         @foreach (var asesorG2 in Model.listaGen2)
@@ -71,28 +130,9 @@
                     {
                         <p class="podium-employee-name">Sin jugador</p>
                     }
-                    </div>
-                
-                <!--1: Columna 3-4 -->
-                <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center align-self-start">
-                    <h2>General</h2>
-                    @if (Model.listaGen1.Count > 0)
-                    {
-                        @foreach (var asesorG1 in Model.listaGen1)
-                        {
-                            <img src="~/Img/@asesorG1.foto" alt="Foto lugar 1" class="rounded-circle" width="150">
-                        }
-                    }
-                    else 
-                    {
-                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle" width="150">
-                    }
-                    <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
-                    <div class="center-podium rounded d-flex flex-column align-items-center position-relative">
-                        <!-- Número de lugar -->
-                        <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">1</div>
-                    </div>
-                    <!-- Nombre de persona -->
+                </div>
+                <!-- 1er lugar -->
+                <div class="col-4 leaderboard-center-column d-flex flex-column align-items-center align-self-start">
                     @if (Model.listaGen1.Count > 0)
                     {
                         @foreach (var asesorG1 in Model.listaGen1)
@@ -105,26 +145,10 @@
                     {
                         <p class="podium-employee-name">Sin jugador</p>
                     }
-                </div>      
-                 <!--3: Columna 4-5 -->
-                <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-start">
-                    @if (Model.listaGen3.Count > 0)
-                    {
-                        @foreach (var asesorG3 in Model.listaGen3)
-                        {
-                            <img src="~/Img/@asesorG3.foto" alt="Foto lugar 3" class="rounded-circle" width="150">
-                        }
-                    }
-                    else 
-                    {
-                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 3" class="rounded-circle" width="150">
-                    }
-                    <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
-                    <div class="right-podium rounded d-flex flex-column align-items-center position-relative">
-                    <!-- Número de lugar -->
-                    <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">3</div>
-                    </div>
-                    <!-- Nombre de persona -->
+                </div>
+                
+                <!-- 3er lugar-->
+                <div class="col-4 leaderboard-right-column d-flex flex-column align-items-center align-self-start">
                     @if (Model.listaGen3.Count > 0)
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
@@ -138,8 +162,9 @@
                         <p class="podium-employee-name">Sin jugador</p>
                     }
                 </div>
-            </div>
 
+            </div>
+            
             <!-- Lugares restantes de general -->
             <div class="row rounded p-3">
                 <div class="col-12">
