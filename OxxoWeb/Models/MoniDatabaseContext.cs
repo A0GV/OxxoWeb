@@ -26,7 +26,7 @@ namespace OxxoWeb.Models
         {
             var objBuilder = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.Development.json", optional: false, reloadOnChange: true);
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
             IConfiguration conManager = objBuilder.Build();
 
             var conn = conManager.GetConnectionString("myDb1");
