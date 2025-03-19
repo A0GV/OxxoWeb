@@ -25,6 +25,11 @@ namespace OxxoWeb.Pages
 
             if (isValid)
             {
+                int UserSessionId = context.GetUserId(Username);
+                if (UserSessionId !=0)
+                {
+                    HttpContext.Session.SetInt32("Id", UserSessionId);
+                };
                 return RedirectToPage("/Home");
             }
             else
