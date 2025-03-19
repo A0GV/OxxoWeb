@@ -93,6 +93,24 @@ namespace OxxoWeb.Models
             conexion.Close();
             return credencialesCorrectas;
         }
+
+        public int GetUserId(string user)
+        {
+            int userId = 0;
+            MySqlConnection conexion = GetConnection();
+            conexion.Open();
+            MySqlCommand cmd = new MySqlCommand("select id_usuario as iD from usuario where correo = @user;", conexion);
+            cmd.Parameters.AddWithValue("@user", user);
+            using (var reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    userId = Convert.ToInt32(reader["iD"]);
+                }
+            }
+            conexion.Close();
+            return userId;
+        }
     }
 }
 
