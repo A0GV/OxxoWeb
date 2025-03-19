@@ -2,26 +2,18 @@
 .background-beige-cell {
     background-color: #FDF3DD;
     /*border: 1px solid gray; /* Just to check borders */
-  }
+}
   
   /* Para hacer select form customizing */
-  .select-redbg-whitetxt {
-    background-color: #791120;
-    font-size: 25px; 
-    border-radius: 10px;
-    color: #FFFFFF; /* White text */ 
-  }
+.select-redbg-whitetxt {
+  background-color: #791120;
+  font-size: 1.563rem; 
+  border-radius: 0.625rem;
+  color: #FFFFFF; /* White text */ 
+}
   
   
-  /* Podiums de leaderboard */
-  /* Left 
-.left-podium-gap {
-  background-color: blue;
-  height: 10rem;
-  display: flex; 
-  width: 100%;
-}*/
-
+/* Podiums de leaderboard */
 .left-podium {
   background-color: #B0162C;
   width: 70%;
@@ -64,11 +56,11 @@
 .podium-number {
   background-color: #FBB212; 
   font-weight: 700;
-  font-size: 50px;
+  font-size: 3.125rem;
   /* Set para que se mantenga el circulo */
-  margin-top: 40px;
-  width: 60px;
-  height: 60px;
+  margin-top: 2.5rem;
+  width: 3.75rem;
+  height: 3.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,14 +68,14 @@
 
 .podium-employee-name {
   font-weight: 600;
-  font-size: 25px;
+  font-size: 1.563rem;
   max-width: 70%;
   text-align: center;
 }
 
 .podium-txt {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.25rem;
   max-width: 70%;
   text-align: center;
 }
@@ -107,7 +99,7 @@
 
 /* Limit table to only show first three */ 
 .scroll-table {
-  max-height: 125px; /* First three names only */
+  max-height: 10.50rem; /* First three names only */
   overflow-y: auto; /* Permits vertical overflow */
   display: block; /* Shows table as a block */
 }
@@ -122,19 +114,19 @@
 
 /* Estilos para la scroll bar */
 .scroll-table::-webkit-scrollbar {
-  width: 8px;
+  width: 0.5rem;
 }
 
 /* Background whiteish */
 .scroll-table::-webkit-scrollbar-track {
   background: #f1f1f1;
-  border-radius: 5px;
+  border-radius: 0.313rem;
 }
 
 /* The gray thing that moves as user scrolls */
 .scroll-table::-webkit-scrollbar-thumb {
   background: #aaa;
-  border-radius: 5px;
+  border-radius: 0.313rem;
 }
 
 /* Make slightly darker when hover over it */

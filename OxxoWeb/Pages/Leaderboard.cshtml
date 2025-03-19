@@ -71,13 +71,21 @@
                     {
                         @foreach (var asesorG1 in Model.listaGen1)
                         {
-                            <img src="~/Img/@asesorG1.foto" alt="Foto lugar 1" class="rounded-circle">
+                            @if (!string.IsNullOrEmpty(asesorG1.foto))
+                            {
+                                <img src="~/Img/@asesorG1.foto" alt="Foto lugar 1" class="rounded-circle">
+                            }
+                            else
+                            {
+                                <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
+                            }
                         }
                     }
-                    else 
-                    {
-                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
-                    }
+                else
+                {
+                    <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
+                }
+
                     <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
                     <div class="center-podium rounded d-flex flex-column align-items-center position-relative">
                         <!-- Número de lugar -->
@@ -157,7 +165,6 @@
 
             </div>
             
-
             <!-- Lugares restantes de general -->
             <div class="row rounded p-3">
                 <div class="col-12">
