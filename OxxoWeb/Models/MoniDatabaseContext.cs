@@ -11,7 +11,7 @@ namespace OxxoWeb.Models
         // Constructor para hacer la conexión (despues de deal con NuGet)
         /*public MoniDataBaseContext()
         {
-            // Running on localhost port, using database default MySQL 3306, Uid root, and password mod
+            // Running on localhost port, using database default MySQL 3306, Uid root, and password mod        } 
             ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1_2;Uid=root;password=80mB*%7aEf;";
         }*/
 
