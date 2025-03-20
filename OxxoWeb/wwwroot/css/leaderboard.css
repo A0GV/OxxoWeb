@@ -71,6 +71,9 @@
   font-size: 1.563rem;
   max-width: 70%;
   text-align: center;
+  word-wrap: break-word;  /* Ensures long words break properly */
+  overflow-wrap: break-word;
+  white-space: normal; /* Allows wrapping instead of shrinking */
 }
 
 .podium-txt {
@@ -132,4 +135,18 @@
 /* Make slightly darker when hover over it */
 .scroll-table::-webkit-scrollbar-thumb:hover {
   background: #888;
+}
+
+/* To style the names and their links */
+a {
+  text-decoration: none; /* Removes underline */
+  color: black;
+}
+
+a:visited {
+  color: black; 
+}
+
+a:hover {
+  text-decoration: underline; /* Adds underline when hover over it */
 }

@@ -8,11 +8,22 @@ namespace OxxoWeb.Models
 {
     public class DataBaseContextPerfil
     {
+        
         public string ConnectionString { get; set; }
 
         public DataBaseContextPerfil()
         {
-            ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1;Uid=root;Password=root;";
+            var objBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            IConfiguration conManager = objBuilder.Build();
+
+            var conn = conManager.GetConnectionString("MyDb1");
+            if (conn == null)
+            {
+                conn = "";
+            }
+            this.ConnectionString = conn;
         }
 
         private MySqlConnection GetConnection()
