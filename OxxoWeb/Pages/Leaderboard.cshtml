@@ -116,13 +116,13 @@
             <!-- Nombres de personas-->
             <div class="row text-center">
                 <!-- 2do lugar -->
-                <div class="col-4 leaderboard-left-column d-flex flex-column align-items-center align-self-start">
+                <div class="col-4 leaderboard-left-column d-flex flex-column align-items-center">
                     
                     @if (Model.listaGen2.Count > 0)
                     {
                         @foreach (var asesorG2 in Model.listaGen2)
                         {
-                            <p class="podium-employee-name">@asesorG2.nombre @asesorG2.apellido_pat @asesorG2.apellido_mat</p>
+                            <p class="podium-employee-name"><a href="/Perfil?idUsuario=@asesorG2.id_usuario">@asesorG2.nombre @asesorG2.apellido_pat @asesorG2.apellido_mat</a></p>
                             <p class="podium-txt">@asesorG2.total_exp</p>
                         }
                     }
@@ -132,12 +132,12 @@
                     }
                 </div>
                 <!-- 1er lugar -->
-                <div class="col-4 leaderboard-center-column d-flex flex-column align-items-center align-self-start">
+                <div class="col-4 leaderboard-center-column d-flex flex-column align-items-center">
                     @if (Model.listaGen1.Count > 0)
                     {
                         @foreach (var asesorG1 in Model.listaGen1)
                         {
-                            <p class="podium-employee-name">@asesorG1.nombre @asesorG1.apellido_pat @asesorG1.apellido_mat</p>
+                            <p class="podium-employee-name"><a href="/Perfil?idUsuario=@asesorG1.id_usuario">@asesorG1.nombre @asesorG1.apellido_pat @asesorG1.apellido_mat</a></p>
                             <p class="podium-txt">@asesorG1.total_exp</p>
                         }
                     }
@@ -148,12 +148,12 @@
                 </div>
                 
                 <!-- 3er lugar-->
-                <div class="col-4 leaderboard-right-column d-flex flex-column align-items-center align-self-start">
+                <div class="col-4 leaderboard-right-column d-flex flex-column align-items-center">
                     @if (Model.listaGen3.Count > 0)
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
                         {
-                            <p class="podium-employee-name">@asesorG3.nombre @asesorG3.apellido_pat @asesorG3.apellido_mat</p>
+                            <p class="podium-employee-name"><a href="/Perfil?idUsuario=@asesorG3.id_usuario">@asesorG3.nombre @asesorG3.apellido_pat @asesorG3.apellido_mat</a></p>
                             <p class="podium-txt">@asesorG3.total_exp</p>
                         }
                     }
@@ -183,7 +183,7 @@
                                         <!-- Table header número de lugar -->
                                         <th scope="row">@numLugar</th> 
                                         <!-- Data nombre usuario -->
-                                        <td class="text-start">@asesor4.nombre @asesor4.apellido_pat @asesor4.apellido_mat</td> 
+                                        <td class="text-start"><a href="/Perfil?idUsuario=@asesor4.id_usuario">@asesor4.nombre @asesor4.apellido_pat @asesor4.apellido_mat</a></td> 
                                         <!-- Exp de usuario  -->
                                         <td class="text-start">@asesor4.total_exp</td> 
                                     </tr>
@@ -224,7 +224,7 @@
                                         <!-- Table header número de lugar -->
                                         <th scope="row">@numLugar</th> 
                                         <!-- Data nombre usuario -->
-                                        <td class="text-start">@asesor1.nombre @asesor1.apellido_pat @asesor1.apellido_mat</td> 
+                                        <td class="text-start"><a href="/Perfil?idUsuario=@asesor1.id_usuario">@asesor1.nombre @asesor1.apellido_pat @asesor1.apellido_mat</a></td> 
                                         <!-- Exp de usuario  -->
                                         <td class="text-start">@asesor1.total_exp</td> 
                                     </tr>
@@ -259,7 +259,7 @@
                                         <!-- Table header número de lugar -->
                                         <th scope="row">@numLugar</th> 
                                         <!-- Data nombre usuario -->
-                                        <td class="text-start">@asesor2.nombre @asesor2.apellido_pat @asesor2.apellido_mat</td> 
+                                        <td class="text-start"><a href="/Perfil?idUsuario=@asesor2.id_usuario">@asesor2.nombre @asesor2.apellido_pat @asesor2.apellido_mat</a></td> 
                                         <!-- Exp de usuario  -->
                                         <td class="text-start">@asesor2.total_exp</td> 
                                     </tr>
@@ -294,7 +294,7 @@
                                         <!-- Table header número de lugar -->
                                         <th scope="row">@numLugar</th> 
                                         <!-- Data nombre usuario -->
-                                        <td class="text-start">@asesor3.nombre @asesor3.apellido_pat @asesor3.apellido_mat</td> 
+                                        <td class="text-start"><a href="/Perfil?idUsuario=@asesor3.id_usuario">@asesor3.nombre @asesor3.apellido_pat @asesor3.apellido_mat</a></td> 
                                         <!-- Exp de usuario  -->
                                         <td class="text-start">@asesor3.total_exp</td> 
                                     </tr>
