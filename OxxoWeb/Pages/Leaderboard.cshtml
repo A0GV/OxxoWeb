@@ -44,7 +44,7 @@
                     <div class="left-podium-gap"></div>
                     <div class="left-podium-image">
                         <!-- Imagen redonda de empleado-->
-                        @if (Model.listaGen2.Count > 0)
+                        @if (Model.listaGen2.Count > 0 && Model.listaGen2 != null)
                         {
                             @foreach (var asesorG2 in Model.listaGen2)
                             {
@@ -67,7 +67,7 @@
                 <!--1: Columna 3-4 -->
                 <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center align-self-end">
                     <h2>General</h2>
-                    @if (Model.listaGen1.Count > 0)
+                    @if (Model.listaGen1.Count > 0 && Model.listaGen1 != null)
                     {
                         @foreach (var asesorG1 in Model.listaGen1)
                         {
@@ -94,7 +94,7 @@
                 </div>      
                  <!--3: Columna 4-5 -->
                 <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-end">
-                    @if (Model.listaGen3.Count > 0)
+                    @if (Model.listaGen3.Count > 0 && Model.listaGen3 != null)
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
                         {
@@ -118,7 +118,7 @@
                 <!-- 2do lugar -->
                 <div class="col-4 leaderboard-left-column d-flex flex-column align-items-center">
                     
-                    @if (Model.listaGen2.Count > 0)
+                    @if (Model.listaGen2.Count > 0 && Model.listaGen2 != null)
                     {
                         @foreach (var asesorG2 in Model.listaGen2)
                         {
@@ -133,7 +133,7 @@
                 </div>
                 <!-- 1er lugar -->
                 <div class="col-4 leaderboard-center-column d-flex flex-column align-items-center">
-                    @if (Model.listaGen1.Count > 0)
+                    @if (Model.listaGen1.Count > 0 && Model.listaGen1 != null)
                     {
                         @foreach (var asesorG1 in Model.listaGen1)
                         {
@@ -149,7 +149,7 @@
                 
                 <!-- 3er lugar-->
                 <div class="col-4 leaderboard-right-column d-flex flex-column align-items-center">
-                    @if (Model.listaGen3.Count > 0)
+                    @if (Model.listaGen3.Count > 0 && Model.listaGen3 != null)
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
                         {
@@ -174,7 +174,7 @@
                         <!-- Class que hacer scroll-table -->
                         <tbody class="scroll-table">
                             <!-- Si lista contiene datos -->
-                            @if (Model.listaJuego4.Count > 0)
+                            @if (Model.listaJuego4.Count > 0 && Model.listaJuego4 != null)
                             {
                                 int numLugar = 4; <!-- para contar posición de usuario -->
                                 @foreach (var asesor4 in Model.listaJuego4)
@@ -215,7 +215,7 @@
                         <!-- Class que hacer scroll-table -->
                         <tbody class="scroll-table">
                             <!-- Si lista contiene datos -->
-                            @if (Model.listaJuego1.Count > 0)
+                            @if (Model.listaJuego1.Count > 0 && Model.listaJuego1 != null)
                             {
                                 int numLugar = 1; <!-- para contar posición de usuario -->
                                 @foreach (var asesor1 in Model.listaJuego1)
@@ -250,7 +250,7 @@
                         <!-- Class que hacer scroll-table -->
                         <tbody class="scroll-table">
                             <!-- Si lista contiene datos -->
-                            @if (Model.listaJuego2.Count > 0)
+                            @if (Model.listaJuego2.Count > 0 && Model.listaJuego2 != null)
                             {
                                 int numLugar = 1; <!-- para contar posición de usuario -->
                                 @foreach (var asesor2 in Model.listaJuego2)
@@ -285,7 +285,7 @@
                         <!-- Class que hacer scroll-table -->
                         <tbody class="scroll-table">
                             <!-- Si lista contiene datos -->
-                            @if (Model.listaJuego3.Count > 0)
+                            @if (Model.listaJuego3.Count > 0 && Model.listaJuego3 != null)
                             {
                                 int numLugar = 1; <!-- para contar posición de usuario -->
                                 @foreach (var asesor3 in Model.listaJuego3)
