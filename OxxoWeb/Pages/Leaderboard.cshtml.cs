@@ -57,7 +57,6 @@ public class LeaderboardModel : PageModel
             listaGen3 = _context.GetLeaderGen3();
             // Lista de zonas
             listaZonas1 = _context.GetAllPlazas(); // Va a capa model y trae todos las plazas
-            //nick = HttpContext.Session.GetString("nickname");
         }
     }
 }
