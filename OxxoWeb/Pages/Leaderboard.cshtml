@@ -48,7 +48,14 @@
                         {
                             @foreach (var asesorG2 in Model.listaGen2)
                             {
-                                <img src="~/Img/@asesorG2.foto" alt="Foto lugar 2" class="rounded-circle">
+                                @if (!string.IsNullOrEmpty(asesorG2.foto))
+                                {
+                                    <img src="~/Img/@asesorG2.foto" alt="Foto lugar 1" class="rounded-circle">
+                                }
+                                else
+                                {
+                                    <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
+                                }
                             }
                         }
                         else 
@@ -98,7 +105,14 @@
                     {
                         @foreach (var asesorG3 in Model.listaGen3)
                         {
-                            <img src="~/Img/@asesorG3.foto" alt="Foto lugar 3" class="rounded-circle">
+                            @if (!string.IsNullOrEmpty(asesorG3.foto))
+                            {
+                                <img src="~/Img/@asesorG3.foto" alt="Foto lugar 3" class="rounded-circle">
+                            }
+                            else
+                            {
+                                <img src="~/Img/gray.jpeg" alt="Sin foto lugar 3" class="rounded-circle">
+                            }
                         }
                     }
                     else 
