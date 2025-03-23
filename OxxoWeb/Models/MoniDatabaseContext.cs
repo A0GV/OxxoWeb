@@ -8,14 +8,6 @@ namespace OxxoWeb.Models
     {
         public string ConnectionString { get; set; } // String de conexión
 
-        // Constructor para hacer la conexión (despues de deal con NuGet)
-        /*public MoniDataBaseContext()
-        {
-            // Running on localhost port, using database default MySQL 3306, Uid root, and password mod        } 
-            ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1_2;Uid=root;password=80mB*%7aEf;";
-        }*/
-
-
         // Returns connection with connection string, private
         private MySqlConnection GetConnection()
         {
@@ -74,22 +66,16 @@ namespace OxxoWeb.Models
             List<LeaderJ1> ListaJ1 = new List<LeaderJ1>(); // List to store players
             MySqlConnection conexion = GetConnection(); // Initialize connection
             conexion.Open(); // Open connection
+            Console.WriteLine("Looking for player J1");
 
-            string queryJ1 = @"
-                SELECT 
-                    u.id_usuario, 
-                    u.id_plaza, 
-                    u.nombre, 
-                    u.apellido_pat, 
-                    u.apellido_mat, 
-                    SUM(j1.exp) AS total_exp
+            string queryJ1 = @"SELECT u.id_usuario, u.id_plaza,u.nombre,u.apellido_pat,u.apellido_mat, u.foto,
+                SUM(h.exp) AS total_exp
                 FROM usuario u
                 JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
                 JOIN historial h ON uh.id_historial = h.id_historial
-                JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1
+                WHERE id_juego = 1
                 GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat
-                ORDER BY total_exp DESC;
-            ";
+                ORDER BY total_exp DESC;";
 
             MySqlCommand cmd = new MySqlCommand(queryJ1, conexion);
 
@@ -118,6 +104,7 @@ namespace OxxoWeb.Models
             return ListaJ1; // Return list
         }
 
+        
         // Juego 2
         public List<LeaderJ2> GetLeaderJ2() 
         {
@@ -125,21 +112,14 @@ namespace OxxoWeb.Models
             MySqlConnection conexion = GetConnection(); // Initialize connection
             conexion.Open(); // Open connection
 
-            string queryJ2 = @"
-                SELECT 
-                    u.id_usuario, 
-                    u.id_plaza, 
-                    u.nombre, 
-                    u.apellido_pat, 
-                    u.apellido_mat, 
-                    SUM(j2.exp) AS total_exp
+            string queryJ2 = @"SELECT u.id_usuario, u.id_plaza,u.nombre,u.apellido_pat,u.apellido_mat, u.foto,
+                SUM(h.exp) AS total_exp
                 FROM usuario u
                 JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
                 JOIN historial h ON uh.id_historial = h.id_historial
-                JOIN juego2 j2 ON h.id_juego2 = j2.id_juego2
+                WHERE id_juego = 2
                 GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat
-                ORDER BY total_exp DESC;
-            ";
+                ORDER BY total_exp DESC;";
 
             MySqlCommand cmd = new MySqlCommand(queryJ2, conexion);
 
@@ -167,6 +147,7 @@ namespace OxxoWeb.Models
             conexion.Close(); // Close connection
             return ListaJ2; // Return list
         }
+        
 
         // Juego 3
         public List<LeaderJ3> GetLeaderJ3() 
@@ -175,18 +156,12 @@ namespace OxxoWeb.Models
             MySqlConnection conexion = GetConnection(); // Initialize connection
             conexion.Open(); // Open connection
 
-            string queryJ3 = @"
-                SELECT 
-                    u.id_usuario, 
-                    u.id_plaza, 
-                    u.nombre, 
-                    u.apellido_pat, 
-                    u.apellido_mat, 
-                    SUM(j3.exp) AS total_exp
+            string queryJ3 = @"SELECT u.id_usuario, u.id_plaza,u.nombre,u.apellido_pat,u.apellido_mat, u.foto,
+                SUM(h.exp) AS total_exp
                 FROM usuario u
                 JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
                 JOIN historial h ON uh.id_historial = h.id_historial
-                JOIN juego3 j3 ON h.id_juego3 = j3.id_juego3
+                WHERE id_juego = 3
                 GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat
                 ORDER BY total_exp DESC;";
 
@@ -231,13 +206,11 @@ namespace OxxoWeb.Models
                 u.nombre, 
                 u.apellido_pat, 
                 u.apellido_mat, 
-            COALESCE(SUM(j1.exp), 0) + COALESCE(SUM(j2.exp), 0) + COALESCE(SUM(j3.exp), 0) AS total_exp
+                u.foto,
+            SUM(h.exp) AS total_exp
             FROM usuario u
             JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
             JOIN historial h ON uh.id_historial = h.id_historial
-            LEFT JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1
-            LEFT JOIN juego2 j2 ON h.id_juego2 = j2.id_juego2
-            LEFT JOIN juego3 j3 ON h.id_juego3 = j3.id_juego3
             GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat
             ORDER BY total_exp DESC
             LIMIT 200 OFFSET 3;";
@@ -283,16 +256,13 @@ namespace OxxoWeb.Models
                 u.nombre, 
                 u.apellido_pat, 
                 u.apellido_mat, 
-                u.foto, 
-            COALESCE(SUM(j1.exp), 0) + COALESCE(SUM(j2.exp), 0) + COALESCE(SUM(j3.exp), 0) AS total_exp
+                u.foto,
+            SUM(h.exp) AS total_exp
             FROM usuario u
             JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
             JOIN historial h ON uh.id_historial = h.id_historial
-            LEFT JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1
-            LEFT JOIN juego2 j2 ON h.id_juego2 = j2.id_juego2
-            LEFT JOIN juego3 j3 ON h.id_juego3 = j3.id_juego3
-            GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat, u.foto
-            ORDER BY total_exp DESC 
+            GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat
+            ORDER BY total_exp DESC
             LIMIT 1;";
 
             MySqlCommand cmd = new MySqlCommand(queryG1, conexion);
@@ -337,16 +307,13 @@ namespace OxxoWeb.Models
                 u.nombre, 
                 u.apellido_pat, 
                 u.apellido_mat, 
-                u.foto, 
-            COALESCE(SUM(j1.exp), 0) + COALESCE(SUM(j2.exp), 0) + COALESCE(SUM(j3.exp), 0) AS total_exp
+                u.foto,
+            SUM(h.exp) AS total_exp
             FROM usuario u
             JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
             JOIN historial h ON uh.id_historial = h.id_historial
-            LEFT JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1
-            LEFT JOIN juego2 j2 ON h.id_juego2 = j2.id_juego2
-            LEFT JOIN juego3 j3 ON h.id_juego3 = j3.id_juego3
-            GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat, u.foto
-            ORDER BY total_exp DESC 
+            GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat
+            ORDER BY total_exp DESC
             LIMIT 1 OFFSET 1;";
 
             MySqlCommand cmd = new MySqlCommand(queryG2, conexion);
@@ -391,16 +358,13 @@ namespace OxxoWeb.Models
                 u.nombre, 
                 u.apellido_pat, 
                 u.apellido_mat, 
-                u.foto, 
-            COALESCE(SUM(j1.exp), 0) + COALESCE(SUM(j2.exp), 0) + COALESCE(SUM(j3.exp), 0) AS total_exp
+                u.foto,
+            SUM(h.exp) AS total_exp
             FROM usuario u
             JOIN usuario_historial uh ON u.id_usuario = uh.id_usuario
             JOIN historial h ON uh.id_historial = h.id_historial
-            LEFT JOIN juego1 j1 ON h.id_juego1 = j1.id_juego1
-            LEFT JOIN juego2 j2 ON h.id_juego2 = j2.id_juego2
-            LEFT JOIN juego3 j3 ON h.id_juego3 = j3.id_juego3
-            GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat, u.foto
-            ORDER BY total_exp DESC 
+            GROUP BY u.id_usuario, u.id_plaza, u.nombre, u.apellido_pat, u.apellido_mat
+            ORDER BY total_exp DESC
             LIMIT 1 OFFSET 2;";
 
             MySqlCommand cmd = new MySqlCommand(queryG3, conexion);
