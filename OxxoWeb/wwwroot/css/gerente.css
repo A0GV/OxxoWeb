@@ -1,0 +1,17 @@
+.table-header-custom {
+    background-color: #ffe3a3;
+    color: #000;
+    font-weight: bold;
+}
+
+.background-beige-cell {
+    background-color: #fffaf1;
+}
+
+.rounded-circle {
+    object-fit: cover;
+}
+
+.btn-outline-secondary i {
+    font-size: 1.2rem;
+}
