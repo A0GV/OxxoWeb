@@ -2,142 +2,151 @@
 .background-beige-cell {
     background-color: #FDF3DD;
     /*border: 1px solid gray; /* Just to check borders */
-  }
+}
   
   /* Para hacer select form customizing */
-  .select-redbg-whitetxt {
-    background-color: #791120;
-    font-size: 25px; 
-    border-radius: 10px;
-    color: #FFFFFF; /* White text */ 
-  }
+.select-redbg-whitetxt {
+  background-color: #791120;
+  font-size: 1.563rem; 
+  border-radius: 0.625rem;
+  color: #FFFFFF; /* White text */ 
+}
   
   
-  /* Podiums de leaderboard */
-  .left-podium {
-    background-color: #B0162C;
-    width: 70%;
-    height: 175px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  .center-podium {
-    background-color: #E70020;
-    width: 70%;
-    height: 228.5px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  .right-podium {
-    background-color: #791120;
-    width: 70%;
-    height: 130px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  .leaderboard-left-column img {
-    margin-top: 120px;
-    max-width: 70%;
-    margin-bottom: 10px;
-    max-height: 140px;
-  }
-  
-  .leaderboard-center-column img {
-    margin-top: 20px;
-    max-width: 70%;
-    margin-bottom: 10px;  
-  }
-  
-  .leaderboard-right-column img {
-    margin-top: 165px;
-    max-width: 70%;
-    margin-bottom: 10px;  
-  }
-  
-  /* Podium number styling */
-  .podium-number {
-    background-color: #FBB212; 
-    font-weight: 700;
-    font-size: 50px;
-    /* Set para que se mantenga el circulo */
-    margin-top: 40px;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .podium-employee-name {
-    font-weight: 600;
-    font-size: 25px;
-    max-width: 70%;
-    text-align: center;
-  }
+/* Podiums de leaderboard */
+.left-podium {
+  background-color: #B0162C;
+  width: 70%;
+  height: 9.688rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
-  .podium-txt {
-    font-weight: 400;
-    font-size: 20px;
-    max-width: 70%;
-    text-align: center;
-  }
-  
-  /* Para lugares restantes */
-  .table-beige {
-    background-color: #FDF3DD !important; /* Using important to override defaults */
-    width: 100%; 
-  }
-  
-  /* Need to override the th and data */
-  .table-beige th, .table-beige td {
-    background-color: #FDF3DD !important;
-    text-align: left !important; /* Para q el text esté hacia la izquierda */
-  }
-  
-  /* If using hover effect, prevent it from changing the background */
-  .table-hover tbody tr:hover {
-    background-color: #E6DAC6 !important; /* Slightly darker beige on hover */
-  }
-  
-  /* Limit table to only show first three */ 
-  .scroll-table {
-    max-height: 125px; /* First three names only */
-    overflow-y: auto; /* Permits vertical overflow */
-    display: block; /* Shows table as a block */
-  }
-  
-  /* Keeps table head at top */
-  .scroll-table thead {
-    position: sticky;
-    top: 0;
-    background: #f9f1dc; /* Mantener el fondo beige */
-    z-index: 2;
-  }
-  
-  /* Estilos para la scroll bar */
-  .scroll-table::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  /* Background whiteish */
-  .scroll-table::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 5px;
-  }
-  
-  /* The gray thing that moves as user scrolls */
-  .scroll-table::-webkit-scrollbar-thumb {
-    background: #aaa;
-    border-radius: 5px;
-  }
-  
-  /* Make slightly darker when hover over it */
-  .scroll-table::-webkit-scrollbar-thumb:hover {
-    background: #888;
-  }
+.center-podium {
+  background-color: #E70020;
+  width: 70%;
+  height: 14.281rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.right-podium {
+  background-color: #791120;
+  width: 70%;
+  height: 8.125rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.leaderboard-left-column img,
+.leaderboard-center-column img,
+.leaderboard-right-column img {
+    width: 8rem;
+    height: 8rem;
+    margin: 0 auto; /* Center image */
+    margin-bottom: 0.625rem; /* Add space between the podiums */
+    object-fit: cover; /* Crops image */
+    border-radius: 50%; /* Makes it circular */
+}
+
+/* Podium number styling */
+.podium-number {
+  background-color: #FBB212; 
+  font-weight: 700;
+  font-size: 3.125rem;
+  /* Set para que se mantenga el circulo */
+  margin-top: 2.5rem;
+  width: 3.75rem;
+  height: 3.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.podium-employee-name {
+  font-weight: 600;
+  font-size: 1.563rem;
+  max-width: 70%;
+  text-align: center;
+  word-wrap: break-word;  /* Ensures long words break properly */
+  overflow-wrap: break-word;
+  white-space: normal; /* Allows wrapping instead of shrinking */
+}
+
+.podium-txt {
+  font-weight: 400;
+  font-size: 1.25rem;
+  max-width: 70%;
+  text-align: center;
+}
+
+/* Para lugares restantes */
+.table-beige {
+  background-color: #FDF3DD !important; /* Using important to override defaults */
+  width: 100%; 
+}
+
+/* Need to override the th and data */
+.table-beige th, .table-beige td {
+  background-color: #FDF3DD !important;
+  text-align: left !important; /* Para q el text esté hacia la izquierda */
+}
+
+/* If using hover effect, prevent it from changing the background */
+.table-hover tbody tr:hover {
+  background-color: #E6DAC6 !important; /* Slightly darker beige on hover */
+}
+
+/* Limit table to only show first three */ 
+.scroll-table {
+  max-height: 10.50rem; /* First three names only */
+  overflow-y: auto; /* Permits vertical overflow */
+  display: block; /* Shows table as a block */
+}
+
+/* Keeps table head at top */
+.scroll-table thead {
+  position: sticky;
+  top: 0;
+  background: #f9f1dc; /* Mantener el fondo beige */
+  z-index: 2;
+}
+
+/* Estilos para la scroll bar */
+.scroll-table::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+/* Background whiteish */
+.scroll-table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 0.313rem;
+}
+
+/* The gray thing that moves as user scrolls */
+.scroll-table::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 0.313rem;
+}
+
+/* Make slightly darker when hover over it */
+.scroll-table::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* To style the names and their links */
+a {
+  text-decoration: none; /* Removes underline */
+  color: black;
+}
+
+a:visited {
+  color: black; 
+}
+
+a:hover {
+  text-decoration: underline; /* Adds underline when hover over it */
+}

@@ -1,0 +1,60 @@
+@page
+@model LeaderboardModel
+
+@{
+    ViewData["Title"] = "Recordatorios";
+}
+<div class="row align-items-center Titillium">
+    <div class="col-3">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="col-8"></div>
+    <div class="col-1">
+        <button type="button" class="btn btn-primary plus">
+            <span class="material-symbols-outlined">add</span>
+        </button>
+    </div>
+</div>
+
+<div class="row align-items-center Titillium">
+    <div class="row g-6 align-items-start" >
+        <div class="col-3 background-beige-cell rounded p-3 align-items-end shadow-sm categoriees">
+            <h2 class="titulo Titillium">Categoría</h2>
+            <div class="mini_categoria">
+                <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+                <label class="btn btn-outline-primary botonpersonal" for="btn-check-outlined"></label><br>
+                <h3 class="mini_titulo Titillium">Personal</h3>
+            </div>
+            <div class="mini_categoria">
+                <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+                <label class="btn btn-outline-primary morado" for="btn-check-outlined"></label><br>
+                <h3 class="mini_titulo Titillium">Personal</h3>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-8">
+            <h2 class="fechita Titillium">Hoy, 31 de Marzo del 2025</h2>
+            <div class="flexible">
+                <div class="botonsito rosa"></div>
+                <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec">
+                    <div class="flexible espacio widht100">
+                        <div class="Titillium titulo paddtit">Chequeo Semanal</div>
+                        <div class="Titillium hora">9:00 p.m. a 10 p.m.</div>
+                    </div>
+                    <div class="Titillium hora">Oficina centro Monterrey</div>
+                </div>
+            </div>
+
+            <div class="flexible">
+                <div class="botonsito morado"></div>
+                <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec">
+                    <div class="flexible espacio widht100">
+                        <div class="Titillium titulo paddtit">Chequeo Semanal</div>
+                        <div class="Titillium hora">9:00 p.m. a 10 p.m.</div>
+                    </div>
+                    <div class="Titillium hora">Oficina centro Monterrey</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

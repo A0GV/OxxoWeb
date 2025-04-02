@@ -18,15 +18,43 @@ public class PerfilModel : PageModel
         _context = context;
     }
 
-    public void OnGet(int idUsuario)
+    public void OnGet(string? nombre)
     {
-        UsuarioPerfil = _context.GetPerfil(idUsuario);
-        UsuarioEstadisticas = _context.GetEstadisticas(idUsuario);
-        UsuarioPublicaciones = _context.GetPublicaciones(idUsuario);
-        UsuarioCertificados = _context.GetCertificados(idUsuario);
+        if (!string.IsNullOrEmpty(nombre))
+        {
+            // Buscar el perfil por nombre
+            UsuarioPerfil = _context.GetPerfilPorNombre(nombre);
+
+            if (UsuarioPerfil == null)
+            {
+                // Si no se encuentra el perfil, redirigir a la página principal
+                Response.Redirect("/"); // O mostrar un mensaje de error si prefieres
+                return;
+            }
+
+            // Cargar estadísticas, publicaciones y certificados del usuario encontrado
+            UsuarioEstadisticas = _context.GetEstadisticas(UsuarioPerfil.IdUsuario);
+            UsuarioPublicaciones = _context.GetPublicaciones(UsuarioPerfil.IdUsuario);
+            UsuarioCertificados = _context.GetCertificados(UsuarioPerfil.IdUsuario);
+        }
+        else
+        {
+            // Si no hay búsqueda, cargar el perfil del usuario actual
+            int? idUsuario = HttpContext.Session.GetInt32("Id");
+            if (idUsuario == null)
+            {
+                Response.Redirect("/Index");
+                return;
+            }
+
+            UsuarioPerfil = _context.GetPerfil(idUsuario.Value);
+            UsuarioEstadisticas = _context.GetEstadisticas(idUsuario.Value);
+            UsuarioPublicaciones = _context.GetPublicaciones(idUsuario.Value);
+            UsuarioCertificados = _context.GetCertificados(idUsuario.Value);
+        }
     }
 
-        // 📌 Método para convertir la letra del tipo en descripción
+    // Método para convertir la letra del tipo en descripción
     public string ObtenerDescripcion(string tipo)
     {
         return tipo switch
