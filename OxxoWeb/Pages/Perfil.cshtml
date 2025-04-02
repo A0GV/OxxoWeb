@@ -32,12 +32,30 @@
         {
             @foreach (var publicacion in Model.UsuarioPublicaciones)
             {
-                <div class="publicacion-item">
-                    <div class="publicacion-contenido">
-                        <div>
-                            <p class="publicacion-titulo"><strong>@publicacion.Titulo</strong></p>
-                            <p class="publicacion-descripcion">@publicacion.Contenido</p>
-                            <p class="publicacion-fecha">Publicado el: @publicacion.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modalPublicacion@publicacion.IdPublicacion" class="text-decoration-none">
+                    <div class="publicacion-item">
+                        <div class="publicacion-contenido">
+                            <div>
+                                <p class="publicacion-titulo text-dark" ><strong>@publicacion.Titulo</strong></p>
+                                <p class="publicacion-descripcion">@publicacion.Contenido</p>
+                                <p class="publicacion-fecha">Publicado el: @publicacion.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Modal para la publicación -->
+                <div class="modal fade" id="modalPublicacion@publicacion.IdPublicacion" tabindex="-1" aria-labelledby="modalPublicacionLabel@publicacion.IdPublicacion" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered"> 
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalPublicacionLabel@publicacion.IdPublicacion">@publicacion.Titulo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>@publicacion.Contenido</p>
+                                <p class="text-muted">Publicado el: @publicacion.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,12 +112,30 @@
         {
             @foreach (var certificado in Model.UsuarioCertificados)
             {
-                <div class="certificacion-item d-flex align-items-center p-3 rounded">
-                    <img src="~/img/diploma.png" alt="Certificado" class="certificacion-icon me-3">
-                    <div>
-                        <p class="mb-0 cert-titulo"><strong>@certificado.Titulo</strong></p>
-                        <p class="mb-0 cert-subtitulo">@certificado.Descripcion</p>
-                        <p class="cert-fecha">Obtenido el: @certificado.FechaSubido.ToString("dd/MM/yyyy")</p>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modalCertificado@certificado.IdCertificado" class="text-decoration-none">
+                    <div class="certificacion-item d-flex align-items-center p-3 rounded">
+                        <img src="~/img/diploma.png" alt="Certificado" class="certificacion-icon me-3">
+                        <div>
+                            <p class="mb-0 cert-titulo text-dark"><strong>@certificado.Titulo</strong></p>
+                            <p class="mb-0 cert-subtitulo">@certificado.Descripcion</p>
+                            <p class="cert-fecha">Obtenido el: @certificado.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Modal para el certificado -->
+                <div class="modal fade" id="modalCertificado@certificado.IdCertificado" tabindex="-1" aria-labelledby="modalCertificadoLabel@certificado.IdCertificado" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalCertificadoLabel@certificado.IdCertificado">@certificado.Titulo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>@certificado.Descripcion</p>
+                                <p class="text-muted">Obtenido el: @certificado.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             }
