@@ -10,11 +10,32 @@
     </div>
     <div class="col-8"></div>
     <div class="col-1">
-        <button type="button" class="btn btn-primary plus">
+        <button type="button" class="btn btn-primary plus" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <span class="material-symbols-outlined">add</span>
         </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar recordatorio</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary">Agregar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
 
 <div class="row align-items-center Titillium">
     <div class="row g-6 align-items-start" >
@@ -35,7 +56,7 @@
         <div class="col-8">
             <h2 class="fechita Titillium">Hoy, 31 de Marzo del 2025</h2>
             <div class="flexible">
-                <div class="botonsito rosa"></div>
+                <button type="button" class="btn btn-primary botonsito rosa" data-bs-toggle="modal" data-bs-target="#exampleModal"></button></button>
                 <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec">
                     <div class="flexible espacio widht100">
                         <div class="Titillium titulo paddtit">Chequeo Semanal</div>
