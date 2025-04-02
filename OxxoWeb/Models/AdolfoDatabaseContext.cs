@@ -1,8 +1,10 @@
 using System; // Para poder hacer conexiones
 using MySql.Data.MySqlClient; // Agregar MySQL, need to do desde NuGet
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.IO;
+using Microsoft.Extensions.Configuration;
 
-namespace OxxoWeb.Models 
+namespace OxxoWeb.Models
 {
     public class AdolfoDatabaseContext
     {
@@ -10,7 +12,17 @@ namespace OxxoWeb.Models
 
         public AdolfoDatabaseContext()
         {
-            ConnectionString = "Server=127.0.0.1;Port=3306;Database=oxxo_base_e1;Uid=root;password=root;";
+            var objBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            IConfiguration conManager = objBuilder.Build();
+
+            var conn = conManager.GetConnectionString("MyDb1");
+            if (conn == null)
+            {
+                conn = "";
+            }
+            this.ConnectionString = conn;
         }
 
         private MySqlConnection GetConnection()
@@ -67,7 +79,7 @@ namespace OxxoWeb.Models
             MySqlConnection conexion = GetConnection();
             conexion.Open();
             MySqlCommand cmd = new MySqlCommand(
-                "SELECT COUNT(*) > 0 AS credenciales_correctas FROM usuario u INNER JOIN contrasena c ON u.id_contrasena = c.id_contrasena WHERE u.correo = @user AND c.contrasena = @contrasena;",conexion);
+                "SELECT COUNT(*) > 0 AS credenciales_correctas FROM usuario u INNER JOIN contrasena c ON u.id_contrasena = c.id_contrasena WHERE u.correo = @user AND c.contrasena = @contrasena;", conexion);
             cmd.Parameters.AddWithValue("@user", user);
             cmd.Parameters.AddWithValue("@contrasena", contrasena);
 
@@ -80,6 +92,24 @@ namespace OxxoWeb.Models
             }
             conexion.Close();
             return credencialesCorrectas;
+        }
+
+        public int GetUserId(string user)
+        {
+            int userId = 0;
+            MySqlConnection conexion = GetConnection();
+            conexion.Open();
+            MySqlCommand cmd = new MySqlCommand("select id_usuario as iD from usuario where correo = @user;", conexion);
+            cmd.Parameters.AddWithValue("@user", user);
+            using (var reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    userId = Convert.ToInt32(reader["iD"]);
+                }
+            }
+            conexion.Close();
+            return userId;
         }
     }
 }
