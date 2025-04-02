@@ -41,7 +41,7 @@ namespace OxxoWeb.Pages
 
         private int GetUserId(string username)
         {
-            using (var connection = new MySql.Data.MySqlClient.MySqlConnection("Server=127.0.0.1;Port=3306;Database=oxxo_base_e2_1;Uid=root;password=root"))
+            using (var connection = new MySql.Data.MySqlClient.MySqlConnection("Server=127.0.0.1;Port=3306;Database=oxxo_base_e2_1;Uid=root;password=kasse"))
             {
                 connection.Open();
                 string query = "SELECT id_usuario FROM usuario WHERE correo = @username LIMIT 1;";
