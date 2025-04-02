@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OxxoWeb.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 
 namespace OxxoWeb.Pages;
 
@@ -18,40 +19,34 @@ public class PerfilModel : PageModel
         _context = context;
     }
 
-    public void OnGet(string? nombre)
+    public void OnGet(int? idUsuario)
     {
-        if (!string.IsNullOrEmpty(nombre))
+        // Si no se proporciona un idUsuario, usar el ID del usuario autenticado
+        if (!idUsuario.HasValue)
         {
-            // Buscar el perfil por nombre
-            UsuarioPerfil = _context.GetPerfilPorNombre(nombre);
+            idUsuario = HttpContext.Session.GetInt32("Id"); // Recuperar el ID desde la sesión
 
-            if (UsuarioPerfil == null)
+            if (!idUsuario.HasValue)
             {
-                // Si no se encuentra el perfil, redirigir a la página principal
-                Response.Redirect("/"); // O mostrar un mensaje de error si prefieres
+                string mensaje = Uri.EscapeDataString("Debe iniciar sesión para acceder a su perfil");
+                Response.Redirect($"/Index?message={mensaje}");
                 return;
             }
-
-            // Cargar estadísticas, publicaciones y certificados del usuario encontrado
-            UsuarioEstadisticas = _context.GetEstadisticas(UsuarioPerfil.IdUsuario);
-            UsuarioPublicaciones = _context.GetPublicaciones(UsuarioPerfil.IdUsuario);
-            UsuarioCertificados = _context.GetCertificados(UsuarioPerfil.IdUsuario);
         }
-        else
+
+        // Cargar el perfil del usuario especificado
+        UsuarioPerfil = _context.GetPerfil(idUsuario.Value);
+
+        if (UsuarioPerfil == null)
         {
-            // Si no hay búsqueda, cargar el perfil del usuario actual
-            int? idUsuario = HttpContext.Session.GetInt32("Id");
-            if (idUsuario == null)
-            {
-                Response.Redirect("/Index");
-                return;
-            }
-
-            UsuarioPerfil = _context.GetPerfil(idUsuario.Value);
-            UsuarioEstadisticas = _context.GetEstadisticas(idUsuario.Value);
-            UsuarioPublicaciones = _context.GetPublicaciones(idUsuario.Value);
-            UsuarioCertificados = _context.GetCertificados(idUsuario.Value);
+            string mensaje = Uri.EscapeDataString("Perfil no encontrado");
+            Response.Redirect($"/Error?message={mensaje}");
+            return;
         }
+
+        UsuarioEstadisticas = _context.GetEstadisticas(UsuarioPerfil.IdUsuario) ?? new Estadisticas();
+        UsuarioPublicaciones = _context.GetPublicaciones(UsuarioPerfil.IdUsuario) ?? new List<Publicacion>();
+        UsuarioCertificados = _context.GetCertificados(UsuarioPerfil.IdUsuario) ?? new List<Cerificados>();
     }
 
     // Método para convertir la letra del tipo en descripción
