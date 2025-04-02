@@ -70,7 +70,7 @@ body {
 .RecordarUsuario {
   justify-content: center;
   padding-top: 1%;
-  padding-left: 30%;
+  padding-left: 50%;
 }
 
 .Enter {
@@ -340,4 +340,70 @@ img#IconOxxoImg,
 
 .bckColor{
   background-color: #f5f5f5;
+}
+
+/*GERENTE*/
+
+/* FONDO TARJETA COMPLETA */
+.background-beige-cell {
+  background-color: #fdf3dd;
+  border-radius: 16px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+
+/* ENCABEZADO BONITO */
+.table-header-custom th {
+  background-color: #ffe3a3;
+  color: #2f2f2f;
+  font-weight: bold;
+  padding: 1.2rem;
+  font-size: 1.1rem;
+  border: none;
+}
+
+/* CELDAS SUAVES, SIN GAPS */
+.table td {
+  vertical-align: middle;
+  padding: 1.4rem 1rem;
+  font-size: 1rem;
+  background-color: #fdf3dd;
+  border: none;
+}
+
+/* MÁS ALTURA DE FILA */
+.fila-asesor {
+  height: 80px;
+}
+
+/* FOTO + NOMBRE */
+.nombre-con-imagen {
+  display: flex;
+  align-items: center;
+}
+
+.nombre-con-imagen img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 0.8rem;
+}
+
+/* BOTONES ICONO */
+.table td .btn {
+  padding: 0.4rem 0.6rem;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  margin-right: 0.4rem;
+  border-color: #999;
+  color: #333;
+}
+
+.table td .btn i {
+  font-size: 1.3rem;
+}
+
+.table td .btn:last-child {
+  margin-right: 0;
 }
