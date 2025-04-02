@@ -1,5 +1,6 @@
 @page
-@model GerenteModel
+@model OxxoWeb.Pages.GerenteModel
+
 @{
     ViewData["Title"] = "Asesores de tienda";
 }
@@ -10,35 +11,37 @@
     <h1>Asesores de tienda</h1>
 
     <!-- Tabla de asesores -->
-    <div class="table-responsive background-beige-cell rounded shadow-sm mt-4">
+    <div class="table-responsive background-beige-cell mt-4 p-4 rounded shadow-sm">
         <table class="table table-hover table-borderless align-middle">
             <thead class="table-header-custom">
                 <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Correo</th>
-                    <th scope="col">Tiendas</th>
+                    <th scope="col">Tienda</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var asesor in Model.ListaAsesores)
+                @foreach (OxxoWeb.Models.AsesorInfo asesor in Model.ListaAsesores)
                 {
-                    <tr>
+                    <tr class="align-middle">
                         <td>
-                            <img src="~/img/@asesor.Foto" alt="Foto asesor" class="rounded-circle me-2" style="width: 40px; height: 40px;">
-                            @asesor.Nombre
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="~/img/@asesor.Foto" alt="Foto asesor" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                <span>@asesor.Nombre @asesor.ApellidoPat</span>
+
+                            </div>
                         </td>
                         <td>@asesor.Correo</td>
-                        <td>@asesor.Tienda</td>
+                        <td>@asesor.PlazaNombre.Replace("_", ", ")</td>
                         <td>
                             <a class="btn btn-sm btn-outline-secondary me-2" title="Ver"><i class="bi bi-eye"></i></a>
                             <a class="btn btn-sm btn-outline-secondary me-2" title="Estadísticas"><i class="bi bi-bar-chart-line"></i></a>
                             <a class="btn btn-sm btn-outline-secondary" title="Asignar tarea"><i class="bi bi-clipboard-plus"></i></a>
-
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-</div>
+</div>>
