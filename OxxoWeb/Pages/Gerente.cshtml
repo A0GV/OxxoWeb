@@ -11,8 +11,9 @@
     <h1>Asesores de tienda</h1>
 
     <!-- Tabla de asesores -->
-    <div class="table-responsive background-beige-cell mt-4 p-4 rounded shadow-sm">
-        <table class="table table-hover table-borderless align-middle">
+    <div class="table-responsive background-beige-cell mt-4 p-4 rounded shadow-sm" style="max-height: 650px; overflow-y: auto;">
+
+        <table class="table table-hover table-borderless align-middle mb-0">
             <thead class="table-header-custom">
                 <tr>
                     <th scope="col">Nombre</th>
@@ -21,19 +22,28 @@
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+           <tbody>
                 @foreach (OxxoWeb.Models.AsesorInfo asesor in Model.ListaAsesores)
                 {
                     <tr class="align-middle">
                         <td>
                             <div class="d-flex align-items-center gap-3">
-                                <img src="~/img/@asesor.Foto" alt="Foto asesor" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                @if (!string.IsNullOrEmpty(asesor.Foto))
+                                {
+                                    <img src="~/img/@asesor.Foto" alt="Foto asesor" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                }
+                                
                                 <span>@asesor.Nombre @asesor.ApellidoPat</span>
 
                             </div>
                         </td>
                         <td>@asesor.Correo</td>
-                        <td>@asesor.PlazaNombre.Replace("_", ", ")</td>
+                        <td><span class="badge bg-secondary">@asesor.TiendasCount</span> tiendas</td>
+
                         <td>
                             <a class="btn btn-sm btn-outline-secondary me-2" title="Ver"><i class="bi bi-eye"></i></a>
                             <a class="btn btn-sm btn-outline-secondary me-2" title="Estadísticas"><i class="bi bi-bar-chart-line"></i></a>
