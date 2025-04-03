@@ -30,7 +30,7 @@ namespace OxxoWeb.Models
             return new MySqlConnection(ConnectionString);
         }
 
-        public List<AsesorInfo> GetAsesoresConInfo()
+        public List<AsesorInfo> GetAsesoresInfo()
         {
             List<AsesorInfo> asesores = new List<AsesorInfo>();
             using (MySqlConnection conexion = GetConnection())
@@ -56,9 +56,6 @@ namespace OxxoWeb.Models
                             ApellidoPat = reader["apellido_pat"].ToString(),
                             ApellidoMat = reader["apellido_mat"].ToString(),
                             Correo = reader["correo"].ToString(),
-                            PlazaNombre = reader["plaza_nombre"].ToString(),
-                            Ciudad = reader["ciudad"].ToString(),
-                            Estado = reader["estado"].ToString(),
                             TipoUsuario = reader["tipo_usuario"].ToString(),
                             Foto = reader["foto"].ToString()
                         };
@@ -68,5 +65,33 @@ namespace OxxoWeb.Models
             }
             return asesores;
         }
+
+        public Dictionary<int, int> GetTiendasNum(){
+        Dictionary<int, int> tiendasPorAsesor = new();
+
+        using (MySqlConnection conexion = GetConnection())
+        {
+            conexion.Open();
+            string query = @"
+                SELECT id_usuario, COUNT(*) AS tiendas_count
+                FROM usuario_tienda
+                GROUP BY id_usuario;";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+            using (var reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    int idUsuario = Convert.ToInt32(reader["id_usuario"]);
+                    int count = Convert.ToInt32(reader["tiendas_count"]);
+                    tiendasPorAsesor[idUsuario] = count;
+                }
+            }
+        }
+        return tiendasPorAsesor;
+    }
+
+
+        
     }
 }
