@@ -1,4 +1,21 @@
 /*Cielito css*/
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: none;
+}
+
+.margenarriba{
+    margin-top: 12px;
+}
+
+.form-control:focus {
+    border-color: #978868;
+}
+
+.modal{
+    --bs-modal-header-border-color:#978868;
+    --bs-modal-footer-border-color:#978868;
+}
+
 
 h1{
     color: #000;
@@ -44,24 +61,80 @@ h1{
     height: 33px;
 }
 
+.botonagregar{
+    background: #F4BB4C;
+    border-color: #c6983e;
+    color: #1c1c1c;
+    --bs-btn-active-bg: #c6983e;
+    --bs-btn-active-border-color:#c6983e;
+    --bs-btn-active-color: #1c1c1c;
+}
+
+.botonagregar:hover,.botonagregar:active{
+    background:#c6983e;
+    border-color: #c6983e;
+    color: #1c1c1c;
+}
+
+.botoncerrar{
+    background: #978868;
+    border-color: #766a51;
+    --bs-btn-active-bg: #766a51;
+}
+.botoncerrar:hover,.botoncerrar:active{
+    background:#766a51;
+}
+
 .botonpersonal{
     background: #017BFF;
+}
+
+.botonpersonal:hover,
+.botonpersonal:active {
+  background-color: #046ad7 !important;
+  border-color: #046ad7;
+  --bs-btn-active-border-color:#046ad7;
 }
 
 .morado{
     background: #7E57C2;
 }
+.morado:hover,
+.morado:active {
+  background-color: #6d4ba7 !important;
+  border-color: #6d4ba7;
+  --bs-btn-active-border-color:#6d4ba7;
+}
+
 
 .amarillo{
     background: #FFD701;
+}
+.amarillo:hover,
+.amarillo:active {
+  background-color: #dcbc03 !important;
+  border-color: #dcbc03;
+  --bs-btn-active-border-color:#dcbc03;
 }
 
 .rosa{
     background: #FF4081;
 }
+.rosa:hover,
+.rosa:active {
+  background-color: #da376e !important;
+  border-color: #da376e;
+  --bs-btn-active-border-color:#da376e;
+}
 
 .verde{
     background: #00C853;
+}
+.verde:hover,
+.verde:active {
+  background-color: #019f43 !important;
+  border-color: #019f43;
+  --bs-btn-active-border-color:#019f43;
 }
 
 .mini_categoria{
@@ -106,6 +179,13 @@ h1{
     justify-content: center;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+.plus:hover,
+.plus:active {
+  background-color: #ba011a !important;
+  border-color: #ba011a;
+  --bs-btn-active-border-color:#ba011a;
 }
 
 .botonsito{
