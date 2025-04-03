@@ -1,0 +1,177 @@
+@page
+@using GerenteTareas.Pages
+@model GaliModel
+@{
+    ViewData["Title"] = "galipantalla";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel del Gerente</title>
+    <link rel="stylesheet" href="~/css/galistyle.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+
+    <!-- ================================
+         TÍTULO PRINCIPAL
+    =================================== -->
+    <div class="titulo-de-la-pag"> 
+        <h1>Panel de Asignación del Gerente de Plaza</h1>
+    </div>
+
+    <!-- ================================
+         RESUMEN KPIs (SOLO)
+    =================================== -->
+    <div class="seccion resumen">
+        <h2>Resumen General del Equipo</h2>
+        <div class="kpis">
+            <div class="kpi"><div class="icono"><i class="bi bi-people-fill"></i></div><strong>5</strong><span>Asesores</span></div>
+            <div class="kpi"><div class="icono"><i class="bi bi-bullseye"></i></div><strong>4</strong><span>Metas activas</span></div>
+            <div class="kpi"><div class="icono"><i class="bi bi-check-circle-fill"></i></div><strong>12</strong><span>Metas completadas</span></div>
+            <div class="kpi"><div class="icono"><i class="bi bi-arrow-repeat"></i></div><strong>3</strong><span>Asesores activos hoy</span></div>
+            <div class="kpi"><div class="icono"><i class="bi bi-plus-circle-fill"></i></div><strong>2</strong><span>Metas nuevas esta semana</span></div>
+            <div class="kpi"><div class="icono"><i class="bi bi-fire"></i></div><strong>2</strong><span>Asesores en racha</span></div>
+        </div>
+    </div>
+
+    <!-- ================================
+         ROW 2: Progreso + Asignar
+    =================================== -->
+    <div class="row">
+        <div class="seccion progreso-asesores">
+    <h2>Progreso de Asesores</h2>
+    <table>
+        <thead>
+            <tr class="encabezado-tabla">
+                <th><i class="bi bi-person-fill"></i> Asesor</th>
+                <th><i class="bi bi-flag-fill"></i> Reto actual</th>
+                <th><i class="bi bi-bar-chart-fill"></i> Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Juan Pérez</td>
+                <td>Capacitación</td>
+                <td class="completado"><i class="bi bi-check2-circle"></i> Completado</td>
+            </tr>
+            <tr>
+                <td>Ana Martínez</td>
+                <td>EXP mínimo</td>
+                <td class="progreso"><i class="bi bi-hourglass-split"></i> En progreso</td>
+            </tr>
+            <tr>
+                <td>Luis Romero</td>
+                <td>Registro diario</td>
+                <td class="no-iniciado"><i class="bi bi-x-circle"></i> Sin empezar</td>
+            </tr>
+            <tr>
+                <td>Carlos López</td>
+                <td>EXP mínimo</td>
+                <td class="progreso"><i class="bi bi-hourglass-split"></i> En progreso</td>
+            </tr>
+            <tr>
+                <td>Sofía Vázquez</td>
+                <td>Capacitación</td>
+                <td class="completado"><i class="bi bi-check2-circle"></i> Completado</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+    <div class="seccion asignar-tarea">
+    <h2>Asignar Tarea</h2>
+    <form>
+        <div class="campo-formulario">
+            <label for="titulo"><i class="bi bi-pencil-fill"></i> Título de tarea</label>
+            <input type="text" id="titulo" />
+        </div>
+
+        <div class="campo-formulario">
+            <label for="tipo"><i class="bi bi-card-checklist"></i> Tipo de tarea</label>
+            <select id="tipo">
+                <option value="" disabled selected>Selecciona un tipo</option>
+                <option>Capacitación</option>
+                <option>Reto EXP</option>
+                <option>Registro diario</option>
+                <option>Otro</option>
+            </select>
+        </div>
+
+        <div class="campo-formulario">
+            <label for="fecha"><i class="bi bi-calendar-event"></i> Fecha límite</label>
+            <input type="date" id="fecha" />
+        </div>
+
+        <div class="campo-formulario">
+            <label for="asesores"><i class="bi bi-people-fill"></i> Seleccionar asesores</label>
+            <select id="asesores">
+                <option>Asesor 1</option>
+                <option>Asesor 2</option>
+                <option>Asesor 3</option>
+                <option>Asesor 4</option>
+                <option>Asesor 5</option>
+            </select>
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit"><i class="bi bi-check-lg"></i> Guardar</button>
+            <button type="reset"><i class="bi bi-x-lg"></i> Borrar</button>
+        </div>
+    </form>
+</div>
+
+
+
+    <!-- ================================
+         ROW 3: Metas Activas + Completadas
+    =================================== -->
+    <div class="row">
+        <div class="seccion metas-activas">
+            <h2>Metas Activas del Equipo</h2>
+            <div class="progress-bar">
+                <label>Capacitación finalizada</label>
+                <progress value="3" max="4"></progress>
+                <span>3/4 asesores</span>
+            </div>
+            <div class="progress-bar">
+                <label>EXP acumulado en el juego</label>
+                <progress value="300" max="500"></progress>
+                <span>300/500 EXP</span>
+            </div>
+            <div class="progress-bar">
+                <label>Inicio de sesión consecutiva</label>
+                <progress value="3" max="5"></progress>
+                <span>3/5 días</span>
+            </div>
+        </div>
+
+        <div class="seccion metas-completadas">
+            <h2>Metas Completadas</h2>
+            <div class="filtro-logros">
+                <input type="radio" name="filtro" id="filtro-equipo" checked hidden>
+                <input type="radio" name="filtro" id="filtro-individual" hidden>
+                <label for="filtro-equipo" class="boton-filtro">Equipo</label>
+                <label for="filtro-individual" class="boton-filtro">Individual</label>
+            </div>
+            <div class="contenedor-logros">
+                <ul class="ranking contenido-equipo">
+                    <li>🏆 Capacitación completada por todos</li>
+                    <li>📈 5000 EXP acumulados</li>
+                    <li>⚡ 5 días consecutivos activos</li>
+                    <li>📜 Meta especial desbloqueada</li>
+                </ul>
+                <ul class="ranking contenido-individual">
+                    <li><span>🥇</span> Ana Martínez - 12 metas</li>
+                    <li><span>🥈</span> Carlos López - 9 metas</li>
+                    <li><span>🥉</span> Sofía Vázquez - 7 metas</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
