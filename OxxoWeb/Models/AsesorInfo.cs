@@ -7,9 +7,8 @@ public class AsesorInfo
     public string ApellidoPat { get; set; }
     public string ApellidoMat { get; set; }
     public string Correo { get; set; }
-    public string PlazaNombre { get; set; }
-    public string Ciudad { get; set; }
-    public string Estado { get; set; }
     public string TipoUsuario { get; set; }
     public string Foto { get; set; }
+    public int TiendasCount { get; set; }
+
 }
