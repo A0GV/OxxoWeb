@@ -41,11 +41,20 @@
                                 </select>
                                 <label for="floatingSelect">Categoría</label>
                             </div>
-                            <div class="form-floating margenarriba">
-                                <input id="fecha" class="form-control" type="date" />
-                                <label for="floatingSelect">Fecha</label>
+                            <div class="mb-3 d-flex margenarriba">
+                                <div class="form-floating">
+                                    <input id="fecha" class="form-control" type="date" />
+                                    <label for="fecha">Fecha</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input id="horainicio" class="form-control" type="time" />
+                                    <label for="horainicio">Hora de inicio</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input id="horafin" class="form-control" type="time" />
+                                    <label for="horafin">Hora de fin</label>
+                                </div>
                             </div>
-                            <input id="fecha" class="form-control" type="time" />
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -88,11 +97,44 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body Titillium">
-                                eres un loser
+                                <form>
+                                    <div class="mb-3">
+                                        @* <label for="titulo" class="form-label">Agregar título</label> *@
+                                        <input type="text" class="form-control Titillium" placeholder="Agregar título"></input>
+                                    </div>
+                                    <div class="mb-3">
+                                        @* <label for="titulo" class="form-label">Agregar título</label> *@
+                                        <textarea class="form-control Titillium" placeholder="Descripción" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                            <option selected>Selecciona una categoría</option>
+                                            <option value="1">Personal</option>
+                                            <option value="2">Tienda 1</option>
+                                            <option value="3">Tienda 2</option>
+                                        </select>
+                                        <label for="floatingSelect">Categoría</label>
+                                    </div>
+                                    <div class="mb-3 d-flex margenarriba">
+                                        <div class="form-floating">
+                                            <input id="fecha" class="form-control" type="date" />
+                                            <label for="fecha">Fecha</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input id="horainicio" class="form-control" type="time" />
+                                            <label for="horainicio">Hora de inicio</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input id="horafin" class="form-control" type="time" />
+                                            <label for="horafin">Hora de fin</label>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary Titillium" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-primary Titillium">Guardar</button>
+                                <button type="button" class="btn btn-secondary botoncerrar" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" class="btn btn-danger Titillium" data-bs-dismiss="modal">Eliminar</button>
+                                <button type="button" class="btn btn-primary botonagregar">Modificar</button>
                             </div>
                         </div>
                     </div>
