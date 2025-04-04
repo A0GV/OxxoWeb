@@ -20,6 +20,7 @@ body {
     font-size: 1.9rem;
     font-weight: 600;
     color: #d62828;
+    text-align: center;
 }
 
 /* ================================
@@ -53,7 +54,7 @@ body {
     flex-wrap: wrap;
 }
 
-
+/*para hacerlos tipo dashboard*/
 .row > .seccion {
     flex: 1;
     min-width: 350px;
@@ -113,17 +114,12 @@ body {
 /* ================================
    COLORES POR KPI (opcional)
 ================================ */
-
 .kpi:nth-child(1) {background: linear-gradient(to right, #dbeafe, #bfdbfe);}
 .kpi:nth-child(2) {background: linear-gradient(to right, #e0f2f1, #b2dfdb);}
 .kpi:nth-child(3) {background: linear-gradient(to right, #ede7f6, #d1c4e9);}
 .kpi:nth-child(4) {background: linear-gradient(to right, #fce4ec, #f8bbd0);}
 .kpi:nth-child(5) {background: linear-gradient(to right, #ffe8d6, #ffd4ba);}
 .kpi:nth-child(6) {background: linear-gradient(to right, #f2e8dc, #e4d5c3);}
-
-
-
-
 
 /* ================================
    FORMULARIO DE TAREAS
@@ -144,19 +140,21 @@ body {
 .campo-formulario label {
     font-weight: 600;
     color: #444;
-    font-size: 1rem;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     gap: 0.4rem;
+    margin-left: 0.5rem;
 }
 
 .campo-formulario input,
 .campo-formulario select {
-    padding: 0.7rem 1rem;
+    padding: 1rem 1.2rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     transition: border 0.3s, box-shadow 0.3s;
+    background-color: #f0f0f0;  /* gris suave */
 }
 
 .campo-formulario input:focus,
@@ -202,12 +200,15 @@ body {
     display: block;
     font-weight: 500;
     margin-bottom: 0.3rem;
+    text-align: left;
+    font-size: 1.3rem;
 }
 progress {
     width: 100%;
-    height: 18px;
+    height: 30px;
     appearance: none;
     border-radius: 10px;
+
 }
 progress::-webkit-progress-bar {
     background-color: #eee;
@@ -218,9 +219,11 @@ progress::-webkit-progress-value {
     border-radius: 10px;
 }
 .progress-bar span {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: #444;
+    text-align: right;
 }
+
 
 /* ================================
    TABLA DE PROGRESO
@@ -228,7 +231,7 @@ progress::-webkit-progress-value {
 .progreso-asesores table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     max-width: none;
     border-radius: 14px;
     border: 1px;
@@ -239,7 +242,7 @@ progress::-webkit-progress-value {
     color: #222;
     font-weight: 700;
     text-align: left;
-    padding: 1rem 1.2rem;
+    padding: 1rem 1.5rem;
     border-bottom: 2px solid #ddd;
 }
 
@@ -266,14 +269,16 @@ progress::-webkit-progress-value {
 /* ================================
    LOGROS: FILTRO Y RANKING
 ================================ */
+.filtro-logros-wrapper input[type="radio"] {
+    display: none;
+}
+
 .filtro-logros {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }
-.filtro-logros input[type="radio"] {
-    display: none;
-}
+
 .boton-filtro {
     background: #ddd;
     border-radius: 6px;
@@ -282,42 +287,56 @@ progress::-webkit-progress-value {
     font-weight: 500;
     transition: background 0.3s, transform 0.2s;
 }
+
 .boton-filtro:hover {
     transform: scale(1.05);
 }
-#filtro-equipo:checked ~ .boton-filtro[for="filtro-equipo"],
-#filtro-individual:checked ~ .boton-filtro[for="filtro-individual"] {
+
+/* BOTÓN ACTIVO */
+.filtro-logros-wrapper #filtro-equipo:checked ~ .filtro-logros label[for="filtro-equipo"],
+.filtro-logros-wrapper #filtro-individual:checked ~ .filtro-logros label[for="filtro-individual"] {
     background-color: #d62828;
     color: white;
 }
-.contenedor-logros ul {
+
+/* OCULTAR TODO POR DEFECTO */
+.filtro-logros-wrapper .contenedor-logros .contenido {
     display: none;
 }
-#filtro-equipo:checked ~ .contenedor-logros .contenido-equipo {
+
+/* MOSTRAR SEGÚN RADIO SELECCIONADO */
+.filtro-logros-wrapper #filtro-equipo:checked ~ .contenedor-logros .contenido-equipo {
     display: block;
 }
-#filtro-individual:checked ~ .contenedor-logros .contenido-individual {
+
+.filtro-logros-wrapper #filtro-individual:checked ~ .contenedor-logros .contenido-individual {
     display: block;
 }
+
+/* ESTILO DE LA LISTA */
 .ranking {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .ranking li {
     padding: 0.3rem 0;
     font-size: 1rem;
+    font-size: 1.6rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     transition: transform 0.2s ease;
 }
+
 .ranking li:hover {
     transform: scale(1.03);
     background-color: #f9f9f9;
     border-radius: 6px;
     padding-left: 0.5rem;
 }
+
 .ranking li span {
     font-size: 1.2rem;
 }
