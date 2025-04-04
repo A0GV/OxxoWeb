@@ -86,12 +86,12 @@
     <h2>Asignar Tarea</h2>
     <form>
         <div class="campo-formulario">
-            <label for="titulo"><i class="bi bi-pencil-fill"></i> Título de tarea</label>
+            <label for="titulo"><i class="bi bi-pencil-fill"></i> Título de tarea:</label>
             <input type="text" id="titulo" />
         </div>
 
         <div class="campo-formulario">
-            <label for="tipo"><i class="bi bi-card-checklist"></i> Tipo de tarea</label>
+            <label for="tipo"><i class="bi bi-card-checklist"></i> Tipo de tarea:</label>
             <select id="tipo">
                 <option value="" disabled selected>Selecciona un tipo</option>
                 <option>Capacitación</option>
@@ -102,12 +102,12 @@
         </div>
 
         <div class="campo-formulario">
-            <label for="fecha"><i class="bi bi-calendar-event"></i> Fecha límite</label>
+            <label for="fecha"><i class="bi bi-calendar-event"></i> Fecha límite:</label>
             <input type="date" id="fecha" />
         </div>
 
         <div class="campo-formulario">
-            <label for="asesores"><i class="bi bi-people-fill"></i> Seleccionar asesores</label>
+            <label for="asesores"><i class="bi bi-people-fill"></i> Seleccionar asesor:</label>
             <select id="asesores">
                 <option>Asesor 1</option>
                 <option>Asesor 2</option>
@@ -149,29 +149,39 @@
             </div>
         </div>
 
-        <div class="seccion metas-completadas">
-            <h2>Metas Completadas</h2>
-            <div class="filtro-logros">
-                <input type="radio" name="filtro" id="filtro-equipo" checked hidden>
-                <input type="radio" name="filtro" id="filtro-individual" hidden>
-                <label for="filtro-equipo" class="boton-filtro">Equipo</label>
-                <label for="filtro-individual" class="boton-filtro">Individual</label>
-            </div>
-            <div class="contenedor-logros">
-                <ul class="ranking contenido-equipo">
-                    <li>🏆 Capacitación completada por todos</li>
-                    <li>📈 5000 EXP acumulados</li>
-                    <li>⚡ 5 días consecutivos activos</li>
-                    <li>📜 Meta especial desbloqueada</li>
-                </ul>
-                <ul class="ranking contenido-individual">
-                    <li><span>🥇</span> Ana Martínez - 12 metas</li>
-                    <li><span>🥈</span> Carlos López - 9 metas</li>
-                    <li><span>🥉</span> Sofía Vázquez - 7 metas</li>
-                </ul>
-            </div>
+    <div class="seccion metas-completadas">
+    <h2>Metas Completadas</h2>
+
+    <div class="filtro-logros-wrapper">
+        <!-- INPUTS -->
+        <input type="radio" name="filtro" id="filtro-equipo" checked>
+        <input type="radio" name="filtro" id="filtro-individual">
+
+        <!-- BOTONES -->
+        <div class="filtro-logros">
+            <label for="filtro-equipo" class="boton-filtro">Equipo</label>
+            <label for="filtro-individual" class="boton-filtro">Individual</label>
         </div>
+
+        <!-- CONTENIDO LOGROS -->
+        <div class="contenedor-logros">
+    <ul class="ranking contenido contenido-equipo">
+        <li><i class="bi bi-trophy"></i> Capacitación completada por todos</li>
+        <li><i class="bi bi-bar-chart-line"></i> 5000 EXP acumulados</li>
+        <li><i class="bi bi-lightning-fill"></i> 5 días consecutivos activos</li>
+        <li><i class="bi bi-award"></i> Meta especial desbloqueada</li>
+    </ul>
+
+    <ul class="ranking contenido contenido-individual">
+        <li><i class="bi bi-1-circle"></i> Ana Martínez - 12 metas</li>
+        <li><i class="bi bi-2-circle"></i> Carlos López - 9 metas</li>
+        <li><i class="bi bi-3-circle"></i> Sofía Vázquez - 7 metas</li>
+    </ul>
     </div>
+    </div>
+</div>
+
+
 
 </body>
 </html>
