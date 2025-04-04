@@ -3,6 +3,10 @@
     box-shadow: none;
 }
 
+.btn-check{
+    align-content: top;
+}
+
 .table-beige th, .table-beige td {
     align-content: center !important;
 }
