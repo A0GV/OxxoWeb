@@ -3,6 +3,10 @@
     box-shadow: none;
 }
 
+.espacito{
+    margin-bottom: 15px;
+}
+
 .btn-check{
     align-content: top;
 }
@@ -104,8 +108,10 @@ h1{
 
 .botonpersonal:hover,
 .botonpersonal:active {
-  background-color: #046ad7 !important;
   border-color: #046ad7;
+  --bs-btn-hover-color: #017BFF;
+  --bs-btn-active-color: #fff;
+  --bs-btn-hover-border-color:#046ad7;
   --bs-btn-active-border-color:#046ad7;
 }
 
