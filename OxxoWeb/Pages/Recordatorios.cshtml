@@ -25,11 +25,9 @@
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                @* <label for="titulo" class="form-label">Agregar título</label> *@
                                 <input type="text" class="form-control Titillium" placeholder="Agregar título"></input>
                             </div>
                             <div class="mb-3">
-                                @* <label for="titulo" class="form-label">Agregar título</label> *@
                                 <textarea class="form-control Titillium" placeholder="Descripción" rows="3"></textarea>
                             </div>
                             <div class="form-floating">
@@ -95,9 +93,19 @@
         </div>
         <div class="col-1"></div>
         <div class="col-8">
-            <h2 class="fechita Titillium">Hoy, 31 de Marzo del 2025</h2>
-            <div class="flexible">
-                <button type="button" class="btn btn-primary botonsito rosa" data-bs-toggle="modal"
+            @foreach(var rec in Model.recc){
+                @if(!Model.Checkfecha[rec.fecha]){
+                    //Extrae solamente la fecha y la compara con la fecha de la base de datos
+                    @if(rec.fecha == DateOnly.FromDateTime(DateTime.Today)){
+                        <h2 class="fechita Titillium">Hoy, @rec.fecha.ToString("dd 'de' MMMM 'del' yyyy")</h2>
+                    }
+                    else{
+                        <h2 class="fechita Titillium">@rec.fecha.ToString("dd 'de' MMMM 'del' yyyy")</h2>
+                    }
+                    Model.Checkfecha[rec.fecha]=true;
+                }
+            <div class="flexible espacito">
+                <button type="button" class="btn btn-primary botonsito @(rec.tipo == 't' ? @Model.colores[(rec.id_tienda ?? 0) % 4] : "botonpersonal")" data-bs-toggle="modal"
                     data-bs-target="#Modificar"></button>
                 <div class="modal fade" id="Modificar" tabindex="-1" aria-labelledby="ModificarLabel"
                     aria-hidden="true">
@@ -158,23 +166,13 @@
                 </div>
                 <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec">
                     <div class="flexible espacio widht100">
-                        <div class="Titillium titulo paddtit">Chequeo Semanal</div>
-                        <div class="Titillium hora">9:00 p.m. a 10 p.m.</div>
+                        <div class="Titillium titulo paddtit">@rec.titulo</div>
+                        <div class="Titillium hora">@rec.hora_inicio a @rec.hora_final</div>
                     </div>
-                    <div class="Titillium hora">Oficina centro Monterrey</div>
-                </div>
+                    <div class="Titillium hora">@rec.lugar</div>
+                </div>  
             </div>
-
-            <div class="flexible">
-                <div class="botonsito morado"></div>
-                <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec">
-                    <div class="flexible espacio widht100">
-                        <div class="Titillium titulo paddtit">Chequeo Semanal</div>
-                        <div class="Titillium hora">9:00 p.m. a 10 p.m.</div>
-                    </div>
-                    <div class="Titillium hora">Oficina centro Monterrey</div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </div>
