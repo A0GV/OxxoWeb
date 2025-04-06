@@ -4,6 +4,7 @@ using System.IO;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 
+
 namespace OxxoWeb.Models
 {
     public class ReginaDataBaseContext
@@ -90,6 +91,26 @@ namespace OxxoWeb.Models
         }
         return tiendasPorAsesor;
     }
+
+
+    public int GetTipoUsuario(string correo){
+        int tipo = 0;
+        MySqlConnection conexion = GetConnection();
+        conexion.Open();
+        MySqlCommand cmd = new MySqlCommand("SELECT id_tipo FROM usuario WHERE correo = @correo;", conexion);
+        cmd.Parameters.AddWithValue("@correo", correo);
+
+        using (var reader = cmd.ExecuteReader())
+        {
+            if (reader.Read())
+            {
+                tipo = Convert.ToInt32(reader["id_tipo"]);
+            }
+        }
+    conexion.Close();
+    return tipo;
+}
+
 
 
         
