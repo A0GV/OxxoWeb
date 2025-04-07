@@ -1,6 +1,7 @@
 using System; // Para poder hacer conexiones
 using MySql.Data.MySqlClient; // Agregar MySQL, need to do desde NuGet
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace OxxoWeb.Models
 {
@@ -65,7 +66,7 @@ namespace OxxoWeb.Models
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = conexion;
             cmd.Parameters.AddWithValue("@id", idUSuario);
-            cmd.CommandText = @"select r.titulo, r.dia, r.lugar, r.descripcion, r.hora_inicio, r.hora_final, tr.tipo, r.id_tienda
+            cmd.CommandText = @"select r.titulo, r.dia, r.lugar, r.descripcion, r.hora_inicio, r.hora_final, tr.tipo, r.id_tienda, r.id_recordatorio
                                 from recordatorio r
                                 join tiporec tr on tr.id_tipo =r.id_tipo
                                 where r.id_usuario = 6 and r.dia >= CURRENT_DATE
@@ -83,7 +84,8 @@ namespace OxxoWeb.Models
                         hora_final = reader.GetTimeSpan("hora_final"),
                         descripcion = reader.IsDBNull(reader.GetOrdinal("descripcion")) ? null : reader.GetString(reader.GetOrdinal("descripcion")),
                         tipo = reader.GetChar("tipo"),
-                        id_tienda = reader.IsDBNull(reader.GetOrdinal("id_tienda")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("id_tienda"))
+                        id_tienda = reader.IsDBNull(reader.GetOrdinal("id_tienda")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("id_tienda")),
+                        id_recordatorio=reader.GetInt32("id_recordatorio")
                     };
                     recordatorioss.Add(rec);
                 }
@@ -92,6 +94,40 @@ namespace OxxoWeb.Models
             cmd.ExecuteNonQuery();
             conexion.Close();
             return recordatorioss;
+        }
+
+        public void EliminarRec(int id_reco){
+            MySqlConnection conexion = GetConnection();
+            conexion.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conexion;
+            cmd.Parameters.AddWithValue("@id_rec", id_reco);
+            cmd.CommandText = @"delete from recordatorio where id_recordatorio = @id_rec;";
+            cmd.Prepare();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+        public void AgregarRec(int id_usu, string titu, DateOnly diaa, string lug,string desc, TimeSpan hi, TimeSpan hf, int id_tien, int idtip){
+            MySqlConnection conexion = GetConnection();
+            conexion.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conexion;
+            cmd.Parameters.AddWithValue("@idus", id_usu);
+            cmd.Parameters.AddWithValue("@tit", titu);
+            cmd.Parameters.AddWithValue("@day", diaa);
+            cmd.Parameters.AddWithValue("@place", lug);
+            cmd.Parameters.AddWithValue("@des", desc);
+            cmd.Parameters.AddWithValue("@hi", hi);
+            cmd.Parameters.AddWithValue("@hf", hf);
+            cmd.Parameters.AddWithValue("@idtipo", idtip);
+            //Set null cuado sea 0 el valor, DBNull combierte el valor a nulo
+            cmd.Parameters.AddWithValue("@idtienda", id_tien == 0 ? (object)DBNull.Value : id_tien);
+            cmd.CommandText = @"insert into recordatorio (id_usuario, titulo, dia, lugar, descripcion, hora_inicio, hora_final, id_tipo, id_tienda) values
+                                (@idus, @tit, @day, @place, @des, @hi, @hf, @idtipo, @idtienda);";
+            cmd.Prepare();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
         }
     }
 }
