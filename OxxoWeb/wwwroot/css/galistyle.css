@@ -20,6 +20,7 @@ body {
     font-size: 1.9rem;
     font-weight: 600;
     color: #d62828;
+    text-align: center;
 }
 
 /* ================================
@@ -53,7 +54,7 @@ body {
     flex-wrap: wrap;
 }
 
-
+/*para hacerlos tipo dashboard*/
 .row > .seccion {
     flex: 1;
     min-width: 350px;
@@ -113,7 +114,6 @@ body {
 /* ================================
    COLORES POR KPI (opcional)
 ================================ */
-
 .kpi:nth-child(1) {background: linear-gradient(to right, #dbeafe, #bfdbfe);}
 .kpi:nth-child(2) {background: linear-gradient(to right, #e0f2f1, #b2dfdb);}
 .kpi:nth-child(3) {background: linear-gradient(to right, #ede7f6, #d1c4e9);}
@@ -121,12 +121,8 @@ body {
 .kpi:nth-child(5) {background: linear-gradient(to right, #ffe8d6, #ffd4ba);}
 .kpi:nth-child(6) {background: linear-gradient(to right, #f2e8dc, #e4d5c3);}
 
-
-
-
-
 /* ================================
-   FORMULARIO DE TAREAS
+   FORMULARIO DE ASIGNAR TAREAS
 ================================ */
 .asignar-tarea form {
     display: flex;
@@ -144,19 +140,21 @@ body {
 .campo-formulario label {
     font-weight: 600;
     color: #444;
-    font-size: 1rem;
+    font-size: 1.2rem;
     display: flex;
     align-items: center;
     gap: 0.4rem;
+    margin-left: 0.5rem;
 }
 
 .campo-formulario input,
 .campo-formulario select {
-    padding: 0.7rem 1rem;
+    padding: 1rem 1.2rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     transition: border 0.3s, box-shadow 0.3s;
+    background-color: #f0f0f0;  /* gris suave */
 }
 
 .campo-formulario input:focus,
@@ -189,8 +187,31 @@ body {
     transform: scale(1.05);
 }
 
+/* ============================
+   POPUP DE ÉXITO
+============================= */
+.popup-mensaje {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #28a745;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    animation: aparecer 0.5s ease-out, desaparecer 0.5s ease-in 3s forwards;
+}
 
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
+@keyframes desaparecer {
+    to { opacity: 0; transform: translateY(20px); display: none; }
+}
 
 /* ================================
    PROGRESS BARS
@@ -202,12 +223,15 @@ body {
     display: block;
     font-weight: 500;
     margin-bottom: 0.3rem;
+    text-align: left;
+    font-size: 1.3rem;
 }
 progress {
     width: 100%;
-    height: 18px;
+    height: 30px;
     appearance: none;
     border-radius: 10px;
+
 }
 progress::-webkit-progress-bar {
     background-color: #eee;
@@ -218,31 +242,34 @@ progress::-webkit-progress-value {
     border-radius: 10px;
 }
 .progress-bar span {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: #444;
+    text-align: right;
 }
 
+
 /* ================================
-   TABLA DE PROGRESO
+   TABLA DE PROGRESO DE ASESORES
 ================================ */
+
+/* Estilo general de la tabla */
 .progreso-asesores table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
-    max-width: none;
+    margin-top: 1.5rem;
     border-radius: 14px;
-    border: 1px;
+    border: 1px solid #ccc;
 }
 
+/* Estilo del encabezado */
 .encabezado-tabla {
-    background-color: #f0f0f0;  /* gris suave */
+    background-color: #f0f0f0;
     color: #222;
     font-weight: 700;
     text-align: left;
-    padding: 1rem 1.2rem;
-    border-bottom: 2px solid #ddd;
 }
 
+/* Celdas de la tabla */
 .progreso-asesores th,
 .progreso-asesores td {
     border: 2px solid #ccc;
@@ -251,29 +278,89 @@ progress::-webkit-progress-value {
     font-size: 1.2rem;
 }
 
+/* Hover en filas */
 .progreso-asesores tbody tr:hover {
     background-color: #f8f9fa;
     transition: background 0.3s;
 }
 
-.completado {background-color: #c3e6cb;}
-.progreso {background-color: #fff3cd;}
-.no-iniciado {background-color: #f5c6cb;}
+/* Estados de tareas */
+.completado {
+    background-color: #c3e6cb;
+}
+.progreso {
+    background-color: #fff3cd;
+}
+.no-iniciado {
+    background-color: #f5c6cb;
+}
 
+/* ================================
+   SCROLL PARA TABLA DE PROGRESO
+================================ */
 
+/* Scroll container */
+.tabla-scrollable {
+    max-height: 33rem;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Tabla bien colapsada */
+.tabla-scrollable table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+
+/* Elimina espacio indeseado arriba */
+.tabla-scrollable thead {
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado fijo */
+.tabla-scrollable thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f0f0f0;
+    z-index: 2;
+    padding: 1.2rem 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* sombreado sutil */
+}
+
+.progreso-asesores table tr:first-child th {
+    border-top: none;
+}
+
+/* Scrollbar más limpio*/
+.tabla-scrollable::-webkit-scrollbar {
+    width: 8px;
+}
+.tabla-scrollable::-webkit-scrollbar-thumb {
+    background-color: #d62828;
+    border-radius: 4px;
+}
+.tabla-scrollable::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
 
 
 /* ================================
    LOGROS: FILTRO Y RANKING
 ================================ */
+.filtro-logros-wrapper input[type="radio"] {
+    display: none;
+}
+
 .filtro-logros {
     display: flex;
     gap: 1rem;
     margin-bottom: 1rem;
 }
-.filtro-logros input[type="radio"] {
-    display: none;
-}
+
 .boton-filtro {
     background: #ddd;
     border-radius: 6px;
@@ -282,42 +369,56 @@ progress::-webkit-progress-value {
     font-weight: 500;
     transition: background 0.3s, transform 0.2s;
 }
+
 .boton-filtro:hover {
     transform: scale(1.05);
 }
-#filtro-equipo:checked ~ .boton-filtro[for="filtro-equipo"],
-#filtro-individual:checked ~ .boton-filtro[for="filtro-individual"] {
+
+/* BOTÓN ACTIVO */
+.filtro-logros-wrapper #filtro-equipo:checked ~ .filtro-logros label[for="filtro-equipo"],
+.filtro-logros-wrapper #filtro-individual:checked ~ .filtro-logros label[for="filtro-individual"] {
     background-color: #d62828;
     color: white;
 }
-.contenedor-logros ul {
+
+/* OCULTAR TODO POR DEFECTO */
+.filtro-logros-wrapper .contenedor-logros .contenido {
     display: none;
 }
-#filtro-equipo:checked ~ .contenedor-logros .contenido-equipo {
+
+/* MOSTRAR SEGÚN RADIO SELECCIONADO */
+.filtro-logros-wrapper #filtro-equipo:checked ~ .contenedor-logros .contenido-equipo {
     display: block;
 }
-#filtro-individual:checked ~ .contenedor-logros .contenido-individual {
+
+.filtro-logros-wrapper #filtro-individual:checked ~ .contenedor-logros .contenido-individual {
     display: block;
 }
+
+/* ESTILO DE LA LISTA */
 .ranking {
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .ranking li {
     padding: 0.3rem 0;
     font-size: 1rem;
+    font-size: 1.6rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     transition: transform 0.2s ease;
 }
+
 .ranking li:hover {
     transform: scale(1.03);
     background-color: #f9f9f9;
     border-radius: 6px;
     padding-left: 0.5rem;
 }
+
 .ranking li span {
     font-size: 1.2rem;
 }
