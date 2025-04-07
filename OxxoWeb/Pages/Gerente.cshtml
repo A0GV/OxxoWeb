@@ -39,7 +39,12 @@
                                 <span>@asesor.Nombre @asesor.ApellidoPat</span>
                             </div>
                         </td>
-                        <td>@asesor.Correo</td>
+                        <td>
+                            <a href="mailto:@asesor.Correo" class="text-decoration-none">
+                                @asesor.Correo
+                            </a>
+                        </td>
+
                         <td><span class="badge bg-secondary">@asesor.TiendasCount</span> tiendas</td>
                         <td>
                             <!-- Redirige al perfil del asesor -->
