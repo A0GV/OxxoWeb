@@ -15,6 +15,7 @@ namespace OxxoWeb.Models
         public required TimeSpan hora_final { get; set; }
         public char tipo {get; set;}
         public int? id_tienda {get;set;} //Solamente necesario con el tipo tienda
+        public int id_recordatorio{get;set;}
 
         public Recordatorio(string titulo, string lugar, TimeSpan hora_inicio, TimeSpan hora_final, DateOnly fecha, char tipo, int? id_tienda = null, string? descripcion = null)
         {

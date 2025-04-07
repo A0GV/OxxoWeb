@@ -13,7 +13,6 @@
         <button type="button" class="btn btn-primary plus" data-bs-toggle="modal" data-bs-target="#Agregar">
             <span class="material-symbols-outlined">add</span>
         </button>
-
         <!-- Modal -->
         <div class="modal fade" id="Agregar" tabindex="-1" aria-labelledby="AgregarLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -34,9 +33,10 @@
                                 <select class="form-select" id="floatingSelect"
                                     aria-label="Floating label select example">
                                     <option selected>Selecciona una categoría</option>
-                                    <option value="1">Personal</option>
-                                    <option value="2">Tienda 1</option>
-                                    <option value="3">Tienda 2</option>
+                                    <option value="0">Personal</option>
+                                    @foreach(var tienda in Model.categorias){
+                                        <option value="@tienda.id_tienda">@tienda.nombre_calle</option>
+                                    }
                                 </select>
                                 <label for="floatingSelect">Categoría</label>
                             </div>
@@ -74,8 +74,8 @@
         <div class="col-3 background-beige-cell rounded p-3 align-items-end shadow-sm categoriees">
             <h2 class="titulo Titillium">Categoría</h2>
             <div class="mini_categoria">
-                <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
-                <label class="btn btn-outline-primary botonpersonal" for="btn-check-outlined"></label><br>
+                <input type="checkbox" class="btn-check" id="btn-check-personal"  value="0" autocomplete="off">
+                <label class="btn btn-outline-primary botonpersonal" for="btn-check-personal"></label><br>
                 <h3 class="mini_titulo Titillium">Personal</h3>
             </div>
             @if (Model.categorias.Count > 0)
@@ -83,8 +83,8 @@
                 @foreach (var tienda in Model.categorias)
                 {
                     <div class="mini_categoria">
-                        <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
-                        <label class="btn btn-outline-primary @tienda.color" for="btn-check-outlined"></label><br>
+                        <input type="checkbox" class="btn-check" name="catselect" id="btn-check-@tienda.id_tienda"  value="@tienda.id_tienda" autocomplete="off">
+                        <label class="btn btn-outline-primary @tienda.color" for="btn-check-@tienda.id_tienda"></label><br>
                         <h3 class="mini_titulo Titillium">Sucursal @tienda.nombre_calle</h3>
                     </div>
                 }
@@ -106,13 +106,13 @@
                 }
             <div class="flexible espacito">
                 <button type="button" class="btn btn-primary botonsito @(rec.tipo == 't' ? @Model.colores[(rec.id_tienda ?? 0) % 4] : "botonpersonal")" data-bs-toggle="modal"
-                    data-bs-target="#Modificar"></button>
-                <div class="modal fade" id="Modificar" tabindex="-1" aria-labelledby="ModificarLabel"
+                    data-bs-target="#Modificar-@rec.id_recordatorio"></button>
+                <div class="modal fade" id="Modificar-@rec.id_recordatorio" tabindex="-1" aria-labelledby="ModificarLabel-@rec.id_recordatorio"
                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content background-beige-cell">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="ModificarLabel Titillium">Modificar recordatorio</h1>
+                                <h1 class="modal-title fs-5" id="ModificarLabel-@rec.id_recordatorio Titillium">Modificar recordatorio</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -120,35 +120,33 @@
                                 <form>
                                     <div class="mb-3">
                                         @* <label for="titulo" class="form-label">Agregar título</label> *@
-                                        <input type="text" class="form-control Titillium"
-                                            placeholder="Agregar título"></input>
+                                        <input type="text" class="form-control Titillium" placeholder="Agregar título" value="@rec.titulo"></input>
                                     </div>
                                     <div class="mb-3">
                                         @* <label for="titulo" class="form-label">Agregar título</label> *@
-                                        <textarea class="form-control Titillium" placeholder="Descripción"
-                                            rows="3"></textarea>
+                                        <textarea class="form-control Titillium" placeholder="Descripción" rows="3">@rec.descripcion</textarea>
                                     </div>
                                     <div class="form-floating">
                                         <select class="form-select" id="floatingSelect"
                                             aria-label="Floating label select example">
-                                            <option selected>Selecciona una categoría</option>
                                             <option value="1">Personal</option>
-                                            <option value="2">Tienda 1</option>
-                                            <option value="3">Tienda 2</option>
+                                            @foreach(var tienda in Model.categorias){
+                                                <option value="@tienda.id_tienda">@tienda.nombre_calle</option>
+                                            }
                                         </select>
                                         <label for="floatingSelect">Categoría</label>
                                     </div>
                                     <div class="mb-3 d-flex margenarriba">
                                         <div class="form-floating">
-                                            <input id="fecha" class="form-control" type="date" />
+                                            <input id="fecha" class="form-control" type="date" value="@rec.fecha.ToString("yyyy-MM-dd")"/> 
                                             <label for="fecha">Fecha</label>
                                         </div>
                                         <div class="form-floating">
-                                            <input id="horainicio" class="form-control" type="time" />
+                                            <input id="horainicio" class="form-control" type="time" value="@rec.hora_inicio.ToString("hh\\:mm")" />
                                             <label for="horainicio">Hora de inicio</label>
                                         </div>
                                         <div class="form-floating">
-                                            <input id="horafin" class="form-control" type="time" />
+                                            <input id="horafin" class="form-control" type="time" value="@rec.hora_final.ToString("hh\\:mm")" />
                                             <label for="horafin">Hora de fin</label>
                                         </div>
                                     </div>
@@ -157,8 +155,10 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary botoncerrar"
                                     data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button" class="btn btn-danger Titillium"
-                                    data-bs-dismiss="modal">Eliminar</button>
+                                <form method="post" asp-page-handler="Eliminar">
+                                    <input type="hidden" name="id_recordatorio" value="@rec.id_recordatorio" />
+                                    <button type="submit" class="btn btn-danger Titillium">Eliminar</button>
+                                </form>
                                 <button type="button" class="btn btn-primary botonagregar">Modificar</button>
                             </div>
                         </div>
@@ -167,7 +167,7 @@
                 <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec">
                     <div class="flexible espacio widht100">
                         <div class="Titillium titulo paddtit">@rec.titulo</div>
-                        <div class="Titillium hora">@rec.hora_inicio a @rec.hora_final</div>
+                        <div class="Titillium hora">@rec.hora_inicio.ToString("hh\\:mm") - @rec.hora_final.ToString("hh\\:mm")</div>
                     </div>
                     <div class="Titillium hora">@rec.lugar</div>
                 </div>  
