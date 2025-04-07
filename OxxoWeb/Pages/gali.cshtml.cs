@@ -1,61 +1,91 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using OxxoWeb.Models;
+using System.Collections.Generic;
 
 namespace GerenteTareas.Pages
 {
     public class GaliModel : PageModel
     {
-        // Aquí puedes definir propiedades para pasar datos a la vista
-        public int TotalAsesores { get; set; } = 5;
-        public int MetasActivas { get; set; } = 5;
-        public int MetasCompletadas { get; set; } = 5;
+        // ==========================================
+        // Instancia del contexto personalizado para acceder a la base de datos
+        // ==========================================
+        private readonly GaliDatabaseContext _db;
 
-        public List<AsesorProgreso> ProgresoAsesores { get; set; } = new();
-
-        [BindProperty]
-        public NuevaTareaModel NuevaTarea { get; set; }
-
-        public void OnGet()
+        // ==========================================
+        // Constructor que inicializa el contexto de base de datos
+        // ==========================================
+        public GaliModel()
         {
-            // Simulación de datos (puedes conectar con una BD más adelante)
-            ProgresoAsesores = new List<AsesorProgreso>
-            {
-                new() { Nombre = "Rodrigo Ahumada", Reto = "Capacitación", Estado = "Completado" },
-                new() { Nombre = "Valentina Carrillo", Reto = "EXP mínimo", Estado = "En progreso" },
-                new() { Nombre = "Carolina García", Reto = "Capacitación", Estado = "Sin empezar" },
-                new() { Nombre = "Luis Vega", Reto = "Capacitación", Estado = "Sin empezar" },
-                new() { Nombre = "Korinna Ramírez", Reto = "Capacitación", Estado = "Completado" },
-                new() { Nombre = "Valentina Carrillo", Reto = "Capacitación", Estado = "En progreso" }
-            };
+            _db = new GaliDatabaseContext();
         }
 
+        // ==========================================
+        // PROPIEDADES PARA LAS KPIs DEL PANEL DEL GERENTE
+        // ==========================================
+        public int TotalAsesores { get; set; }
+        public int MetasActivas { get; set; }
+        public int PlazasRegistradas { get; set; }
+        public int TiendasRegistradas { get; set; }
+        public int TareasAsignadas { get; set; }
+        public int TareasProximas { get; set; }
+
+        // ==========================================
+        // PROPIEDAD PARA LA TABLA DE PROGRESO DE ASESORES
+        // ==========================================
+        public List<ProgresoAsesor> ProgresoAsesores { get; set; } = new();
+
+        // ==========================================
+        // PROPIEDAD PARA CAPTURAR LA NUEVA TAREA DEL FORMULARIO
+        // ==========================================
+        [BindProperty]
+        public Tarea NuevaTarea { get; set; } = new Tarea(); // trae DateTime.Today por defecto
+
+        public List<Usuario> Asesores { get; set; } = new List<Usuario>();
+
+
+        // ==========================================
+        // MÉTODO QUE SE EJECUTA AL CARGAR LA PÁGINA
+        // ==========================================
+        public void OnGet()
+        {
+            // Probar conexión y mostrar resultado en consola
+            bool conectado = _db.ProbarConexion();
+            Console.WriteLine("¿Conexión exitosa? " + conectado);
+
+            // Obtener valores para las tarjetas KPI
+            TotalAsesores      = _db.GetTotalAsesores();
+            MetasActivas       = _db.GetMetasActivas();
+            PlazasRegistradas  = _db.GetPlazasRegistradas();
+            TiendasRegistradas = _db.GetTiendasRegistradas();
+            TareasAsignadas    = _db.GetTareasTotales();
+            TareasProximas     = _db.GetTareasProximasAVencer();
+
+            // Obtener datos reales para la tabla "Progreso de Asesores"
+            ProgresoAsesores   = _db.GetProgresoAsesores();
+
+            Asesores = _db.GetAsesores(); // este método debería consultar a la tabla `usuario`
+
+        }
+
+        // ==========================================
+        // MÉTODO PARA INSERTAR UNA NUEVA TAREA
+        // ==========================================
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || NuevaTarea.FechaLimite == DateTime.MinValue || NuevaTarea.IdUsuario == 0)
             {
+                TempData["Mensaje"] = "Por favor completa todos los campos correctamente.";
+                Asesores = _db.GetAsesores(); // para volver a llenar el select
                 return Page();
             }
 
-            // Aquí podrías guardar la tarea en una base de datos o lista
-            // Ejemplo: Guardar en base de datos (lógica pendiente)
 
+            _db.InsertarTarea(NuevaTarea);
+            ModelState.Clear(); // <-- limpia los datos actuales
             TempData["Mensaje"] = "Tarea asignada correctamente.";
-            return RedirectToPage("Gali");
-        }
-
-        public class AsesorProgreso
-        {
-            public string Nombre { get; set; }
-            public string Reto { get; set; }
-            public string Estado { get; set; }
-        }
-
-        public class NuevaTareaModel
-        {
-            public string Titulo { get; set; }
-            public string Tipo { get; set; }
-            public DateTime FechaLimite { get; set; }
-            public List<string> AsesoresSeleccionados { get; set; }
+            // Redirigir a GET para limpiar el formulario y recargar datos
+            return RedirectToPage();
         }
     }
 }
