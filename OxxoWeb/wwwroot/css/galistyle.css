@@ -122,7 +122,7 @@ body {
 .kpi:nth-child(6) {background: linear-gradient(to right, #f2e8dc, #e4d5c3);}
 
 /* ================================
-   FORMULARIO DE TAREAS
+   FORMULARIO DE ASIGNAR TAREAS
 ================================ */
 .asignar-tarea form {
     display: flex;
@@ -187,8 +187,31 @@ body {
     transform: scale(1.05);
 }
 
+/* ============================
+   POPUP DE ÉXITO
+============================= */
+.popup-mensaje {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #28a745;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+    animation: aparecer 0.5s ease-out, desaparecer 0.5s ease-in 3s forwards;
+}
 
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
+@keyframes desaparecer {
+    to { opacity: 0; transform: translateY(20px); display: none; }
+}
 
 /* ================================
    PROGRESS BARS
@@ -226,26 +249,27 @@ progress::-webkit-progress-value {
 
 
 /* ================================
-   TABLA DE PROGRESO
+   TABLA DE PROGRESO DE ASESORES
 ================================ */
+
+/* Estilo general de la tabla */
 .progreso-asesores table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1.5rem;
-    max-width: none;
     border-radius: 14px;
-    border: 1px;
+    border: 1px solid #ccc;
 }
 
+/* Estilo del encabezado */
 .encabezado-tabla {
-    background-color: #f0f0f0;  /* gris suave */
+    background-color: #f0f0f0;
     color: #222;
     font-weight: 700;
     text-align: left;
-    padding: 1rem 1.5rem;
-    border-bottom: 2px solid #ddd;
 }
 
+/* Celdas de la tabla */
 .progreso-asesores th,
 .progreso-asesores td {
     border: 2px solid #ccc;
@@ -254,16 +278,74 @@ progress::-webkit-progress-value {
     font-size: 1.2rem;
 }
 
+/* Hover en filas */
 .progreso-asesores tbody tr:hover {
     background-color: #f8f9fa;
     transition: background 0.3s;
 }
 
-.completado {background-color: #c3e6cb;}
-.progreso {background-color: #fff3cd;}
-.no-iniciado {background-color: #f5c6cb;}
+/* Estados de tareas */
+.completado {
+    background-color: #c3e6cb;
+}
+.progreso {
+    background-color: #fff3cd;
+}
+.no-iniciado {
+    background-color: #f5c6cb;
+}
 
+/* ================================
+   SCROLL PARA TABLA DE PROGRESO
+================================ */
 
+/* Scroll container */
+.tabla-scrollable {
+    max-height: 33rem;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Tabla bien colapsada */
+.tabla-scrollable table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+
+/* Elimina espacio indeseado arriba */
+.tabla-scrollable thead {
+    margin: 0;
+    padding: 0;
+}
+
+/* Encabezado fijo */
+.tabla-scrollable thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f0f0f0;
+    z-index: 2;
+    padding: 1.2rem 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* sombreado sutil */
+}
+
+.progreso-asesores table tr:first-child th {
+    border-top: none;
+}
+
+/* Scrollbar más limpio*/
+.tabla-scrollable::-webkit-scrollbar {
+    width: 8px;
+}
+.tabla-scrollable::-webkit-scrollbar-thumb {
+    background-color: #d62828;
+    border-radius: 4px;
+}
+.tabla-scrollable::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
 
 
 /* ================================
