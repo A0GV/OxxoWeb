@@ -14,6 +14,16 @@ public class RecordatoriosModel : PageModel
         {1,"morado"},{2,"amarillo"},{3,"rosa"},{0,"verde"}
     };
     public Dictionary<DateOnly, bool> Checkfecha = new Dictionary<DateOnly, bool>();
+
+    // Properties to match the fields used in the Razor page
+    public string titulo { get; set; }
+    public string descripcion { get; set; }
+    public int id_tienda { get; set; }
+    public DateOnly fecha { get; set; }
+    public TimeSpan hora_inicio { get; set; }
+    public TimeSpan hora_fin { get; set; }
+    public string lugar {get;set;}
+    
     public RecordatoriosModel(RecordatoriosDataBaseContext _context)
     {
         context = _context;
@@ -59,7 +69,52 @@ public class RecordatoriosModel : PageModel
         return RedirectToPage();
     }
 
-    public async Task<IActionResult> OnPostAgregar(){
+    public async Task<IActionResult> OnPostAgregar()
+    {
+        int id_tipo = int.Parse(Request.Form["id_tienda"]) == 0 ? 1 : 2;
+        string descripcion = Request.Form["descripcion"].ToString() ?? string.Empty;
+
+        // Asegúrate de que la fecha se procese correctamente
+        string fechaInput = Request.Form["fecha"];
+        fecha = DateOnly.ParseExact(fechaInput, "yyyy-MM-dd");
+
+        // Insertar el nuevo recordatorio en la base de datos
+        await Task.Run(() => context.AgregarRec(
+            HttpContext.Session.GetInt32("Id").Value, 
+            Request.Form["titulo"], 
+            fecha, 
+            Request.Form["lugar"], 
+            descripcion, 
+            TimeSpan.Parse(Request.Form["hora_inicio"]), 
+            TimeSpan.Parse(Request.Form["hora_fin"]), 
+            int.TryParse(Request.Form["id_tienda"], out int idTienda) && idTienda != 0 ? idTienda : (int?)null, 
+            id_tipo)
+        );
+        
+        return RedirectToPage();
+    }
+    public async Task<IActionResult> OnPostModificar()
+    {
+        int id_recordatorio = int.Parse(Request.Form["id_recordatorio"]);
+        int id_tipo = int.Parse(Request.Form["id_tienda"]) == 0 ? 1 : 2;
+        string descripcion = Request.Form["descripcion"].ToString() ?? string.Empty;
+
+        // Asegúrate de que la fecha se procese correctamente
+        string fechaInput = Request.Form["fecha"];
+        fecha = DateOnly.ParseExact(fechaInput, "yyyy-MM-dd");
+
+        // Insertar el nuevo recordatorio en la base de datos
+        await Task.Run(() => context.ModificarRec(
+            id_recordatorio, 
+            Request.Form["titulo"], 
+            fecha, 
+            Request.Form["lugar"], 
+            descripcion, 
+            TimeSpan.Parse(Request.Form["hora_inicio"]), 
+            TimeSpan.Parse(Request.Form["hora_fin"]), 
+            int.TryParse(Request.Form["id_tienda"], out int idTienda) && idTienda != 0 ? idTienda : (int?)null, 
+            id_tipo)
+        );
         return RedirectToPage();
     }
 }
