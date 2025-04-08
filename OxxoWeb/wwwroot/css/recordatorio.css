@@ -3,6 +3,10 @@
     box-shadow: none;
 }
 
+.borrador {
+    border-top: none;
+}
+
 .espacito{
     margin-bottom: 15px;
 }
