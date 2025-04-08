@@ -22,17 +22,16 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form method="post" asp-page-handler="Agregar">
                             <div class="mb-3">
-                                <input type="text" class="form-control Titillium" placeholder="Agregar título"></input>
+                                <input type="text" class="form-control Titillium" placeholder="Agregar título" asp-for="titulo" required></input>
                             </div>
                             <div class="mb-3">
-                                <textarea class="form-control Titillium" placeholder="Descripción" rows="3"></textarea>
+                                <textarea class="form-control Titillium" placeholder="Descripción" rows="3" asp-for="descripcion" required></textarea>
                             </div>
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                    <option selected>Selecciona una categoría</option>
+                                <select class="form-select" id="floatingSelect" asp-for="id_tienda" required>
+                                    <option value="" disabled selected>Selecciona una categoría</option>
                                     <option value="0">Personal</option>
                                     @foreach(var tienda in Model.categorias){
                                         <option value="@tienda.id_tienda">@tienda.nombre_calle</option>
@@ -42,24 +41,25 @@
                             </div>
                             <div class="mb-3 d-flex margenarriba">
                                 <div class="form-floating">
-                                    <input id="fecha" class="form-control" type="date" />
+                                    <input id="fecha" class="form-control" type="date" asp-for="fecha" required />
                                     <label for="fecha">Fecha</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input id="horainicio" class="form-control" type="time" />
+                                    <input id="horainicio" class="form-control" type="time" asp-for="hora_inicio" required />
                                     <label for="horainicio">Hora de inicio</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input id="horafin" class="form-control" type="time" />
+                                    <input id="horafin" class="form-control" type="time" asp-for="hora_fin" required />
                                     <label for="horafin">Hora de fin</label>
                                 </div>
                             </div>
+                        
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary botoncerrar"
+                                    data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary botonagregar">Agregar</button>
+                            </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary botoncerrar"
-                            data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary botonagregar">Agregar</button>
                     </div>
                 </div>
             </div>
