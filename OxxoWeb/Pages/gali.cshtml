@@ -178,32 +178,46 @@
 
 
     <!-- ================================
-         ROW 3: Metas Activas + Completadas
+         ROW 3: Metas Activas progress bars + Logros
     =================================== -->
     <div class="row">
         <div class="seccion metas-activas">
             <h2>Metas Activas del Equipo</h2>
+
+            <!-- 1. Capacitación finalizada -->
             <div class="progress-bar">
                 <label>Capacitación finalizada</label>
-                <progress value="3" max="4"></progress>
-                <span>3/4 asesores</span>
+                <progress value="@Model.CapacitacionesFinalizadas" max="@Model.TotalAsesores"></progress>
+                <span>@Model.CapacitacionesFinalizadas/@Model.TotalAsesores asesores</span>
+
             </div>
+
+             <!-- 2. EXP acumulado en el juego -->
             <div class="progress-bar">
                 <label>EXP acumulado en el juego</label>
-                <progress value="300" max="500"></progress>
-                <span>300/500 EXP</span>
+                <progress value="@(Model.TotalEXP > 15000 ? 15000 : Model.TotalEXP)" max="15000"></progress>
+                <span>@Model.TotalEXP/15000 EXP</span>
             </div>
+
+             <!-- 3. Certificados obtenidos -->
             <div class="progress-bar">
-                <label>Inicio de sesión consecutiva</label>
-                <progress value="3" max="5"></progress>
-                <span>3/5 días</span>
+                <label>Certificados obtenidos</label>
+                <progress value="@Model.TotalCertificados" max="15"></progress>
+                <span>@Model.TotalCertificados/15 certificados</span>
+            </div>
+
+            <!-- 4. Publicaciones recientes -->
+            <div class="progress-bar">
+                <label>Publicaciones recientes (últimos 30 días)</label>
+                <progress value="@Model.PublicacionesRecientes" max="10"></progress>
+                <span>@Model.PublicacionesRecientes/10 publicaciones</span>
             </div>
         </div>
 
-    <div class="seccion metas-completadas">
-    <h2>Metas Completadas</h2>
+        <div class="seccion metas-completadas">
+            <h2>Logros</h2>
 
-    <div class="filtro-logros-wrapper">
+            <div class="filtro-logros-wrapper">
         <!-- INPUTS -->
         <input type="radio" name="filtro" id="filtro-equipo" checked>
         <input type="radio" name="filtro" id="filtro-individual">
@@ -216,19 +230,57 @@
 
         <!-- CONTENIDO LOGROS -->
         <div class="contenedor-logros">
-    <ul class="ranking contenido contenido-equipo">
-        <li><i class="bi bi-trophy"></i> Capacitación completada por todos</li>
-        <li><i class="bi bi-bar-chart-line"></i> 5000 EXP acumulados</li>
-        <li><i class="bi bi-lightning-fill"></i> 5 días consecutivos activos</li>
-        <li><i class="bi bi-award"></i> Meta especial desbloqueada</li>
-    </ul>
+            <!-- LOGROS EQUIPO -->
+            <ul class="ranking contenido contenido-equipo">
+                @if (Model.LogroCapacitacionPorTodos)
+                {
+                    <li><i class="bi bi-trophy"></i> Todos completaron una capacitación</li>
+                }
+                @if (Model.LogroEXP5000)
+                {
+                    <li><i class="bi bi-bar-chart-line"></i> 5000 EXP acumulados en el equipo</li>
+                }
+                @if (Model.LogroCincoCertificados)
+                {
+                    <li><i class="bi bi-award-fill"></i> Equipo con 5 certificados o más</li>
+                }
+                @if (Model.LogroCincoPublicaciones)
+                {
+                    <li><i class="bi bi-chat-dots"></i> 5 publicaciones recientes del equipo</li>
+                }
+                @if (Model.LogroAsesorCincoMetas)
+                {
+                    <li><i class="bi bi-lightning-charge"></i> Asesor completó 5 tareas o más</li>
+                }
+                @if (Model.LogroTodosTiposCompletados)
+                {
+                    <li><i class="bi bi-puzzle"></i> Se completaron todos los tipos de retos</li>
+                }
+                @if (!Model.LogroCapacitacionPorTodos && !Model.LogroEXP5000 && !Model.LogroCincoCertificados && !Model.LogroCincoPublicaciones && !Model.LogroAsesorCincoMetas && !Model.LogroTodosTiposCompletados)
+                {
+                    <li><i class="bi bi-emoji-neutral"></i> Aún no hay logros desbloqueados</li>
+                }
+            </ul>
 
-    <ul class="ranking contenido contenido-individual">
-        <li><i class="bi bi-1-circle"></i> Ana Martínez - 12 metas</li>
-        <li><i class="bi bi-2-circle"></i> Carlos López - 9 metas</li>
-        <li><i class="bi bi-3-circle"></i> Sofía Vázquez - 7 metas</li>
-    </ul>
-    </div>
+            <!-- RANKING INDIVIDUAL -->
+            <ul class="ranking contenido contenido-individual">
+                @if (Model.RankingAsesores.Count > 0)
+                {
+                    int pos = 1;
+                    foreach (var asesor in Model.RankingAsesores)
+                    {
+                        <li>
+                            <i class="bi bi-@pos-circle"></i> @asesor.NombreCompleto - @asesor.Total metas completadas
+                        </li>
+                        pos++;
+                    }
+                }
+                else
+                {
+                    <li><i class="bi bi-info-circle"></i> No hay asesores destacados aún</li>
+                }
+            </ul>
+        </div>
     </div>
 </div>
 
