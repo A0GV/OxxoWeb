@@ -22,6 +22,7 @@ public class RecordatoriosModel : PageModel
     public DateOnly fecha { get; set; }
     public TimeSpan hora_inicio { get; set; }
     public TimeSpan hora_fin { get; set; }
+    public string lugar {get;set;}
     
     public RecordatoriosModel(RecordatoriosDataBaseContext _context)
     {
@@ -75,19 +76,38 @@ public class RecordatoriosModel : PageModel
 
         // Asegúrate de que la fecha se procese correctamente
         string fechaInput = Request.Form["fecha"];
-        DateOnly fecha;
-        if (!DateOnly.TryParseExact(fechaInput, "yyyy-MM-dd", out fecha))
-        {
-            // Maneja el error si la fecha no es válida
-            ModelState.AddModelError("fecha", "El formato de la fecha es incorrecto.");
-            return Page();
-        }
+        fecha = DateOnly.ParseExact(fechaInput, "yyyy-MM-dd");
 
         // Insertar el nuevo recordatorio en la base de datos
         await Task.Run(() => context.AgregarRec(
             HttpContext.Session.GetInt32("Id").Value, 
             Request.Form["titulo"], 
-            fecha, // Fecha en formato correcto
+            fecha, 
+            Request.Form["lugar"], 
+            descripcion, 
+            TimeSpan.Parse(Request.Form["hora_inicio"]), 
+            TimeSpan.Parse(Request.Form["hora_fin"]), 
+            int.TryParse(Request.Form["id_tienda"], out int idTienda) && idTienda != 0 ? idTienda : (int?)null, 
+            id_tipo)
+        );
+        
+        return RedirectToPage();
+    }
+    public async Task<IActionResult> OnPostModificar()
+    {
+        int id_recordatorio = int.Parse(Request.Form["id_recordatorio"]);
+        int id_tipo = int.Parse(Request.Form["id_tienda"]) == 0 ? 1 : 2;
+        string descripcion = Request.Form["descripcion"].ToString() ?? string.Empty;
+
+        // Asegúrate de que la fecha se procese correctamente
+        string fechaInput = Request.Form["fecha"];
+        fecha = DateOnly.ParseExact(fechaInput, "yyyy-MM-dd");
+
+        // Insertar el nuevo recordatorio en la base de datos
+        await Task.Run(() => context.ModificarRec(
+            id_recordatorio, 
+            Request.Form["titulo"], 
+            fecha, 
             Request.Form["lugar"], 
             descripcion, 
             TimeSpan.Parse(Request.Form["hora_inicio"]), 

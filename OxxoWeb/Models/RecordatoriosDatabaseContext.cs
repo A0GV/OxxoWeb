@@ -115,7 +115,7 @@ namespace OxxoWeb.Models
             cmd.Connection = conexion;
             cmd.Parameters.AddWithValue("@idus", id_usu);
             cmd.Parameters.AddWithValue("@tit", titu);
-            cmd.Parameters.AddWithValue("@day", diaa);
+            cmd.Parameters.AddWithValue("@day", diaa.ToString("yyyy-MM-dd"));
             cmd.Parameters.AddWithValue("@place", lug);
             cmd.Parameters.AddWithValue("@des", desc);
             cmd.Parameters.AddWithValue("@hi", hi);
@@ -125,6 +125,29 @@ namespace OxxoWeb.Models
             cmd.Parameters.AddWithValue("@idtienda", id_tien == 0 ? (object)DBNull.Value : id_tien);
             cmd.CommandText = @"insert into recordatorio (id_usuario, titulo, dia, lugar, descripcion, hora_inicio, hora_final, id_tipo, id_tienda) values
                                 (@idus, @tit, @day, @place, @des, @hi, @hf, @idtipo, @idtienda);";
+            cmd.Prepare();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+
+        public void ModificarRec(int id_reco, string titu, DateOnly diaa, string lug,string desc, TimeSpan hi, TimeSpan hf, int? id_tien, int idtip){
+            MySqlConnection conexion = GetConnection();
+            conexion.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = conexion;
+            cmd.Parameters.AddWithValue("@id_rec", id_reco);
+            cmd.Parameters.AddWithValue("@tit", titu);
+            cmd.Parameters.AddWithValue("@day", diaa.ToString("yyyy-MM-dd"));
+            cmd.Parameters.AddWithValue("@place", lug);
+            cmd.Parameters.AddWithValue("@des", desc);
+            cmd.Parameters.AddWithValue("@hi", hi);
+            cmd.Parameters.AddWithValue("@hf", hf);
+            cmd.Parameters.AddWithValue("@idtipo", idtip);
+            //Set null cuado sea 0 el valor, DBNull combierte el valor a nulo
+            cmd.Parameters.AddWithValue("@idtienda", id_tien == 0 ? (object)DBNull.Value : id_tien);
+            cmd.CommandText = @"UPDATE recordatorio
+                                SET titulo='@tit', dia = @day, lugar = @place, descripcion = @des, hora_inicio = @hi, hora_final = @hf, id_tipo = @idtipo, id_tienda = @idtienda
+                                WHERE id_recordatorio=@id_rec;";
             cmd.Prepare();
             cmd.ExecuteNonQuery();
             conexion.Close();
