@@ -108,7 +108,7 @@ namespace OxxoWeb.Models
             conexion.Close();
         }
 
-        public void AgregarRec(int id_usu, string titu, DateOnly diaa, string lug,string desc, TimeSpan hi, TimeSpan hf, int id_tien, int idtip){
+        public void AgregarRec(int id_usu, string titu, DateOnly diaa, string lug,string desc, TimeSpan hi, TimeSpan hf, int? id_tien, int idtip){
             MySqlConnection conexion = GetConnection();
             conexion.Open();
             MySqlCommand cmd = new MySqlCommand();
