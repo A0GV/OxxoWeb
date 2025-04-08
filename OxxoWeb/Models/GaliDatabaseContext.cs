@@ -284,5 +284,127 @@ namespace OxxoWeb.Models
             using var cmd = new MySqlCommand(query, connection);
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
+
+        // ==========================================
+        // Logros (sección EQUIPO)
+        // ==========================================
+
+        // 1. ¿Todos los asesores completaron al menos una capacitación?
+        public bool Logro_CapacitacionPorTodos()
+        {
+            using var connection = GetConnection();
+            connection.Open();
+
+            var query = @"
+                SELECT COUNT(DISTINCT u.id_usuario)
+                FROM usuario u
+                WHERE u.id_tipo = 1
+                AND EXISTS (
+                    SELECT 1
+                    FROM tarea t
+                    WHERE t.id_usuario = u.id_usuario
+                    AND t.tipo = 'Capacitación'
+                    AND t.estado = 'Completado'
+                );";
+
+            var cmd = new MySqlCommand(query, connection);
+            int asesoresConCapacitacion = Convert.ToInt32(cmd.ExecuteScalar());
+
+            // Comparamos contra el total de asesores
+            return asesoresConCapacitacion == GetTotalAsesores();
+        }
+
+        // 2. ¿El equipo ha acumulado más de 5000 EXP?
+        public bool Logro_EXP5000()
+        {
+            return GetTotalEXP() >= 5000;
+        }
+
+        // 3. ¿Hay al menos 5 certificados?
+        public bool Logro_CincoCertificados()
+        {
+            using var connection = GetConnection();
+            connection.Open();
+
+            var query = "SELECT COUNT(*) FROM certificado;";
+            var cmd = new MySqlCommand(query, connection);
+            return Convert.ToInt32(cmd.ExecuteScalar()) >= 5;
+        }
+
+        // 4. ¿Hay al menos 5 publicaciones en los últimos 30 días?
+        public bool Logro_CincoPublicacionesRecientes()
+        {
+            return GetPublicacionesRecientes() >= 5;
+        }
+
+        // 5. ¿Algún asesor ha completado al menos 5 tareas?
+        public bool Logro_AsesorCincoMetas()
+        {
+            using var connection = GetConnection();
+            connection.Open();
+
+            var query = @"
+                SELECT MAX(total) FROM (
+                    SELECT COUNT(*) AS total
+                    FROM tarea t
+                    JOIN usuario u ON u.id_usuario = t.id_usuario
+                    WHERE u.id_tipo = 1 AND t.estado = 'Completado'
+                    GROUP BY u.id_usuario
+                ) AS sub;";
+
+            var cmd = new MySqlCommand(query, connection);
+            var result = cmd.ExecuteScalar();
+            return result != DBNull.Value && Convert.ToInt32(result) >= 5;
+        }
+
+        // 6. ¿Se ha completado al menos un reto de cada tipo?
+        public bool Logro_TodosTiposCompletados()
+        {
+            using var connection = GetConnection();
+            connection.Open();
+
+            var query = @"
+                SELECT COUNT(DISTINCT tipo)
+                FROM tarea
+                WHERE estado = 'Completado' 
+                AND tipo IN ('Capacitación', 'Reto EXP', 'Registro diario');";
+
+            var cmd = new MySqlCommand(query, connection);
+            return Convert.ToInt32(cmd.ExecuteScalar()) == 3;
+        }
+
+        // ==========================================
+        //  Logros (sección INDIVIDUAL - ranking)
+        // ==========================================
+        public List<(string NombreCompleto, int Total)> ObtenerTopAsesoresPorMetas()
+        {
+            var ranking = new List<(string, int)>();
+
+            using var connection = GetConnection();
+            connection.Open();
+
+            var query = @"
+                SELECT CONCAT(nombre, ' ', apellido_pat, ' ', apellido_mat) AS nombre_completo,
+                COUNT(*) AS total_metas
+                FROM usuario u
+                JOIN tarea t ON u.id_usuario = t.id_usuario
+                WHERE u.id_tipo = 1 AND t.estado = 'Completado'
+                GROUP BY u.id_usuario
+                ORDER BY total_metas DESC
+                LIMIT 3;";
+
+            using var cmd = new MySqlCommand(query, connection);
+            using var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var nombre = reader["nombre_completo"].ToString() ?? "";
+                var total = Convert.ToInt32(reader["total_metas"]);
+                ranking.Add((nombre, total));
+            }
+
+            return ranking;
+        }
+
     }
 }
