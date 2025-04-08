@@ -31,6 +31,29 @@ namespace GerenteTareas.Pages
         public int TareasProximas { get; set; }
 
         // ==========================================
+        // MÉTRICAS PARA LAS BARRAS DE PROGRESO
+        // ==========================================
+        public int CapacitacionesFinalizadas { get; set; }
+        public int TotalEXP { get; set; }
+        public int TotalCertificados { get; set; }
+        public int PublicacionesRecientes { get; set; }
+
+        // ==========================================
+        // PROPIEDADES PARA LA TARJETA DE LOGROS - EQUIPO
+        // ==========================================
+        public bool LogroCapacitacionPorTodos { get; set; }
+        public bool LogroEXP5000 { get; set; }
+        public bool LogroCincoCertificados { get; set; }
+        public bool LogroCincoPublicaciones { get; set; }
+        public bool LogroAsesorCincoMetas { get; set; }
+        public bool LogroTodosTiposCompletados { get; set; }
+
+        // ==========================================
+        // PROPIEDADES PARA LA TARJETA DE LOGROS - INDIVIDUAL
+        // ==========================================
+        public List<(string NombreCompleto, int Total)> RankingAsesores { get; set; } = new();
+
+        // ==========================================
         // PROPIEDAD PARA LA TABLA DE PROGRESO DE ASESORES
         // ==========================================
         public List<ProgresoAsesor> ProgresoAsesores { get; set; } = new();
@@ -42,7 +65,6 @@ namespace GerenteTareas.Pages
         public Tarea NuevaTarea { get; set; } = new Tarea(); // trae DateTime.Today por defecto
 
         public List<Usuario> Asesores { get; set; } = new List<Usuario>();
-
 
         // ==========================================
         // MÉTODO QUE SE EJECUTA AL CARGAR LA PÁGINA
@@ -62,10 +84,27 @@ namespace GerenteTareas.Pages
             TareasProximas     = _db.GetTareasProximasAVencer();
 
             // Obtener datos reales para la tabla "Progreso de Asesores"
-            ProgresoAsesores   = _db.GetProgresoAsesores();
+            ProgresoAsesores = _db.GetProgresoAsesores();
 
-            Asesores = _db.GetAsesores(); // este método debería consultar a la tabla `usuario`
+            // Obtener asesores para el select del formulario
+            Asesores = _db.GetAsesores();
 
+            // Obtener métricas para las barras de progreso
+            CapacitacionesFinalizadas = _db.GetCapacitacionesFinalizadas();
+            TotalEXP                  = _db.GetTotalEXP();
+            TotalCertificados         = _db.GetTotalCertificados();
+            PublicacionesRecientes   = _db.GetPublicacionesRecientes();
+
+            // Obtener logros del equipo (true/false)
+            LogroCapacitacionPorTodos     = _db.Logro_CapacitacionPorTodos();
+            LogroEXP5000                  = _db.Logro_EXP5000();
+            LogroCincoCertificados        = _db.Logro_CincoCertificados();
+            LogroCincoPublicaciones       = _db.Logro_CincoPublicacionesRecientes();
+            LogroAsesorCincoMetas         = _db.Logro_AsesorCincoMetas();
+            LogroTodosTiposCompletados    = _db.Logro_TodosTiposCompletados();
+
+            // Obtener ranking de asesores destacados
+            RankingAsesores = _db.ObtenerTopAsesoresPorMetas();
         }
 
         // ==========================================
@@ -80,10 +119,10 @@ namespace GerenteTareas.Pages
                 return Page();
             }
 
-
             _db.InsertarTarea(NuevaTarea);
             ModelState.Clear(); // <-- limpia los datos actuales
             TempData["Mensaje"] = "Tarea asignada correctamente.";
+
             // Redirigir a GET para limpiar el formulario y recargar datos
             return RedirectToPage();
         }
