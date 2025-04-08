@@ -14,6 +14,7 @@ public class RecordatoriosModel : PageModel
         {1,"morado"},{2,"amarillo"},{3,"rosa"},{0,"verde"}
     };
     public Dictionary<DateOnly, bool> Checkfecha = new Dictionary<DateOnly, bool>();
+    
     public RecordatoriosModel(RecordatoriosDataBaseContext _context)
     {
         context = _context;
