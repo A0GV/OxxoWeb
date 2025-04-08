@@ -146,7 +146,7 @@ namespace OxxoWeb.Models
             //Set null cuado sea 0 el valor, DBNull combierte el valor a nulo
             cmd.Parameters.AddWithValue("@idtienda", id_tien == 0 ? (object)DBNull.Value : id_tien);
             cmd.CommandText = @"UPDATE recordatorio
-                                SET titulo='@tit', dia = @day, lugar = @place, descripcion = @des, hora_inicio = @hi, hora_final = @hf, id_tipo = @idtipo, id_tienda = @idtienda
+                                SET titulo=@tit, dia = @day, lugar = @place, descripcion = @des, hora_inicio = @hi, hora_final = @hf, id_tipo = @idtipo, id_tienda = @idtienda
                                 WHERE id_recordatorio=@id_rec;";
             cmd.Prepare();
             cmd.ExecuteNonQuery();
