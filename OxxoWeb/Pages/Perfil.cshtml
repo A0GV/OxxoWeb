@@ -12,7 +12,7 @@
     <div class="perfil-card border shadow">
       <div class="perfil-seccion-titulo"></div>
       <div class="perfil-body border rounded">
-        <img src="~/Img/asesores/@(Model.UsuarioPerfil.IdUsuario).png">
+        <img src="~/Img/asesores/@(Model.UsuarioPerfil.IdUsuario).png" class="perfil-img">
         <div class="perfil-info Titillium">
           <h2 class="nombre">@Model.UsuarioPerfil.Nombre @Model.UsuarioPerfil.ApellidoPat @Model.UsuarioPerfil.ApellidoMat</h2>
           <p class="subtitulo">@Model.ObtenerDescripcion(Model.UsuarioPerfil.TipoUsuario) | @Model.UsuarioPerfil.PlazaNombre</p>
