@@ -29,7 +29,7 @@ body > *:last-child {
 .titulo-de-la-pag h1 {
     font-size: 2rem;
     font-weight: 600;
-    color: #d62828;
+    color: #101010;
     text-align: center;
 }
 
@@ -84,12 +84,14 @@ body > *:last-child {
 }
 
 .kpi {
-    background-color: #f1f3f5;
+    background-color: #f5f5f5;
+    color: #222;
     padding: 1.2rem;
     border-radius: 12px;
     text-align: center;
     transition: transform 0.2s;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04); 
+    border: 2px solid #8c8383;
 }
 
 .kpi:hover {
@@ -102,7 +104,7 @@ body > *:last-child {
     font-size: 1.8rem;
     margin-top: 0.3rem;
     font-weight: bold;
-    color: #1c1c1c;
+    color: #d62828;
     text-shadow: 0 1px 2px rgba(255,255,255,0.4);
 }
 
@@ -118,21 +120,18 @@ body > *:last-child {
 .kpi .icono {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    
+
 }
 
 .kpi .icono i {
-    color: inherit;
+    color: #d62828;
 }
 
 /* ================================
    COLORES POR KPI (opcional)
 ================================ */
-.kpi:nth-child(1) {background: linear-gradient(to right, #dbeafe, #bfdbfe);}
-.kpi:nth-child(2) {background: linear-gradient(to right, #e0f2f1, #b2dfdb);}
-.kpi:nth-child(3) {background: linear-gradient(to right, #ede7f6, #d1c4e9);}
-.kpi:nth-child(4) {background: linear-gradient(to right, #fce4ec, #f8bbd0);}
-.kpi:nth-child(5) {background: linear-gradient(to right, #ffe8d6, #ffd4ba);}
-.kpi:nth-child(6) {background: linear-gradient(to right, #f2e8dc, #e4d5c3);}
+
 
 /* ================================
    FORMULARIO DE ASIGNAR TAREAS
