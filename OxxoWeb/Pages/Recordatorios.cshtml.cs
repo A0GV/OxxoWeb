@@ -23,7 +23,6 @@ public class RecordatoriosModel : PageModel
     public TimeSpan hora_inicio { get; set; }
     public TimeSpan hora_fin { get; set; }
     public string lugar {get;set;}
-    
     public RecordatoriosModel(RecordatoriosDataBaseContext _context)
     {
         context = _context;
@@ -62,7 +61,7 @@ public class RecordatoriosModel : PageModel
     public async Task<IActionResult> OnPostEliminar()
     {
         //Request.For para traerse el dato del input que es string y lo pasa a entero
-        int id_recordatorio = int.Parse(Request.Form["id_recordatorio"]);
+        int id_recordatorio = int.Parse(Request.Form["id_rec"].ToString());
         //Task.Run espera a terminar esta tarea para después proceder, lo ejecuta en un subproceso separado.
         await Task.Run(() => context.EliminarRec(id_recordatorio));
         //Recargar pagina
@@ -95,7 +94,7 @@ public class RecordatoriosModel : PageModel
     }
     public async Task<IActionResult> OnPostModificar()
     {
-        int id_recordatorio = int.Parse(Request.Form["id_recordatorio"]);
+        int id_recordatorio = int.Parse(Request.Form["id_recordatorio"].ToString());
         int id_tipo = int.Parse(Request.Form["id_tienda"]) == 0 ? 1 : 2;
         string descripcion = Request.Form["descripcion"].ToString() ?? string.Empty;
 
