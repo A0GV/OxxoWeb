@@ -132,7 +132,8 @@
                                         <select class="form-select" id="floatingSelect" asp-for="id_tienda" required>
                                             <option value="" disabled>Selecciona una categoría</option>
                                             <option value="0" selected="@(rec.id_tienda == 0)">Personal</option>
-                                            @foreach(var tienda in Model.categorias){
+                                            @foreach(var tienda in Model.categorias)
+                                            {
                                                 <option value="@tienda.id_tienda" selected="@(rec.id_tienda == tienda.id_tienda)">@tienda.nombre_calle</option>
                                             }
                                         </select>
@@ -155,15 +156,16 @@
                                             <label for="horafin">Hora de fin</label>
                                         </div>
                                     </div>
-                                
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary botoncerrar" data-bs-dismiss="modal">Cerrar</button>
-                                        <form method="post" asp-page-handler="Eliminar" class="d-inline">
-                                            <input type="hidden" name="id_recordatorio" value="@rec.id_recordatorio" />
-                                            <button type="submit" class="btn btn-danger Titillium">Eliminar</button>
-                                        </form>
                                         <button type="submit" class="btn btn-primary botonagregar">Modificar</button>
                                     </div>
+                                </form>
+
+                                <form method="post" asp-page-handler="Eliminar" class="d-inline">
+                                    <input type="hidden" name="id_rec" value="@rec.id_recordatorio" />
+                                    <button type="submit" class="btn btn-danger Titillium">Eliminar</button>
                                 </form>
                             </div>
                         </div>
