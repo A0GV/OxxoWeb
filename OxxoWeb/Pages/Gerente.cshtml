@@ -22,26 +22,18 @@
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+        <tbody>
                 @foreach (OxxoWeb.Models.AsesorInfo asesor in Model.ListaAsesores)
                 {
                     <tr class="align-middle">
                         <td>
                             <div class="d-flex align-items-center gap-3">
-                                @if (Model.FotosDrive.ContainsKey(asesor.IdUsuario))
-                                {
-                                     <img src="@Model.FotosDrive[asesor.IdUsuario]"
-                                        alt="Foto asesor"
-                                        class="rounded-circle"
-                                        style="width: 50px; height: 50px; object-fit: cover;" />
-                                }
-                                else
-                                {
-                                    <img src="~/Img/gray.jpeg"
-                                        alt="Sin foto"
-                                        class="rounded-circle"
-                                        style="width: 50px; height: 50px; object-fit: cover;" />
-                                }
+        
+                                 <img src="~/Img/asesores/@(asesor.IdUsuario).png"
+                                    alt="Foto asesor"
+                                    class="rounded-circle"
+                                    style="width: 50px; height: 50px; object-fit: cover;" />
+
                                 <span>@asesor.Nombre @asesor.ApellidoPat</span>
                             </div>
                         </td>
@@ -50,24 +42,11 @@
                                 <i class="bi bi-envelope-fill"></i> @asesor.Correo
                             </a>
                         </td>
-
-
                         <td><span class="badge bg-secondary">@asesor.TiendasCount</span> tiendas</td>
                         <td>
-                            <!-- Redirige al perfil del asesor -->
-                            <a href="/Perfil?idUsuario=@asesor.IdUsuario" class="btn btn-sm btn-outline-secondary me-2" title="Ver perfil">
-                                <i class="bi bi-eye"></i>
-                            </a>
-
-                            <!-- Redirige a estadísticas -->
-                            <a href="/Leaderboard" class="btn btn-sm btn-outline-secondary me-2" title="Leaderboard">
-                                <i class="bi bi-bar-chart-line"></i>
-                            </a>
-
-                            <!-- Redirige a la página de asignar tarea -->
-                            <a href="/gali" class="btn btn-sm btn-outline-secondary" title="Asignar tarea">
-                                <i class="bi bi-clipboard-plus"></i>
-                            </a>
+                            <a href="/Perfil?idUsuario=@asesor.IdUsuario" class="btn btn-sm btn-outline-secondary me-2" title="Ver perfil"><i class="bi bi-eye"></i></a>
+                            <a href="/Leaderboard" class="btn btn-sm btn-outline-secondary me-2" title="Leaderboard"><i class="bi bi-bar-chart-line"></i></a>
+                            <a class="btn btn-sm btn-outline-secondary" title="Asignar tarea"><i class="bi bi-clipboard-plus"></i></a>
                         </td>
                     </tr>
                 }
