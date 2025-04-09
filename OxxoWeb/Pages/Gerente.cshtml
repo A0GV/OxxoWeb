@@ -28,22 +28,29 @@
                     <tr class="align-middle">
                         <td>
                             <div class="d-flex align-items-center gap-3">
-                                @if (!string.IsNullOrEmpty(asesor.Foto))
+                                @if (Model.FotosDrive.ContainsKey(asesor.IdUsuario))
                                 {
-                                    <img src="~/img/@asesor.Foto" alt="Foto asesor" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                     <img src="@Model.FotosDrive[asesor.IdUsuario]"
+                                        alt="Foto asesor"
+                                        class="rounded-circle"
+                                        style="width: 50px; height: 50px; object-fit: cover;" />
                                 }
                                 else
                                 {
-                                    <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                    <img src="~/Img/gray.jpeg"
+                                        alt="Sin foto"
+                                        class="rounded-circle"
+                                        style="width: 50px; height: 50px; object-fit: cover;" />
                                 }
                                 <span>@asesor.Nombre @asesor.ApellidoPat</span>
                             </div>
                         </td>
                         <td>
-                            <a href="mailto:@asesor.Correo" class="text-decoration-none">
-                                @asesor.Correo
+                            <a href="mailto:@asesor.Correo" class="text-dark d-flex align-items-center gap-2">
+                                <i class="bi bi-envelope-fill"></i> @asesor.Correo
                             </a>
                         </td>
+
 
                         <td><span class="badge bg-secondary">@asesor.TiendasCount</span> tiendas</td>
                         <td>
