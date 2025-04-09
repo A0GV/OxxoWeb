@@ -7,6 +7,16 @@ body {
     padding: 2rem;
     background-color: #f8f8f8;
     color: #222;
+    padding-bottom: 0; /* elimina padding extra si lo tienes */
+    margin-bottom: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body > *:last-child {
+    margin-bottom: 0 !important; /* fuerza a quitar márgenes de última sección */
 }
 
 /* ================================
@@ -17,7 +27,7 @@ body {
     margin-bottom: 40px;
 }
 .titulo-de-la-pag h1 {
-    font-size: 1.9rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #d62828;
     text-align: center;
@@ -29,7 +39,7 @@ body {
 .seccion {
     background-color: white;
     border-radius: 16px;
-    border-top: 60px solid #fce9bb;
+    border-top: 60px solid #ffe3a3;
     padding: 1.2rem 1.2rem 2rem;
     position: relative;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
@@ -50,14 +60,17 @@ body {
 ================================ */
 .row {
     display: flex;
-    gap: 2rem; /* <- este es el espacio entre columnas */
+    gap: 2rem; 
     flex-wrap: wrap;
+    max-width: 1900px;
+    
 }
 
 /*para hacerlos tipo dashboard*/
 .row > .seccion {
     flex: 1;
     min-width: 350px;
+    
 }
 
 /* ================================
@@ -187,6 +200,44 @@ body {
     transform: scale(1.05);
 }
 
+/*para el calendario de fecha limite*/
+.flatpickr-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    height: 3.4rem; /* ajusta esto si usas un tamaño distinto */
+}
+
+/* Input de fecha */
+.flatpickr-wrapper input[data-input] {
+    flex: 1;
+    border: none;
+    padding: 0 1.2rem;
+    font-size: 1rem;
+    background-color: transparent;
+    height: 100%; /* que tenga la misma altura que el contenedor */
+    line-height: 3.4rem; /* para alinear verticalmente el texto */
+}
+
+/* Botón del icono */
+.flatpickr-wrapper .calendar-button {
+    background: none;
+    border: none;
+    padding: 0 1rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+
 /* ============================
    POPUP DE ÉXITO
 ============================= */
@@ -238,7 +289,7 @@ progress::-webkit-progress-bar {
     border-radius: 10px;
 }
 progress::-webkit-progress-value {
-    background: linear-gradient(90deg, #a471b2, #cfa2db);
+    background: linear-gradient(90deg, #d62828, #ff6b6b); /* rojo principal al rojo claro */
     border-radius: 10px;
 }
 .progress-bar span {

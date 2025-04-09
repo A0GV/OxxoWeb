@@ -391,7 +391,7 @@ namespace OxxoWeb.Models
                 WHERE u.id_tipo = 1 AND t.estado = 'Completado'
                 GROUP BY u.id_usuario
                 ORDER BY total_metas DESC
-                LIMIT 3;";
+                LIMIT 6;";
 
             using var cmd = new MySqlCommand(query, connection);
             using var reader = cmd.ExecuteReader();
