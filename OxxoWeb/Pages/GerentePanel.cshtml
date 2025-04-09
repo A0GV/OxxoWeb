@@ -1,0 +1,275 @@
+@page "/GerentePanel"
+@using GerenteTareas.Pages
+@model GerentePanelModel
+@{
+    ViewData["Title"] = "Gerente Panel";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/galistyle.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+
+    <!-- ================================
+         TÍTULO PRINCIPAL
+    =================================== -->
+    <div class="titulo-de-la-pag"> 
+        <h1>Panel de Asignación del Gerente de Plaza</h1>
+    </div>
+
+    <!-- ================================
+         RESUMEN KPIs (SOLO)
+    =================================== -->
+    <div class="row"> 
+    <div class="seccion resumen">
+        <h2>Resumen General del Equipo</h2>
+        <div class="kpis">
+            <!-- Total asesores -->
+            <div class="kpi">
+                <div class="icono"><i class="bi bi-people-fill"></i></div>
+                <strong>@Model.TotalAsesores</strong>
+                <span>Asesores</span>
+            </div>
+
+            <!-- Metas activas -->
+            <div class="kpi">
+                <div class="icono"><i class="bi bi-bullseye"></i></div>
+                <strong>@Model.MetasActivas</strong>
+                <span>Metas activas</span>
+            </div>
+
+            <!-- Plazas registradas -->
+            <div class="kpi">
+                <div class="icono"><i class="bi bi-geo-alt-fill"></i></div>
+                <strong>@Model.PlazasRegistradas</strong>
+                <span>Plazas registradas</span>
+            </div>
+
+            <!-- Tiendas registradas -->
+            <div class="kpi">
+                <div class="icono"><i class="bi bi-shop"></i></div>
+                <strong>@Model.TiendasRegistradas</strong>
+                <span>Tiendas registradas</span>
+            </div>
+
+            <!-- Tareas totales -->
+            <div class="kpi">
+                <div class="icono"><i class="bi bi-clipboard-check"></i></div>
+                <strong>@Model.TareasAsignadas</strong>
+                <span>Tareas asignadas</span>
+            </div>
+
+            <!-- Tareas próximas a vencer -->
+            <div class="kpi">
+                <div class="icono"><i class="bi bi-alarm-fill"></i></div>
+                <strong>@Model.TareasProximas</strong>
+                <span>Próximas a vencer</span>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- ================================
+         ROW 2: Progreso + Asignar
+    =================================== -->
+    <div class="row">
+        <!-- Progreso de Asesores -->
+        <div class="seccion progreso-asesores">
+            <h2>Progreso de Asesores</h2>
+            <div class="tabla-scrollable">
+                <table>
+                    <thead>
+                        <tr class="encabezado-tabla">
+                            <th><i class="bi bi-person-fill"></i> Asesor</th>
+                            <th><i class="bi bi-flag-fill"></i> Reto actual</th>
+                            <th><i class="bi bi-calendar-event"></i> Fecha límite</th>
+                            <th><i class="bi bi-bar-chart-fill"></i> Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var asesor in Model.ProgresoAsesores)
+                        {
+                            <tr>
+                                <td>@asesor.Nombre @asesor.ApellidoPat @asesor.ApellidoMat</td>
+                                <td>@asesor.Reto</td>
+                                <td>@asesor.FechaLimite.ToString("dd/MM/yyyy")</td>
+                                <td class="@(asesor.Estado.ToLower() == "completado" ? "completado" : asesor.Estado.ToLower() == "en progreso" ? "progreso" : "no-iniciado")">
+                                    @if (asesor.Estado.ToLower() == "completado")
+                                    {
+                                        <text><i class="bi bi-check2-circle"></i> Completado</text>
+                                    }
+                                    else if (asesor.Estado.ToLower() == "en progreso")
+                                    {
+                                        <text><i class="bi bi-hourglass-split"></i> En progreso</text>
+                                    }
+                                    else
+                                    {
+                                        <text><i class="bi bi-x-circle"></i> Sin empezar</text>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Asignar Tarea -->
+        <div class="seccion asignar-tarea">
+            <h2>Asignar Tarea</h2>
+            <form method="post">
+                <div class="campo-formulario">
+                    <label for="titulo"><i class="bi bi-pencil-fill"></i> Título de tarea:</label>
+                    <input type="text" id="titulo" asp-for="NuevaTarea.Titulo" />
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="tipo"><i class="bi bi-ui-checks-grid"></i> Tipo de tarea:</label>
+                    <select asp-for="NuevaTarea.Tipo">
+                        <option disabled selected>Selecciona un tipo</option>
+                        <option>Capacitación</option>
+                        <option>Reto EXP</option>
+                        <option>Registro diario</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="fechaLimite"><i class="bi bi-calendar-event"></i> Fecha límite:</label>
+                    <input asp-for="NuevaTarea.FechaLimite" id="fechaLimite" class="form-control" placeholder="dd/mm/aaaa" />
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="asesor"><i class="bi bi-people-fill"></i> Seleccionar asesor:</label>
+                    <select asp-for="NuevaTarea.IdUsuario">
+                        <option disabled selected>Selecciona un asesor</option>
+                        @foreach (var asesor in Model.Asesores)
+                        {
+                            <option value="@asesor.IdUsuario">@asesor.nombre @asesor.apellido_pat</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit">✔ Guardar</button>
+                    <button type="reset">✖ Borrar</button>
+                </div>
+            </form>
+
+            @if (TempData["Mensaje"] != null)
+            {
+                <div id="popup-exito" class="popup-mensaje">
+                    <i class="bi bi-check-circle-fill"></i> @TempData["Mensaje"]
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- ================================
+         ROW 3: Metas Activas progress bars + Logros
+    =================================== -->
+    <div class="row">
+        <div class="seccion metas-activas">
+            <h2>Metas Activas del Equipo</h2>
+
+            <!-- 1. Capacitación finalizada -->
+            <div class="progress-bar">
+                <label>Capacitación finalizada</label>
+                <progress value="@Model.CapacitacionesFinalizadas" max="@Model.TotalAsesores"></progress>
+                <span>@Model.CapacitacionesFinalizadas/@Model.TotalAsesores asesores</span>
+            </div>
+
+            <!-- 2. EXP acumulado en el juego -->
+            <div class="progress-bar">
+                <label>EXP acumulado en el juego</label>
+                <progress value="@(Model.TotalEXP > 15000 ? 15000 : Model.TotalEXP)" max="15000"></progress>
+                <span>@Model.TotalEXP/15000 EXP</span>
+            </div>
+
+            <!-- 3. Certificados obtenidos -->
+            <div class="progress-bar">
+                <label>Certificados obtenidos</label>
+                <progress value="@Model.TotalCertificados" max="15"></progress>
+                <span>@Model.TotalCertificados/15 certificados</span>
+            </div>
+
+            <!-- 4. Publicaciones recientes -->
+            <div class="progress-bar">
+                <label>Publicaciones recientes (últimos 30 días)</label>
+                <progress value="@Model.PublicacionesRecientes" max="10"></progress>
+                <span>@Model.PublicacionesRecientes/10 publicaciones</span>
+            </div>
+        </div>
+
+        <div class="seccion metas-completadas">
+            <h2>Logros</h2>
+
+            <div class="filtro-logros-wrapper">
+                <!-- INPUTS -->
+                <input type="radio" name="filtro" id="filtro-equipo" checked>
+                <input type="radio" name="filtro" id="filtro-individual">
+
+                <!-- BOTONES -->
+                <div class="filtro-logros">
+                    <label for="filtro-equipo" class="boton-filtro">Equipo</label>
+                    <label for="filtro-individual" class="boton-filtro">Individual</label>
+                </div>
+
+                <!-- CONTENIDO LOGROS -->
+                <div class="contenedor-logros">
+                    <!-- LOGROS EQUIPO -->
+                    <ul class="ranking contenido contenido-equipo">
+                        @if (Model.LogroCapacitacionPorTodos) { <li><i class="bi bi-trophy"></i> Todos completaron una capacitación</li> }
+                        @if (Model.LogroEXP5000) { <li><i class="bi bi-bar-chart-line"></i> 5000 EXP acumulados en el equipo</li> }
+                        @if (Model.LogroCincoCertificados) { <li><i class="bi bi-award-fill"></i> Equipo con 5 certificados o más</li> }
+                        @if (Model.LogroCincoPublicaciones) { <li><i class="bi bi-chat-dots"></i> 5 publicaciones recientes del equipo</li> }
+                        @if (Model.LogroAsesorCincoMetas) { <li><i class="bi bi-lightning-charge"></i> Asesor completó 5 tareas o más</li> }
+                        @if (Model.LogroTodosTiposCompletados) { <li><i class="bi bi-puzzle"></i> Se completaron todos los tipos de retos</li> }
+                        @if (!Model.LogroCapacitacionPorTodos && !Model.LogroEXP5000 && !Model.LogroCincoCertificados && !Model.LogroCincoPublicaciones && !Model.LogroAsesorCincoMetas && !Model.LogroTodosTiposCompletados)
+                        {
+                            <li><i class="bi bi-emoji-neutral"></i> Aún no hay logros desbloqueados</li>
+                        }
+                    </ul>
+
+                    <!-- RANKING INDIVIDUAL -->
+                    <ul class="ranking contenido contenido-individual">
+                        @if (Model.RankingAsesores.Count > 0)
+                        {
+                            int pos = 1;
+                            foreach (var asesor in Model.RankingAsesores)
+                            {
+                                <li>
+                                    <i class="bi bi-@pos-circle"></i> @asesor.NombreCompleto - @asesor.Total metas completadas
+                                </li>
+                                pos++;
+                            }
+                        }
+                        else
+                        {
+                            <li><i class="bi bi-info-circle"></i> No hay asesores destacados aún</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- FLATPICKR: calendario bonito en español -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+<script>
+    flatpickr("#fechaLimite", {
+        dateFormat: "d/m/Y",
+        locale: "es"
+    });
+</script>
+
+</body>
+</html>

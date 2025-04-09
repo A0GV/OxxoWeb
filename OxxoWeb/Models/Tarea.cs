@@ -1,3 +1,4 @@
+// para pantalla gali
 using System;
 using System.ComponentModel.DataAnnotations;
 

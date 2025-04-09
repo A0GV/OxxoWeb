@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace GerenteTareas.Pages
 {
-    public class GaliModel : PageModel
+    public class GerentePanelModel : PageModel
     {
         // ==========================================
         // Instancia del contexto personalizado para acceder a la base de datos
@@ -15,7 +15,7 @@ namespace GerenteTareas.Pages
         // ==========================================
         // Constructor que inicializa el contexto de base de datos
         // ==========================================
-        public GaliModel()
+        public GerentePanelModel()
         {
             _db = new GaliDatabaseContext();
         }
