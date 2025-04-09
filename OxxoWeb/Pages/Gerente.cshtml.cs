@@ -14,7 +14,7 @@ namespace OxxoWeb.Pages
 
 
         public void OnGet(){
-             ReginaDataBaseContext db = new ReginaDataBaseContext();
+            ReginaDataBaseContext db = new ReginaDataBaseContext();
             ListaAsesores = db.GetAsesoresInfo();
             tiendasPorAsesor = db.GetTiendasNum();
 
