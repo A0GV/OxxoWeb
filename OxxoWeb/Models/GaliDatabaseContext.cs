@@ -68,13 +68,13 @@ namespace OxxoWeb.Models
         }
 
         // 2. Obtener número total de tareas (metas) activas - la quite 
-        //public int GetMetasActivas()
-        //{
-            //using var connection = GetConnection();
-            //connection.Open();
-            //var cmd = new MySqlCommand("SELECT COUNT(*) FROM tarea WHERE fecha_limite >= CURDATE();", connection);
-            //return Convert.ToInt32(cmd.ExecuteScalar());
-        //}
+        public int GetMetasActivas()
+        {
+            using var connection = GetConnection();
+            connection.Open();
+            var cmd = new MySqlCommand("SELECT COUNT(*) FROM tarea WHERE fecha_limite >= CURDATE();", connection);
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
 
         // 3. Obtener número total de plazas registradas
         public int GetPlazasRegistradas()
