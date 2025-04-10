@@ -152,21 +152,23 @@ namespace OxxoWeb.Models
         // PARA ASIGNAR TAREA
         // ==========================================
         public void InsertarTarea(Tarea tarea)
-        {
-            using var connection = GetConnection();
-            connection.Open();
+    {
+    using var connection = GetConnection();
+    connection.Open();
 
-            var query = @"INSERT INTO tarea (titulo, tipo, fecha_limite, id_usuario)
-                          VALUES (@titulo, @tipo, @fecha_limite, @id_usuario)";
+    var query = @"INSERT INTO tarea (titulo, tipo, fecha_limite, id_usuario, estado)
+                  VALUES (@titulo, @tipo, @fecha_limite, @id_usuario, @estado)";
 
-            using var cmd = new MySqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@titulo", tarea.Titulo);
-            cmd.Parameters.AddWithValue("@tipo", tarea.Tipo);
-            cmd.Parameters.AddWithValue("@fecha_limite", tarea.FechaLimite);
-            cmd.Parameters.AddWithValue("@id_usuario", tarea.IdUsuario);
+    using var cmd = new MySqlCommand(query, connection);
+    cmd.Parameters.AddWithValue("@titulo", tarea.Titulo);
+    cmd.Parameters.AddWithValue("@tipo", tarea.Tipo);
+    cmd.Parameters.AddWithValue("@fecha_limite", tarea.FechaLimite);
+    cmd.Parameters.AddWithValue("@id_usuario", tarea.IdUsuario);
+    cmd.Parameters.AddWithValue("@estado", "Sin empezar"); // ✅ nuevo campo
 
-            cmd.ExecuteNonQuery();
-        }
+    cmd.ExecuteNonQuery();
+}
+
 
         // ==========================================
         // Obtener lista de asesores para el formulario
