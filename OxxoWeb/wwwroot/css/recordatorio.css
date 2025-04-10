@@ -3,6 +3,22 @@
     box-shadow: none;
 }
 
+.borrador {
+    border-top: none;
+    align-content: end;
+}
+.margenmas{
+    margin-left:60px;
+}
+.margencero{
+    margin: 0;
+}
+.boradorsito{
+    border: #FDF3DD;
+    background-color: #FDF3DD;
+    color: #4C4C4C;
+}
+
 .espacito{
     margin-bottom: 15px;
 }
