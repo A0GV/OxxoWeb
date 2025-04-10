@@ -1,59 +1,67 @@
-/* Estilo de la tabla de asesores */
-.background-beige-cell {
-    background-color: #fff3dd;
-    border-radius: 12px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
-    padding: 1rem;
-}
+/*GERENTE*/
 
-/* Encabezado */
-.table-header-custom th {
+/* FONDO TARJETA COMPLETA */
+.background-beige-cell {
+    background-color: #fdf3dd;
+    border-radius: 16px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+  }
+  
+  /* ENCABEZADO BONITO */
+  .table-header-custom th {
     background-color: #ffe3a3;
     color: #2f2f2f;
     font-weight: bold;
     padding: 1.2rem;
     font-size: 1.1rem;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-/* Celdas */
-.table td {
+    border: none;
+  }
+  
+  /* CELDAS SUAVES, SIN GAPS */
+  .table td {
     vertical-align: middle;
-    padding: 1.1rem 1rem;
+    padding: 1.4rem 1rem;
     font-size: 1rem;
-}
-
-/* Imagen y nombre alineados */
-.nombre-con-imagen {
+    background-color: #fdf3dd;
+    border: none;
+  }
+  
+  /* MÁS ALTURA DE FILA */
+  .fila-asesor {
+    height: 80px;
+  }
+  
+  /* FOTO + NOMBRE */
+  .nombre-con-imagen {
     display: flex;
     align-items: center;
-}
-
-.nombre-con-imagen img {
+  }
+  
+  .nombre-con-imagen img {
     width: 42px;
     height: 42px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 0.8rem;
-}
-
-/* Botones de acciones */
-.table td .btn {
+  }
+  
+  /* BOTONES ICONO */
+  .table td .btn {
     padding: 0.4rem 0.6rem;
     font-size: 1.2rem;
     border-radius: 6px;
     margin-right: 0.4rem;
     border-color: #999;
     color: #333;
-}
-
-.table td .btn i {
+  }
+  
+  .table td .btn i {
     font-size: 1.3rem;
-}
-
-/* Último botón sin margen derecho */
-.table td .btn:last-child {
+  }
+  
+  .table td .btn:last-child {
     margin-right: 0;
-}
-
+  }
+  
+  
