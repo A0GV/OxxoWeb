@@ -77,14 +77,22 @@
                             </a>
                         </li>
                         
+
                         <li class="nav-item">
-                              <a class="nav-link text-dark" asp-area="" asp-page="@paginaRecordatorios">
-                                <div class="nav-icon-container">
-                                    <span class="material-symbols-outlined">notifications</span>
-                                    <span class="nav-text">Recordatorios</span>
-                                </div>
-                            </a>
-                        </li>
+    <a class="nav-link text-dark" asp-area="" asp-page="@paginaRecordatorios">
+        <div class="nav-icon-container">
+            <span class="material-symbols-outlined">
+                @(tipoUsuario == 2 ? "assignment" : "notifications")
+            </span>
+            <span class="nav-text">
+                @(tipoUsuario == 2 ? "Tareas" : "Recordatorios")
+            </span>
+        </div>
+    </a>
+</li>
+
+
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Perfil">
                                 <div class="nav-icon-container">
