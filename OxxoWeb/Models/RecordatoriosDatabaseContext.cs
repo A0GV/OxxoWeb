@@ -69,7 +69,7 @@ namespace OxxoWeb.Models
             cmd.CommandText = @"select r.titulo, r.dia, r.lugar, r.descripcion, r.hora_inicio, r.hora_final, tr.tipo, r.id_tienda, r.id_recordatorio
                                 from recordatorio r
                                 join tiporec tr on tr.id_tipo =r.id_tipo
-                                where r.id_usuario = 6 and r.dia >= CURRENT_DATE
+                                where r.id_usuario = @id and r.dia >= CURRENT_DATE
                                 order by r.dia >= CURRENT_DATE DESC, r.dia, r.hora_inicio;";
             using (var reader = cmd.ExecuteReader())
             {

@@ -96,6 +96,10 @@
         </div>
         <div class="col-1"></div>
         <div class="col-8">
+            @if(Model.recc == null || !Model.recc.Any()){
+                //Cuando no hay recordatorios
+                <h2 class="fechita Titillium">No hay recordatorios aún</h2>
+            }
             @foreach(var rec in Model.recc){
                 @if(!Model.Checkfecha[rec.fecha]){
                     //Extrae solamente la fecha y la compara con la fecha de la base de datos
@@ -115,8 +119,12 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content background-beige-cell">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="ModificarLabel-@rec.id_recordatorio Titillium">Modificar recordatorio</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                <h1 class="modal-title titulo" id="ModificarLabel-@rec.id_recordatorio Titillium">Modificar recordatorio</h1>
+                                <form method="post" asp-page-handler="Eliminar" class="modal-footer borrador margenmas">
+                                    <input type="hidden" name="id_rec" value="@rec.id_recordatorio" />
+                                    <button type="submit" class="material-symbols-outlined boradorsito">Delete</button>
+                                </form>
+                                <button type="button" class="btn-close margencero" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body Titillium">
@@ -126,7 +134,7 @@
                                         <input type="text" class="form-control Titillium" placeholder="Agregar título" value="@rec.titulo" asp-for="titulo" required />
                                     </div>
                                     <div class="mb-3">
-                                        <textarea class="form-control Titillium" placeholder="Descripción" rows="3" asp-for="descripcion">@rec.descripcion</textarea>
+                                        <input class="form-control Titillium" placeholder="Descripción" rows="3" asp-for="descripcion" value="@rec.descripcion"/>
                                     </div>
                                     <div class="form-floating">
                                         <select class="form-select" id="floatingSelect" asp-for="id_tienda" required>
@@ -163,10 +171,7 @@
                                     </div>
                                 </form>
 
-                                <form method="post" asp-page-handler="Eliminar" class="d-inline">
-                                    <input type="hidden" name="id_rec" value="@rec.id_recordatorio" />
-                                    <button type="submit" class="btn btn-danger Titillium">Eliminar</button>
-                                </form>
+                               
                             </div>
                         </div>
                     </div>
