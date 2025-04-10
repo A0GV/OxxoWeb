@@ -5,14 +5,8 @@
     ViewData["Title"] = "Gerente Panel";
 }
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="~/css/galistyle.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-</head>
-<body>
+<link rel="stylesheet" href="~/css/galistyle.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <!-- ================================
          TÍTULO PRINCIPAL
@@ -67,7 +61,7 @@
             <div class="kpi">
                 <div class="icono"><i class="bi bi-alarm-fill"></i></div>
                 <strong>@Model.TareasProximas</strong>
-                <span>Próximas a vencer</span>
+                <span>Tareas próximas a vencer</span>
             </div>
         </div>
     </div>
@@ -269,7 +263,7 @@
 
 
 
-<!-- FLATPICKR: calendario bonito en español -->
+<!-- calendario bonito en español -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
@@ -285,5 +279,5 @@
 }
 
 
-</body>
-</html>
+
+
