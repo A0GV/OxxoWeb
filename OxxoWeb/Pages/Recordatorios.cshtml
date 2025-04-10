@@ -120,6 +120,10 @@
                         <div class="modal-content background-beige-cell">
                             <div class="modal-header">
                                 <h1 class="modal-title titulo" id="ModificarLabel-@rec.id_recordatorio Titillium">Modificar recordatorio</h1>
+                                <form method="post" asp-page-handler="Eliminar" class="modal-footer borrador">
+                                    <input type="hidden" name="id_rec" value="@rec.id_recordatorio" />
+                                    <button type="submit" class="material-symbols-outlined boradorsito">Delete</button>
+                                </form>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -167,10 +171,7 @@
                                     </div>
                                 </form>
 
-                                <form method="post" asp-page-handler="Eliminar" class="modal-footer borrador">
-                                    <input type="hidden" name="id_rec" value="@rec.id_recordatorio" />
-                                    <button type="submit" class="btn btn-danger Titillium">Eliminar</button>
-                                </form>
+                               
                             </div>
                         </div>
                     </div>

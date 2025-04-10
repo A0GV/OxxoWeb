@@ -5,6 +5,13 @@
 
 .borrador {
     border-top: none;
+    align-content: end;
+}
+
+.boradorsito{
+    border: #FDF3DD;
+    background-color: #FDF3DD;
+    color: #4C4C4C;
 }
 
 .espacito{
