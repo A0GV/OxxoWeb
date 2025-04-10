@@ -143,8 +143,8 @@
 
 
                 <div class="campo-formulario">
-    <label for="fechaLimite"><i class="bi bi-calendar-event"></i> Fecha límite:</label>
-    <input asp-for="NuevaTarea.FechaLimite" id="fechaLimite" class="form-control" placeholder="dd/mm/aaaa" />
+                    <label for="fechaLimite"><i class="bi bi-calendar-event"></i> Fecha límite:</label>
+    <input asp-for="NuevaTarea.FechaLimite" type="text" id="fechaLimite" class="form-control" />
     <span asp-validation-for="NuevaTarea.FechaLimite" class="text-danger"></span>
 </div>
 
@@ -273,12 +273,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-<script>
-    flatpickr("#fechaLimite", {
-        dateFormat: "d/m/Y",
-        locale: "es"
-    });
-</script>
+
+
+@section Scripts {
+    <script>
+        flatpickr("#fechaLimite", {
+            dateFormat: "Y-m-d", // <-- este formato sí es compatible con DateTime
+            locale: "es"
+        });
+    </script>
+}
+
 
 </body>
 </html>
