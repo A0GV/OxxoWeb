@@ -114,7 +114,7 @@ namespace GerenteTareas.Pages
          {
              if (!ModelState.IsValid || NuevaTarea.FechaLimite == DateTime.MinValue || NuevaTarea.IdUsuario == 0)
              {
-                 TempData["Mensaje"] = "Por favor completa todos los campos correctamente."
+                 TempData["Mensaje"] = "Por favor completa todos los campos correctamente.";
                
                 TotalAsesores      = _db.GetTotalAsesores();
                 MetasActivas       = _db.GetMetasActivas();
