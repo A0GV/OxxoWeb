@@ -1,0 +1,190 @@
+@page
+@model RecordatoriosModel
+
+@{
+    ViewData["Title"] = "Recordatorios";
+}
+<div class="row align-items-center Titillium">
+    <div class="col-3">
+        <h1>@ViewData["Title"]</h1>
+    </div>
+    <div class="col-8"></div>
+    <div class="col-1">
+        <button type="button" class="btn btn-primary plus" data-bs-toggle="modal" data-bs-target="#Agregar">
+            <span class="material-symbols-outlined">add</span>
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="Agregar" tabindex="-1" aria-labelledby="AgregarLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content background-beige-cell">
+                    <div class="modal-header">
+                        <h1 class="modal-title titulo" id="AgregarLabel">Agregar recordatorio</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" asp-page-handler="Agregar">
+                            <div class="mb-3">
+                                <input type="text" class="form-control Titillium" placeholder="Agregar título" asp-for="titulo" required></input>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control Titillium" placeholder="Descripción" rows="3" asp-for="descripcion"></textarea>
+                            </div>
+                            <div class="form-floating">
+                                <select class="form-select" id="floatingSelect" asp-for="id_tienda" required>
+                                    <option value="" disabled selected>Selecciona una categoría</option>
+                                    <option value="0">Personal</option>
+                                    @foreach(var tienda in Model.categorias){
+                                        <option value="@tienda.id_tienda">@tienda.nombre_calle</option>
+                                    }
+                                </select>
+                                <label for="floatingSelect">Categoría</label>
+                            </div>
+                            <div class="mb-3 margenarriba">
+                                <input type="text" class="form-control Titillium" placeholder="Agregar lugar" asp-for="lugar" required></input>
+                            </div>
+                            <div class="mb-3 d-flex margenarriba">
+                                <div class="form-floating">
+                                    <input id="fecha" class="form-control" type="date" asp-for="fecha" value="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                                    <label for="fecha">Fecha</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input id="horainicio" class="form-control" type="time" asp-for="hora_inicio" required />
+                                    <label for="horainicio">Hora de inicio</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input id="horafin" class="form-control" type="time" asp-for="hora_fin" required />
+                                    <label for="horafin">Hora de fin</label>
+                                </div>
+                            </div>
+                        
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary botoncerrar"
+                                    data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary botonagregar">Agregar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row align-items-center Titillium">
+    <div class="row g-6 align-items-start">
+        <div class="col-3 background-beige-cell rounded p-3 align-items-end shadow-sm categoriees">
+            <h2 class="titulo Titillium">Categoría</h2>
+            <div class="mini_categoria">
+                <input type="checkbox" class="btn-check" id="btn-check-personal"  value="0" autocomplete="off">
+                <label class="btn btn-outline-primary botonpersonal" for="btn-check-personal"></label><br>
+                <h3 class="mini_titulo Titillium">Personal</h3>
+            </div>
+            @if (Model.categorias.Count > 0)
+            {
+                @foreach (var tienda in Model.categorias)
+                {
+                    <div class="mini_categoria">
+                        <input type="checkbox" class="btn-check" name="catselect" id="btn-check-@tienda.id_tienda"  value="@tienda.id_tienda" autocomplete="off">
+                        <label class="btn btn-outline-primary @tienda.color" for="btn-check-@tienda.id_tienda"></label><br>
+                        <h3 class="mini_titulo Titillium">Sucursal @tienda.nombre_calle</h3>
+                    </div>
+                }
+            }
+
+        </div>
+        <div class="col-1"></div>
+        <div class="col-8">
+            @if(Model.recc == null || !Model.recc.Any()){
+                //Cuando no hay recordatorios
+                <h2 class="fechita Titillium">No hay recordatorios aún</h2>
+            }
+            @foreach(var rec in Model.recc){
+                @if(!Model.Checkfecha[rec.fecha]){
+                    //Extrae solamente la fecha y la compara con la fecha de la base de datos
+                    @if(rec.fecha == DateOnly.FromDateTime(DateTime.Today)){
+                        <h2 class="fechita Titillium">Hoy, @rec.fecha.ToString("dd 'de' MMMM 'del' yyyy")</h2>
+                    }
+                    else{
+                        <h2 class="fechita Titillium">@rec.fecha.ToString("dd 'de' MMMM 'del' yyyy")</h2>
+                    }
+                    Model.Checkfecha[rec.fecha]=true;
+                }
+            <div class="flexible espacito">
+                <button type="button" class="btn btn-primary botonsito @(rec.tipo == 't' ? @Model.colores[(rec.id_tienda ?? 0) % 4] : "botonpersonal")" data-bs-toggle="modal"
+                    data-bs-target="#Modificar-@rec.id_recordatorio"></button>
+                <div class="modal fade" id="Modificar-@rec.id_recordatorio" tabindex="-1" aria-labelledby="ModificarLabel-@rec.id_recordatorio"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content background-beige-cell">
+                            <div class="modal-header">
+                                <h1 class="modal-title titulo" id="ModificarLabel-@rec.id_recordatorio Titillium">Modificar recordatorio</h1>
+                                <form method="post" asp-page-handler="Eliminar" class="modal-footer borrador margenmas">
+                                    <input type="hidden" name="id_rec" value="@rec.id_recordatorio" />
+                                    <button type="submit" class="material-symbols-outlined boradorsito">Delete</button>
+                                </form>
+                                <button type="button" class="btn-close margencero" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body Titillium">
+                                <form method="post" asp-page-handler="Modificar">
+                                    <input type="hidden" name="id_recordatorio" value="@rec.id_recordatorio" />
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control Titillium" placeholder="Agregar título" value="@rec.titulo" asp-for="titulo" required />
+                                    </div>
+                                    <div class="mb-3">
+                                        <input class="form-control Titillium" placeholder="Descripción" rows="3" asp-for="descripcion" value="@rec.descripcion"/>
+                                    </div>
+                                    <div class="form-floating">
+                                        <select class="form-select" id="floatingSelect" asp-for="id_tienda" required>
+                                            <option value="" disabled>Selecciona una categoría</option>
+                                            <option value="0" selected="@(rec.id_tienda == 0)">Personal</option>
+                                            @foreach(var tienda in Model.categorias)
+                                            {
+                                                <option value="@tienda.id_tienda" selected="@(rec.id_tienda == tienda.id_tienda)">@tienda.nombre_calle</option>
+                                            }
+                                        </select>
+                                        <label for="floatingSelect">Categoría</label>
+                                    </div>
+                                    <div class="mb-3 margenarriba">
+                                        <input type="text" class="form-control Titillium" placeholder="Agregar lugar" value="@rec.lugar" asp-for="lugar" required />
+                                    </div>
+                                    <div class="mb-3 d-flex margenarriba">
+                                        <div class="form-floating">
+                                            <input id="fecha" class="form-control" type="date" asp-for="fecha" value="@rec.fecha.ToString("yyyy-MM-dd")" required />
+                                            <label for="fecha">Fecha</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input id="horainicio" class="form-control" type="time" asp-for="hora_inicio" value="@rec.hora_inicio.ToString("hh\\:mm")" required />
+                                            <label for="horainicio">Hora de inicio</label>
+                                        </div>
+                                        <div class="form-floating">
+                                            <input id="horafin" class="form-control" type="time" asp-for="hora_fin" value="@rec.hora_final.ToString("hh\\:mm")" required />
+                                            <label for="horafin">Hora de fin</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary botoncerrar" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary botonagregar">Modificar</button>
+                                    </div>
+                                </form>
+
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec">
+                    <div class="flexible espacio widht100">
+                        <div class="Titillium titulo paddtit">@rec.titulo</div>
+                        <div class="Titillium hora">@rec.hora_inicio.ToString("hh\\:mm") - @rec.hora_final.ToString("hh\\:mm")</div>
+                    </div>
+                    <div class="Titillium hora">@rec.lugar</div>
+                </div>  
+            </div>
+            }
+        </div>
+    </div>
+</div>
