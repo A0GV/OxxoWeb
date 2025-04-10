@@ -36,11 +36,11 @@
             </div>
 
             <!-- Metas activas -->
-            <div class="kpi">
+            <!-- <div class="kpi">
                 <div class="icono"><i class="bi bi-bullseye"></i></div>
                 <strong>@Model.MetasActivas</strong>
                 <span>Metas activas</span>
-            </div>
+            </div> -->
 
             <!-- Plazas registradas -->
             <div class="kpi">
@@ -125,34 +125,42 @@
                 <div class="campo-formulario">
                     <label for="titulo"><i class="bi bi-pencil-fill"></i> Título de tarea:</label>
                     <input type="text" id="titulo" asp-for="NuevaTarea.Titulo" />
+                    <span asp-validation-for="NuevaTarea.Titulo" class="text-danger"></span>
                 </div>
 
+
                 <div class="campo-formulario">
-                    <label for="tipo"><i class="bi bi-ui-checks-grid"></i> Tipo de tarea:</label>
-                    <select asp-for="NuevaTarea.Tipo">
-                        <option disabled selected>Selecciona un tipo</option>
-                        <option>Capacitación</option>
-                        <option>Reto EXP</option>
-                        <option>Registro diario</option>
-                        <option>Otro</option>
-                    </select>
-                </div>
+    <label for="tipo"><i class="bi bi-ui-checks-grid"></i> Tipo de tarea:</label>
+    <select asp-for="NuevaTarea.Tipo">
+        <option disabled selected>Selecciona un tipo</option>
+        <option>Capacitación</option>
+        <option>Reto EXP</option>
+        <option>Registro diario</option>
+        <option>Otro</option>
+    </select>
+    <span asp-validation-for="NuevaTarea.Tipo" class="text-danger"></span>
+</div>
+
 
                 <div class="campo-formulario">
                     <label for="fechaLimite"><i class="bi bi-calendar-event"></i> Fecha límite:</label>
-                    <input asp-for="NuevaTarea.FechaLimite" id="fechaLimite" class="form-control" placeholder="dd/mm/aaaa" />
-                </div>
+    <input asp-for="NuevaTarea.FechaLimite" type="text" id="fechaLimite" class="form-control" />
+    <span asp-validation-for="NuevaTarea.FechaLimite" class="text-danger"></span>
+</div>
+
 
                 <div class="campo-formulario">
-                    <label for="asesor"><i class="bi bi-people-fill"></i> Seleccionar asesor:</label>
-                    <select asp-for="NuevaTarea.IdUsuario">
-                        <option disabled selected>Selecciona un asesor</option>
-                        @foreach (var asesor in Model.Asesores)
-                        {
-                            <option value="@asesor.IdUsuario">@asesor.nombre @asesor.apellido_pat</option>
-                        }
-                    </select>
-                </div>
+    <label for="asesor"><i class="bi bi-people-fill"></i> Seleccionar asesor:</label>
+    <select asp-for="NuevaTarea.IdUsuario">
+        <option disabled selected>Selecciona un asesor</option>
+        @foreach (var asesor in Model.Asesores)
+        {
+            <option value="@asesor.IdUsuario">@asesor.nombre @asesor.apellido_pat</option>
+        }
+    </select>
+    <span asp-validation-for="NuevaTarea.IdUsuario" class="text-danger"></span>
+</div>
+
 
                 <div class="form-buttons">
                     <button type="submit">✔ Guardar</button>
@@ -161,11 +169,12 @@
             </form>
 
             @if (TempData["Mensaje"] != null)
-            {
-                <div id="popup-exito" class="popup-mensaje">
-                    <i class="bi bi-check-circle-fill"></i> @TempData["Mensaje"]
-                </div>
-            }
+{
+    <div id="popup-exito" class="popup-mensaje">
+        <i class="bi bi-check-circle-fill"></i> @TempData["Mensaje"]
+    </div>
+}
+
         </div>
     </div>
 
@@ -264,12 +273,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
-<script>
-    flatpickr("#fechaLimite", {
-        dateFormat: "d/m/Y",
-        locale: "es"
-    });
-</script>
+
+
+@section Scripts {
+    <script>
+        flatpickr("#fechaLimite", {
+            dateFormat: "Y-m-d", // <-- este formato sí es compatible con DateTime
+            locale: "es"
+        });
+    </script>
+}
+
 
 </body>
 </html>
