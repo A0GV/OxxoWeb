@@ -27,10 +27,10 @@ body > *:last-child {
     margin-bottom: 40px;
 }
 .titulo-de-la-pag h1 {
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 600;
     color: #101010;
-    text-align: center;
+    text-align: left;
 }
 
 /* ================================
@@ -251,17 +251,19 @@ body > *:last-child {
     font-size: 1.2rem;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     z-index: 9999;
-    animation: aparecer 0.5s ease-out, desaparecer 0.5s ease-in 3s forwards;
+    opacity: 1;
+    animation: aparecer 0.5s ease-out, fadeOut 0.5s ease-in 3s forwards;
 }
 
 @keyframes aparecer {
     from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes desaparecer {
-    to { opacity: 0; transform: translateY(20px); display: none; }
+@keyframes fadeOut {
+    to { opacity: 0; transform: translateY(20px); }
 }
+
 
 /* ================================
    PROGRESS BARS

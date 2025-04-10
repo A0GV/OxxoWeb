@@ -36,11 +36,11 @@
             </div>
 
             <!-- Metas activas -->
-            <div class="kpi">
+            <!-- <div class="kpi">
                 <div class="icono"><i class="bi bi-bullseye"></i></div>
                 <strong>@Model.MetasActivas</strong>
                 <span>Metas activas</span>
-            </div>
+            </div> -->
 
             <!-- Plazas registradas -->
             <div class="kpi">
@@ -161,11 +161,12 @@
             </form>
 
             @if (TempData["Mensaje"] != null)
-            {
-                <div id="popup-exito" class="popup-mensaje">
-                    <i class="bi bi-check-circle-fill"></i> @TempData["Mensaje"]
-                </div>
-            }
+{
+    <div id="popup-exito" class="popup-mensaje">
+        <i class="bi bi-check-circle-fill"></i> @TempData["Mensaje"]
+    </div>
+}
+
         </div>
     </div>
 
