@@ -7,6 +7,7 @@ namespace OxxoWeb.Models
 {
     public class RecordatoriosDataBaseContext
     {
+        //Conexión a base de datos
         public string ConnectionString { get; set; }
 
         public RecordatoriosDataBaseContext()
@@ -29,6 +30,7 @@ namespace OxxoWeb.Models
             return new MySqlConnection(ConnectionString);
         }
 
+        //Recibe las categorías en una lista de categorías al momento de ingresar el id del usuario
         public List<Categoria> GetCategorias(int idUSuario)
         {
             List<Categoria> categorias = new List<Categoria>();
@@ -58,6 +60,7 @@ namespace OxxoWeb.Models
             return categorias;
         }
 
+        //Genera una lista de los recordatorios del usuario que esta en sesión
         public List<Recordatorio> GetRecordatorios(int idUSuario)
         {
             List<Recordatorio> recordatorioss = new List<Recordatorio>();
@@ -96,6 +99,7 @@ namespace OxxoWeb.Models
             return recordatorioss;
         }
 
+        //Por medio del id del recordatorio lo elimina
         public void EliminarRec(int id_reco){
             MySqlConnection conexion = GetConnection();
             conexion.Open();
@@ -108,6 +112,7 @@ namespace OxxoWeb.Models
             conexion.Close();
         }
 
+        //Agrega un recordatorio relacionandolo con el id del usuario
         public void AgregarRec(int id_usu, string titu, DateOnly diaa, string lug,string desc, TimeSpan hi, TimeSpan hf, int? id_tien, int idtip){
             MySqlConnection conexion = GetConnection();
             conexion.Open();
@@ -129,7 +134,7 @@ namespace OxxoWeb.Models
             cmd.ExecuteNonQuery();
             conexion.Close();
         }
-
+        //Actualiza el recordatorio por medio de todos los parametros que ocupa tner
         public void ModificarRec(int id_reco, string titu, DateOnly diaa, string lug,string desc, TimeSpan hi, TimeSpan hf, int? id_tien, int idtip){
             MySqlConnection conexion = GetConnection();
             conexion.Open();

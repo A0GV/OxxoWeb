@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System;
 
+//Clase de categorías
 namespace OxxoWeb.Models
 {
     public class Categoria

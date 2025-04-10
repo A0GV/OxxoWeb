@@ -10,9 +10,11 @@ public class RecordatoriosModel : PageModel
     private readonly RecordatoriosDataBaseContext context;
     public List<Categoria> categorias { get; set; }
     public List<Recordatorio> recc { get; set; }
+    //Diccionario para colores
     public Dictionary<int, string> colores = new Dictionary<int, string>{
         {1,"morado"},{2,"amarillo"},{3,"rosa"},{0,"verde"}
     };
+    //Diccionario para no repetir titulo de fecha
     public Dictionary<DateOnly, bool> Checkfecha = new Dictionary<DateOnly, bool>();
 
     // Properties to match the fields used in the Razor page
@@ -43,10 +45,12 @@ public class RecordatoriosModel : PageModel
         {
             //Obtiene las categorías de tienda
             categorias = context.GetCategorias(userId.Value);
+            //Asigna un color al boton de las categorías
             categorias.ForEach(categoria => categoria.color = colores[categoria.id_tienda % 4]);
+            //Obtiene los recordatorios
             recc = context.GetRecordatorios(userId.Value);
 
-            
+            //Guarda la fechas de los recordatorios y si no esta en la lista las agrega
             foreach (var recordatorio in recc)
             {
                 if (!Checkfecha.ContainsKey(recordatorio.fecha))
@@ -67,13 +71,15 @@ public class RecordatoriosModel : PageModel
         //Recargar pagina
         return RedirectToPage();
     }
-
+    //Tarea asincrona para agregar
     public async Task<IActionResult> OnPostAgregar()
     {
+        //Si el value de id_tienda recolectado del dropdown es 0 es personal si es mayor a 0 es de alguna tienda
         int id_tipo = int.Parse(Request.Form["id_tienda"]) == 0 ? 1 : 2;
+        //Permite que descripcion sea empty o null
         string descripcion = Request.Form["descripcion"].ToString() ?? string.Empty;
 
-        // Asegúrate de que la fecha se procese correctamente
+        // Asegura que la fecha se procese correctamente
         string fechaInput = Request.Form["fecha"];
         fecha = DateOnly.ParseExact(fechaInput, "yyyy-MM-dd");
 
@@ -94,11 +100,12 @@ public class RecordatoriosModel : PageModel
     }
     public async Task<IActionResult> OnPostModificar()
     {
+        //Recopila el id del recordatorio
         int id_recordatorio = int.Parse(Request.Form["id_recordatorio"].ToString());
         int id_tipo = int.Parse(Request.Form["id_tienda"]) == 0 ? 1 : 2;
         string descripcion = Request.Form["descripcion"].ToString() ?? string.Empty;
 
-        // Asegúrate de que la fecha se procese correctamente
+        // Asegura de que la fecha se procese correctamente
         string fechaInput = Request.Form["fecha"];
         fecha = DateOnly.ParseExact(fechaInput, "yyyy-MM-dd");
 
