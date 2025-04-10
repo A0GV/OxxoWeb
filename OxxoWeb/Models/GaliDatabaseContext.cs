@@ -1,8 +1,11 @@
+// Notas: El database context esta encapsulando la lógica de conexión y consulta a la base de datos de la pantalla GerentePanel.
+// Agrego los métodos y los mando a llamar en el backend.
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Extensions.Configuration;
-using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient; // Abre y gestiona la conexión con MySQL
 
 namespace OxxoWeb.Models
 {
@@ -34,7 +37,7 @@ namespace OxxoWeb.Models
         }
 
         // ==========================================
-        // MÉTODO PARA PROBAR SI LA CONEXIÓN FUNCIONA
+        // Método para probar si la conexión funciona 
         // ==========================================
         public bool ProbarConexion()
         {
@@ -52,7 +55,7 @@ namespace OxxoWeb.Models
         }
 
         // ==========================================
-        // MÉTODOS PARA LOS KPIs DEL PANEL DE GERENTE
+        // Métodos para los KPIs
         // ==========================================
 
         // 1. Obtener número total de asesores
@@ -64,14 +67,14 @@ namespace OxxoWeb.Models
             return Convert.ToInt32(cmd.ExecuteScalar());
         }
 
-        // 2. Obtener número total de tareas (metas) activas
-        public int GetMetasActivas()
-        {
-            using var connection = GetConnection();
-            connection.Open();
-            var cmd = new MySqlCommand("SELECT COUNT(*) FROM tarea WHERE fecha_limite >= CURDATE();", connection);
-            return Convert.ToInt32(cmd.ExecuteScalar());
-        }
+        // 2. Obtener número total de tareas (metas) activas - la quite 
+        //public int GetMetasActivas()
+        //{
+            //using var connection = GetConnection();
+            //connection.Open();
+            //var cmd = new MySqlCommand("SELECT COUNT(*) FROM tarea WHERE fecha_limite >= CURDATE();", connection);
+            //return Convert.ToInt32(cmd.ExecuteScalar());
+        //}
 
         // 3. Obtener número total de plazas registradas
         public int GetPlazasRegistradas()
@@ -113,7 +116,7 @@ namespace OxxoWeb.Models
         }
 
         // ==========================================
-        // Obtener progreso de asesores
+        // Método para la tabla de progreso de asesores
         // ==========================================
         public List<ProgresoAsesor> GetProgresoAsesores()
         {
@@ -149,29 +152,28 @@ namespace OxxoWeb.Models
         }
 
         // ==========================================
-        // PARA ASIGNAR TAREA
+        // Método para formulario de asignar tarea
         // ==========================================
         public void InsertarTarea(Tarea tarea)
-    {
-    using var connection = GetConnection();
-    connection.Open();
+        {
+            using var connection = GetConnection();
+            connection.Open();
 
-    var query = @"INSERT INTO tarea (titulo, tipo, fecha_limite, id_usuario, estado)
+            var query = @"INSERT INTO tarea (titulo, tipo, fecha_limite, id_usuario, estado)
                   VALUES (@titulo, @tipo, @fecha_limite, @id_usuario, @estado)";
 
-    using var cmd = new MySqlCommand(query, connection);
-    cmd.Parameters.AddWithValue("@titulo", tarea.Titulo);
-    cmd.Parameters.AddWithValue("@tipo", tarea.Tipo);
-    cmd.Parameters.AddWithValue("@fecha_limite", tarea.FechaLimite);
-    cmd.Parameters.AddWithValue("@id_usuario", tarea.IdUsuario);
-    cmd.Parameters.AddWithValue("@estado", "Sin empezar"); // ✅ nuevo campo
+            using var cmd = new MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@titulo", tarea.Titulo);
+            cmd.Parameters.AddWithValue("@tipo", tarea.Tipo);
+            cmd.Parameters.AddWithValue("@fecha_limite", tarea.FechaLimite);
+            cmd.Parameters.AddWithValue("@id_usuario", tarea.IdUsuario);
+            cmd.Parameters.AddWithValue("@estado", "Sin empezar"); 
 
-    cmd.ExecuteNonQuery();
-}
-
+            cmd.ExecuteNonQuery();
+        }
 
         // ==========================================
-        // Obtener lista de asesores para el formulario
+        // Método para el dropdown menu de asesores para el formulario
         // ==========================================
         public List<Usuario> GetAsesores()
         {
@@ -200,7 +202,7 @@ namespace OxxoWeb.Models
         }
 
         // ==========================================
-        // Obtener tipos de tarea únicos para el formulario
+        // Método para el dropdown menu de tipos de tarea 
         // ==========================================
         public List<string> GetTiposTarea()
         {
@@ -222,7 +224,7 @@ namespace OxxoWeb.Models
         }
 
         // ==========================================
-        // MÉTRICAS PARA BARRAS DE PROGRESO (NUEVAS)
+        // Para los progress bars
         // ==========================================
 
         // 1. Total de tareas de capacitación finalizadas
@@ -289,7 +291,7 @@ namespace OxxoWeb.Models
 
         // ==========================================
         // Logros (sección EQUIPO)
-        // ==========================================
+        // =========================================
 
         // 1. ¿Todos los asesores completaron al menos una capacitación?
         public bool Logro_CapacitacionPorTodos()
