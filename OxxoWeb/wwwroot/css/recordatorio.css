@@ -7,7 +7,12 @@
     border-top: none;
     align-content: end;
 }
-
+.margenmas{
+    margin-left:60px;
+}
+.margencero{
+    margin: 0;
+}
 .boradorsito{
     border: #FDF3DD;
     background-color: #FDF3DD;
