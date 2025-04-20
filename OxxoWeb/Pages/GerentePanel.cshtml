@@ -88,7 +88,7 @@
                         @foreach (var asesor in Model.ProgresoAsesores)
                         {
                             <tr>
-                                <td>@asesor.Nombre @asesor.ApellidoPat @asesor.ApellidoMat</td>
+                                <td>@asesor.Nombre @asesor.ApellidoPat</td>
                                 <td>@asesor.Reto</td>
                                 <td>@asesor.FechaLimite.ToString("dd/MM/yyyy")</td>
                                 <td class="@(asesor.Estado.ToLower() == "completado" ? "completado" : asesor.Estado.ToLower() == "en progreso" ? "progreso" : "no-iniciado")">
@@ -156,18 +156,26 @@
 </div>
 
 
-                <div class="form-buttons">
-                    <button type="submit">✔ Guardar</button>
-                    <button type="reset">✖ Borrar</button>
-                </div>
+            <div class="form-buttons">
+                <button type="submit" class="btn-guardar">✔ Guardar</button>
+                <button type="reset" class="btn-borrar">✖ Borrar</button>
+            </div>
+
             </form>
 
-            @if (TempData["Mensaje"] != null)
+@if (TempData["Mensaje"] is string mensaje)
 {
-    <div id="popup-exito" class="popup-mensaje">
-        <i class="bi bi-check-circle-fill"></i> @TempData["Mensaje"]
+    var esError = !mensaje.ToLower().Contains("completa");
+    var clasePopup = esError ? "popup-mensaje popup-exito" : "popup-mensaje popup-error";
+
+    <div class="@clasePopup">
+        <i class="bi bi-check-circle-fill"></i> @mensaje
     </div>
 }
+
+
+
+
 
         </div>
     </div>

@@ -132,9 +132,7 @@ body > *:last-child {
     color: #d62828;
 }
 
-/* ================================
-   COLORES POR KPI (opcional)
-================================ */
+
 
 
 /* ================================
@@ -192,16 +190,28 @@ body > *:last-child {
     border: none;
     border-radius: 6px;
     font-weight: 600;
-    background-color: #d62828;
     color: white;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     font-size: 1rem;
 }
-.form-buttons button:hover {
-    background-color: #a71d1d;
-    transform: scale(1.05);
+
+/* Botón Guardar */
+.btn-guardar {
+    background-color: #28a745; /* verde éxito */
 }
+.btn-guardar:hover {
+    background-color: #218838;
+}
+
+/* Botón Borrar */
+.btn-borrar {
+    background-color: #d62828;
+}
+.btn-borrar:hover {
+    background-color: #a71d1d;
+}
+
 
 /*para el calendario de fecha limite*/
 .flatpickr-wrapper {
@@ -244,11 +254,11 @@ body > *:last-child {
 /* ============================
    POPUP DE ÉXITO
 ============================= */
+/* POPUP GENERAL */
 .popup-mensaje {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background-color: #28a745;
     color: white;
     padding: 1rem 1.5rem;
     border-radius: 10px;
@@ -257,6 +267,16 @@ body > *:last-child {
     z-index: 9999;
     opacity: 1;
     animation: aparecer 0.5s ease-out, fadeOut 0.5s ease-in 3s forwards;
+}
+
+/* POPUP DE ÉXITO */
+.popup-exito {
+    background-color: #28a745; /* verde */
+}
+
+/* POPUP DE ERROR */
+.popup-error {
+    background-color: #d62828; /* rojo */
 }
 
 @keyframes aparecer {
@@ -312,7 +332,7 @@ progress::-webkit-progress-value {
 .progreso-asesores table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     border-radius: 14px;
     border: 1px solid #ccc;
 }
@@ -357,10 +377,13 @@ progress::-webkit-progress-value {
 
 /* Scroll container */
 .tabla-scrollable {
-    max-height: 33rem;
+    max-height: 37rem;
     overflow-y: auto;
     border-radius: 10px;
     border: 1px solid #ccc;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    
 }
 
 /* Tabla bien colapsada */
