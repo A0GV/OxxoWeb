@@ -13,7 +13,7 @@ namespace OxxoWeb.Models
         [Required(ErrorMessage = "El tipo de tarea es obligatorio")]
         public string Tipo { get; set; } = "";
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date)] // Para formatear mejor la fecha... sin hora
         [Required(ErrorMessage = "La fecha límite es obligatoria")]
         public DateTime FechaLimite { get; set; } = DateTime.Today;
 

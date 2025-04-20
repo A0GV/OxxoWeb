@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Org.BouncyCastle.Asn1.Cms;
 using System;
 
+//Clase para recordatorios
 namespace OxxoWeb.Models
 {
     public class Recordatorio
