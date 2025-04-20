@@ -111,21 +111,42 @@ namespace GerenteTareas.Pages
         // MÉTODO PARA INSERTAR UNA NUEVA TAREA
         // ==========================================
         public IActionResult OnPost()
-         {
-             if (!ModelState.IsValid || NuevaTarea.FechaLimite == DateTime.MinValue || NuevaTarea.IdUsuario == 0)
-             {
-                 TempData["Mensaje"] = "Por favor completa todos los campos correctamente.";
-                 Asesores = _db.GetAsesores(); // para volver a llenar el select
-                 return Page();
-             }
- 
- 
-             _db.InsertarTarea(NuevaTarea);
-             ModelState.Clear(); // <-- limpia los datos actuales
-             TempData["Mensaje"] = "Tarea asignada correctamente.";
- 
-             // Redirigir a GET para limpiar el formulario y recargar datos
-             return RedirectToPage();
-        }
+{
+    if (!ModelState.IsValid || NuevaTarea.FechaLimite == DateTime.MinValue || NuevaTarea.IdUsuario == 0)
+    {
+        TempData["Mensaje"] = "Por favor completa todos los campos correctamente.";
+
+        // Recargar todo lo necesario para que la vista no se vacíe
+        TotalAsesores      = _db.GetTotalAsesores();
+        MetasActivas       = _db.GetMetasActivas();
+        PlazasRegistradas  = _db.GetPlazasRegistradas();
+        TiendasRegistradas = _db.GetTiendasRegistradas();
+        TareasAsignadas    = _db.GetTareasTotales();
+        TareasProximas     = _db.GetTareasProximasAVencer();
+        ProgresoAsesores   = _db.GetProgresoAsesores();
+        Asesores           = _db.GetAsesores();
+
+        CapacitacionesFinalizadas = _db.GetCapacitacionesFinalizadas();
+        TotalEXP                  = _db.GetTotalEXP();
+        TotalCertificados         = _db.GetTotalCertificados();
+        PublicacionesRecientes   = _db.GetPublicacionesRecientes();
+
+        LogroCapacitacionPorTodos  = _db.Logro_CapacitacionPorTodos();
+        LogroEXP5000               = _db.Logro_EXP5000();
+        LogroCincoCertificados     = _db.Logro_CincoCertificados();
+        LogroCincoPublicaciones    = _db.Logro_CincoPublicacionesRecientes();
+        LogroAsesorCincoMetas      = _db.Logro_AsesorCincoMetas();
+        LogroTodosTiposCompletados = _db.Logro_TodosTiposCompletados();
+        RankingAsesores            = _db.ObtenerTopAsesoresPorMetas();
+
+        return Page(); // ¡ya con todo recargado!
+    }
+
+    _db.InsertarTarea(NuevaTarea);
+    ModelState.Clear();
+    TempData["Mensaje"] = "Tarea asignada correctamente.";
+    return RedirectToPage();
+}
+
     }
 }
