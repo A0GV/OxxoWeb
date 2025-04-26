@@ -1,0 +1,95 @@
+@page
+@model OxxoWeb.Pages.JuegoModel
+@{
+    ViewData["Title"] = "Ayuda del Videojuego";
+}
+
+<div class="container mt-4">
+    <div>
+        <!-- #VideoJuego  -->
+    </div>
+    
+    <h1 class="mb-4">Ayuda del Videojuego</h1>
+
+    <!-- Sección: Descripción/Historia -->
+    <section class="mb-5">
+        <h2>Historia</h2>
+        <p>@Model.Ayuda.Descripcion</p>
+    </section>
+
+    <!-- Sección: Personaje(s) -->
+    <section class="mb-5">
+        <h2>Personaje</h2>
+        @foreach (var personaje in Model.Ayuda.Personajes)
+        {
+            <div class="card mb-2 p-3">
+                <strong>@personaje.Nombre</strong>
+                <p>@personaje.Descripcion</p>
+            </div>
+        }
+    </section>
+
+    <!-- Sección: Minijuegos -->
+    <section class="mb-5">
+        <h2>Minijuegos</h2>
+        @foreach (var minijuego in Model.Ayuda.Minijuegos)
+        {
+            <div class="card mb-4 p-3">
+                <h3 class="text-primary">@minijuego.Nombre</h3>
+                <p>@minijuego.Descripcion</p>
+                
+                <h4>Controles</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Control</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ctrl in minijuego.Controles)
+                        {
+                            <tr>
+                                <td>@ctrl.Control</td>
+                                <td>@ctrl.Descripcion</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Formas de ganar</h4>
+                        <ul>
+                            @foreach (var cond in minijuego.Condiciones.Where(c => c.TipoCondicion == "Ganar"))
+                            {
+                                <li>@cond.Descripcion</li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Formas de perder</h4>
+                        <ul>
+                            @foreach (var cond in minijuego.Condiciones.Where(c => c.TipoCondicion == "Perder"))
+                            {
+                                <li>@cond.Descripcion</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+
+    <!-- Sección: Créditos -->
+    <section class="mb-5">
+        <h2>Créditos</h2>
+        <p>@Model.Ayuda.Creditos</p>
+    </section>
+
+    <!-- Sección: Licencias -->
+    <section class="mb-5">
+        <h2>Licencias</h2>
+        <p>@Model.Ayuda.Licencias</p>
+    </section>
+</div>
