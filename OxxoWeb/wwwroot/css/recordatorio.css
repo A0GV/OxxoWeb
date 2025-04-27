@@ -243,3 +243,35 @@ h1{
 .widht100{
     width: 100%;
 }
+
+.fondo{
+    background-color: #FFEBC0 !important;
+}
+
+.chiquillo{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.nigga{
+    color: #000 !important;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+
+.cambiesillo{
+    display: flex;
+    align-items: center;
+}
+
+.maschiquillo{
+    font-size: 20px;
+}
+.mas{
+    text-align: right;
+    padding-right: 20px;
+}
+
+.mover{
+    padding-left: 45px; 
+}
