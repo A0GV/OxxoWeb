@@ -7,24 +7,21 @@ namespace OxxoWeb.Models
 {
     public class Plazas
     {
-        // Valores de entidad
-        public int id_plaza {get;set;}
-        public string nombre {get;set;}
-        public string ciudad {get;set;}
-        public string estado {get;set;}
+        public int id_plaza { get; set; } = 0; // para quitar CS8618 warnings de null
+        public string nombre { get; set; } = ""; // para quitar CS8618 warnings de null
+        public string ciudad { get; set; } = ""; // para quitar CS8618 warnings de null
+        public string estado { get; set; } = ""; // para quitar CS8618 warnings de null
 
-        // Constructor con parametros
-        public Plazas(int id_plaza_,string nombre_,string ciudad_,string estado_)
+        // Constructor con parámetros
+        public Plazas(int id_plaza_, string nombre_, string ciudad_, string estado_)
         {
             this.id_plaza = id_plaza_;
             this.nombre = nombre_;
             this.ciudad = ciudad_;
             this.estado = estado_;
         }
-        
-        // Empty constructor
-        public Plazas() {}
+
+        // Constructor vacío
+        public Plazas() { }
     }
 }
-
-

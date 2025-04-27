@@ -10,12 +10,24 @@
     <link rel="stylesheet" href="~/OxxoWeb.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/leaderboard.css" asp-append-version="true" /> <!-- leaderboard styles -->
     <link rel="stylesheet" href="~/css/perfil.css" asp-append-version="true" /> <!-- perfiles styles -->
+    <link rel="stylesheet" href="~/css/recordatorio.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/gerente.css" asp-append-version="true" /> 
+
+    @RenderSection("Styles", required: false)
+
 <!-- Added google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
+<!-- maybe -->
+@{
+    var tipoUsuario = Context.Session.GetInt32("TipoUsuario");
+    var paginaInicio = tipoUsuario == 2 ? "/Gerente" : "/Home";
+    var paginaRecordatorios = tipoUsuario == 2 ? "/GerentePanel" : "/Recordatorios";
+}
+<!-- maybe -->
 <body>
     @if (!(ViewData["HideHeader"] != null && (bool)ViewData["HideHeader"] == true))
     {
@@ -32,7 +44,9 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1 navbarIconsAdolf">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Home">
+                            <!-- maybe -->
+                            <a class="nav-link text-dark" asp-area="" asp-page="@paginaInicio">
+                                <!-- maybe -->
                                 <div class="nav-icon-container">
                                     <span class="material-symbols-outlined">home</span>
                                     <span class="nav-text">Inicio</span>
@@ -59,7 +73,7 @@
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/#">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Dashboard">
                                 <div class="nav-icon-container">
                                     <span class="material-symbols-outlined">monitoring</span>
                                     <span class="nav-text">Estadísticas</span>
@@ -67,14 +81,22 @@
                             </a>
                         </li>
                         
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/#">
-                                <div class="nav-icon-container">
-                                    <span class="material-symbols-outlined">calendar_month</span>
-                                    <span class="nav-text">Calendario</span>
-                                </div>
-                            </a>
-                        </li>
+    <a class="nav-link text-dark" asp-area="" asp-page="@paginaRecordatorios">
+        <div class="nav-icon-container">
+            <span class="material-symbols-outlined">
+                @(tipoUsuario == 2 ? "assignment" : "notifications")
+            </span>
+            <span class="nav-text">
+                @(tipoUsuario == 2 ? "Tareas" : "Recordatorios")
+            </span>
+        </div>
+    </a>
+</li>
+
+
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Perfil">
                                 <div class="nav-icon-container">

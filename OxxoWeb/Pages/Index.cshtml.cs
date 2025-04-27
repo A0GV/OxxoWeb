@@ -21,6 +21,10 @@ namespace OxxoWeb.Pages
         public IActionResult OnPost()
         {
             var context = new OxxoWeb.Models.AdolfoDatabaseContext();
+            var context2 = new OxxoWeb.Models.ReginaDataBaseContext();
+
+            int tipoUsuario = context2.GetTipoUsuario(Username);
+
             bool isValid = context.CheckCredentials(Username, Password);
 
             if (isValid)
@@ -29,8 +33,19 @@ namespace OxxoWeb.Pages
                 if (UserSessionId !=0)
                 {
                     HttpContext.Session.SetInt32("Id", UserSessionId);
+                    //maybe?
+                    HttpContext.Session.SetInt32("TipoUsuario", tipoUsuario);
                 };
-                return RedirectToPage("/Home");
+
+                
+                if (tipoUsuario == 2){
+                    return RedirectToPage("/Gerente");
+                    }
+                    else
+                    {
+                        return RedirectToPage("/Home");
+                    }
+
             }
             else
             {
