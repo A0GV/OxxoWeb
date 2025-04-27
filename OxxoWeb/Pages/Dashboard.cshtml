@@ -5,28 +5,36 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<div class="align-items-center Titillium">
+<div class="container align-items-center Titillium">
     <h1>Estadísticas</h1>
-    <div class="container mt-4 Titillium">
+    <div class="mt-4">
         <div class="col-12 background-beige-cell rounded align-items-end shadow-sm">
-            @{
-            int idSession = 7; 
+            @if (Model.UsuarioPerfil.TipoUsuario == "a")
+                {
+                    // Calc valores para ese usuario
+                    int idSession = Model.UsuarioPerfil.IdUsuario; 
 
-            // Parámetros para query
-            int idUsuario = idSession; 
-            int idUsuarioElote = idSession; 
-            int idUsuarioExpCount = idSession; 
-            int idUsuarioDias = idSession;
-            int idUsuarioBars = idSession; 
+                    // Parámetros para query
+                    int idUsuario = idSession; 
+                    int idUsuarioElote = idSession; 
+                    int idUsuarioExpCount = idSession; 
+                    int idUsuarioDias = idSession;
+                    int idUsuarioBars = idSession; 
 
-            // Usar valores para el JSON
-            string jsonParameters = System.Text.Json.JsonSerializer.Serialize(new { idUsuario, idUsuarioElote, idUsuarioExpCount, idUsuarioDias, idUsuarioBars });
-            string fullParameters = Uri.EscapeDataString(jsonParameters);
+                    // Usar valores para el JSON
+                    string jsonParameters = System.Text.Json.JsonSerializer.Serialize(new { idUsuario, idUsuarioElote, idUsuarioExpCount, idUsuarioDias, idUsuarioBars });
+                    string fullParameters = Uri.EscapeDataString(jsonParameters);
 
-            // Interpolated string usando {} con los parametros completos
-            string reportUrl = $"https://lookerstudio.google.com/embed/reporting/453fab71-0840-4f3f-988b-7c872a2a0441/page/FupHF?params={fullParameters}"; 
-        }
-        <iframe width="1200" height="1800" src="@reportUrl" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+                    // Interpolated string usando {} con los parametros completos
+                    string reportUrl = $"https://lookerstudio.google.com/embed/reporting/453fab71-0840-4f3f-988b-7c872a2a0441/page/FupHF?params={fullParameters}"; 
+                    
+                <iframe width="1200" height="1800" src="@reportUrl" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+                }
+                else 
+                {
+                    // Else es gerente
+                    <p>Gerente</p>
+                }
         </div>
     </div>
 </div>
