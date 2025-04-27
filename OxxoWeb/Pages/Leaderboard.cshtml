@@ -11,46 +11,61 @@
         <h1>Clasificación</h1>
     </div>
 
-    @* <!-- Dropdown select zona -->
-    <!-- Columna container breakpoint mediana 3-->
-    <div class="col-3">
-        <select class="form-select select-redbg-whitetxt form-select-indicator-color-white" aria-label="Seleccionar zona">
-            <!-- Cambiar a q base es zone de usuario,# will needs form to have asp-for  -->
-            <option selected>General</option> <!-- para comparar contra todos -->
-            <!-- Código para select región-->
-            @foreach (var plaza in Model.listaZonas1)
-            {
-                <option value="@plaza.id_plaza">@plaza.nombre</option>
-            }
-        </select>
-    </div> *@
-
     <!-- Empty space layout -->
-    <div class="col-9"></div>
-</div>
+    <div class="col-9"></div></div>
 
-<!-- Leaderboards -->
-<!-- Mt es margin top con font titillium -->
-<div class="container mt-4 Titillium">
-    <!-- Row with gap 6 para dejar espacio entre leaderboard-->
-    <div class="row g-6 align-items-start" >
-        <!-- Izquierdo: Leaderboard General, mitad pantalla background beige rounded con padding 3 y small shadow -->
-        <div class="col-6 background-beige-cell rounded p-3 align-items-end shadow-sm">
-            <!-- Podiums tres principales -->
-            <div class="row text-center">
-                <!--2: Columna 1-2 -->
-                <!-- Columna width 4, styling de leaderboard-left-column en site.css,aplica padding y hacer en flex para poder align elements y position-relative para poder poner num  -->
-                <div class="col-4 leaderboard-left-column text-center d-flex flex-column align-items-center align-self-end">
-                    <div class="left-podium-gap"></div>
-                    <div class="left-podium-image">
-                        <!-- Imagen redonda de empleado-->
-                        @if (Model.listaGen2.Count > 0 && Model.listaGen2 != null)
-                        {
-                            @foreach (var asesorG2 in Model.listaGen2)
+    <!-- Leaderboards -->
+    <!-- Mt es margin top con font titillium -->
+    <div class="container mt-4 Titillium">
+        <!-- Row with gap 6 para dejar espacio entre leaderboard-->
+        <div class="row g-6 align-items-start" >
+            <!-- Izquierdo: Leaderboard General, mitad pantalla background beige rounded con padding 3 y small shadow -->
+            <div class="col-6 background-beige-cell rounded p-3 align-items-end shadow-sm">
+                <!-- Podiums tres principales -->
+                <div class="row text-center">
+                    <!--2: Columna 1-2 -->
+                    <!-- Columna width 4, styling de leaderboard-left-column en site.css,aplica padding y hacer en flex para poder align elements y position-relative para poder poner num  -->
+                    <div class="col-4 leaderboard-left-column text-center d-flex flex-column align-items-center align-self-end">
+                        <div class="left-podium-gap"></div>
+                        <div class="left-podium-image">
+                            <!-- Imagen redonda de empleado-->
+                            @if (Model.listaGen2.Count > 0 && Model.listaGen2 != null)
                             {
-                                @if (!string.IsNullOrEmpty(asesorG2.foto))
+                                @foreach (var asesorG2 in Model.listaGen2)
                                 {
-                                    <img src="~/Img/@asesorG2.foto" alt="Foto lugar 1" class="rounded-circle">
+                                    @if (!string.IsNullOrEmpty(asesorG2.foto))
+                                    {
+                                        <img src="~/Img/@asesorG2.foto" alt="Foto lugar 1" class="rounded-circle">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
+                                    }
+                                }
+                            }
+                            else 
+                            {
+                                    <img src="~/Img/gray.jpeg" alt="Sin foto lugar 2" class="rounded-circle">
+                            }  
+                        </div>
+                        
+                        <!-- Dibujo de podium y aplica flex para centrarlo, needs position-relative para quedarse relativo al podium -->
+                        <div class="left-podium rounded d-flex flex-column align-items-center position-relative">
+                            <!-- Número de lugar, usa circulo como position-absolute  -->
+                            <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle ">2</div>
+                        </div>
+                    </div>
+                    
+                    <!--1: Columna 3-4 -->
+                    <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center align-self-end">
+                        <h2>General</h2>
+                        @if (Model.listaGen1.Count > 0 && Model.listaGen1 != null)
+                        {
+                            @foreach (var asesorG1 in Model.listaGen1)
+                            {
+                                @if (!string.IsNullOrEmpty(asesorG1.foto))
+                                {
+                                    <img src="~/Img/@asesorG1.foto" alt="Foto lugar 1" class="rounded-circle">
                                 }
                                 else
                                 {
@@ -58,271 +73,242 @@
                                 }
                             }
                         }
+                    else
+                    {
+                        <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
+                    }
+
+                        <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
+                        <div class="center-podium rounded d-flex flex-column align-items-center position-relative">
+                            <!-- Número de lugar -->
+                            <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">1</div>
+                        </div>
+                    </div>      
+                    <!--3: Columna 4-5 -->
+                    <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-end">
+                        @if (Model.listaGen3.Count > 0 && Model.listaGen3 != null)
+                        {
+                            @foreach (var asesorG3 in Model.listaGen3)
+                            {
+                                @if (!string.IsNullOrEmpty(asesorG3.foto))
+                                {
+                                    <img src="~/Img/@asesorG3.foto" alt="Foto lugar 3" class="rounded-circle">
+                                }
+                                else
+                                {
+                                    <img src="~/Img/gray.jpeg" alt="Sin foto lugar 3" class="rounded-circle">
+                                }
+                            }
+                        }
                         else 
                         {
-                                <img src="~/Img/gray.jpeg" alt="Sin foto lugar 2" class="rounded-circle">
-                        }  
-                    </div>
-                    
-                    <!-- Dibujo de podium y aplica flex para centrarlo, needs position-relative para quedarse relativo al podium -->
-                    <div class="left-podium rounded d-flex flex-column align-items-center position-relative">
-                        <!-- Número de lugar, usa circulo como position-absolute  -->
-                        <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle ">2</div>
-                    </div>
-                </div>
-                
-                <!--1: Columna 3-4 -->
-                <div class="col-4 leaderboard-center-column text-center d-flex flex-column align-items-center align-self-end">
-                    <h2>General</h2>
-                    @if (Model.listaGen1.Count > 0 && Model.listaGen1 != null)
-                    {
-                        @foreach (var asesorG1 in Model.listaGen1)
-                        {
-                            @if (!string.IsNullOrEmpty(asesorG1.foto))
-                            {
-                                <img src="~/Img/@asesorG1.foto" alt="Foto lugar 1" class="rounded-circle">
-                            }
-                            else
-                            {
-                                <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
-                            }
-                        }
-                    }
-                else
-                {
-                    <img src="~/Img/gray.jpeg" alt="Sin foto lugar 1" class="rounded-circle">
-                }
-
-                    <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
-                    <div class="center-podium rounded d-flex flex-column align-items-center position-relative">
-                        <!-- Número de lugar -->
-                        <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">1</div>
-                    </div>
-                </div>      
-                 <!--3: Columna 4-5 -->
-                <div class="col-4 leaderboard-right-column text-center d-flex flex-column align-items-center align-self-end">
-                    @if (Model.listaGen3.Count > 0 && Model.listaGen3 != null)
-                    {
-                        @foreach (var asesorG3 in Model.listaGen3)
-                        {
-                            @if (!string.IsNullOrEmpty(asesorG3.foto))
-                            {
-                                <img src="~/Img/@asesorG3.foto" alt="Foto lugar 3" class="rounded-circle">
-                            }
-                            else
-                            {
                                 <img src="~/Img/gray.jpeg" alt="Sin foto lugar 3" class="rounded-circle">
+                        }
+                        <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
+                        <div class="right-podium rounded d-flex flex-column align-items-center position-relative">
+                            <!-- Número de lugar -->
+                            <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">3</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nombres de personas-->
+                <div class="row text-center">
+                    <!-- 2do lugar -->
+                    <div class="col-4 leaderboard-left-column d-flex flex-column align-items-center">
+                        
+                        @if (Model.listaGen2.Count > 0 && Model.listaGen2 != null)
+                        {
+                            @foreach (var asesorG2 in Model.listaGen2)
+                            {
+                                <p class="podium-employee-name"><a href="/Perfil?idUsuario=@asesorG2.id_usuario">@asesorG2.nombre @asesorG2.apellido_pat @asesorG2.apellido_mat</a></p>
+                                <p class="podium-txt">@asesorG2.total_exp</p>
                             }
                         }
-                    }
-                    else 
-                    {
-                            <img src="~/Img/gray.jpeg" alt="Sin foto lugar 3" class="rounded-circle">
-                    }
-                    <!-- Dibujo de podium y aplica flex para centrarlo con relative -->
-                    <div class="right-podium rounded d-flex flex-column align-items-center position-relative">
-                        <!-- Número de lugar -->
-                        <div class="podium-number rounded-circle position-absolute top-0 start-50 translate-middle position-relative">3</div>
+                        else 
+                        {
+                            <p class="podium-employee-name">Sin jugador</p>
+                        }
+                    </div>
+                    <!-- 1er lugar -->
+                    <div class="col-4 leaderboard-center-column d-flex flex-column align-items-center">
+                        @if (Model.listaGen1.Count > 0 && Model.listaGen1 != null)
+                        {
+                            @foreach (var asesorG1 in Model.listaGen1)
+                            {
+                                <p class="podium-employee-name"><a href="/Perfil?idUsuario=@asesorG1.id_usuario">@asesorG1.nombre @asesorG1.apellido_pat @asesorG1.apellido_mat</a></p>
+                                <p class="podium-txt">@asesorG1.total_exp</p>
+                            }
+                        }
+                        else 
+                        {
+                            <p class="podium-employee-name">Sin jugador</p>
+                        }
+                    </div>
+                    
+                    <!-- 3er lugar-->
+                    <div class="col-4 leaderboard-right-column d-flex flex-column align-items-center">
+                        @if (Model.listaGen3.Count > 0 && Model.listaGen3 != null)
+                        {
+                            @foreach (var asesorG3 in Model.listaGen3)
+                            {
+                                <p class="podium-employee-name"><a href="/Perfil?idUsuario=@asesorG3.id_usuario">@asesorG3.nombre @asesorG3.apellido_pat @asesorG3.apellido_mat</a></p>
+                                <p class="podium-txt">@asesorG3.total_exp</p>
+                            }
+                        }
+                        else 
+                        {
+                            <p class="podium-employee-name">Sin jugador</p>
+                        }
+                    </div>
+
+                </div>
+                
+                <!-- Lugares restantes de general -->
+                <div class="row rounded p-3">
+                    <div class="col-12">
+                        <!-- Tabla con otros gente restante -->
+                        <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
+                        <table class="table table-hover table-borderless table-beige">
+                            <!-- Class que hacer scroll-table -->
+                            <tbody class="scroll-table">
+                                <!-- Si lista contiene datos -->
+                                @if (Model.listaJuego4.Count > 0 && Model.listaJuego4 != null)
+                                {
+                                    int numLugar = 4; <!-- para contar posición de usuario -->
+                                    @foreach (var asesor4 in Model.listaJuego4)
+                                    {
+                                        <tr class="text-start">
+                                            <!-- Table header número de lugar -->
+                                            <th scope="row">@numLugar</th> 
+                                            <!-- Data nombre usuario -->
+                                            <td class="text-start"><a href="/Perfil?idUsuario=@asesor4.id_usuario">@asesor4.nombre @asesor4.apellido_pat @asesor4.apellido_mat</a></td> 
+                                            <!-- Exp de usuario  -->
+                                            <td class="text-start">@asesor4.total_exp</td> 
+                                        </tr>
+                                        numLugar++; // Actualiza el número para  rank
+                                    }
+                                }
+                                // Si lista no tiene datos, deja espacio vacío
+                                else
+                                {
+                                    <td> </td>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>    
+                </div>
+            </div> <!-- Cierra este columna -->
+
+            <!-- Derecha juegos individuales -->
+            <!-- Agregando flex para usar gap  -->
+            <div class="col-6 d-flex flex-column gap-4">
+                <!-- Tablas para otros juegos, sets background beige, hacer round, adds padding y shadow -->
+                <div class="background-beige-cell rounded p-3 shadow-sm">
+                    <div class="col-12">
+                        <!-- Juego 1 Supervisor -->
+                        <h2>Supervisor Express</h2>
+                        <!-- Hace table q cambie de color cuando hover, beige background -->
+                        <table class="table table-hover table-borderless table-beige">
+                            <!-- Class que hacer scroll-table -->
+                            <tbody class="scroll-table">
+                                <!-- Si lista contiene datos -->
+                                @if (Model.listaJuego1.Count > 0 && Model.listaJuego1 != null)
+                                {
+                                    int numLugar = 1; <!-- para contar posición de usuario -->
+                                    @foreach (var asesor1 in Model.listaJuego1)
+                                    {
+                                        <tr class="text-start">
+                                            <!-- Table header número de lugar -->
+                                            <th scope="row">@numLugar</th> 
+                                            <!-- Data nombre usuario -->
+                                            <td class="text-start"><a href="/Perfil?idUsuario=@asesor1.id_usuario">@asesor1.nombre @asesor1.apellido_pat @asesor1.apellido_mat</a></td> 
+                                            <!-- Exp de usuario  -->
+                                            <td class="text-start">@asesor1.total_exp</td> 
+                                        </tr>
+                                        numLugar++; // Actualiza el número para  rank
+                                    }
+                                }
+                                // Si lista no tiene datos, nadie ha jugado
+                                else
+                                {
+                                    <td>Sin jugadores</td>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Juego 2 Enemigos -->
+                <div class="background-beige-cell rounded p-3 shadow-sm">
+                    <div class="col-12">
+                        <h2>Enemigos</h2>
+                        <!-- Hace table q cambie de color cuando hover, beige background -->
+                        <table class="table table-hover table-borderless table-beige">
+                            <!-- Class que hacer scroll-table -->
+                            <tbody class="scroll-table">
+                                <!-- Si lista contiene datos -->
+                                @if (Model.listaJuego2.Count > 0 && Model.listaJuego2 != null)
+                                {
+                                    int numLugar = 1; <!-- para contar posición de usuario -->
+                                    @foreach (var asesor2 in Model.listaJuego2)
+                                    {
+                                        <tr class="text-start">
+                                            <!-- Table header número de lugar -->
+                                            <th scope="row">@numLugar</th> 
+                                            <!-- Data nombre usuario -->
+                                            <td class="text-start"><a href="/Perfil?idUsuario=@asesor2.id_usuario">@asesor2.nombre @asesor2.apellido_pat @asesor2.apellido_mat</a></td> 
+                                            <!-- Exp de usuario  -->
+                                            <td class="text-start">@asesor2.total_exp</td> 
+                                        </tr>
+                                        numLugar++; // Actualiza el número para  rank
+                                    }
+                                }
+                                // Si lista no tiene datos, nadie ha jugado
+                                else
+                                {
+                                    <td>Sin jugadores</td>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Juego 3 Día a día -->
+                <div class="background-beige-cell rounded p-3 shadow-sm">
+                    <div class="col-12">
+                        <h2>Día a día</h2>
+                        <!-- Hace table q cambie de color cuando hover, beige background -->
+                        <table class="table table-hover table-borderless table-beige">
+                            <!-- Class que hacer scroll-table -->
+                            <tbody class="scroll-table">
+                                <!-- Si lista contiene datos -->
+                                @if (Model.listaJuego3.Count > 0 && Model.listaJuego3 != null)
+                                {
+                                    int numLugar = 1; <!-- para contar posición de usuario -->
+                                    @foreach (var asesor3 in Model.listaJuego3)
+                                    {
+                                        <tr class="text-start">
+                                            <!-- Table header número de lugar -->
+                                            <th scope="row">@numLugar</th> 
+                                            <!-- Data nombre usuario -->
+                                            <td class="text-start"><a href="/Perfil?idUsuario=@asesor3.id_usuario">@asesor3.nombre @asesor3.apellido_pat @asesor3.apellido_mat</a></td> 
+                                            <!-- Exp de usuario  -->
+                                            <td class="text-start">@asesor3.total_exp</td> 
+                                        </tr>
+                                        numLugar++; // Actualiza el número para  rank
+                                    }
+                                }
+                                // Si lista no tiene datos, nadie ha jugado
+                                else
+                                {
+                                    <td>Sin jugadores</td>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-
-            <!-- Nombres de personas-->
-            <div class="row text-center">
-                <!-- 2do lugar -->
-                <div class="col-4 leaderboard-left-column d-flex flex-column align-items-center">
-                    
-                    @if (Model.listaGen2.Count > 0 && Model.listaGen2 != null)
-                    {
-                        @foreach (var asesorG2 in Model.listaGen2)
-                        {
-                            <p class="podium-employee-name"><a href="/Perfil?idUsuario=@asesorG2.id_usuario">@asesorG2.nombre @asesorG2.apellido_pat @asesorG2.apellido_mat</a></p>
-                            <p class="podium-txt">@asesorG2.total_exp</p>
-                        }
-                    }
-                    else 
-                    {
-                        <p class="podium-employee-name">Sin jugador</p>
-                    }
-                </div>
-                <!-- 1er lugar -->
-                <div class="col-4 leaderboard-center-column d-flex flex-column align-items-center">
-                    @if (Model.listaGen1.Count > 0 && Model.listaGen1 != null)
-                    {
-                        @foreach (var asesorG1 in Model.listaGen1)
-                        {
-                            <p class="podium-employee-name"><a href="/Perfil?idUsuario=@asesorG1.id_usuario">@asesorG1.nombre @asesorG1.apellido_pat @asesorG1.apellido_mat</a></p>
-                            <p class="podium-txt">@asesorG1.total_exp</p>
-                        }
-                    }
-                    else 
-                    {
-                        <p class="podium-employee-name">Sin jugador</p>
-                    }
-                </div>
-                
-                <!-- 3er lugar-->
-                <div class="col-4 leaderboard-right-column d-flex flex-column align-items-center">
-                    @if (Model.listaGen3.Count > 0 && Model.listaGen3 != null)
-                    {
-                        @foreach (var asesorG3 in Model.listaGen3)
-                        {
-                            <p class="podium-employee-name"><a href="/Perfil?idUsuario=@asesorG3.id_usuario">@asesorG3.nombre @asesorG3.apellido_pat @asesorG3.apellido_mat</a></p>
-                            <p class="podium-txt">@asesorG3.total_exp</p>
-                        }
-                    }
-                    else 
-                    {
-                        <p class="podium-employee-name">Sin jugador</p>
-                    }
-                </div>
-
-            </div>
-            
-            <!-- Lugares restantes de general -->
-            <div class="row rounded p-3">
-                <div class="col-12">
-                    <!-- Tabla con otros gente restante -->
-                    <!-- Hace table q cambie de color cuando hover, beige background, small reduce padding -->
-                    <table class="table table-hover table-borderless table-beige">
-                        <!-- Class que hacer scroll-table -->
-                        <tbody class="scroll-table">
-                            <!-- Si lista contiene datos -->
-                            @if (Model.listaJuego4.Count > 0 && Model.listaJuego4 != null)
-                            {
-                                int numLugar = 4; <!-- para contar posición de usuario -->
-                                @foreach (var asesor4 in Model.listaJuego4)
-                                {
-                                    <tr class="text-start">
-                                        <!-- Table header número de lugar -->
-                                        <th scope="row">@numLugar</th> 
-                                        <!-- Data nombre usuario -->
-                                        <td class="text-start"><a href="/Perfil?idUsuario=@asesor4.id_usuario">@asesor4.nombre @asesor4.apellido_pat @asesor4.apellido_mat</a></td> 
-                                        <!-- Exp de usuario  -->
-                                        <td class="text-start">@asesor4.total_exp</td> 
-                                    </tr>
-                                    numLugar++; // Actualiza el número para  rank
-                                }
-                            }
-                            // Si lista no tiene datos, deja espacio vacío
-                            else
-                            {
-                                <td> </td>
-                            }
-                        </tbody>
-                    </table>
-
-                </div>    
-            </div>
-        </div> <!-- Cierra este columna -->
-
-        <!-- Derecha juegos individuales -->
-        <!-- Agregando flex para usar gap  -->
-        <div class="col-6 d-flex flex-column gap-4">
-            <!-- Tablas para otros juegos, sets background beige, hacer round, adds padding y shadow -->
-            <div class="background-beige-cell rounded p-3 shadow-sm">
-                <div class="col-12">
-                    <!-- Juego 1 Supervisor -->
-                    <h2>Supervisor Express</h2>
-                    <!-- Hace table q cambie de color cuando hover, beige background -->
-                    <table class="table table-hover table-borderless table-beige">
-                        <!-- Class que hacer scroll-table -->
-                        <tbody class="scroll-table">
-                            <!-- Si lista contiene datos -->
-                            @if (Model.listaJuego1.Count > 0 && Model.listaJuego1 != null)
-                            {
-                                int numLugar = 1; <!-- para contar posición de usuario -->
-                                @foreach (var asesor1 in Model.listaJuego1)
-                                {
-                                    <tr class="text-start">
-                                        <!-- Table header número de lugar -->
-                                        <th scope="row centrarletra">@numLugar</th> 
-                                        <!-- Data nombre usuario -->
-                                        <td class="text-start"><a href="/Perfil?idUsuario=@asesor1.id_usuario">@asesor1.nombre @asesor1.apellido_pat @asesor1.apellido_mat</a></td> 
-                                        <!-- Exp de usuario  -->
-                                        <td class="text-start">@asesor1.total_exp</td> 
-                                    </tr>
-                                    numLugar++; // Actualiza el número para  rank
-                                }
-                            }
-                            // Si lista no tiene datos, nadie ha jugado
-                            else
-                            {
-                                <td>Sin jugadores</td>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Juego 2 Enemigos -->
-            <div class="background-beige-cell rounded p-3 shadow-sm">
-                <div class="col-12">
-                    <h2>Enemigos</h2>
-                    <!-- Hace table q cambie de color cuando hover, beige background -->
-                    <table class="table table-hover table-borderless table-beige">
-                        <!-- Class que hacer scroll-table -->
-                        <tbody class="scroll-table">
-                            <!-- Si lista contiene datos -->
-                            @if (Model.listaJuego2.Count > 0 && Model.listaJuego2 != null)
-                            {
-                                int numLugar = 1; <!-- para contar posición de usuario -->
-                                @foreach (var asesor2 in Model.listaJuego2)
-                                {
-                                    <tr class="text-start">
-                                        <!-- Table header número de lugar -->
-                                        <th scope="row">@numLugar</th> 
-                                        <!-- Data nombre usuario -->
-                                        <td class="text-start"><a href="/Perfil?idUsuario=@asesor2.id_usuario">@asesor2.nombre @asesor2.apellido_pat @asesor2.apellido_mat</a></td> 
-                                        <!-- Exp de usuario  -->
-                                        <td class="text-start">@asesor2.total_exp</td> 
-                                    </tr>
-                                    numLugar++; // Actualiza el número para  rank
-                                }
-                            }
-                            // Si lista no tiene datos, nadie ha jugado
-                            else
-                            {
-                                <td>Sin jugadores</td>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <!-- Juego 3 Día a día -->
-            <div class="background-beige-cell rounded p-3 shadow-sm">
-                <div class="col-12">
-                    <h2>Día a día</h2>
-                    <!-- Hace table q cambie de color cuando hover, beige background -->
-                    <table class="table table-hover table-borderless table-beige">
-                        <!-- Class que hacer scroll-table -->
-                        <tbody class="scroll-table">
-                            <!-- Si lista contiene datos -->
-                            @if (Model.listaJuego3.Count > 0 && Model.listaJuego3 != null)
-                            {
-                                int numLugar = 1; <!-- para contar posición de usuario -->
-                                @foreach (var asesor3 in Model.listaJuego3)
-                                {
-                                    <tr class="text-start">
-                                        <!-- Table header número de lugar -->
-                                        <th scope="row">@numLugar</th> 
-                                        <!-- Data nombre usuario -->
-                                        <td class="text-start"><a href="/Perfil?idUsuario=@asesor3.id_usuario">@asesor3.nombre @asesor3.apellido_pat @asesor3.apellido_mat</a></td> 
-                                        <!-- Exp de usuario  -->
-                                        <td class="text-start">@asesor3.total_exp</td> 
-                                    </tr>
-                                    numLugar++; // Actualiza el número para  rank
-                                }
-                            }
-                            // Si lista no tiene datos, nadie ha jugado
-                            else
-                            {
-                                <td>Sin jugadores</td>
-                            }
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    </div>
 </div>
