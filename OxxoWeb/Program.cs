@@ -19,7 +19,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<MoniDataBaseContext>(); // Add recommended para agregar services 
 builder.Services.AddScoped<DataBaseContextPerfil>(); // Add DataBaseContext
 builder.Services.AddScoped<AdolfoDatabaseContext>();
-
+builder.Services.AddScoped<RecordatoriosDataBaseContext>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

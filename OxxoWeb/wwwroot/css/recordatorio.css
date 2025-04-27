@@ -1,0 +1,245 @@
+/*Cielito css*/
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: none;
+}
+
+.borrador {
+    border-top: none;
+    align-content: end;
+}
+.margenmas{
+    margin-left:60px;
+}
+.margencero{
+    margin: 0;
+}
+.boradorsito{
+    border: #FDF3DD;
+    background-color: #FDF3DD;
+    color: #4C4C4C;
+}
+
+.espacito{
+    margin-bottom: 15px;
+}
+
+.btn-check{
+    align-content: top;
+}
+
+.table-beige th, .table-beige td {
+    align-content: center !important;
+}
+
+
+.centrarletra {
+    text-align: left !important; 
+}
+
+.margenarriba{
+    margin-top: 12px;
+}
+
+.form-control:focus {
+    border-color: #978868;
+}
+
+.modal{
+    --bs-modal-header-border-color:#978868;
+    --bs-modal-footer-border-color:#978868;
+}
+
+
+h1{
+    color: #000;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.fechita{
+    color: #000;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.titulo{
+    color: #4C4C4C;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    flex-shrink: 0;
+    padding-left: 7px;
+}
+.paddtit{
+    padding-left: 0px;
+}
+.hora{
+    color: #4C4C4C;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    align-items: flex-end;
+}
+
+.btn-outline-primary{
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    width: 37px;
+    height: 33px;
+}
+
+.botonagregar{
+    background: #F4BB4C;
+    border-color: #c6983e;
+    color: #1c1c1c;
+    --bs-btn-active-bg: #c6983e;
+    --bs-btn-active-border-color:#c6983e;
+    --bs-btn-active-color: #1c1c1c;
+}
+
+.botonagregar:hover,.botonagregar:active{
+    background:#c6983e;
+    border-color: #c6983e;
+    color: #1c1c1c;
+}
+
+.botoncerrar{
+    background: #978868;
+    border-color: #766a51;
+    --bs-btn-active-bg: #766a51;
+}
+.botoncerrar:hover,.botoncerrar:active{
+    background:#766a51;
+}
+
+.botonpersonal{
+    background: #017BFF;
+}
+
+.botonpersonal:hover,
+.botonpersonal:active {
+  border-color: #046ad7;
+  --bs-btn-hover-color: #017BFF;
+  --bs-btn-active-color: #fff;
+  --bs-btn-hover-border-color:#046ad7;
+  --bs-btn-active-border-color:#046ad7;
+}
+
+.morado{
+    background: #7E57C2;
+}
+.morado:hover,
+.morado:active {
+  background-color: #6d4ba7 !important;
+  border-color: #6d4ba7;
+  --bs-btn-active-border-color:#6d4ba7;
+}
+
+
+.amarillo{
+    background: #FFD701;
+}
+.amarillo:hover,
+.amarillo:active {
+  background-color: #dcbc03 !important;
+  border-color: #dcbc03;
+  --bs-btn-active-border-color:#dcbc03;
+}
+
+.rosa{
+    background: #FF4081;
+}
+.rosa:hover,
+.rosa:active {
+  background-color: #da376e !important;
+  border-color: #da376e;
+  --bs-btn-active-border-color:#da376e;
+}
+
+.verde{
+    background: #00C853;
+}
+.verde:hover,
+.verde:active {
+  background-color: #019f43 !important;
+  border-color: #019f43;
+  --bs-btn-active-border-color:#019f43;
+}
+
+.mini_categoria{
+    padding: 13px 15px 0px 15px;;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+}
+
+.mini_titulo{
+    color: #4C4C4C;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.categoriees{
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    background: #FDF3DD;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.contenedorrec{
+    border-radius: 0px 20px 20px 0px !important;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    background: #FDF3DD;
+    width: 614px;
+    height: auto;
+    flex-shrink: 0;
+    flex-direction: row
+}
+
+.plus {
+    background-color: #E70020;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+.plus:hover,
+.plus:active {
+  background-color: #ba011a !important;
+  border-color: #ba011a;
+  --bs-btn-active-border-color:#ba011a;
+}
+
+.botonsito{
+    border-radius: 15px 0px 0px 15px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    width: 57px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.flexible{
+    display: inline-flex;
+}
+
+.espacio{
+    justify-content: space-between;
+    align-items: center;
+}
+
+.widht100{
+    width: 100%;
+}
