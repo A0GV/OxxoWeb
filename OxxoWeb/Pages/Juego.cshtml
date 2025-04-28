@@ -4,42 +4,86 @@
     ViewData["Title"] = "Ayuda del Videojuego";
 }
 
-<div class="container mt-4">
-    <div>
-        <!-- #VideoJuego  -->
+<!-- Incluir el archivo CSS -->
+<link rel="stylesheet" href="/css/juego.css" />
+
+<div class="juego-container mt-4">
+    <!-- Título principal -->
+    <h1 class="juego-titulo">OXXOLOTL</h1>
+
+    <!-- Canvas del juego centrado -->
+    <div class="juego-canvas-contenedor">
+        <canvas id="unity-canvas" class="juego-canvas-borde" width="960" height="540" tabindex="-1"></canvas>
+        <script src="Build/Oxxolotl.loader.js"></script>
+        <script>
+            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                // Ajustes para dispositivos móviles
+                var meta = document.createElement('meta');
+                meta.name = 'viewport';
+                meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+                document.getElementsByTagName('head')[0].appendChild(meta);
+
+                var canvas = document.querySelector("#unity-canvas");
+                canvas.style.width = "100%";
+                canvas.style.height = "100%";
+                canvas.style.position = "fixed";
+            } else {
+                // Ajustes para escritorio
+                var canvas = document.querySelector("#unity-canvas");
+                canvas.style.width = "960px";
+                canvas.style.height = "540px";
+                canvas.style.margin = "0 auto";
+                canvas.style.display = "block";
+            }
+
+            createUnityInstance(document.querySelector("#unity-canvas"), {
+                arguments: [],
+                dataUrl: "Build/Oxxolotl.data",
+                frameworkUrl: "Build/Oxxolotl.framework.js",
+                codeUrl: "Build/Oxxolotl.wasm",
+                streamingAssetsUrl: "StreamingAssets",
+                companyName: "DefaultCompany",
+                productName: "OxxoGame",
+                productVersion: "1.0",
+            });
+        </script>
     </div>
-    
-    <h1 class="mb-4">Ayuda del Videojuego</h1>
+
+    <!-- Sección: Ayuda del Videojuego -->
+    <h1 class="mb-4 juego-ayuda-titulo">Ayuda del Videojuego</h1>
 
     <!-- Sección: Descripción/Historia -->
-    <section class="mb-5">
-        <h2>Historia</h2>
-        <p>@Model.Ayuda.Descripcion</p>
+    <section class="mb-5 juego-section">
+        <h2 class="juego-section-titulo">Historia</h2>
+        <div class="juego-card juego-card-historia mb-4 p-3">
+            <p class="juego-section-texto">@Model.Ayuda.Descripcion</p>
+        </div>
     </section>
 
     <!-- Sección: Personaje(s) -->
-    <section class="mb-5">
-        <h2>Personaje</h2>
+    <section class="mb-5 juego-section">
+        <h2 class="juego-section-titulo">Personaje</h2>
         @foreach (var personaje in Model.Ayuda.Personajes)
         {
-            <div class="card mb-2 p-3">
-                <strong>@personaje.Nombre</strong>
-                <p>@personaje.Descripcion</p>
+            <div class="juego-card juego-card-personaje mb-2 p-3">
+                <strong class="juego-nombre-personaje">@personaje.Nombre</strong>
+                <p class="juego-desc-personaje">@personaje.Descripcion</p>
+                <img src="~/img/ajolote.png" alt="Ajolote" style="display: block; margin: 0 auto; width: 150px; height: auto;">
             </div>
         }
     </section>
 
     <!-- Sección: Minijuegos -->
-    <section class="mb-5">
-        <h2>Minijuegos</h2>
+    <section class="mb-5 juego-section">
+        <h2 class="juego-section-titulo">Minijuegos</h2>
         @foreach (var minijuego in Model.Ayuda.Minijuegos)
         {
-            <div class="card mb-4 p-3">
-                <h3 class="text-primary">@minijuego.Nombre</h3>
-                <p>@minijuego.Descripcion</p>
+            <div class="juego-card juego-card-minijuego mb-4 p-3">
+                <h3 class="juego-nombre-minijuego">@minijuego.Nombre</h3>
+                <p class="juego-desc-minijuego">@minijuego.Descripcion</p>
                 
-                <h4>Controles</h4>
-                <table class="table table-bordered">
+                <h4 class="juego-subtitulo">Controles</h4>
+                <table class="juego-tabla-controles">
                     <thead>
                         <tr>
                             <th>Control</th>
@@ -58,8 +102,8 @@
                 </table>
                 
                 <div class="row">
-                    <div class="col-md-6">
-                        <h4>Formas de ganar</h4>
+                    <div class="col-md-6 juego-col-condicion">
+                        <h4 class="juego-subtitulo">Formas de ganar</h4>
                         <ul>
                             @foreach (var cond in minijuego.Condiciones.Where(c => c.TipoCondicion == "Ganar"))
                             {
@@ -67,8 +111,8 @@
                             }
                         </ul>
                     </div>
-                    <div class="col-md-6">
-                        <h4>Formas de perder</h4>
+                    <div class="col-md-6 juego-col-condicion">
+                        <h4 class="juego-subtitulo">Formas de perder</h4>
                         <ul>
                             @foreach (var cond in minijuego.Condiciones.Where(c => c.TipoCondicion == "Perder"))
                             {
@@ -82,14 +126,16 @@
     </section>
 
     <!-- Sección: Créditos -->
-    <section class="mb-5">
-        <h2>Créditos</h2>
-        <p>@Model.Ayuda.Creditos</p>
+    <h2 class="juego-section-titulo">Créditos</h2>
+    <section class="mb-5 juego-section juego-card-creditos">
+        <div class="juego-creditos-texto">
+            @Html.Raw(Model.Ayuda.Creditos.Replace("\n", "<br>"))
+        </div>
     </section>
 
     <!-- Sección: Licencias -->
-    <section class="mb-5">
-        <h2>Licencias</h2>
-        <p>@Model.Ayuda.Licencias</p>
+    <h2 class="juego-section-titulo">Licencias</h2>
+    <section class="mb-5 juego-section juego-card-licencias">
+        <p class="juego-licencias-texto">@Model.Ayuda.Licencias</p>
     </section>
 </div>

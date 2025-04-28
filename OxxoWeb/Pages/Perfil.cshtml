@@ -4,7 +4,6 @@
     ViewData["Title"] = "Perfil de Usuario";
 }
 
-
 <div class="row g-3">
   <!-- COLUMNA IZQUIERDA (PERFIL Y PUBLICACIONES) -->
   <!-- Sección de Perfil -->
@@ -21,10 +20,10 @@
             <img src="~/Img/gray.jpeg" class="perfil-img" alt="Foto predeterminada">
         }
         <div class="perfil-info Titillium">
-          <h2 class="nombre">@Model.UsuarioPerfil.Nombre @Model.UsuarioPerfil.ApellidoPat @Model.UsuarioPerfil.ApellidoMat</h2>
-          <p class="subtitulo">@Model.ObtenerDescripcion(Model.UsuarioPerfil.TipoUsuario) | @Model.UsuarioPerfil.PlazaNombre</p>
-          <p class="subinfo">@Model.UsuarioPerfil.Ciudad, @Model.UsuarioPerfil.Estado</p>
-          <p class="subinfo">@Model.UsuarioPerfil.Correo</p>
+          <h2 class="nombre Titillium">@Model.UsuarioPerfil.Nombre @Model.UsuarioPerfil.ApellidoPat @Model.UsuarioPerfil.ApellidoMat</h2>
+          <p class="subtitulo Titillium">@Model.ObtenerDescripcion(Model.UsuarioPerfil.TipoUsuario) | @Model.UsuarioPerfil.PlazaNombre</p>
+          <p class="subinfo Titillium">@Model.UsuarioPerfil.Ciudad, @Model.UsuarioPerfil.Estado</p>
+          <p class="subinfo Titillium">@Model.UsuarioPerfil.Correo</p>
         </div>
       </div>
     </div>
@@ -32,7 +31,7 @@
     <!-- Sección de Publicaciones -->
     <div class="publicaciones-card border rounded shadow mt-3">
       <div class="publicaciones-header p-3">
-        <h3 class="mb-0">Publicaciones</h3>
+        <h3 class="mb-0 Titillium">Publicaciones</h3>
       </div>
       <div class="publicaciones-body-wrapper p-3">
         @if (Model.UsuarioPublicaciones.Count > 0)
@@ -43,9 +42,9 @@
                     <div class="publicacion-item">
                         <div class="publicacion-contenido">
                             <div>
-                                <p class="publicacion-titulo text-dark" ><strong>@publicacion.Titulo</strong></p>
-                                <p class="publicacion-descripcion">@publicacion.Contenido</p>
-                                <p class="publicacion-fecha">Publicado el: @publicacion.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                                <p class="publicacion-titulo text-dark Titillium"><strong>@publicacion.Titulo</strong></p>
+                                <p class="publicacion-descripcion Titillium">@publicacion.Contenido</p>
+                                <p class="publicacion-fecha Titillium">Publicado el: @publicacion.FechaPublicado.ToString("dd/MM/yyyy")</p>
                             </div>
                         </div>
                     </div>
@@ -56,12 +55,12 @@
                     <div class="modal-dialog modal-dialog-centered"> 
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalPublicacionLabel@publicacion.IdPublicacion">@publicacion.Titulo</h5>
+                                <h5 class="modal-title Titillium" id="modalPublicacionLabel@publicacion.IdPublicacion">@publicacion.Titulo</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>@publicacion.Contenido</p>
-                                <p class="text-muted">Publicado el: @publicacion.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                                <p class="Titillium">@publicacion.Contenido</p>
+                                <p class="text-muted Titillium">Publicado el: @publicacion.FechaPublicado.ToString("dd/MM/yyyy")</p>
                             </div>
                         </div>
                     </div>
@@ -71,7 +70,7 @@
       else
       {
           <div class="d-flex justify-content-center">
-              <p class="text-muted text-center">No hay publicaciones disponibles.</p>
+              <p class="text-muted text-center Titillium">No hay publicaciones disponibles.</p>
           </div>
       }
       </div>
@@ -83,7 +82,7 @@
   <div class="col-md-5">
     <div class="estadisticas-card border shadow">
       <div class="estadisticas-header p-3">
-        <h3 class="mb-0">Estadísticas</h3>
+        <h3 class="mb-0 Titillium">Estadísticas</h3>
       </div>
       <div class="estadisticas-body p-3">
         <div class="row row-perfiles">
@@ -93,12 +92,12 @@
               <div class="text-end">
                   @if (Model.UsuarioEstadisticas.RankingNacional == -1)
                   {
-                      <p class="mb-0"><strong>Este usuario no ha jugado</strong></p>
+                      <p class="mb-0 Titillium"><strong>Este usuario no ha jugado</strong></p>
                   }
                   else
                   {
-                      <p class="mb-0"><strong>@Model.UsuarioEstadisticas.RankingNacional° lugar</strong></p>
-                      <p class="mb-0">General</p>
+                      <p class="mb-0 Titillium"><strong>@Model.UsuarioEstadisticas.RankingNacional° lugar</strong></p>
+                      <p class="mb-0 Titillium">General</p>
                   }
               </div>
             </div>
@@ -108,18 +107,18 @@
         <div class="d-flex justify-content-between mt-1">
             <div class="estadisticas-item d-flex align-items-center justify-content-between flex-grow-1 p-3 rounded me-2">
                 <img src="~/img/llama.png" alt="Racha" class="estadisticas-icon">
-                <p class="mb-0"><strong>Racha: @Model.UsuarioEstadisticas.RachaDias días</strong></p>
+                <p class="mb-0 Titillium"><strong>Racha: @Model.UsuarioEstadisticas.RachaDias días</strong></p>
             </div>
             <div class="estadisticas-item d-flex align-items-center justify-content-between flex-grow-1 p-3 rounded ms-2">
                 @if (Model.UsuarioPerfil.TipoUsuario == "g") // Si es gerente
                 {
                     <img src="~/img/Persona.png" alt="Asesores" class="estadisticas-icon">
-                    <p class="mb-0"><strong>@Model.UsuarioEstadisticas.TiendasAsesoradas asesores</strong></p>
+                    <p class="mb-0 Titillium"><strong>@Model.UsuarioEstadisticas.TiendasAsesoradas asesores</strong></p>
                 }
                 else if (Model.UsuarioPerfil.TipoUsuario == "a") // Si es asesor
                 {
                     <img src="~/img/TiendaOXXO.png" alt="Tiendas" class="estadisticas-icon-tienda">
-                    <p class="mb-0"><strong>@Model.UsuarioEstadisticas.TiendasAsesoradas tiendas</strong></p>
+                    <p class="mb-0 Titillium"><strong>@Model.UsuarioEstadisticas.TiendasAsesoradas tiendas</strong></p>
                 }
             </div>
         </div>
@@ -129,7 +128,7 @@
     <!-- Sección de Certificaciones -->
     <div class="certificaciones-card border rounded shadow mt-3">
       <div class="certificaciones-header p-3">
-        <h3 class="mb-0">Certificaciones y habilidades</h3>
+        <h3 class="mb-0 Titillium">Certificaciones y habilidades</h3>
       </div>
       <div class="certificaciones-body p-3">
         @if (Model.UsuarioCertificados.Count > 0)
@@ -140,9 +139,9 @@
                     <div class="certificacion-item d-flex align-items-center p-3 rounded">
                         <img src="~/img/diploma.png" alt="Certificado" class="certificacion-icon me-3">
                         <div>
-                            <p class="mb-0 cert-titulo text-dark"><strong>@certificado.Titulo</strong></p>
-                            <p class="mb-0 cert-subtitulo">@certificado.Descripcion</p>
-                            <p class="cert-fecha">Obtenido el: @certificado.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                            <p class="mb-0 cert-titulo text-dark Titillium"><strong>@certificado.Titulo</strong></p>
+                            <p class="mb-0 cert-subtitulo Titillium">@certificado.Descripcion</p>
+                            <p class="cert-fecha Titillium">Obtenido el: @certificado.FechaPublicado.ToString("dd/MM/yyyy")</p>
                         </div>
                     </div>
                 </a>
@@ -152,12 +151,12 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalCertificadoLabel@certificado.IdCertificado">@certificado.Titulo</h5>
+                                <h5 class="modal-title Titillium" id="modalCertificadoLabel@certificado.IdCertificado">@certificado.Titulo</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>@certificado.Descripcion</p>
-                                <p class="text-muted">Obtenido el: @certificado.FechaPublicado.ToString("dd/MM/yyyy")</p>
+                                <p class="Titillium">@certificado.Descripcion</p>
+                                <p class="text-muted Titillium">Obtenido el: @certificado.FechaPublicado.ToString("dd/MM/yyyy")</p>
                             </div>
                         </div>
                     </div>
@@ -167,7 +166,7 @@
         else
         {
           <div class="d-flex justify-content-center">
-            <p class="text-muted text-center">No hay certificaciones disponibles.</p>
+            <p class="text-muted text-center Titillium">No hay certificaciones disponibles.</p>
           </div>
         }
       </div>
