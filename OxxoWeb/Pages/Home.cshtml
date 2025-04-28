@@ -18,47 +18,45 @@
             </h2>
             @if (Model.recc == null || !Model.recc.Any())
             {
-                //Cuando no hay recordatorios
+                // Caso 1: No hay recordatorios en absoluto
                 <h3 class="chiquillo Titillium mover">No hay recordatorios aún</h3>
                 <a class="nav-link text-dark mas" asp-area="" asp-page="/Recordatorios"><span
                         class="chiquillo maschiquillo">Agregar nuevo recordatorio...</span></a>
             }
-            @foreach (var rec in Model.recc)
+            else if (!Model.recc.Any(rec => rec.fecha == DateOnly.FromDateTime(DateTime.Today)))
             {
-                // Filtrar solo los recordatorios del día de hoy
-                if (rec.fecha == DateOnly.FromDateTime(DateTime.Today))
-                {
-                    @if(!Model.Checkfecha[rec.fecha]){
-                        <h3 class="chiquillo Titillium mover">Hoy, @rec.fecha.ToString("dd 'de' MMMM 'del' yyyy")</h3>
-                        Model.Checkfecha[rec.fecha]=true;
-                    }
-                    <div class="flexible espacito mover">
-                        <div
-                            class="btn btn-primary botonsito @(rec.tipo == 't' ? @Model.colores[(rec.id_tienda ?? 0) % 4] : "botonpersonal")">
-                        </div>
-                        <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec fondo">
-                            <div class="flexible espacio widht100">
-                                <div class="Titillium titulo paddtit">@rec.titulo</div>
-                                <div class="Titillium hora">@rec.hora_inicio.ToString("hh\\:mm") -
-                                    @rec.hora_final.ToString("hh\\:mm")</div>
-                            </div>
-                            <div class="Titillium hora">@rec.lugar</div>
-                        </div>
-                    </div>
-                    if (rec == Model.recc.LastOrDefault(r => r.fecha == DateOnly.FromDateTime(DateTime.Today)) && (!Model.Checkfooter || Model.Checkfecha[rec.fecha]))
-                    {
-                        <a class="nav-link text-dark mas" asp-area="" asp-page="/Recordatorios"><span
-                            class="chiquillo maschiquillo">Ver más recordatorios...</span></a>
-                        Model.Checkfooter = true;
-                    }
-                }
-            }
-
-            @if (!Model.recc.Any(rec => rec.fecha == DateOnly.FromDateTime(DateTime.Today)))
-            {
+                // Caso 2: Hay recordatorios, pero ninguno es del día de hoy
                 <h3 class="chiquillo Titillium mover">No hay recordatorios del día de hoy</h3>
                 <a class="nav-link text-dark mas" asp-area="" asp-page="/Recordatorios"><span
                         class="chiquillo maschiquillo">Ver recordatorios futuros...</span></a>
+            }
+            else
+            {
+                // Caso 3: Hay recordatorios del día de hoy
+                @foreach (var rec in Model.recc)
+                {
+                    if (rec.fecha == DateOnly.FromDateTime(DateTime.Today))
+                    {
+                        @if (!Model.Checkfecha[rec.fecha])
+                        {
+                            <h3 class="chiquillo Titillium mover">Hoy, @rec.fecha.ToString("dd 'de' MMMM 'del' yyyy")</h3>
+                            Model.Checkfecha[rec.fecha] = true;
+                        }
+                        <div class="flexible espacito mover">
+                            <div
+                                class="btn btn-primary botonsito @(rec.tipo == 't' ? @Model.colores[(rec.id_tienda ?? 0) % 4] : "botonpersonal")">
+                            </div>
+                            <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec fondo">
+                                <div class="flexible espacio widht100">
+                                    <div class="Titillium titulo paddtit">@rec.titulo</div>
+                                    <div class="Titillium hora">@rec.hora_inicio.ToString("hh\\:mm") -
+                                        @rec.hora_final.ToString("hh\\:mm")</div>
+                                </div>
+                                <div class="Titillium hora">@rec.lugar</div>
+                            </div>
+                        </div>
+                    }
+                }
             }
         </div>
     </div>
