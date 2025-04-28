@@ -8,7 +8,18 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 <div class="container mt-4 Titillium">
-    <h1>Asesores de tienda</h1>
+
+    <!-- Caja de búsqueda -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="mb-0">Asesores de tienda</h1>
+
+        <div class="input-group" style="max-width: 300px;">
+            <span class="input-group-text" style="background-color: #F4BB4C;">
+                <i class="bi bi-search"></i>
+            </span>
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar asesor..." />
+        </div>
+    </div>
 
     
     <!-- Header -->
@@ -25,9 +36,7 @@
 
     <!-- Tabla de asesores -->
     <div class="table-responsive background-beige-cell rounded shadow-sm" style="max-height: 600px; overflow-y: auto;">
-
         <table id="asesoresTable" class="table table-hover table-borderless align-middle mb-0">
-            
             <tbody>
                 @foreach (OxxoWeb.Models.AsesorInfo asesor in Model.ListaAsesores)
                 {
@@ -65,4 +74,18 @@
     </div>
 </div>
 
+
+
+<!-- Script para búsqueda -->
+<script>
+    document.getElementById("searchInput").addEventListener("keyup", function () {
+        const search = this.value.toLowerCase();
+        const rows = document.querySelectorAll("#asesoresTable tbody tr");
+
+        rows.forEach(row => {
+            const rowText = row.innerText.toLowerCase();
+            row.style.display = rowText.includes(search) ? "" : "none";
+        });
+    });
+</script>
 
