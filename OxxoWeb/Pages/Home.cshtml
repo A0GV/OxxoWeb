@@ -6,6 +6,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="container align-items-center Titillium">
+    <!-- Primera fila con stats y recordatorios -->
     <div class="row g-6">
         <div class="col-5">
             <div class="background-beige-cell rounded p-3 shadow-sm categoriees align-items-center">
@@ -78,7 +79,7 @@
                                 <div
                                     class="btn btn-primary botonsito @(rec.tipo == 't' ? @Model.colores[(rec.id_tienda ?? 0) % 4] : "botonpersonal")">
                                 </div>
-                                <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec fondo">
+                                <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrecInicio fondo">
                                     <div class="flexible espacio widht100">
                                         <div class="Titillium titulo paddtit">@rec.titulo</div>
                                         <div class="Titillium hora">@rec.hora_inicio.ToString("hh\\:mm") -
@@ -94,8 +95,6 @@
                             más recordatorios...</span></a>
                 }
             </div>
-
-            
         </div>
     </div>
 
