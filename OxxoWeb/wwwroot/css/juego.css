@@ -1,20 +1,19 @@
 body {
-    background-color: #F1F1F1;
+    background-color: #FFF;
     color: #232629;
 }
 
 .juego-container {
-    font-family: 'Titillium', sans-serif;
+    font-family: "Titillium Web", sans-serif;
     max-width: 1050px;
     margin: 0 auto;
     padding: 2.5rem 1rem 3rem 1rem;
     background: #fff;
     border-radius: 20px;
-    box-shadow: 0 6px 32px 0 rgba(44, 13, 0, 0.13);
 }
 
 .juego-titulo {
-    font-family: 'Titillium', sans-serif;
+    font-family: "Titillium Web", sans-serif;
     font-size: 4rem;
     text-align: center;
     margin-bottom: 2.5rem;
@@ -100,13 +99,12 @@ body {
 .juego-card {
     background: #FAF3DF;
     border-radius: 14px;
-    box-shadow: 0 2px 16px 0 rgba(156, 42, 49, 0.08);
-    border: 2px solid #EAB543;
     margin-bottom: 1.8rem;
     padding: 1.3rem 1.7rem;
     max-width: 940px;
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .juego-card strong {
@@ -115,22 +113,13 @@ body {
 }
 
 .juego-card-historia {
-    border: 2.5px solid #EAB543;
     background: #FAF3DF;
     border-radius: 14px;
-    box-shadow: 0 2px 16px 0 rgba(156, 42, 49, 0.06);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     padding: 1.3rem 1.7rem;
     margin: 0 auto 1.8rem auto;
     max-width: 940px;
     font-size: 1.13rem;
-}
-
-.juego-card-personaje {
-    /* Si quieres algo especial para el personaje, ponlo aquí */
-}
-
-.juego-card-minijuego {
-    /* Si quieres algo especial para minijuegos, ponlo aquí */
 }
 
 .juego-card-creditos, .juego-card-licencias {
@@ -148,7 +137,7 @@ body {
 
 /* ---------- Tablas ---------- */
 .juego-tabla-controles {
-    background: #F1F1F1 !important;         /* Fondo gris claro */
+    background: #FFFFFF !important;         /* Fondo gris claro */
     border: 2.5px solid #232629 !important; /* Borde negro */
     border-radius: 14px !important;         /* Bordes redondeados */
     margin-bottom: 1.1em;
@@ -181,7 +170,7 @@ body {
 }
 
 .juego-tabla-controles thead {
-    background: #EAB543 !important;   /* Fondo dorado */
+    background: #FFEBC0 !important;   /* Fondo dorado */
     color: #232629 !important;        /* Letras negras */
     font-weight: bold;
     font-size: 1.16em;
@@ -256,7 +245,7 @@ body {
     background: #FAF3DF;
     border-radius: 10px;
     padding: 1.4rem 2rem;
-    border: 2px solid #B7B7B7;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     max-width: 950px;
     margin-left: auto;
     margin-right: auto;
