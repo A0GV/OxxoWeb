@@ -10,8 +10,9 @@ public class Perfiles
     public string Correo { get; set; }
     public DateTime FechaInicio { get; set; }
     public string PlazaNombre { get; set; }
+    public int IdPlaza { get; set; } // Nueva propiedad para id_plaza
     public string Ciudad { get; set; }
     public string Estado { get; set; }
     public string TipoUsuario { get; set; }
-    public string Foto { get; set; } 
+    public string Foto { get; set; }
 }

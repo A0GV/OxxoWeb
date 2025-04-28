@@ -1,0 +1,254 @@
+body {
+    background-color: #FFF;
+    color: #232629;
+}
+
+.juego-container {
+    font-family: "Titillium Web", sans-serif;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 2.5rem 1rem 3rem 1rem;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.juego-titulo {
+    font-family: "Titillium Web", sans-serif;
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    letter-spacing: 1px;
+    color: #232629;
+    font-weight: bold;
+    text-shadow: 1px 2px 0 #FAF3DF;
+}
+
+.juego-canvas-borde {
+    border: 5px solid #9C2A31; /* Rojo OXXO */
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 2.5rem auto;
+    background: #FAF3DF;
+}
+
+.juego-container h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #232629;
+    margin-bottom: 1.4rem;
+}
+.juego-container h2 {
+    text-align: center;
+    margin-top: 2rem;
+    color: #9C2A31;
+    font-size: 2.1rem;
+}
+
+.force-black {
+    color: #232629 !important; /* Cambia el color al deseado */
+}
+
+.juego-container h3 {
+    color: #232629; 
+    font-weight: bold;
+    margin-bottom: 0.3em;
+    font-size: 1.5rem;
+}
+.juego-container h4 {
+    color: #6B1D23;
+    font-size: 1.1rem;
+    margin-top: 1.2rem;
+}
+
+/* ---------- Secciones ---------- */
+.juego-section {
+    margin-bottom: 2.5em;
+    padding-bottom: 0.5em;
+}
+
+/* Título extra para "Ayuda del Videojuego" si quieres más grande */
+.juego-ayuda-titulo {
+    color: #232629;
+    font-size: 2.5rem;
+    margin-top: 1.3rem;
+    margin-bottom: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+/* Titulos de secciones (h2) */
+.juego-section-titulo {
+    color: #9C2A31;
+    font-size: 2.1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Subtitulos (h4) */
+.juego-subtitulo {
+    color: #6B1D23;
+    font-size: 1.17rem;
+    font-weight: bold;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5em;
+}
+
+/* ---------- Tarjetas y contenedores ---------- */
+.juego-card {
+    background: #FAF3DF;
+    border-radius: 14px;
+    margin-bottom: 1.8rem;
+    padding: 1.3rem 1.7rem;
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.juego-card strong {
+    color: #6B1D23;
+    font-size: 1.13em;
+}
+
+.juego-card-historia {
+    background: #FAF3DF;
+    border-radius: 14px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 1.3rem 1.7rem;
+    margin: 0 auto 1.8rem auto;
+    max-width: 940px;
+    font-size: 1.13rem;
+}
+
+.juego-card-creditos, .juego-card-licencias {
+    background: #FAF3DF;
+    border-radius: 10px;
+    padding: 1.4rem 2rem;
+    border: 2px solid #B7B7B7;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.7em;
+    color: #232629;
+    font-size: 1.12rem;
+}
+
+/* ---------- Tablas ---------- */
+.juego-tabla-controles {
+    background: #FFFFFF !important;         /* Fondo gris claro */
+    border: 2.5px solid #232629 !important; /* Borde negro */
+    border-radius: 14px !important;         /* Bordes redondeados */
+    margin-bottom: 1.1em;
+    font-size: 1.08rem;
+    border-collapse: separate !important;   /* Importante para radios */
+    border-spacing: 0;
+    width: 100%;
+    box-shadow: none;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+.juego-tabla-controles th,
+.juego-tabla-controles td {
+    border-bottom: 1.5px solid #232629 !important;  /* Líneas internas negras */
+    border-right: 1.5px solid #232629 !important;   /* Líneas verticales negras */
+    background: transparent !important;             /* Hereda el fondo gris claro */
+    padding: 1.1em 1.2em;
+    font-size: 1.08rem;
+}
+
+.juego-tabla-controles th:last-child,
+.juego-tabla-controles td:last-child {
+    border-right: none !important; /* Quita la línea vertical derecha en la última columna */
+}
+
+.juego-tabla-controles tr:last-child th,
+.juego-tabla-controles tr:last-child td {
+    border-bottom: none !important; /* Quita la línea horizontal inferior en la última fila */
+}
+
+.juego-tabla-controles thead {
+    background: #FFEBC0 !important;   /* Fondo dorado */
+    color: #232629 !important;        /* Letras negras */
+    font-weight: bold;
+    font-size: 1.16em;
+    border-radius: 14px 14px 0 0 !important;
+}
+
+.juego-tabla-controles th:first-child {
+    border-top-left-radius: 14px !important;
+}
+.juego-tabla-controles th:last-child {
+    border-top-right-radius: 14px !important;
+}
+
+/* Elimina el borde del .card solo para la tabla de controles, para evitar doble borde */
+.card .juego-tabla-controles {
+    border: 2.5px solid #232629 !important;
+    border-radius: 14px !important;
+    margin-top: 1.5em;
+    margin-bottom: 1.3em;
+    box-shadow: none;
+}
+
+/* Columnas de formas de ganar/perder */
+.juego-col-condicion {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+/* ---------- Textos individuales ---------- */
+.juego-nombre-personaje, .juego-nombre-minijuego {
+    color: #232629 !important; /* Cambia el color al deseado */
+    font-size: 1.19rem;
+    font-weight: bold;
+}
+.juego-desc-personaje, .juego-desc-minijuego {
+    color: #232629;
+    font-size: 1.03rem;
+    margin-bottom: 0.7em;
+}
+
+.juego-creditos-texto, .juego-licencias-texto {
+    color: #232629;
+    line-height: 1.58;
+    font-size: 1.12rem;
+}
+
+/* ---------- Canvas contenedor opcional ---------- */
+.juego-canvas-contenedor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.4rem;
+}
+
+.juego-container ul {
+    padding-left: 1.3em;
+    margin-bottom: 1.1em;
+}
+.juego-container ul li {
+    margin-bottom: 0.45em;
+}
+
+.juego-container section {
+    margin-bottom: 2.5em;
+}
+
+/* Créditos y licencias */
+.juego-container section:last-of-type,
+.juego-container section:nth-last-of-type(2) {
+    background: #FAF3DF;
+    border-radius: 10px;
+    padding: 1.4rem 2rem;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.7em;
+}
+

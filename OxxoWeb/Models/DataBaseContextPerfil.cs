@@ -38,12 +38,12 @@ namespace OxxoWeb.Models
             {
                 conexion.Open();
                 string query = @"SELECT u.id_usuario, u.nombre, u.apellido_pat, u.apellido_mat, u.fecha_nacimiento,
-                                        u.correo, u.fecha_inicio, u.foto, p.nombre AS plaza_nombre, p.ciudad, p.estado, 
-                                        t.descripcion AS tipo_usuario 
-                                FROM usuario u
-                                JOIN plaza p ON u.id_plaza = p.id_plaza
-                                JOIN tipo t ON u.id_tipo = t.id_tipo
-                                WHERE u.id_usuario = @idUsuario";
+                                u.correo, u.fecha_inicio, u.foto, p.nombre AS plaza_nombre, p.id_plaza, 
+                                p.ciudad, p.estado, t.descripcion AS tipo_usuario 
+                        FROM usuario u
+                        JOIN plaza p ON u.id_plaza = p.id_plaza
+                        JOIN tipo t ON u.id_tipo = t.id_tipo
+                        WHERE u.id_usuario = @idUsuario";
                 MySqlCommand cmd = new MySqlCommand(query, conexion);
                 cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
                 using (var reader = cmd.ExecuteReader())
@@ -59,47 +59,8 @@ namespace OxxoWeb.Models
                             FechaNacimiento = Convert.ToDateTime(reader["fecha_nacimiento"]),
                             Correo = reader["correo"].ToString(),
                             FechaInicio = Convert.ToDateTime(reader["fecha_inicio"]),
-                            PlazaNombre = "Plaza " + reader["plaza_nombre"].ToString().Replace("_", ", "),
-                            Ciudad = reader["ciudad"].ToString(),
-                            Estado = reader["estado"].ToString(),
-                            TipoUsuario = reader["tipo_usuario"].ToString(),
-                            Foto = reader["foto"].ToString() // <-- Agregado aquí
-                        };
-                    }
-                }
-            }
-            return perfil;
-        }
-
-        public Perfiles GetPerfilPorNombre(string nombre)
-        {
-            Perfiles perfil = null;
-            using (MySqlConnection conexion = GetConnection())
-            {
-                conexion.Open();
-                string query = @"SELECT u.id_usuario, u.nombre, u.apellido_pat, u.apellido_mat, u.fecha_nacimiento,
-                                        u.correo, u.fecha_inicio, u.foto, p.nombre AS plaza_nombre, p.ciudad, p.estado, 
-                                        t.descripcion AS tipo_usuario 
-                                FROM usuario u
-                                JOIN plaza p ON u.id_plaza = p.id_plaza
-                                JOIN tipo t ON u.id_tipo = t.id_tipo
-                                WHERE CONCAT(u.nombre, ' ', u.apellido_pat, ' ', u.apellido_mat) LIKE @nombre";
-                MySqlCommand cmd = new MySqlCommand(query, conexion);
-                cmd.Parameters.AddWithValue("@nombre", $"%{nombre}%");
-                using (var reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        perfil = new Perfiles
-                        {
-                            IdUsuario = Convert.ToInt32(reader["id_usuario"]),
-                            Nombre = reader["nombre"].ToString(),
-                            ApellidoPat = reader["apellido_pat"].ToString(),
-                            ApellidoMat = reader["apellido_mat"].ToString(),
-                            FechaNacimiento = Convert.ToDateTime(reader["fecha_nacimiento"]),
-                            Correo = reader["correo"].ToString(),
-                            FechaInicio = Convert.ToDateTime(reader["fecha_inicio"]),
-                            PlazaNombre = "Plaza " + reader["plaza_nombre"].ToString().Replace("_", ", "),
+                            PlazaNombre = "Plaza " + reader["plaza_nombre"].ToString().Replace("_", ", "), 
+                            IdPlaza = Convert.ToInt32(reader["id_plaza"]), 
                             Ciudad = reader["ciudad"].ToString(),
                             Estado = reader["estado"].ToString(),
                             TipoUsuario = reader["tipo_usuario"].ToString(),
@@ -108,17 +69,18 @@ namespace OxxoWeb.Models
                     }
                 }
             }
+
             return perfil;
         }
 
         // Obtener estadísticas del usuario
-        public Estadisticas GetEstadisticas(int idUsuario)
+        public Estadisticas GetEstadisticas(int idUsuario, string tipoUsuario, int idPlaza)
         {
             Estadisticas estadisticas = new Estadisticas
             {
                 IdUsuario = idUsuario,
                 RachaDias = 0, // Valor predeterminado
-                RankingNacional = 0, // Valor predeterminado
+                RankingNacional = -1, // Indicador de que no hay historial
                 TiendasAsesoradas = 0 // Valor predeterminado
             };
 
@@ -126,37 +88,61 @@ namespace OxxoWeb.Models
             {
                 conexion.Open();
 
-                // Obtener el número de tiendas asesoradas
-                string queryTiendas = "SELECT COUNT(*) FROM usuario_tienda WHERE id_usuario = @idUsuario";
-                MySqlCommand cmdTiendas = new MySqlCommand(queryTiendas, conexion);
-                cmdTiendas.Parameters.AddWithValue("@idUsuario", idUsuario);
-                var resultTiendas = cmdTiendas.ExecuteScalar();
-                if (resultTiendas != null)
+                if (tipoUsuario == "g") // Si es gerente
                 {
-                    estadisticas.TiendasAsesoradas = Convert.ToInt32(resultTiendas);
+                    // Contar asesores en la misma plaza
+                    string queryAsesores = "SELECT COUNT(*) FROM usuario WHERE id_tipo = 1 AND id_plaza = @idPlaza";
+                    MySqlCommand cmdAsesores = new MySqlCommand(queryAsesores, conexion);
+                    cmdAsesores.Parameters.AddWithValue("@idPlaza", idPlaza);
+                    estadisticas.TiendasAsesoradas = Convert.ToInt32(cmdAsesores.ExecuteScalar());
+                }
+                else if (tipoUsuario == "a") // Si es asesor
+                {
+                    // Contar tiendas asesoradas
+                    string queryTiendas = "SELECT COUNT(*) FROM usuario_tienda WHERE id_usuario = @idUsuario";
+                    MySqlCommand cmdTiendas = new MySqlCommand(queryTiendas, conexion);
+                    cmdTiendas.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    estadisticas.TiendasAsesoradas = Convert.ToInt32(cmdTiendas.ExecuteScalar());
                 }
 
-                // Obtener la posición en el ranking general
-                string queryRanking = @"
-                    SELECT COUNT(*) + 1 AS ranking
-                    FROM (
-                        SELECT id_usuario, SUM(exp) AS total_exp
-                        FROM usuario_historial uh
-                        JOIN historial h ON uh.id_historial = h.id_historial
-                        GROUP BY id_usuario
-                    ) subquery
-                    WHERE total_exp > (
-                        SELECT SUM(exp)
-                        FROM usuario_historial uh
-                        JOIN historial h ON uh.id_historial = h.id_historial
-                        WHERE uh.id_usuario = @idUsuario
-                    )";
-                MySqlCommand cmdRanking = new MySqlCommand(queryRanking, conexion);
-                cmdRanking.Parameters.AddWithValue("@idUsuario", idUsuario);
-                var resultRanking = cmdRanking.ExecuteScalar();
-                if (resultRanking != null)
+                // Verificar si el usuario tiene historial
+                string queryTieneHistorial = @"
+                    SELECT COUNT(*) 
+                    FROM usuario_historial 
+                    WHERE id_usuario = @idUsuario";
+                MySqlCommand cmdTieneHistorial = new MySqlCommand(queryTieneHistorial, conexion);
+                cmdTieneHistorial.Parameters.AddWithValue("@idUsuario", idUsuario);
+                var tieneHistorial = Convert.ToInt32(cmdTieneHistorial.ExecuteScalar());
+
+                if (tieneHistorial > 0)
                 {
-                    estadisticas.RankingNacional = Convert.ToInt32(resultRanking);
+                    // Calcular la posición en el ranking general
+                    string queryRanking = @"
+                        SELECT COUNT(*) + 1 AS ranking
+                        FROM (
+                            SELECT id_usuario, SUM(exp) AS total_exp
+                            FROM usuario_historial uh
+                            JOIN historial h ON uh.id_historial = h.id_historial
+                            GROUP BY id_usuario
+                        ) subquery
+                        WHERE total_exp > (
+                            SELECT SUM(exp)
+                            FROM usuario_historial uh
+                            JOIN historial h ON uh.id_historial = h.id_historial
+                            WHERE uh.id_usuario = @idUsuario
+                        )";
+                    MySqlCommand cmdRanking = new MySqlCommand(queryRanking, conexion);
+                    cmdRanking.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    var resultRanking = cmdRanking.ExecuteScalar();
+
+                    if (resultRanking != null && Convert.ToInt32(resultRanking) > 0)
+                    {
+                        estadisticas.RankingNacional = Convert.ToInt32(resultRanking);
+                    }
+                }
+                else
+                {
+                    estadisticas.RankingNacional = -1; // Usuario sin historial
                 }
 
                 // Calcular la racha de días consecutivos
