@@ -6,10 +6,39 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="row align-items-center Titillium">
+    <!-- Estadísticas generales de los juegos -->
     <div class="row g-6 align-items-start">
         <div class="col-4 background-beige-cell rounded p-3 align-items-end shadow-sm categoriees">
+            <div class="align-items-center">
+                @{
+                    // Calc valores para ese usuario
+                    int? idSession = HttpContext.Session.GetInt32("Id");
+
+                    // Parámetros para query
+                    int? idUsuario = idSession; 
+                    int? idUsuarioElote = idSession; 
+                    int? idUsuarioExpCount = idSession; 
+                    int? idUsuarioDias = idSession;
+
+                    // Usar valores para el JSON
+                    string jsonParameters = System.Text.Json.JsonSerializer.Serialize(new { idUsuario, idUsuarioElote, idUsuarioExpCount, idUsuarioDias });
+                    string fullParameters = Uri.EscapeDataString(jsonParameters);
+
+                    // Interpolated string usando {} con los parametros completos
+                    string reportUrl = $"https://lookerstudio.google.com/embed/reporting/387b8cf5-0588-4b1b-8545-a7a3617a7fc1/page/FupHF?params={fullParameters}"; 
+                    
+                <iframe width="300" height="500" src="@reportUrl" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+                }
+            </div>
+            
         </div>
+        <!-- Espacio -->
         <div class="col-1"></div>
+
+        <!-- Recordatorios -->
+        <div class="row">
+            
+        </div>
         <div class="col-7 background-beige-cell rounded p-3 align-items-end shadow-sm categoriees">
 
             <h2 class="fechita cambiesillo">
