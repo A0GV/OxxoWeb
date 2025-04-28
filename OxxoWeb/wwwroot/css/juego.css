@@ -19,13 +19,13 @@ body {
     text-align: center;
     margin-bottom: 2.5rem;
     letter-spacing: 1px;
-    color: #CC2F2D;
+    color: #232629;
     font-weight: bold;
     text-shadow: 1px 2px 0 #FAF3DF;
 }
 
 .juego-canvas-borde {
-    border: 5px solid #CC2F2D; /* Rojo OXXO */
+    border: 5px solid #9C2A31; /* Rojo OXXO */
     border-radius: 12px;
     display: block;
     margin: 0 auto 2.5rem auto;
@@ -44,8 +44,13 @@ body {
     color: #9C2A31;
     font-size: 2.1rem;
 }
+
+.force-black {
+    color: #232629 !important; /* Cambia el color al deseado */
+}
+
 .juego-container h3 {
-    color: #CC2F2D;
+    color: #232629; 
     font-weight: bold;
     margin-bottom: 0.3em;
     font-size: 1.5rem;
@@ -199,14 +204,6 @@ body {
     box-shadow: none;
 }
 
-/* Responsive: Ajusta tamaño y padding en móvil */
-@media (max-width: 700px) {
-    .juego-tabla-controles, .juego-tabla-controles th, .juego-tabla-controles td {
-        font-size: 0.94rem !important;
-        padding: 0.6em 0.5em !important;
-    }
-}
-
 /* Columnas de formas de ganar/perder */
 .juego-col-condicion {
     padding-left: 1.5em;
@@ -216,7 +213,7 @@ body {
 
 /* ---------- Textos individuales ---------- */
 .juego-nombre-personaje, .juego-nombre-minijuego {
-    color: #6B1D23;
+    color: #232629 !important; /* Cambia el color al deseado */
     font-size: 1.19rem;
     font-weight: bold;
 }
