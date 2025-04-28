@@ -5,88 +5,97 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<div class="row align-items-center Titillium">
-    <!-- Estadísticas generales de los juegos -->
-    <div class="row g-6 align-items-start">
-        <div class="col-4 background-beige-cell rounded p-3 align-items-end shadow-sm categoriees">
-            <h2 class="fechita cambiesillo">Estadísticas de juego</h2>
-            <div class="align-items-center">
+<div class="container align-items-center Titillium">
+    <div class="row g-6">
+        <div class="col-5">
+            <div class="background-beige-cell rounded p-3 shadow-sm categoriees align-items-center">
+                <h2 class="fechita cambiesillo">Estadísticas de juego</h2>
                 @{
                     // Calc valores para ese usuario
                     int? idSession = HttpContext.Session.GetInt32("Id");
 
                     // Parámetros para query
-                    int? idUsuario = idSession; 
-                    int? idUsuarioElote = idSession; 
-                    int? idUsuarioExpCount = idSession; 
+                    int? idUsuario = idSession;
+                    int? idUsuarioElote = idSession;
+                    int? idUsuarioExpCount = idSession;
                     int? idUsuarioDias = idSession;
 
                     // Usar valores para el JSON
-                    string jsonParameters = System.Text.Json.JsonSerializer.Serialize(new { idUsuario, idUsuarioElote, idUsuarioExpCount, idUsuarioDias });
+                    string jsonParameters = System.Text.Json.JsonSerializer.Serialize(new
+                    {
+                        idUsuario,
+                        idUsuarioElote,
+                        idUsuarioExpCount,
+                        idUsuarioDias
+                    });
                     string fullParameters = Uri.EscapeDataString(jsonParameters);
 
                     // Interpolated string usando {} con los parametros completos
-                    string reportUrl = $"https://lookerstudio.google.com/embed/reporting/387b8cf5-0588-4b1b-8545-a7a3617a7fc1/page/FupHF?params={fullParameters}"; 
-                    
-                <iframe width="300" height="500" src="@reportUrl" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+                    string reportUrl =
+                    $"https://lookerstudio.google.com/embed/reporting/387b8cf5-0588-4b1b-8545-a7a3617a7fc1/page/FupHF?params={fullParameters}";
+
+                    <iframe width="300" height="500" src="@reportUrl" frameborder="0" style="border:0" allowfullscreen
+                        sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
                 }
             </div>
-            
         </div>
-        <!-- Espacio -->
-        <div class="col-1"></div>
 
         <!-- Recordatorios -->
-        <div class="col-7 background-beige-cell rounded p-3 align-items-end shadow-sm categoriees">
-
-            <h2 class="fechita cambiesillo">
-                <span b-2fdslk7pm5="" class="material-symbols-outlined nigga">notifications</span>
-                Recordatorios
-            </h2>
-            @if (Model.recc == null || !Model.recc.Any())
-            {
-                // Caso 1: No hay recordatorios en absoluto
-                <h3 class="chiquillo Titillium mover">No hay recordatorios aún</h3>
-                <a class="nav-link text-dark mas" asp-area="" asp-page="/Recordatorios"><span
-                        class="chiquillo maschiquillo">Agregar nuevo recordatorio...</span></a>
-            }
-            else if (!Model.recc.Any(rec => rec.fecha == DateOnly.FromDateTime(DateTime.Today)))
-            {
-                // Caso 2: Hay recordatorios, pero ninguno es del día de hoy
-                <h3 class="chiquillo Titillium mover">No hay recordatorios del día de hoy</h3>
-                <a class="nav-link text-dark mas" asp-area="" asp-page="/Recordatorios"><span
-                        class="chiquillo maschiquillo">Ver recordatorios futuros...</span></a>
-            }
-            else
-            {
-                // Caso 3: Hay recordatorios del día de hoy
-                @foreach (var rec in Model.recc)
+        <div class="col-7">
+            <div class="background-beige-cell rounded p-3 align-items-end shadow-sm categoriees">
+                    <h2 class="fechita cambiesillo">
+                    <span b-2fdslk7pm5="" class="material-symbols-outlined nigga">notifications</span>
+                    Recordatorios
+                </h2>
+                @if (Model.recc == null || !Model.recc.Any())
                 {
-                    if (rec.fecha == DateOnly.FromDateTime(DateTime.Today))
-                    {
-                        @if (!Model.Checkfecha[rec.fecha])
-                        {
-                            <h3 class="chiquillo Titillium mover">Hoy, @rec.fecha.ToString("dd 'de' MMMM 'del' yyyy")</h3>
-                            Model.Checkfecha[rec.fecha] = true;
-                        }
-                        <div class="flexible espacito mover">
-                            <div
-                                class="btn btn-primary botonsito @(rec.tipo == 't' ? @Model.colores[(rec.id_tienda ?? 0) % 4] : "botonpersonal")">
-                            </div>
-                            <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec fondo">
-                                <div class="flexible espacio widht100">
-                                    <div class="Titillium titulo paddtit">@rec.titulo</div>
-                                    <div class="Titillium hora">@rec.hora_inicio.ToString("hh\\:mm") -
-                                        @rec.hora_final.ToString("hh\\:mm")</div>
-                                </div>
-                                <div class="Titillium hora">@rec.lugar</div>
-                            </div>
-                        </div>
-                    }
+                    // Caso 1: No hay recordatorios en absoluto
+                    <h3 class="chiquillo Titillium mover">No hay recordatorios aún</h3>
+                    <a class="nav-link text-dark mas" asp-area="" asp-page="/Recordatorios"><span
+                            class="chiquillo maschiquillo">Agregar nuevo recordatorio...</span></a>
                 }
-                <a class="nav-link text-dark mas" asp-area="" asp-page="/Recordatorios"><span
-                        class="chiquillo maschiquillo">Ver más recordatorios...</span></a>
-            }
+                else if (!Model.recc.Any(rec => rec.fecha == DateOnly.FromDateTime(DateTime.Today)))
+                {
+                    // Caso 2: Hay recordatorios, pero ninguno es del día de hoy
+                    <h3 class="chiquillo Titillium mover">No hay recordatorios del día de hoy</h3>
+                    <a class="nav-link text-dark mas" asp-area="" asp-page="/Recordatorios"><span
+                            class="chiquillo maschiquillo">Ver
+                            recordatorios futuros...</span></a>
+                }
+                else
+                {
+                    // Caso 3: Hay recordatorios del día de hoy
+                    @foreach (var rec in Model.recc)
+                    {
+                        if (rec.fecha == DateOnly.FromDateTime(DateTime.Today))
+                        {
+                            @if (!Model.Checkfecha[rec.fecha])
+                            {
+                                <h3 class="chiquillo Titillium mover">Hoy, @rec.fecha.ToString("dd 'de' MMMM 'del' yyyy")</h3>
+                                Model.Checkfecha[rec.fecha] = true;
+                            }
+                            <div class="flexible espacito mover">
+                                <div
+                                    class="btn btn-primary botonsito @(rec.tipo == 't' ? @Model.colores[(rec.id_tienda ?? 0) % 4] : "botonpersonal")">
+                                </div>
+                                <div class="rounded p-3 background-beige-cell align-items-end shadow-sm contenedorrec fondo">
+                                    <div class="flexible espacio widht100">
+                                        <div class="Titillium titulo paddtit">@rec.titulo</div>
+                                        <div class="Titillium hora">@rec.hora_inicio.ToString("hh\\:mm") -
+                                            @rec.hora_final.ToString("hh\\:mm")</div>
+                                    </div>
+                                    <div class="Titillium hora">@rec.lugar</div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <a class="nav-link text-dark mas" asp-area="" asp-page="/Recordatorios"><span
+                            class="chiquillo maschiquillo">Ver
+                            más recordatorios...</span></a>
+                }
+            </div>
+
+            
         </div>
     </div>
 
@@ -97,16 +106,18 @@
             //int? idSession = HttpContext.Session.GetInt32("Id");
 
             // Parámetros para query
-            int? idUsuarioAsesor = idSession; 
+            int? idUsuarioAsesor = idSession;
 
             // Usar valores para el JSON
             string jsonParametersTable = System.Text.Json.JsonSerializer.Serialize(new { idUsuarioAsesor });
             string fullParametersTable = Uri.EscapeDataString(jsonParametersTable);
 
             // Interpolated string usando {} con los parametros completos
-            string urlTable = $"https://lookerstudio.google.com/embed/reporting/5f67ec41-e28e-4047-9b0b-a01413227494/page/FupHF?params={fullParametersTable}"; 
-            
-        <iframe width="1200" height="1000" src="@urlTable" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+            string urlTable =
+            $"https://lookerstudio.google.com/embed/reporting/5f67ec41-e28e-4047-9b0b-a01413227494/page/FupHF?params={fullParametersTable}";
+
+            <iframe width="1200" height="1000" src="@urlTable" frameborder="0" style="border:0" allowfullscreen
+                sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
         }
     </div>
 </div>
