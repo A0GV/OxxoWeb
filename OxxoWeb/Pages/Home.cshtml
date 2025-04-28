@@ -9,35 +9,38 @@
     <!-- Primera fila con stats y recordatorios -->
     <div class="row g-6">
         <div class="col-5">
-            <div class="background-beige-cell rounded p-3 shadow-sm categoriees align-items-center">
+            <div class="background-beige-cell rounded p-3 shadow-sm categoriees" style="height: 400px;">
                 <h2 class="fechita cambiesillo">Estadísticas de juego</h2>
-                @{
-                    // Calc valores para ese usuario
-                    int? idSession = HttpContext.Session.GetInt32("Id");
+                <div class="row d-flex justify-content-center">
+                    @{
+                        // Calc valores para ese usuario
+                        int? idSession = HttpContext.Session.GetInt32("Id");
 
-                    // Parámetros para query
-                    int? idUsuario = idSession;
-                    int? idUsuarioElote = idSession;
-                    int? idUsuarioExpCount = idSession;
-                    int? idUsuarioDias = idSession;
+                        // Parámetros para query
+                        int? idUsuario = idSession;
+                        int? idUsuarioElote = idSession;
+                        int? idUsuarioExpCount = idSession;
+                        int? idUsuarioDias = idSession;
 
-                    // Usar valores para el JSON
-                    string jsonParameters = System.Text.Json.JsonSerializer.Serialize(new
-                    {
-                        idUsuario,
-                        idUsuarioElote,
-                        idUsuarioExpCount,
-                        idUsuarioDias
-                    });
-                    string fullParameters = Uri.EscapeDataString(jsonParameters);
+                        // Usar valores para el JSON
+                        string jsonParameters = System.Text.Json.JsonSerializer.Serialize(new
+                        {
+                            idUsuario,
+                            idUsuarioElote,
+                            idUsuarioExpCount,
+                            idUsuarioDias
+                        });
+                        string fullParameters = Uri.EscapeDataString(jsonParameters);
 
-                    // Interpolated string usando {} con los parametros completos
-                    string reportUrl =
-                    $"https://lookerstudio.google.com/embed/reporting/387b8cf5-0588-4b1b-8545-a7a3617a7fc1/page/FupHF?params={fullParameters}";
+                        // Interpolated string usando {} con los parametros completos
+                        string reportUrl =
+                        $"https://lookerstudio.google.com/embed/reporting/387b8cf5-0588-4b1b-8545-a7a3617a7fc1/page/FupHF?params={fullParameters}";
 
-                    <iframe width="300" height="500" src="@reportUrl" frameborder="0" style="border:0" allowfullscreen
-                        sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
-                }
+                        <iframe width="420" height="300" src="@reportUrl" frameborder="0" style="border:0" allowfullscreen
+                            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+                    }
+                </div>
+                
             </div>
         </div>
 
