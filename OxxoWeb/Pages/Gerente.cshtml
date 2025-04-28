@@ -34,6 +34,7 @@
         </div>
     </div>
 
+
     <!-- Tabla de asesores -->
     <div class="table-responsive background-beige-cell rounded shadow-sm" style="max-height: 600px; overflow-y: auto;">
         <table id="asesoresTable" class="table table-hover table-borderless align-middle mb-0">
@@ -43,10 +44,17 @@
                     <tr class="align-middle">
                         <td>
                             <div class="d-flex align-items-center gap-3">
-                                <img src="~/Img/asesores/@(asesor.IdUsuario).png"
+                                @if (!string.IsNullOrEmpty(asesor.Foto)){
+                                    <img src="~/Img/asesores/@(asesor.IdUsuario).png"
                                      alt="Foto asesor"
                                      class="rounded-circle"
                                      style="width: 50px; height: 50px; object-fit: cover;" />
+                                    }
+                                else{
+                                    <img src="~/Img/gray.jpeg" alt="Foto asesor"
+                                     class="rounded-circle"
+                                     style="width: 50px; height: 50px; object-fit: cover;" />
+                                }
                                 <span>@asesor.Nombre @asesor.ApellidoPat</span>
                             </div>
                         </td>

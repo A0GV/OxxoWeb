@@ -44,7 +44,13 @@ public class PerfilModel : PageModel
             return;
         }
 
-        UsuarioEstadisticas = _context.GetEstadisticas(UsuarioPerfil.IdUsuario) ?? new Estadisticas();
+        // Pasar TipoUsuario y PlazaNombre al método GetEstadisticas
+        UsuarioEstadisticas = _context.GetEstadisticas(
+            UsuarioPerfil.IdUsuario,
+            UsuarioPerfil.TipoUsuario,
+            UsuarioPerfil.IdPlaza
+        ) ?? new Estadisticas();
+
         UsuarioPublicaciones = _context.GetPublicaciones(UsuarioPerfil.IdUsuario) ?? new List<Publicacion>();
         UsuarioCertificados = _context.GetCertificados(UsuarioPerfil.IdUsuario) ?? new List<Cerificados>();
     }
