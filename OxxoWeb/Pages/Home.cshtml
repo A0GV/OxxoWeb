@@ -36,9 +36,6 @@
         <div class="col-1"></div>
 
         <!-- Recordatorios -->
-        <div class="row">
-            
-        </div>
         <div class="col-7 background-beige-cell rounded p-3 align-items-end shadow-sm categoriees">
 
             <h2 class="fechita cambiesillo">
@@ -88,6 +85,26 @@
                 }
             }
         </div>
+    </div>
+
+    <!-- Tabla de problemas -->
+    <div class="col-12 mt-3 align-items-center background-beige-cell rounded p-3 shadow-sm categoriees">
+        @{
+            // Calc valores para ese usuario
+            //int? idSession = HttpContext.Session.GetInt32("Id");
+
+            // Parámetros para query
+            int? idUsuarioAsesor = idSession; 
+
+            // Usar valores para el JSON
+            string jsonParametersTable = System.Text.Json.JsonSerializer.Serialize(new { idUsuarioAsesor });
+            string fullParametersTable = Uri.EscapeDataString(jsonParametersTable);
+
+            // Interpolated string usando {} con los parametros completos
+            string urlTable = $"https://lookerstudio.google.com/embed/reporting/5f67ec41-e28e-4047-9b0b-a01413227494/page/FupHF?params={fullParametersTable}"; 
+            
+        <iframe width="1200" height="1000" src="@urlTable" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+        }
     </div>
 </div>
 
