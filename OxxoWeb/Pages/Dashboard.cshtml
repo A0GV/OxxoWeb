@@ -30,22 +30,26 @@
                     
                 <iframe width="1200" height="1800" src="@reportUrl" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
                 }
-                else 
+                else // Dashboard para Gerente
                 { 
-                    // Dashboard para Gerente
-                    int idGerente = Model.UsuarioPerfil.IdUsuario;
+                    // Calc valores para ese usuario
+                    int idGerente = Model.UsuarioPerfil.IdUsuario; 
 
-                    // JSON con el parámetro que espera Looker Studio
-                    string jsonGerente = System.Text.Json.JsonSerializer.Serialize(new { param_id_gerente = idGerente });
-                    string encodedParamsGerente = Uri.EscapeDataString(jsonGerente);
+                    // Parámetros para query
+                    int ParamGauges = idGerente; 
+                    int ParamRadarChartYBarras = idGerente; 
+                    int ParamDona = idGerente;
+                    
+                    // Usar valores para el JSON
+                    string jsonParameters = System.Text.Json.JsonSerializer.Serialize(new { ParamGauges, ParamRadarChartYBarras, ParamDona });
+                    string fullParameters = Uri.EscapeDataString(jsonParameters);
 
-                    // Enlace con parámetros
-                    string reportUrlGerente = $"https://lookerstudio.google.com/embed/reporting/b1790ec0-9092-4fce-ada0-1d265a7ad279/page/LsOIF?params={encodedParamsGerente}";
+                    // Interpolated string usando {} con los parametros completos
+                    string reportUrl = $"https://lookerstudio.google.com/embed/reporting/394db214-3d78-41f7-8a14-b65478b44a09/page/LsOIF?params={fullParameters}"; 
+                    
+                <iframe width="1200" height="1800" src="@reportUrl" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 
-                    <iframe width="1200" height="1800" src="@reportUrlGerente" frameborder="0" style="border:0"
-                        allowfullscreen
-                        sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-                    </iframe>
+            
                 }
         </div>
     </div>
