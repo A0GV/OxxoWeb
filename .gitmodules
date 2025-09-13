@@ -1,0 +1,9 @@
+[submodule "oxxoipad"]
+	path = oxxoipad
+	url = https://github.com/CieloVega/oxxoipad.git
+[submodule "OxxoAPI"]
+	path = OxxoAPI
+	url = https://github.com/A0GV/OxxoAPI.git
+[submodule "UnityOxxo"]
+	path = UnityOxxo
+	url = https://github.com/A0GV/UnityOxxo.git
